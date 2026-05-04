@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoostSuite — AI Marketing Toolkit for Agencies</title>
+    <meta name="description" content="BoostSuite: SEO Audit, GEO Check, Ad Copy Generator, and Listing Optimizer — all in one AI-powered platform for agencies.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1><span class="gradient">Boost</span>Suite</h1>
+                <p class="tagline" data-i18n="tagline">AI Marketing Toolkit for Agencies</p>
+            </div>
+            <div class="nav-tabs" id="tabs">
+                <button class="tab active" data-tool="seo-audit">
+                    <i class="fas fa-search"></i> <span data-i18n="tabs.seo">SEO Audit</span>
+                </button>
+                <button class="tab" data-tool="geo-check">
+                    <i class="fas fa-globe"></i> <span data-i18n="tabs.geo">GEO Check</span>
+                </button>
+                <button class="tab" data-tool="ad-copy">
+                    <i class="fas fa-ad"></i> <span data-i18n="tabs.ad">Ad Copy Generator</span>
+                </button>
+                <button class="tab" data-tool="listing-optimize">
+                    <i class="fas fa-tags"></i> <span data-i18n="tabs.listing">Listing Optimizer</span>
+                </button>
+            </div>
+            <div class="header-actions">
+                <select id="langSelect" class="lang-select">
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="sl">🇸🇮 SL</option>
+                    <option value="hr">🇭🇷 HR</option>
+                    <option value="de">🇩🇪 DE</option>
+                    <option value="it">🇮🇹 IT</option>
+                </select>
+                <button class="upgrade-btn" id="upgradeBtn">
+                    <i class="fas fa-crown"></i> <span data-i18n="upgrade">Upgrade to Pro</span>
+                </button>
+                <div class="usage">
+                    <span id="usageCount">0</span> / 3 <span data-i18n="freeUses">free uses</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- SEO Audit Tool -->
+            <section class="tool-card active" id="seo-audit">
+                <div class="tool-header">
+                    <h2><i class="fas fa-search"></i> <span data-i18n="seoTitle">SEO Audit</span></h2>
+                    <p data-i18n="seoDesc">Analyze any URL for on‑page SEO, get a score and actionable fixes.</p>
+                </div>
+                <div class="tool-body">
+                    <div class="input-group">
+                        <label data-i18n="seoLabel">Enter URL to audit:</label>
+                        <input type="url" id="seo-url" placeholder="https://example.com">
+                        <button class="btn-primary" id="seo-submit">
+                            <i class="fas fa-play"></i> <span data-i18n="seoBtn">Run Audit</span>
+                        </button>
+                    </div>
+                    <div class="result-container" id="seo-result">
+                        <div class="placeholder">
+                            <i class="fas fa-chart-line"></i>
+                            <p data-i18n="seoPlaceholder">Your SEO audit report will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GEO Check Tool -->
+            <section class="tool-card" id="geo-check">
+                <div class="tool-header">
+                    <h2><i class="fas fa-globe"></i> <span data-i18n="geoTitle">GEO Check (AI Visibility)</span></h2>
+                    <p data-i18n="geoDesc">Check your business visibility across AI assistants and directories.</p>
+                </div>
+                <div class="tool-body">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label data-i18n="geoBusiness">Business Name</label>
+                            <input type="text" id="geo-business" placeholder="Acme Inc.">
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="geoLocation">Location</label>
+                            <input type="text" id="geo-location" placeholder="New York, NY">
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="geoNiche">Niche / Industry</label>
+                            <input type="text" id="geo-niche" placeholder="Restaurant, SaaS, etc.">
+                        </div>
+                    </div>
+                    <button class="btn-primary" id="geo-submit">
+                        <i class="fas fa-search"></i> <span data-i18n="geoBtn">Check Visibility</span>
+                    </button>
+                    <div class="result-container" id="geo-result">
+                        <div class="placeholder">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p data-i18n="geoPlaceholder">Your GEO visibility report will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Copy Generator Tool -->
+            <section class="tool-card" id="ad-copy">
+                <div class="tool-header">
+                    <h2><i class="fas fa-ad"></i> <span data-i18n="adTitle">Ad Copy Generator</span></h2>
+                    <p data-i18n="adDesc">Generate platform‑ready ad copy for Google, Facebook, LinkedIn, X, and Email.</p>
+                </div>
+                <div class="tool-body">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label data-i18n="adProduct">Product / Service</label>
+                            <input type="text" id="ad-product" placeholder="Project management software">
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="adAudience">Target Audience</label>
+                            <input type="text" id="ad-audience" placeholder="Small business owners">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label data-i18n="adTone">Tone</label>
+                            <select id="ad-tone">
+                                <option value="professional">Professional</option>
+                                <option value="friendly">Friendly</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="casual">Casual</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="adCta">Call to Action</label>
+                            <input type="text" id="ad-cta" placeholder="Start free trial">
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="adPlatform">Platform</label>
+                            <select id="ad-platform">
+                                <option value="google">Google Ads</option>
+                                <option value="facebook">Facebook/Instagram</option>
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="x">X (Twitter)</option>
+                                <option value="email">Email</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-primary" id="ad-submit">
+                        <i class="fas fa-magic"></i> <span data-i18n="adBtn">Generate Ad Copy</span>
+                    </button>
+                    <div class="result-container" id="ad-result">
+                        <div class="placeholder">
+                            <i class="fas fa-file-alt"></i>
+                            <p data-i18n="adPlaceholder">Your generated ad copy will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Listing Optimizer Tool -->
+            <section class="tool-card" id="listing-optimize">
+                <div class="tool-header">
+                    <h2><i class="fas fa-tags"></i> <span data-i18n="listingTitle">Listing Optimizer</span></h2>
+                    <p data-i18n="listingDesc">Optimize product listings for Etsy, Amazon, or Google Business.</p>
+                </div>
+                <div class="tool-body">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label data-i18n="listingProduct">Product Name</label>
+                            <input type="text" id="listing-product" placeholder="Handmade ceramic mug">
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="listingCategory">Category</label>
+                            <input type="text" id="listing-category" placeholder="Home & Kitchen">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="listingFeatures">Key Features / Materials</label>
+                        <textarea id="listing-features" rows="3" placeholder="Ceramic, dishwasher safe, 12 oz capacity, ergonomic handle"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="listingTarget">Target Buyer Persona</label>
+                        <input type="text" id="listing-target" placeholder="Home decor enthusiasts, gift shoppers">
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="listingPlatform">Platform</label>
+                        <select id="listing-platform">
+                            <option value="etsy">Etsy</option>
+                            <option value="amazon">Amazon</option>
+                            <option value="google">Google Business</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary" id="listing-submit">
+                        <i class="fas fa-rocket"></i> <span data-i18n="listingBtn">Optimize Listing</span>
+                    </button>
+                    <div class="result-container" id="listing-result">
+                        <div class="placeholder">
+                            <i class="fas fa-list-alt"></i>
+                            <p data-i18n="listingPlaceholder">Your optimized listing will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 data-i18n="faqTitle">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 data-i18n="faq1q">Is BoostSuite free?</h3>
+                    <p data-i18n="faq1a">You get 3 free tool uses with no signup required. For unlimited access, upgrade to Pro for €29/month.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 data-i18n="faq2q">Which tools are included?</h3>
+                    <p data-i18n="faq2a">BoostSuite includes 4 tools: SEO Audit, GEO Check (AI Visibility), Ad Copy Generator, and Listing Optimizer for Etsy/Amazon/Google Business.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 data-i18n="faq3q">What AI models does BoostSuite use?</h3>
+                    <p data-i18n="faq3a">We use DeepSeek for ad copy and listing optimization, and a combination of web search + DeepSeek for SEO audits and GEO checks.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 data-i18n="faq4q">Can I use BoostSuite for my clients?</h3>
+                    <p data-i18n="faq4a">Yes! BoostSuite is designed for agencies. You can white-label reports and use the tools for unlimited client projects with a Pro subscription.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 data-i18n="faq5q">Which languages does BoostSuite support?</h3>
+                    <p data-i18n="faq5a">BoostSuite is available in English, Slovenian, Croatian, Serbian, German, Italian, French, Spanish, Dutch, and Polish.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 data-i18n="faq6q">How does the GEO Check work?</h3>
+                    <p data-i18n="faq6a">GEO Check searches the web for your business presence across directories, review sites, and social media, then analyzes how likely AI assistants are to recommend you.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3><span class="gradient">Boost</span>Suite</h3>
+                    <p data-i18n="tagline">AI Marketing Toolkit for Agencies</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" data-i18n="footerAbout">About</a>
+                    <a href="#" data-i18n="footerPrivacy">Privacy</a>
+                    <a href="#" data-i18n="footerTerms">Terms</a>
+                    <a href="#" data-i18n="footerContact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footerCopy">© 2026 BoostSuite — AI Marketing Toolkit for Agencies</p>
+                <p><span id="live-status">🟢 Live</span> · <span data-i18n="footerPowered">Powered by Netlify</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Upgrade Modal -->
+    <div class="modal" id="upgradeModal">
+        <div class="modal-content">
+            <h2><i class="fas fa-crown"></i> <span data-i18n="upgrade">Upgrade to Pro</span></h2>
+            <p><span data-i18n="limitReached">You've used all 3 free uses.</span> <span data-i18n="upgradeMsg">Upgrade for unlimited access, priority support, and advanced analytics.</span></p>
+            <div class="modal-actions">
+                <button class="btn-secondary" id="closeModal" data-i18n="maybeLater">Maybe Later</button>
+                <a href="https://gumroad.com/boostsuite" target="_blank" class="btn-primary">
+                    <i class="fas fa-rocket"></i> <span data-i18n="upgradeNow">Upgrade Now (€29/month)</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

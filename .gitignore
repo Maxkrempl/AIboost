@@ -1,0 +1,32 @@
+# Local Netlify folder
+.netlify
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+
+# Other projects (not for this repo)
+AdBoost/
+adboost-fixed/
+autonomy/
+docs/
+.clawhub/
+.openclaw/
+skills/
+
+# Workspace config files
+AGENTS.md
+SOUL.md
+USER.md
+IDENTITY.md
+TOOLS.md
+HEARTBEAT.md
+POLICY.md
+README.md
+
+# Misc files
+1{e=
+*.csv
+*.example.json

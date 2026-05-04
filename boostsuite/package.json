@@ -1,0 +1,9 @@
+{
+  "name": "boostsuite",
+  "version": "1.0.0",
+  "description": "BoostSuite — AI Marketing Toolkit for Agencies",
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
