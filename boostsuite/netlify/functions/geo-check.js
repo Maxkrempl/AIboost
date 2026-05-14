@@ -1,15 +1,22 @@
 const fetch = require('node-fetch');
+const { verifyApiKey, trackUsage, corsHeaders } = require('./auth');
 
 exports.handler = async (event, context) => {
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Content-Type': 'application/json',
-    };
+    const headers = corsHeaders();
 
     if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers, body: '' };
     if (event.httpMethod !== 'POST') return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
+
+    // Optional API key auth
+    let authUser = null;
+    const authHeader = event.headers?.authorization || event.headers?.Authorization || '';
+    if (authHeader.startsWith('Bearer ')) {
+        authUser = await verifyApiKey(event);
+        if (authUser.error) {
+            return { statusCode: 401, headers, body: JSON.stringify({ error: authUser.error }) };
+        }
+        trackUsage(authHeader.slice(7).trim());
+    }
 
     try {
         const { business, location, niche } = JSON.parse(event.body);
@@ -70,23 +77,11 @@ exports.handler = async (event, context) => {
                 messages: [
                     {
                         role: 'system',
-                        content: `You are an expert in Generative Engine Optimization (GEO). Analyze a business's AI visibility based on search results.
+                        content: `You are a GEO expert. Analyze this business's AI visibility. Return ONLY valid JSON, no explanation.
 
-Respond with a JSON object containing:
-- "score": number 0-100 (how likely AI assistants are to recommend this business)
-- "analysis": 2-3 sentence analysis of their AI visibility
-- "platforms": array of AI assistants/platforms likely to recommend them (e.g., "Google Assistant", "ChatGPT", "Alexa", "Perplexity")
-- "suggestions": array of 5 actionable improvement suggestions
+{"score": 0-100, "analysis": "2-3 sentences", "platforms": ["list of AI platforms"], "suggestions": ["5 actionable tips"]}
 
-Scoring criteria:
-- Presence on review sites (Yelp, TripAdvisor, Google) = +20
-- Google Business Profile claimed = +15
-- Multiple positive reviews = +15
-- Consistent NAP (name/address/phone) across sites = +10
-- Industry directory listings = +10
-- Social media presence = +10
-- Structured data / schema markup = +10
-- Recent content / blog = +10`
+Score: review sites +20, GBP claimed +15, reviews +15, NAP consistency +10, directories +10, social +10, schema +10, blog +10.`
                     },
                     {
                         role: 'user',
@@ -94,14 +89,15 @@ Scoring criteria:
                     }
                 ],
                 temperature: 0.3,
-                max_tokens: 600,
+                max_tokens: 1500,
             }),
         });
 
         if (!deepseekResponse.ok) throw new Error(`DeepSeek API error: ${deepseekResponse.status}`);
 
         const deepseekData = await deepseekResponse.json();
-        const aiContent = deepseekData.choices[0].message.content;
+        const msg = deepseekData.choices[0].message;
+        const aiContent = msg.content || msg.reasoning_content || '';
 
         let result;
         try {
