@@ -3,799 +3,744 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free GEO Audit — See How AI Assistants Recommend Your Business | BoostSuite</title>
-    <meta name="description" content="Get a free AI visibility audit. Check how your business appears in ChatGPT, Gemini, and Perplexity. Used by 50+ agencies worldwide.">
-    <meta name="keywords" content="GEO audit, AI visibility, ChatGPT, Gemini, Perplexity, generative engine optimization, AI search">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Free GEO Audit — See How AI Assistants Recommend Your Business">
-    <meta property="og:description" content="Get a free AI visibility audit. Check how your business appears in ChatGPT, Gemini, and Perplexity. Used by 50+ agencies worldwide.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bootsuite.netlify.app/audit.html">
-    <meta property="og:image" content="https://bootsuite.netlify.app/og-audit.png">
-    <meta property="og:site_name" content="BoostSuite">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free GEO Audit — AI Visibility Report">
-    <meta name="twitter:description" content="Check how your business appears in ChatGPT, Gemini, and Perplexity. Free audit for agencies.">
-    <meta name="twitter:image" content="https://bootsuite.netlify.app/og-audit.png">
-
+    <title>BoostSuite — Free Website Audit Tool</title>
+    <meta name="description" content="Get a comprehensive website audit covering SEO, Security, Performance, Accessibility, and GDPR compliance. Free instant report with actionable fixes.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-
     <style>
-        /* Audit-specific styles */
         .audit-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 80px 20px;
             text-align: center;
-            padding: 3rem 1rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .audit-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .audit-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .audit-hero h1 {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .audit-hero h1 .gradient {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .audit-hero .sub {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto 1.5rem;
-        }
-        .social-proof {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-        .social-proof .avatars {
-            display: flex;
-        }
-        .social-proof .avatars span {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 2px solid var(--bg-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: -8px;
-        }
-        .social-proof .avatars span:first-child { margin-left: 0; background: #3b82f6; color: white; }
-        .social-proof .avatars span:nth-child(2) { background: #8b5cf6; color: white; }
-        .social-proof .avatars span:nth-child(3) { background: #10b981; color: white; }
-        .social-proof .avatars span:nth-child(4) { background: #f59e0b; color: white; }
-        .social-proof .avatars span:nth-child(5) { background: #ef4444; color: white; }
-
-        .audit-card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-        .audit-card h2 {
-            font-size: 1.3rem;
-            margin-bottom: 0.4rem;
-        }
-        .audit-card .card-sub {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        .audit-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-        .audit-form .input-group {
-            flex: none;
-        }
-        .audit-form input {
-            padding: 0.9rem 1rem;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            background: var(--bg-input);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-            width: 100%;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .audit-form input:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-        }
-        .audit-form input::placeholder {
-            color: var(--text-muted);
-        }
-        .audit-submit {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: var(--border-radius);
-            background: var(--gradient);
             color: white;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .audit-hero h1 span {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .audit-hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 32px;
+        }
+        .audit-input-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .audit-submit:hover {
+        .audit-input-group input {
+            flex: 1;
+            padding: 16px 20px;
+            font-size: 1rem;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            background: #1e293b;
+            color: white;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .audit-input-group input:focus {
+            border-color: #6366f1;
+        }
+        .audit-input-group button {
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .audit-input-group button:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 8px 20px rgba(99,102,241,0.4);
         }
-        .audit-submit:disabled {
+        .audit-input-group button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
-
-        /* Results */
-        .audit-results {
-            display: none;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-        .audit-results.visible {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-        .audit-results .result-card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-        }
-        .audit-results h2 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
+        .audit-features {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .audit-results h2 .gradient {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .ai-presence-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        .ai-presence-item {
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            padding: 1.2rem;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: border-color 0.2s ease;
-        }
-        .ai-presence-item:hover {
-            border-color: var(--accent-blue);
-        }
-        .ai-presence-item .ai-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .ai-presence-item .ai-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-        .ai-presence-item .ai-score {
-            font-size: 1.8rem;
-            font-weight: 800;
-        }
-        .ai-presence-item .ai-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        .score-good { color: var(--accent-green); }
-        .score-ok { color: var(--accent-yellow); }
-        .score-bad { color: var(--accent-red); }
-
-        .overall-score-bar {
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border-color);
-        }
-        .overall-score-bar .bar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
-        }
-        .overall-score-bar .bar-header h3 {
-            font-size: 1rem;
-            color: var(--text-secondary);
-        }
-        .overall-score-bar .bar-header .bar-score {
-            font-size: 1.6rem;
-            font-weight: 800;
-        }
-
-        .audit-findings {
-            margin-bottom: 2rem;
-        }
-        .audit-findings h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-        .finding-item {
-            display: flex;
-            gap: 0.75rem;
-            align-items: flex-start;
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-        .finding-item.positive {
-            background: rgba(16, 185, 129, 0.1);
-            border-left: 3px solid var(--accent-green);
-        }
-        .finding-item.negative {
-            background: rgba(239, 68, 68, 0.1);
-            border-left: 3px solid var(--accent-red);
-        }
-        .finding-item.neutral {
-            background: rgba(59, 130, 246, 0.1);
-            border-left: 3px solid var(--accent-blue);
-        }
-        .finding-item i {
-            margin-top: 0.2rem;
-            flex-shrink: 0;
-        }
-        .finding-item.positive i { color: var(--accent-green); }
-        .finding-item.negative i { color: var(--accent-red); }
-        .finding-item.neutral i { color: var(--accent-blue); }
-
-        .audit-recommendations {
-            margin-bottom: 2rem;
-        }
-        .audit-recommendations h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-        .rec-list {
-            list-style: none;
-            padding: 0;
-        }
-        .rec-list li {
-            display: flex;
-            gap: 0.75rem;
-            align-items: flex-start;
-            padding: 0.8rem 1rem;
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-        }
-        .rec-list li i {
-            color: var(--accent-yellow);
-            margin-top: 0.2rem;
-            flex-shrink: 0;
-        }
-
-        /* Upgrade CTA after results */
-        .upgrade-cta {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 2rem;
-        }
-        .upgrade-cta h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .upgrade-cta p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.25rem;
-            max-width: 450px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .upgrade-cta .cta-buttons {
-            display: flex;
-            gap: 1rem;
             justify-content: center;
+            gap: 32px;
+            margin-top: 32px;
             flex-wrap: wrap;
         }
-        .upgrade-cta .cta-btn {
-            padding: 0.85rem 1.75rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .upgrade-cta .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-        .upgrade-cta .cta-btn.primary {
-            background: var(--gradient);
-            color: white;
-            border: none;
-        }
-        .upgrade-cta .cta-btn.secondary {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-        }
-        .upgrade-cta .cta-btn.secondary:hover {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-        }
-        .plan-prices {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        .plan-price-tag {
+        .audit-feature {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 8px;
+            color: #94a3b8;
             font-size: 0.9rem;
-            color: var(--text-muted);
         }
-        .plan-price-tag strong {
-            color: var(--text-primary);
+        .audit-feature i {
+            color: #6366f1;
+        }
+
+        /* Report Styles */
+        .report-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: none;
+        }
+        .report-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .report-url {
+            font-size: 1rem;
+            color: #6366f1;
+            margin-bottom: 8px;
+        }
+        .report-overall {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 32px 48px;
+            margin: 20px 0;
+        }
+        .report-grade {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .grade-a { color: #22c55e; }
+        .grade-b { color: #84cc16; }
+        .grade-c { color: #eab308; }
+        .grade-d { color: #f97316; }
+        .grade-f { color: #ef4444; }
+        .report-score {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+        .report-summary {
             font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-top: 16px;
+        }
+
+        /* Audit Cards */
+        .audit-cards {
+            display: grid;
+            gap: 24px;
+        }
+        .audit-card {
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .audit-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .audit-card-header:hover {
+            background: #334155;
+        }
+        .audit-card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+        }
+        .audit-card-score {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .score-bar {
+            width: 100px;
+            height: 8px;
+            background: #334155;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease-out;
+        }
+        .score-text {
+            font-weight: 600;
+            min-width: 40px;
+            text-align: right;
+        }
+        .audit-card-body {
+            padding: 0 24px 24px;
+            display: none;
+        }
+        .audit-card.open .audit-card-body {
+            display: block;
+        }
+        .audit-card.open .audit-card-header {
+            border-bottom: 1px solid #334155;
+        }
+        .audit-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+        .audit-check:last-child {
+            border-bottom: none;
+        }
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.7rem;
+        }
+        .check-pass { background: #065f46; color: #34d399; }
+        .check-warn { background: #713f12; color: #fbbf24; }
+        .check-fail { background: #7f1d1d; color: #f87171; }
+        .check-info { flex: 1; }
+        .check-name {
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+        .check-detail {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+        .check-solution {
+            font-size: 0.85rem;
+            color: #6366f1;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+        .solutions-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+        .solution-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .solution-item:last-child {
+            border-bottom: none;
+        }
+        .solution-priority {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .priority-critical { background: #7f1d1d; color: #fca5a5; }
+        .priority-high { background: #78350f; color: #fcd34d; }
+        .priority-medium { background: #1e3a5f; color: #93c5fd; }
+        .solution-text {
+            flex: 1;
+            color: #e2e8f0;
+        }
+        .solution-impact {
+            font-size: 0.8rem;
+            color: #a5b4fc;
+            margin-top: 4px;
+        }
+
+        /* CTA */
+        .audit-cta {
+            text-align: center;
+            padding: 48px 20px;
+            background: #0f172a;
+        }
+        .audit-cta h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 16px;
+        }
+        .audit-cta p {
+            color: #94a3b8;
+            margin-bottom: 24px;
         }
 
         /* Loading */
-        .audit-loader {
-            display: flex;
-            flex-direction: column;
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15,23,42,0.95);
+            z-index: 1000;
+            justify-content: center;
             align-items: center;
-            gap: 1rem;
-            padding: 3rem;
-            color: var(--text-secondary);
         }
-        .audit-loader .loader {
-            width: 40px;
-            height: 40px;
+        .loading-overlay.active {
+            display: flex;
         }
-
-        /* Error */
-        .audit-error {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            text-align: center;
-            color: var(--accent-red);
-            margin-bottom: 1rem;
-        }
-
-        /* What is GEO section */
-        .what-is-geo {
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-        .what-is-geo h2 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
+        .loading-content {
             text-align: center;
         }
-        .what-is-geo p {
-            color: var(--text-secondary);
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #334155;
+            border-top-color: #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .loading-text {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+        .loading-step {
+            color: #6366f1;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* PDF Download Button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 8px;
             font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
         }
-        .geo-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .geo-feature {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 1.2rem;
-            transition: border-color 0.2s ease;
-        }
-        .geo-feature:hover {
-            border-color: var(--accent-blue);
-        }
-        .geo-feature i {
-            color: var(--accent-blue);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        .geo-feature h4 {
-            font-size: 0.95rem;
-            margin-bottom: 0.3rem;
-        }
-        .geo-feature p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 0;
+        .download-btn:hover {
+            transform: translateY(-2px);
         }
 
-        @media (max-width: 600px) {
-            .audit-hero h1 {
-                font-size: 1.8rem;
-            }
-            .ai-presence-grid {
-                grid-template-columns: 1fr;
-            }
-            .geo-features {
-                grid-template-columns: 1fr;
-            }
-            .audit-card {
-                padding: 1.5rem;
-            }
-            .audit-results .result-card {
-                padding: 1.5rem;
-            }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .audit-hero h1 { font-size: 2rem; }
+            .audit-input-group { flex-direction: column; }
+            .audit-features { gap: 16px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">
-                <a href="index.html" style="text-decoration:none;color:inherit;">
-                    <h1><span class="gradient">Boost</span>Suite</h1>
-                </a>
-                <p class="tagline">AI Marketing Toolkit for Agencies</p>
-            </div>
-            <div class="header-actions">
-                <a href="https://herceg23.gumroad.com/l/uvoetm" target="_blank" class="upgrade-btn">
-                    <i class="fas fa-crown"></i> Upgrade to Pro
-                </a>
-            </div>
-        </header>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Analyzing your website...</div>
+            <div class="loading-step" id="loadingStep">Starting audit...</div>
+        </div>
+    </div>
 
-        <!-- Hero Section -->
-        <section class="audit-hero">
-            <h1>Check How Your Client Appears in <span class="gradient">ChatGPT, Gemini, and Perplexity</span></h1>
-            <p class="sub">Free AI visibility audit — see how often AI assistants recommend your business</p>
-            <div class="social-proof">
-                <div class="avatars">
-                    <span>M</span>
-                    <span>J</span>
-                    <span>A</span>
-                    <span>S</span>
-                    <span>+46</span>
-                </div>
-                <span>Trusted by <strong>50+ agencies</strong> worldwide</span>
-            </div>
-        </section>
-
-        <!-- Audit Form -->
-        <div class="audit-card" id="auditFormCard">
-            <h2><i class="fas fa-robot"></i> Run Your Free GEO Audit</h2>
-            <p class="card-sub">We'll check your AI visibility across ChatGPT, Gemini, and Perplexity</p>
-            <form class="audit-form" id="auditForm">
-                <div class="input-group">
-                    <label for="auditBusiness">Business Name</label>
-                    <input type="text" id="auditBusiness" placeholder="e.g. Acme Digital Agency" required>
-                </div>
-                <div class="input-group">
-                    <label for="auditUrl">Website URL</label>
-                    <input type="url" id="auditUrl" placeholder="https://example.com" required>
-                </div>
-                <div class="input-group">
-                    <label for="auditEmail">Email Address</label>
-                    <input type="email" id="auditEmail" placeholder="you@agency.com" required>
-                </div>
-                <button type="submit" class="audit-submit" id="auditSubmit">
-                    <i class="fas fa-wand-magic-sparkles"></i> Get Your Free Audit
+    <!-- Hero Section -->
+    <section class="audit-hero" id="heroSection">
+        <div class="audit-hero-content">
+            <h1>Free <span>Website Audit</span> Report</h1>
+            <p>Get a comprehensive analysis of your website covering SEO, Security, Performance, Accessibility, and GDPR compliance — with actionable fixes.</p>
+            
+            <div class="audit-input-group">
+                <input type="url" id="urlInput" placeholder="https://your-website.com" required>
+                <button onclick="startAudit()" id="auditBtn">
+                    <i class="fas fa-search"></i> Audit Now
                 </button>
-            </form>
-        </div>
-
-        <!-- Results (hidden until submitted) -->
-        <div class="audit-results" id="auditResults">
-            <div class="result-card" id="resultCard">
-                <!-- Filled dynamically -->
+            </div>
+            
+            <div class="audit-features">
+                <div class="audit-feature"><i class="fas fa-check-circle"></i> No signup required</div>
+                <div class="audit-feature"><i class="fas fa-check-circle"></i> Instant results</div>
+                <div class="audit-feature"><i class="fas fa-check-circle"></i> Actionable fixes</div>
+                <div class="audit-feature"><i class="fas fa-check-circle"></i> Free forever</div>
             </div>
         </div>
+    </section>
 
-        <!-- What is GEO Section -->
-        <section class="what-is-geo">
-            <h2>What is Generative Engine Optimization (GEO)?</h2>
-            <p>
-                When people ask ChatGPT, Gemini, or Perplexity for a recommendation, AI engines scan the web for the best match. <strong>Generative Engine Optimization</strong> ensures your business shows up in those answers — not just in Google.
-            </p>
-            <p>
-                Traditional SEO gets you ranked on page 1. GEO gets you <em>recommended by AI</em>. The difference? AI recommendations feel like personal endorsements, driving higher trust and conversion.
-            </p>
-            <div class="geo-features">
-                <div class="geo-feature">
-                    <i class="fas fa-brain"></i>
-                    <h4>AI Recommendation Score</h4>
-                    <p>See how likely each AI is to recommend your business over competitors</p>
-                </div>
-                <div class="geo-feature">
-                    <i class="fas fa-list-check"></i>
-                    <h4>Citation Sources</h4>
-                    <p>Discover which sources AI engines use when referencing your business</p>
-                </div>
-                <div class="geo-feature">
-                    <i class="fas fa-triangle-exclamation"></i>
-                    <h4>Visibility Gaps</h4>
-                    <p>Find where your business is missing from AI recommendations</p>
-                </div>
-                <div class="geo-feature">
-                    <i class="fas fa-bullseye"></i>
-                    <h4>Actionable Fixes</h4>
-                    <p>Get specific steps to improve your AI recommendation rate</p>
-                </div>
+    <!-- Report Section -->
+    <section class="report-container" id="reportSection">
+        <div class="report-header">
+            <div class="report-url" id="reportUrl"></div>
+            <h1>Website Audit Report</h1>
+            <div class="report-overall">
+                <div class="report-grade" id="reportGrade"></div>
+                <div class="report-score" id="reportScore"></div>
             </div>
-        </section>
+            <div class="report-summary" id="reportSummary"></div>
+            <button class="download-btn" onclick="downloadReport()">
+                <i class="fas fa-download"></i> Download PDF Report
+            </button>
+        </div>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <h3><span class="gradient">Boost</span>Suite</h3>
-                    <p>AI Marketing Toolkit for Agencies</p>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                    <a href="#">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 BoostSuite — AI Marketing Toolkit for Agencies</p>
-                <p><span class="gradient">Powered by Netlify</span></p>
-            </div>
-        </footer>
+        <div class="audit-cards" id="auditCards"></div>
+
+        <!-- Solutions Summary -->
+        <div class="solutions-section" id="solutionsSection">
+            <h2 class="solutions-title"><i class="fas fa-wrench"></i> Top Fixes to Improve Your Score</h2>
+            <div id="solutionsList"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="audit-cta">
+            <h2>Want us to fix these issues for you?</h2>
+            <p>BoostSuite Pro provides automated fixes, monitoring, and white-label reports for your clients.</p>
+            <a href="#pricing" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                <i class="fas fa-rocket"></i> Get BoostSuite Pro
+            </a>
+        </div>
+    </section>
+
+    <!-- Email Capture Modal -->
+    <div id="emailModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
+        <div style="background:#1e293b; border-radius:16px; padding:40px; max-width:400px; text-align:center;">
+            <h3 style="color:white; margin-bottom:12px;">Get Your Full Report</h3>
+            <p style="color:#94a3b8; margin-bottom:20px;">Enter your email to receive the complete PDF report with detailed solutions.</p>
+            <input type="email" id="emailInput" placeholder="your@email.com" style="width:100%; padding:12px; border:1px solid #334155; border-radius:8px; background:#0f172a; color:white; margin-bottom:12px;">
+            <button onclick="submitEmail()" style="width:100%; padding:12px; background:#6366f1; color:white; border:none; border-radius:8px; font-weight:600; cursor:pointer;">Send Report</button>
+            <button onclick="closeModal()" style="width:100%; padding:12px; background:transparent; color:#94a3b8; border:none; margin-top:8px; cursor:pointer;">No thanks</button>
+        </div>
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('auditForm');
-        const submitBtn = document.getElementById('auditSubmit');
-        const resultsDiv = document.getElementById('auditResults');
-        const resultCard = document.getElementById('resultCard');
+        let auditData = null;
 
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const business = document.getElementById('auditBusiness').value.trim();
-            const url = document.getElementById('auditUrl').value.trim();
-            const email = document.getElementById('auditEmail').value.trim();
-
-            if (!business || !url || !email) {
-                alert('Please fill in all fields.');
+        async function startAudit() {
+            const url = document.getElementById('urlInput').value.trim();
+            if (!url) {
+                alert('Please enter a URL');
                 return;
             }
 
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<div class="loader"></div> Analyzing AI visibility...';
-            resultsDiv.classList.remove('visible');
-            resultsDiv.innerHTML = '';
+            // Validate URL
+            try {
+                new URL(url);
+            } catch {
+                alert('Please enter a valid URL (including https://)');
+                return;
+            }
+
+            const btn = document.getElementById('auditBtn');
+            const loading = document.getElementById('loadingOverlay');
+            const step = document.getElementById('loadingStep');
+
+            btn.disabled = true;
+            loading.classList.add('active');
+
+            const steps = [
+                'Fetching page content...',
+                'Analyzing SEO...',
+                'Checking security headers...',
+                'Measuring performance...',
+                'Testing accessibility...',
+                'Scanning cookies & privacy...',
+                'Generating report...'
+            ];
+
+            let stepIndex = 0;
+            const stepInterval = setInterval(() => {
+                if (stepIndex < steps.length) {
+                    step.textContent = steps[stepIndex];
+                    stepIndex++;
+                }
+            }, 800);
 
             try {
-                // Call the same GEO check API used by the main app
-                const resp = await fetch('/.netlify/functions/geo-check', {
+                const response = await fetch('/.netlify/functions/combined-audit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        business: business,
-                        location: 'Online',
-                        niche: business
-                    })
+                    body: JSON.stringify({ url })
                 });
 
-                const data = await resp.json();
-                if (!resp.ok) throw new Error(data.error || 'Audit failed');
+                if (!response.ok) throw new Error('Audit failed');
 
-                renderResults(data, business, url, email);
-                resultsDiv.classList.add('visible');
-                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                auditData = await response.json();
+                displayReport(auditData);
 
-            } catch (err) {
-                resultCard.innerHTML = `
-                    <div class="audit-error">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <strong>Oops!</strong> ${err.message}
-                    </div>
-                    <p style="color:var(--text-muted);text-align:center;margin-top:1rem;">
-                        Try again in a moment, or <a href="https://herceg23.gumroad.com/l/uvoetm" style="color:var(--accent-blue);">upgrade to Pro</a> for priority access.
-                    </p>
-                `;
-                resultsDiv.classList.add('visible');
+            } catch (error) {
+                alert('Audit failed: ' + error.message);
             } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> Get Your Free Audit';
+                clearInterval(stepInterval);
+                loading.classList.remove('active');
+                btn.disabled = false;
             }
+        }
+
+        function displayReport(data) {
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('reportSection').style.display = 'block';
+            
+            document.getElementById('reportUrl').textContent = data.url;
+            
+            const grade = data.overall.grade;
+            const gradeEl = document.getElementById('reportGrade');
+            gradeEl.textContent = grade;
+            gradeEl.className = 'report-grade grade-' + grade.toLowerCase();
+            
+            document.getElementById('reportScore').textContent = data.overall.score + '/100';
+            document.getElementById('reportSummary').textContent = data.overall.summary;
+
+            // Build audit cards
+            const cardsHtml = Object.entries(data.audits).map(([key, audit]) => {
+                const scoreColor = audit.score >= 80 ? '#22c55e' : 
+                                  audit.score >= 60 ? '#eab308' : 
+                                  audit.score >= 40 ? '#f97316' : '#ef4444';
+                
+                const checksHtml = audit.checks.map(check => {
+                    const iconClass = check.status === 'pass' ? 'check-pass' : 
+                                     check.status === 'warn' ? 'check-warn' : 'check-fail';
+                    const icon = check.status === 'pass' ? 'fa-check' : 
+                                check.status === 'warn' ? 'fa-exclamation' : 'fa-times';
+                    
+                    const solution = getSolution(key, check.check, check.status);
+                    
+                    return `
+                        <div class="audit-check">
+                            <div class="check-icon ${iconClass}"><i class="fas ${icon}"></i></div>
+                            <div class="check-info">
+                                <div class="check-name">${check.check}</div>
+                                <div class="check-detail">${check.detail}</div>
+                                ${solution ? `<div class="check-solution"><i class="fas fa-lightbulb"></i> ${solution}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="audit-card open">
+                        <div class="audit-card-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="audit-card-title">${audit.category}</div>
+                            <div class="audit-card-score">
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width:${audit.score}%; background:${scoreColor}"></div>
+                                </div>
+                                <div class="score-text" style="color:${scoreColor}">${audit.score}/100</div>
+                            </div>
+                        </div>
+                        <div class="audit-card-body">${checksHtml}</div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('auditCards').innerHTML = cardsHtml;
+
+            // Build solutions
+            const solutions = generateSolutions(data);
+            document.getElementById('solutionsList').innerHTML = solutions.map(s => `
+                <div class="solution-item">
+                    <span class="solution-priority priority-${s.priority}">${s.priority}</span>
+                    <div class="solution-text">
+                        ${s.text}
+                        <div class="solution-impact">${s.impact}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Scroll to report
+            document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getSolution(auditType, checkName, status) {
+            if (status === 'pass') return null;
+            
+            const solutions = {
+                seo: {
+                    'Title Tag': 'Add a unique, descriptive title tag (50-60 characters) to every page.',
+                    'Meta Description': 'Write a compelling meta description (150-160 characters) for each page.',
+                    'Canonical Tag': 'Add <link rel="canonical" href="..."> to prevent duplicate content issues.',
+                    'Open Graph': 'Add og:title, og:description, and og:image tags for social sharing.',
+                    'Structured Data': 'Implement Schema.org markup (JSON-LD) for rich search results.',
+                    'H1 Tag': 'Use exactly one H1 tag per page that describes the page content.',
+                    'Image Alt Text': 'Add descriptive alt text to all images for SEO and accessibility.',
+                    'Content Length': 'Add more quality content (aim for 500+ words per page).'
+                },
+                security: {
+                    'HTTPS': 'Install an SSL certificate and redirect all HTTP to HTTPS.',
+                    'HSTS': 'Add header: Strict-Transport-Security: max-age=31536000; includeSubDomains',
+                    'MIME Protection': 'Add header: X-Content-Type-Options: nosniff',
+                    'Clickjacking Protection': 'Add header: X-Frame-Options: SAMEORIGIN',
+                    'XSS Protection': 'Add header: X-XSS-Protection: 1; mode=block',
+                    'CSP': 'Implement Content-Security-Policy header to prevent XSS attacks.',
+                    'Referrer Policy': 'Add header: Referrer-Policy: strict-origin-when-cross-origin',
+                    'Permissions Policy': 'Add Permissions-Policy header to restrict browser features.',
+                    'Server Hidden': 'Remove Server header to hide server information.',
+                    'Powered-By Hidden': 'Remove X-Powered-By header to hide technology stack.',
+                    'Mixed Content': 'Update all HTTP resource links to HTTPS.'
+                },
+                performance: {
+                    'Load Time': 'Optimize server response, use CDN, and minimize redirects.',
+                    'Page Size': 'Compress images, minify CSS/JS, and enable compression.',
+                    'Compression': 'Enable gzip or Brotli compression on your server.',
+                    'Caching': 'Set Cache-Control headers with appropriate max-age values.',
+                    'Lazy Loading': 'Add loading="lazy" to below-the-fold images.',
+                    'External Resources': 'Reduce external scripts and styles, self-host critical resources.',
+                    'Image Alt Text': 'Add descriptive alt text to all images.'
+                },
+                accessibility: {
+                    'Language Attribute': 'Add lang attribute to <html> tag: <html lang="en">',
+                    'H1 Tag': 'Use exactly one H1 tag per page.',
+                    'Image Alt Text': 'Add descriptive alt text to all images.',
+                    'ARIA Landmarks': 'Use semantic HTML5 elements (header, nav, main, footer).',
+                    'Form Labels': 'Associate all form inputs with <label> elements.',
+                    'Skip Navigation': 'Add a "Skip to main content" link at the top.',
+                    'Focus Indicators': 'Ensure focus styles are visible for keyboard navigation.',
+                    'Zoom Allowed': 'Remove user-scalable=no and maximum-scale=1 from viewport meta.'
+                },
+                cookies: {
+                    'Cookie Banner': 'Implement a GDPR-compliant cookie consent banner.',
+                    'Cookie Categories': 'Organize cookies into categories (necessary, analytics, marketing).',
+                    'Privacy Policy': 'Create and link to a privacy policy page.',
+                    'GDPR Compliance': 'Add GDPR references and data processing information.',
+                    'Cookie Policy': 'Create a dedicated cookie policy page.',
+                    'Opt-out Mechanism': 'Provide cookie preference management for users.'
+                }
+            };
+
+            return solutions[auditType]?.[checkName] || null;
+        }
+
+        function generateSolutions(data) {
+            const solutions = [];
+            
+            Object.entries(data.audits).forEach(([key, audit]) => {
+                audit.checks.forEach(check => {
+                    if (check.status === 'fail') {
+                        solutions.push({
+                            priority: 'critical',
+                            text: `${audit.category}: ${check.check} — ${getSolution(key, check.check, 'fail') || check.detail}`,
+                            impact: 'High impact on your score'
+                        });
+                    } else if (check.status === 'warn') {
+                        solutions.push({
+                            priority: 'high',
+                            text: `${audit.category}: ${check.check} — ${getSolution(key, check.check, 'warn') || check.detail}`,
+                            impact: 'Medium impact on your score'
+                        });
+                    }
+                });
+            });
+
+            // Sort by priority
+            const order = { critical: 0, high: 1, medium: 2 };
+            solutions.sort((a, b) => order[a.priority] - order[b.priority]);
+
+            return solutions.slice(0, 10);
+        }
+
+        function downloadReport() {
+            if (!auditData) return;
+            
+            // Simple text report
+            let report = `WEBSITE AUDIT REPORT\n`;
+            report += `====================\n\n`;
+            report += `URL: ${auditData.url}\n`;
+            report += `Date: ${new Date().toLocaleDateString()}\n`;
+            report += `Overall Score: ${auditData.overall.score}/100 (${auditData.overall.grade})\n\n`;
+            
+            Object.entries(auditData.audits).forEach(([key, audit]) => {
+                report += `\n${audit.category}: ${audit.score}/100\n`;
+                report += `${'-'.repeat(40)}\n`;
+                audit.checks.forEach(check => {
+                    const icon = check.status === 'pass' ? '✓' : check.status === 'warn' ? '⚠' : '✗';
+                    report += `  ${icon} ${check.check}: ${check.detail}\n`;
+                    const solution = getSolution(key, check.check, check.status);
+                    if (solution) report += `    → Fix: ${solution}\n`;
+                });
+            });
+
+            report += `\n\nTOP FIXES\n`;
+            report += `${'='.repeat(40)}\n`;
+            const solutions = generateSolutions(auditData);
+            solutions.forEach((s, i) => {
+                report += `${i+1}. [${s.priority.toUpperCase()}] ${s.text}\n`;
+            });
+
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `audit-report-${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Handle enter key
+        document.getElementById('urlInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') startAudit();
         });
 
-        function parseAIResponse(text) {
-            // Try direct JSON
-            try { const o = JSON.parse(text); if (o && typeof o === 'object') return o; } catch(e) {}
-            // Try JSON in code block
-            const m = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-            if (m) { try { const o = JSON.parse(m[1].trim()); if (o && typeof o === 'object') return o; } catch(e) {} }
-            // Try finding JSON
-            const jm = text.match(/\{[\s\S]*\}/);
-            if (jm) { try { const o = JSON.parse(jm[0]); if (o && typeof o === 'object') return o; } catch(e) {} }
-            return null;
-        }
-
-        function getScoreClass(score) {
-            if (score >= 70) return 'score-good';
-            if (score >= 40) return 'score-ok';
-            return 'score-bad';
-        }
-
-        function renderResults(rawData, business, url, email) {
-            const parsed = (typeof rawData === 'object' && rawData !== null) ? rawData : {};
-            const score = parsed.score ?? 0;
-            const analysis = parsed.analysis || '';
-            const platforms = parsed.platforms || [];
-            const suggestions = parsed.suggestions || [];
-
-            // Derive per-platform scores (simulate breakdown from overall score)
-            const chatgptScore = Math.min(100, Math.max(0, score + Math.floor(Math.random()*11) - 5));
-            const geminiScore = Math.min(100, Math.max(0, score + Math.floor(Math.random()*11) - 5));
-            const perplexityScore = Math.min(100, Math.max(0, score + Math.floor(Math.random()*11) - 5));
-
-            const overallClass = getScoreClass(score);
-            const chatgptClass = getScoreClass(chatgptScore);
-            const geminiClass = getScoreClass(geminiScore);
-            const perplexityClass = getScoreClass(perplexityScore);
-
-            // Build findings
-            const findings = [];
-            if (score >= 70) {
-                findings.push({ type: 'positive', icon: 'fa-check-circle', text: 'Strong AI visibility — your business is well-represented across AI engines.' });
-            } else if (score >= 40) {
-                findings.push({ type: 'neutral', icon: 'fa-info-circle', text: 'Moderate visibility — some AI engines know about you, but there are gaps.' });
-            } else {
-                findings.push({ type: 'negative', icon: 'fa-times-circle', text: 'Low visibility — AI assistants may not recommend your business at all.' });
+        // Email modal
+        function submitEmail() {
+            const email = document.getElementById('emailInput').value;
+            if (email) {
+                // Store email for follow-up
+                console.log('Email captured:', email);
+                closeModal();
+                downloadReport();
             }
-
-            if (platforms.length) {
-                platforms.slice(0, 4).forEach(p => {
-                    findings.push({ type: 'neutral', icon: 'fa-link', text: p });
-                });
-            }
-
-            if (analysis) {
-                findings.push({ type: score >= 60 ? 'positive' : 'negative', icon: score >= 60 ? 'fa-chart-line' : 'fa-triangle-exclamation', text: analysis.substring(0, 200) });
-            }
-
-            let html = `
-                <h2><i class="fas fa-robot"></i> <span class="gradient">AI Visibility Audit</span> for ${escapeHtml(business)}</h2>
-
-                <div class="ai-presence-grid">
-                    <div class="ai-presence-item">
-                        <div class="ai-icon">🤖</div>
-                        <div class="ai-name">ChatGPT</div>
-                        <div class="ai-score ${chatgptClass}">${chatgptScore}%</div>
-                        <div class="ai-label">Recommendation Score</div>
-                    </div>
-                    <div class="ai-presence-item">
-                        <div class="ai-icon">✨</div>
-                        <div class="ai-name">Gemini</div>
-                        <div class="ai-score ${geminiClass}">${geminiScore}%</div>
-                        <div class="ai-label">Recommendation Score</div>
-                    </div>
-                    <div class="ai-presence-item">
-                        <div class="ai-icon">🔍</div>
-                        <div class="ai-name">Perplexity</div>
-                        <div class="ai-score ${perplexityClass}">${perplexityScore}%</div>
-                        <div class="ai-label">Recommendation Score</div>
-                    </div>
-                </div>
-
-                <div class="overall-score-bar">
-                    <div class="bar-header">
-                        <h3>Overall AI Visibility Score</h3>
-                        <div class="bar-score ${overallClass}">${score}/100</div>
-                    </div>
-                    <div class="score-gauge">
-                        <div class="score-fill" style="width:${score}%;background:${score >= 70 ? 'var(--accent-green)' : score >= 40 ? 'var(--accent-yellow)' : 'var(--accent-red)'}"></div>
-                    </div>
-                </div>
-
-                ${findings.length ? `
-                <div class="audit-findings">
-                    <h3><i class="fas fa-magnifying-glass"></i> Key Findings</h3>
-                    ${findings.map(f => `
-                        <div class="finding-item ${f.type}">
-                            <i class="fas ${f.icon}"></i>
-                            <span>${escapeHtml(f.text)}</span>
-                        </div>
-                    `).join('')}
-                </div>
-                ` : ''}
-
-                ${suggestions.length ? `
-                <div class="audit-recommendations">
-                    <h3><i class="fas fa-lightbulb"></i> How to Improve Your AI Visibility</h3>
-                    <ul class="rec-list">
-                        ${suggestions.slice(0, 5).map(s => `
-                            <li><i class="fas fa-arrow-right"></i> <span>${escapeHtml(s)}</span></li>
-                        `).join('')}
-                    </ul>
-                </div>
-                ` : ''}
-
-                <div class="upgrade-cta">
-                    <h3><i class="fas fa-rocket"></i> Want the Full Report?</h3>
-                    <p>Get detailed AI visibility tracking, competitor analysis, white-label PDF reports, and unlimited audits for all your clients.</p>
-                    <div class="plan-prices">
-                        <div class="plan-price-tag"><strong>€19/mo</strong> Freelancer</div>
-                        <div class="plan-price-tag"><strong>€49/mo</strong> Agency</div>
-                    </div>
-                    <div class="cta-buttons">
-                        <a href="https://herceg23.gumroad.com/l/uvoetm" target="_blank" class="cta-btn primary">
-                            <i class="fas fa-crown"></i> Upgrade to Pro
-                        </a>
-                        <a href="index.html" class="cta-btn secondary">
-                            <i class="fas fa-wand-magic-sparkles"></i> Try All Tools
-                        </a>
-                    </div>
-                </div>
-            `;
-
-            resultCard.innerHTML = html;
         }
 
-        function escapeHtml(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
+        function closeModal() {
+            document.getElementById('emailModal').style.display = 'none';
         }
-    });
     </script>
 </body>
 </html>

@@ -1,15 +1,22 @@
 const fetch = require('node-fetch');
+const { verifyApiKey, trackUsage, corsHeaders } = require('./auth');
 
 exports.handler = async (event, context) => {
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Content-Type': 'application/json',
-    };
+    const headers = corsHeaders();
 
     if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers, body: '' };
     if (event.httpMethod !== 'POST') return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
+
+    // Optional API key auth
+    let authUser = null;
+    const authHeader = event.headers?.authorization || event.headers?.Authorization || '';
+    if (authHeader.startsWith('Bearer ')) {
+        authUser = await verifyApiKey(event);
+        if (authUser.error) {
+            return { statusCode: 401, headers, body: JSON.stringify({ error: authUser.error }) };
+        }
+        trackUsage(authHeader.slice(7).trim());
+    }
 
     try {
         const { product, category, features, target, platform } = JSON.parse(event.body);
@@ -66,7 +73,8 @@ Respond with a JSON object with the fields specified above. Be specific, persuas
         if (!deepseekResponse.ok) throw new Error(`DeepSeek API error: ${deepseekResponse.status}`);
 
         const deepseekData = await deepseekResponse.json();
-        const aiContent = deepseekData.choices[0].message.content;
+        const msg = deepseekData.choices[0].message;
+        const aiContent = msg.content || msg.reasoning_content || '';
 
         let result;
         try {

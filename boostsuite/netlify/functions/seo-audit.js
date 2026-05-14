@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
+const { verifyApiKey, trackUsage, corsHeaders } = require('./auth');
 
 // Build a fallback score from raw SEO data when AI parsing fails
 function buildFallbackResult(data) {
@@ -90,13 +91,7 @@ function buildFixes(data) {
 }
 
 exports.handler = async (event, context) => {
-    // CORS headers
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Content-Type': 'application/json',
-    };
+    const headers = corsHeaders();
 
     if (event.httpMethod === 'OPTIONS') {
         return { statusCode: 200, headers, body: '' };
@@ -104,6 +99,17 @@ exports.handler = async (event, context) => {
 
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
+    }
+
+    // Optional API key auth (free tier = no key needed, limited usage)
+    let authUser = null;
+    const authHeader = event.headers?.authorization || event.headers?.Authorization || '';
+    if (authHeader.startsWith('Bearer ')) {
+        authUser = await verifyApiKey(event);
+        if (authUser.error) {
+            return { statusCode: 401, headers, body: JSON.stringify({ error: authUser.error }) };
+        }
+        trackUsage(authHeader.slice(7).trim());
     }
 
     try {
@@ -167,7 +173,7 @@ exports.handler = async (event, context) => {
                 'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
             },
             body: JSON.stringify({
-                model: 'deepseek-chat',
+                model: 'deepseek-v4-flash',
                 messages: [
                     {
                         role: 'system',
@@ -196,7 +202,8 @@ Example:
         }
 
         const deepseekData = await deepseekResponse.json();
-        const aiContent = deepseekData.choices[0].message.content;
+        const msg = deepseekData.choices[0].message;
+        const aiContent = msg.content || msg.reasoning_content || '';
         let result;
         try {
             // Strip markdown code fences if present
