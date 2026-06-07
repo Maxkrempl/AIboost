@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" width="340" height="80">
+        <defs>
+          <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F5C842"/><stop offset="100%" style="stop-color:#E8A020"/></linearGradient>
+          <linearGradient id="goldH" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#F5C842"/><stop offset="100%" style="stop-color:#E8A020"/></linearGradient>
+          <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2ECC71"/><stop offset="100%" style="stop-color:#1A9E55"/></linearGradient>
+          <linearGradient id="b1" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#E8A020;stop-opacity:0.6"/><stop offset="100%" style="stop-color:#F5C842"/></linearGradient>
+          <linearGradient id="b2" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#1A9E55;stop-opacity:0.7"/><stop offset="100%" style="stop-color:#2ECC71"/></linearGradient>
+          <linearGradient id="b3" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#F5C842;stop-opacity:0.5"/><stop offset="100%" style="stop-color:#F5C842"/></linearGradient>
+          <linearGradient id="b4" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#2ECC71;stop-opacity:0.5"/><stop offset="100%" style="stop-color:#2ECC71"/></linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="1.8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <g transform="translate(6,8)">
+          <circle cx="32" cy="32" r="30" fill="#F5C842" opacity="0.04"/>
+          <rect x="4"  y="44" width="9" height="18" rx="2" fill="url(#b1)"/>
+          <rect x="16" y="34" width="9" height="28" rx="2" fill="url(#b2)"/>
+          <rect x="28" y="24" width="9" height="38" rx="2" fill="url(#b3)"/>
+          <rect x="40" y="14" width="9" height="48" rx="2" fill="url(#b4)"/>
+          <path d="M44.5 10 L41 17 L43 15.5 L43 14 L44.5 10 Z" fill="url(#gold)" filter="url(#glow)"/>
+          <polyline points="8.5,40 20.5,30 32.5,20 44.5,10" fill="none" stroke="url(#goldH)" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.5"/>
+          <rect x="2" y="63" width="52" height="2" rx="1" fill="url(#gold)" opacity="0.4"/>
+        </g>
+        <g transform="translate(80,0)">
+          <text x="0" y="50" font-family="'Georgia','Times New Roman',serif" font-size="40" font-weight="700" letter-spacing="-1" fill="url(#gold)">Boost</text>
+          <text x="114" y="50" font-family="'Georgia','Times New Roman',serif" font-size="40" font-weight="400" letter-spacing="-1" fill="#F0EAD6">Suite</text>
+          <text x="1" y="68" font-family="'Georgia','Times New Roman',serif" font-size="10.5" font-style="italic" letter-spacing="3" fill="#2ECC71" opacity="0.85">AI TOOLS FOR GROWTH</text>
+          <rect x="0" y="56" width="248" height="1" fill="url(#goldH)" opacity="0.25" rx="0.5"/>
+          <circle cx="2" cy="75" r="2" fill="#F5C842" opacity="0.7"/>
+          <circle cx="10" cy="75" r="2" fill="#2ECC71" opacity="0.7"/>
+          <circle cx="18" cy="75" r="2" fill="#F5C842" opacity="0.5"/>
+          <circle cx="26" cy="75" r="2" fill="#2ECC71" opacity="0.5"/>
+        </g>
+      </svg>

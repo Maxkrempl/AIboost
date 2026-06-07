@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+ <defs>
+ <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+ <stop offset="0%" style="stop-color:#D4980A"/>
+ <stop offset="100%" style="stop-color:#B07818"/>
+ </linearGradient>
+ <linearGradient id="greenGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+ <stop offset="0%" style="stop-color:#1A9E55"/>
+ <stop offset="100%" style="stop-color:#0F7A3E"/>
+ </linearGradient>
+ <filter id="glow2">
+ <feGaussianBlur stdDeviation="1.2" result="coloredBlur"/>
+ <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+ </filter>
+ </defs>
+ <g transform="translate(8, 10)">
+ <rect x="4" y="48" width="54" height="5" rx="2.5" fill="url(#goldGrad2)"/>
+ <path d="M6 48 Q31 8 56 48 Z" fill="none" stroke="url(#goldGrad2)" stroke-width="2.5"/>
+ <path d="M12 48 Q31 18 50 48" fill="none" stroke="#D4980A" stroke-width="0.8" opacity="0.3"/>
+ <path d="M27 36 L33 24 L31 32 L37 30 L29 44 L32 34 Z" fill="url(#greenGrad2)" filter="url(#glow2)"/>
+ <circle cx="31" cy="11" r="4" fill="url(#goldGrad2)"/>
+ <circle cx="31" cy="11" r="2" fill="#F5F0E8"/>
+ </g>
+ <g transform="translate(82, 0)">
+ <text x="0" y="50" font-family="'Georgia','Times New Roman',serif" font-size="38" font-weight="700" letter-spacing="-0.5" fill="#1A1A1A">Menu</text>
+ <text x="96" y="50" font-family="'Georgia','Times New Roman',serif" font-size="38" font-weight="700" letter-spacing="-0.5" fill="url(#goldGrad2)">Boost</text>
+ <text x="1" y="68" font-family="'Georgia','Times New Roman',serif" font-size="11" font-style="italic" letter-spacing="2.5" fill="#1A9E55" opacity="0.9">AI · MENU · DESCRIPTIONS</text>
+ <rect x="0" y="56" width="230" height="1" fill="url(#goldGrad2)" opacity="0.3" rx="0.5"/>
+ </g>
+</svg>

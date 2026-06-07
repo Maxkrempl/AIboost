@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+          <defs>
+            <linearGradient id="fg1b" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#E8A020;stop-opacity:0.7"/><stop offset="100%" style="stop-color:#F5C842"/></linearGradient>
+            <linearGradient id="fg2b" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#1A9E55;stop-opacity:0.7"/><stop offset="100%" style="stop-color:#2ECC71"/></linearGradient>
+            <linearGradient id="fg3b" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#F5C842;stop-opacity:0.6"/><stop offset="100%" style="stop-color:#F5C842"/></linearGradient>
+            <linearGradient id="fg4b" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#2ECC71;stop-opacity:0.6"/><stop offset="100%" style="stop-color:#2ECC71"/></linearGradient>
+            <filter id="fgb"><feGaussianBlur stdDeviation="0.7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <rect width="32" height="32" rx="7" fill="#1A1A1A"/>
+          <rect x="3"  y="20" width="5" height="9"  rx="1.2" fill="url(#fg1b)"/>
+          <rect x="10" y="15" width="5" height="14" rx="1.2" fill="url(#fg2b)"/>
+          <rect x="17" y="10" width="5" height="19" rx="1.2" fill="url(#fg3b)"/>
+          <rect x="24" y="5"  width="5" height="24" rx="1.2" fill="url(#fg4b)"/>
+          <path d="M26.5 3.5 L24.5 7 L26.5 6 L28.5 7 Z" fill="#F5C842" filter="url(#fgb)"/>
+          <polyline points="5.5,18 12.5,13 19.5,8 26.5,3.5" fill="none" stroke="#F5C842" stroke-width="1" stroke-dasharray="1.5,1.5" opacity="0.4"/>
+          <rect x="2" y="30" width="28" height="1.2" rx="0.6" fill="#F5C842" opacity="0.3"/>
+        </svg>

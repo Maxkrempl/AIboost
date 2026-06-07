@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdBoost – AI Ad Copy Generator for Google, Facebook & Instagram | HD Web Design</title>
+  <meta name="description" content="AdBoost generates high-converting ad copy for Google, Facebook, Instagram, and TikTok in seconds. AI-powered, supports multiple languages. Try free.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://hd-webdesign.si/ad-boost/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AdBoost – AI Ad Copy Generator">
+  <meta property="og:description" content="Generate high-converting ad copy for Google, Facebook, Instagram, and TikTok with AI. Try free.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hd-webdesign.si/ad-boost/">
+  <meta property="og:image" content="https://hd-webdesign.si/images/og-image.jpg">
+  <meta property="og:site_name" content="HD Web Design">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AdBoost – AI Ad Copy Generator">
+  <meta name="twitter:description" content="Generate high-converting ad copy for Google, Facebook, Instagram, and TikTok with AI.">
+  <meta name="twitter:image" content="https://hd-webdesign.si/images/og-image.jpg">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AdBoost",
+      "description": "AI-powered ad copy generator for Google, Facebook, Instagram, and TikTok.",
+      "url": "https://hd-webdesign.si/ad-boost/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": {
+          "@type": "Person",
+          "name": "Darko Herceg",
+          "url": "https://hd-webdesign.si/about/"
+      },
+      "provider": {
+          "@type": "Organization",
+          "name": "HD Web Design",
+          "url": "https://hd-webdesign.si"
+      }
+  }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      background: #f9fafb;
+      color: #111827;
+      padding: 2rem 1rem;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 2.5rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+    }
+    .subtitle {
+      color: #6b7280;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    .form-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      align-items: center;
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+    }
+    label {
+      font-weight: 600;
+      color: #374151;
+    }
+    select, input, textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    select:focus, input:focus, textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    button:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+    .result {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: #f3f4f6;
+      border-radius: 0.75rem;
+      border-left: 4px solid #3b82f6;
+    }
+    .result h3 {
+      margin-bottom: 0.75rem;
+      color: #1f2937;
+    }
+    #output {
+      white-space: pre-wrap;
+      font-family: 'Courier New', monospace;
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #d1d5db;
+      min-height: 120px;
+    }
+    .loading {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid #9ca3af;
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 0.5rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AdBoost</h1>
+    <p class="subtitle">Generate high‑converting ad copy in seconds with AI.</p>
+
+    <div class="form-grid">
+      <div class="form-row">
+        <label for="template">Ad template</label>
+        <select id="template">
+          <option value="google_ads">Google Search Ads</option>
+          <option value="facebook_ads">Facebook / Instagram Ads</option>
+          <option value="linkedin_ads">LinkedIn Ads</option>
+          <option value="twitter_posts">Twitter / X Posts</option>
+          <option value="email_subjects">Email Subject Lines</option>
+          <option value="product_descriptions">Product Descriptions</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="product">Product / Service</label>
+        <input type="text" id="product" placeholder="e.g., AdBoost AI Copy Tool" value="AdBoost">
+      </div>
+      <div class="form-row">
+        <label for="audience">Target audience</label>
+        <input type="text" id="audience" placeholder="e.g., marketing teams, startups" value="marketing teams">
+      </div>
+      <div class="form-row">
+        <label for="tone">Tone of voice</label>
+        <input type="text" id="tone" placeholder="e.g., professional, playful, urgent" value="professional">
+      </div>
+      <div class="form-row">
+        <label for="cta">Call‑to‑action (CTA)</label>
+        <input type="text" id="cta" placeholder="e.g., Try now, Learn more, Get started" value="Try now">
+      </div>
+    </div>
+
+    <button id="generate">Generate Ad Copy</button>
+
+    <div class="result" style="display:none">
+      <h3>Generated Copy</h3>
+      <div id="output">Your ad copy will appear here…</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Powered by DeepSeek AI</p>
+  </footer>
+
+  <script>
+    const generateBtn = document.getElementById('generate');
+    const outputDiv = document.getElementById('output');
+    const resultSection = document.querySelector('.result');
+
+    generateBtn.addEventListener('click', async () => {
+      const payload = {
+        template: document.getElementById('template').value,
+        product: document.getElementById('product').value.trim(),
+        audience: document.getElementById('audience').value.trim(),
+        tone: document.getElementById('tone').value.trim(),
+        CTA: document.getElementById('cta').value.trim(),
+      };
+
+      // Validate
+      if (!payload.product || !payload.audience) {
+        alert('Please fill in Product and Audience fields.');
+        return;
+      }
+
+      generateBtn.disabled = true;
+      generateBtn.innerHTML = '<span class="loading"></span> Generating…';
+      outputDiv.textContent = '';
+
+      try {
+        const response = await fetch('/api/functions/generate.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          outputDiv.textContent = data.content;
+          resultSection.style.display = 'block';
+        } else {
+          outputDiv.textContent = `Error: ${data.error || 'Unknown error'}`;
+          resultSection.style.display = 'block';
+        }
+      } catch (err) {
+        outputDiv.textContent = `Network error: ${err.message}`;
+        resultSection.style.display = 'block';
+      } finally {
+        generateBtn.disabled = false;
+        generateBtn.textContent = 'Generate Ad Copy';
+      }
+    });
+  </script>
+<script src="/chatbot/widget.js" defer></script>
+    </body>
+</html>

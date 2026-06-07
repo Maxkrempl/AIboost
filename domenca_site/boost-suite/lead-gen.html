@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lead Generator — Find Business Leads for Free | BoostSuite</title>
+    <meta name="description" content="Find business leads in any city worldwide. Free AI lead generator — get 5 leads delivered to your email. Restaurants, cafes, hotels, and more.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
+        
+        .header { background: #1a1a2e; padding: 1rem 2rem; border-bottom: 1px solid #333; }
+        .header-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 20px; font-weight: 700; color: #F5E6C8; text-decoration: none; }
+        .logo span { color: #C4922A; }
+        .back-link { color: #9C8878; text-decoration: none; font-size: 14px; }
+        .back-link:hover { color: #F5E6C8; }
+        
+        .hero { text-align: center; padding: 4rem 1.5rem 2rem; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero h1 span { color: #C4922A; }
+        .hero p { font-size: 1.1rem; color: #9C8878; max-width: 600px; margin: 0 auto; }
+        
+        .form-container { max-width: 500px; margin: 2rem auto; padding: 0 1.5rem; }
+        
+        .form-card { background: #1a1a2e; border: 1px solid #333; border-radius: 16px; padding: 2rem; }
+        
+        label { display: block; font-size: 13px; font-weight: 600; color: #9C8878; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        select, input[type="email"] {
+            width: 100%; padding: 12px 16px; border: 1.5px solid #333; border-radius: 10px;
+            background: #0f0f1a; color: #e0e0e0; font-size: 15px; font-family: inherit;
+            outline: none; transition: border-color 0.15s;
+        }
+        select:focus, input[type="email"]:focus { border-color: #C4922A; }
+        select option { background: #1a1a2e; }
+        
+        .input-group { margin-bottom: 1.25rem; }
+        
+        .btn-generate {
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #C4922A, #D4A84A);
+            color: #0f0f1a; border: none; border-radius: 10px; font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: all 0.15s; margin-top: 0.5rem;
+        }
+        .btn-generate:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,146,42,0.3); }
+        .btn-generate:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        
+        .free-badge { text-align: center; margin-top: 1rem; font-size: 13px; color: #27ae60; font-weight: 500; }
+        
+        .results { max-width: 700px; margin: 2rem auto; padding: 0 1.5rem; display: none; }
+        .results.show { display: block; animation: fadeIn 0.3s ease; }
+        
+        .stats-bar { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .stat-card { background: #1a1a2e; border: 1px solid #333; border-radius: 10px; padding: 1rem 1.25rem; flex: 1; min-width: 120px; text-align: center; }
+        .stat-num { font-size: 1.8rem; font-weight: 800; color: #C4922A; }
+        .stat-label { font-size: 12px; color: #9C8878; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        
+        .leads-table { width: 100%; border-collapse: collapse; background: #1a1a2e; border-radius: 12px; overflow: hidden; border: 1px solid #333; }
+        .leads-table th { background: #0f0f1a; padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 600; color: #9C8878; text-transform: uppercase; letter-spacing: 1px; }
+        .leads-table td { padding: 12px 16px; border-top: 1px solid #333; font-size: 14px; }
+        .leads-table tr:hover td { background: rgba(196,146,42,0.05); }
+        
+        .email-sent { background: #1a3e1a; border: 1px solid #27ae60; border-radius: 10px; padding: 1rem 1.5rem; margin-top: 1.5rem; text-align: center; }
+        .email-sent p { color: #27ae60; font-weight: 500; }
+        
+        .loading { text-align: center; padding: 3rem; display: none; }
+        .loading.show { display: block; }
+        .spinner { width: 40px; height: 40px; border: 3px solid #333; border-top-color: #C4922A; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .error { background: #3e1a1a; border: 1px solid #e74c3c; border-radius: 10px; padding: 1rem; margin-top: 1rem; text-align: center; color: #e74c3c; display: none; }
+        .error.show { display: block; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="/boost-suite/" class="logo">Boost<span>Suite</span></a>
+            <a href="/boost-suite/" class="back-link">← Back to BoostSuite</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>Find <span>Business Leads</span> Anywhere</h1>
+        <p>Enter a business type and location — get verified leads delivered to your email in seconds.</p>
+    </section>
+    
+    <div class="form-container">
+        <div class="form-card">
+            <form id="leadGenForm">
+                <div class="input-group">
+                    <label for="businessType">Business Type</label>
+                    <select id="businessType" required>
+                        <option value="restaurant">🍽️ Restaurant</option>
+                        <option value="cafe">☕ Café / Coffee Shop</option>
+                        <option value="bar">🍺 Bar / Pub</option>
+                        <option value="hotel">🏨 Hotel / Accommodation</option>
+                        <option value="fast_food">🍔 Fast Food</option>
+                        <option value="dentist">🦷 Dentist</option>
+                        <option value="doctor">👨‍⚕️ Doctor / Clinic</option>
+                        <option value="gym">💪 Gym / Fitness</option>
+                        <option value="salon">💇 Beauty Salon / Hairdresser</option>
+                        <option value="mechanic">🔧 Mechanic / Auto Repair</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="e.g. Ljubljana, Paris, Tokyo" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" placeholder="you@company.com" required>
+                </div>
+                
+                <button type="submit" class="btn-generate" id="generateBtn">🎯 Find Leads</button>
+                <div class="free-badge">✓ Free — 5 leads, no signup required</div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Searching for leads worldwide...</p>
+    </div>
+    
+    <div class="error" id="error"></div>
+    
+    <div class="results" id="results">
+        <div class="stats-bar" id="statsBar"></div>
+        <table class="leads-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+            <tbody id="leadsBody"></tbody>
+        </table>
+        <div class="email-sent" id="emailSent">
+            <p>✅ CSV file sent to your email!</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('leadGenForm');
+        const loading = document.getElementById('loading');
+        const results = document.getElementById('results');
+        const error = document.getElementById('error');
+        const leadsBody = document.getElementById('leadsBody');
+        const statsBar = document.getElementById('statsBar');
+        const emailSent = document.getElementById('emailSent');
+        const generateBtn = document.getElementById('generateBtn');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Hide previous results
+            results.classList.remove('show');
+            error.classList.remove('show');
+            loading.classList.add('show');
+            generateBtn.disabled = true;
+            
+            const data = {
+                type: document.getElementById('businessType').value,
+                location: document.getElementById('location').value,
+                email: document.getElementById('email').value,
+                limit: 5
+            };
+            
+            try {
+                const resp = await fetch('/api/lead-gen.py', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await resp.json();
+                loading.classList.remove('show');
+                
+                if (!resp.ok) {
+                    throw new Error(result.error || 'Failed to generate leads');
+                }
+                
+                // Show stats
+                statsBar.innerHTML = `
+                    <div class="stat-card"><div class="stat-num">${result.stats.total}</div><div class="stat-label">Total Leads</div></div>
+                    <div class="stat-card"><div class="stat-num">${result.stats.with_email}</div><div class="stat-label">With Email</div></div>
+                    <div class="stat-card"><div class="stat-num">${result.stats.with_phone}</div><div class="stat-label">With Phone</div></div>
+                    <div class="stat-card"><div class="stat-num">${result.stats.with_website}</div><div class="stat-label">With Website</div></div>
+                `;
+                
+                // Show email sent status
+                emailSent.style.display = result.email_sent ? 'block' : 'none';
+                
+                results.classList.add('show');
+                generateBtn.disabled = false;
+                
+            } catch (err) {
+                loading.classList.remove('show');
+                error.textContent = err.message;
+                error.classList.add('show');
+                generateBtn.disabled = false;
+            }
+        });
+    </script>
+<script src="/chatbot/widget.js" defer></script>
+    </body>
+</html>
