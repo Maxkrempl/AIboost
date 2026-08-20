@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cvetličarna Doris — Šentjur | Sveže cvetje za vsako priložnost</title>
+    <meta name="description" content="Cvetličarna Doris v Šentjurju na Savinjskem. Rezano cvetje, poročni šopki, žalni aranžmaji, balkonsko cvetje in dostava cvetja. Obarvajte si življenje s cvetjem!">
+    <meta name="keywords" content="cvetličarna, Šentjur, Celje, Savinjska, rezano cvetje, poročni šopki, žalni aranžmaji, dostava cvetja">
+    <meta property="og:title" content="Cvetličarna Doris — Šentjur">
+    <meta property="og:description" content="Sveže cvetje vseh sort in barv. Poročni šopki, žalni aranžmaji, dostava po Savinjski.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #1a3a2a;
+            --forest-light: #2d5a42;
+            --blush: #d4a0a0;
+            --blush-light: #e8c4c4;
+            --blush-pale: #f5e6e6;
+            --cream: #faf7f4;
+            --cream-dark: #f0ebe5;
+            --warm-white: #fffdf9;
+            --gold: #c9a96e;
+            --gold-light: #dfc89a;
+            --text-dark: #2c2c2c;
+            --text-muted: #6b6b6b;
+            --text-light: #999;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--warm-white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 253, 249, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.8rem 3rem;
+            box-shadow: 0 1px 30px rgba(26, 58, 42, 0.08);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            transition: height 0.3s;
+        }
+
+        .nav.scrolled .nav-logo img { height: 38px; }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-white);
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: relative;
+            padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+
+        .nav.scrolled .nav-links a { color: var(--forest); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--forest) !important;
+            color: var(--warm-white) !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 2px;
+            letter-spacing: 0.12em !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold) !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .nav-hamburger span {
+            width: 25px;
+            height: 1.5px;
+            background: var(--warm-white);
+            transition: all 0.3s;
+        }
+
+        .nav.scrolled .nav-hamburger span { background: var(--forest); }
+
+        /* ═══════════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(26, 58, 42, 0.7) 0%, rgba(26, 58, 42, 0.3) 50%, rgba(212, 160, 160, 0.2) 100%),
+                url('images/zalni_1.webp') center/cover no-repeat;
+            transform: scale(1.05);
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1.12); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8%;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2px;
+            margin-bottom: 2rem;
+            animation: fadeUp 1s 0.2s both;
+        }
+
+        .hero-badge span {
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 300;
+            color: var(--warm-white);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 1s 0.4s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--blush-light);
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.75);
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+            animation: fadeUp 1s 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeUp 1s 0.8s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--forest);
+        }
+
+        .btn-primary:hover {
+            background: var(--warm-white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--warm-white);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--warm-white);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: fadeUp 1s 1s both;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTION STYLES
+        ═══════════════════════════════════════════ */
+        .section {
+            padding: 8rem 8%;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--forest);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--blush);
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 550px;
+            font-weight: 300;
+        }
+
+        /* ═══════════════════════════════════════════
+           INTRO / ABOUT
+        ═══════════════════════════════════════════ */
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            background: var(--cream);
+        }
+
+        .intro-images {
+            position: relative;
+            height: 600px;
+        }
+
+        .intro-img-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 75%;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+        }
+
+        .intro-img-accent {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 55%;
+            height: 55%;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 6px solid var(--cream);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .intro-float {
+            position: absolute;
+            top: 50%;
+            right: 15%;
+            background: var(--forest);
+            color: var(--warm-white);
+            padding: 1.5rem 2rem;
+            border-radius: 2px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(26, 58, 42, 0.3);
+            z-index: 2;
+        }
+
+        .intro-float-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .intro-float-text {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            opacity: 0.8;
+        }
+
+        .intro-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(26, 58, 42, 0.1);
+        }
+
+        .intro-stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--forest);
+        }
+
+        .intro-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        /* ═══════════════════════════════════════════
+           SERVICES
+        ═══════════════════════════════════════════ */
+        .services { background: var(--warm-white); }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .services-header .section-desc {
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            cursor: pointer;
+            group: true;
+        }
+
+        .service-card-img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover .service-card-img {
+            transform: scale(1.08);
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 58, 42, 0.85) 0%, rgba(26, 58, 42, 0.1) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            transition: all 0.5s;
+        }
+
+        .service-card:hover .service-card-overlay {
+            background: linear-gradient(to top, rgba(26, 58, 42, 0.92) 0%, rgba(26, 58, 42, 0.3) 70%, rgba(26, 58, 42, 0.1) 100%);
+        }
+
+        .service-card-icon {
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            transition: all 0.4s;
+        }
+
+        .service-card:hover .service-card-icon {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--warm-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            font-weight: 300;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s, opacity 0.5s;
+            opacity: 0;
+        }
+
+        .service-card:hover p {
+            max-height: 100px;
+            opacity: 1;
+        }
+
+        .service-card-arrow {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 35px;
+            height: 35px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--warm-white);
+            font-size: 0.9rem;
+            transition: all 0.4s;
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .service-card:hover .service-card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ═══════════════════════════════════════════
+           GALLERY
+        ═══════════════════════════════════════════ */
+        .gallery {
+            background: var(--forest);
+            padding: 8rem 0;
+        }
+
+        .gallery .section-label { color: var(--gold-light); }
+        .gallery .section-label::before { background: var(--gold-light); }
+        .gallery .section-title { color: var(--warm-white); }
+        .gallery .section-title em { color: var(--blush-light); }
+        .gallery .section-desc { color: rgba(255,255,255,0.6); }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 0 8%;
+        }
+
+        .gallery-header .section-desc { margin: 0 auto; }
+
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            padding: 0 8%;
+        }
+
+        .gallery-tab {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.5);
+            padding: 0.6rem 1.5rem;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .gallery-tab:hover {
+            border-color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .gallery-tab.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--forest);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            padding: 0 8%;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 58, 42, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.4s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            background: rgba(26, 58, 42, 0.4);
+        }
+
+        .gallery-item-overlay svg {
+            width: 30px;
+            height: 30px;
+            color: white;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.4s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ═══════════════════════════════════════════
+           TESTIMONIALS
+        ═══════════════════════════════════════════ */
+        .testimonials {
+            background: var(--blush-pale);
+            text-align: center;
+        }
+
+        .testimonials-header { margin-bottom: 4rem; }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--warm-white);
+            padding: 3rem;
+            border-radius: 2px;
+            text-align: left;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            position: relative;
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .testimonial-author {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(26, 58, 42, 0.08);
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: var(--blush-light);
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        /* ═══════════════════════════════════════════
+           DELIVERY BANNER
+        ═══════════════════════════════════════════ */
+        .delivery {
+            position: relative;
+            padding: 6rem 8%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: var(--cream);
+            overflow: hidden;
+        }
+
+        .delivery::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--blush-pale) 0%, transparent 70%);
+            opacity: 0.5;
+        }
+
+        .delivery-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .delivery-images img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .delivery-content { position: relative; z-index: 1; }
+
+        .delivery-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .delivery-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(26, 58, 42, 0.06);
+        }
+
+        .delivery-list li:last-child { border: none; }
+
+        .delivery-list-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--forest);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .delivery-list-text strong {
+            display: block;
+            font-weight: 500;
+            color: var(--forest);
+            margin-bottom: 0.2rem;
+        }
+
+        .delivery-list-text span {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTACT / MAP
+        ═══════════════════════════════════════════ */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .contact-info {
+            padding: 6rem 8%;
+            background: var(--forest);
+            color: var(--warm-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info .section-label { color: var(--gold-light); }
+        .contact-info .section-label::before { background: var(--gold-light); }
+        .contact-info .section-title { color: var(--warm-white); }
+        .contact-info .section-title em { color: var(--blush-light); }
+
+        .contact-details {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text strong {
+            display: block;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item-text span {
+            font-size: 0.88rem;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        .contact-item-text a {
+            color: var(--warm-white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item-text a:hover { color: var(--gold); }
+
+        .contact-hours {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-hours h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.88rem;
+            opacity: 0.7;
+        }
+
+        .hours-row strong { opacity: 1; }
+
+        .contact-map {
+            background: #e8e4df;
+            position: relative;
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(0.3) contrast(1.05);
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        .footer {
+            background: #111;
+            color: rgba(255,255,255,0.4);
+            padding: 4rem 8% 2rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-brand img {
+            height: 40px;
+            margin-bottom: 1.2rem;
+            filter: brightness(0) invert(1);
+            opacity: 0.7;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 300px;
+        }
+
+        .footer h5 {
+            color: var(--warm-white);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer ul a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 300;
+            transition: color 0.3s;
+        }
+
+        .footer ul a:hover { color: var(--gold); }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            font-size: 0.78rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ═══════════════════════════════════════════
+           SCROLL ANIMATIONS
+        ═══════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ═══════════════════════════════════════════
+           LIGHTBOX
+        ═══════════════════════════════════════════ */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 85vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 2px;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            background: none;
+            transition: all 0.3s;
+        }
+
+        .lightbox-close:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ═══════════════════════════════════════════
+           MOBILE NAV OVERLAY
+        ═══════════════════════════════════════════ */
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            background: var(--forest);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            color: var(--warm-white);
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover { color: var(--gold); }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--warm-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+
+            .section { padding: 5rem 6%; }
+
+            .intro {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .intro-images { height: 400px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+
+            .service-card-img { height: 300px; }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 6%;
+            }
+
+            .gallery-item.tall { grid-row: span 1; aspect-ratio: 1; }
+
+            .testimonials-grid { grid-template-columns: 1fr; }
+
+            .delivery {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-map { min-height: 350px; }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
+            .intro-stats { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">
+            <img src="images/logo.png" alt="Cvetličarna Doris">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#storitve">Storitve</a></li>
+            <li><a href="#galerija">Galerija</a></li>
+            <li><a href="#dostava">Dostava</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="tel:031512776" class="nav-cta">031 512 776</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Meni">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+        <a href="#storitve" onclick="closeMobileNav()">Storitve</a>
+        <a href="#galerija" onclick="closeMobileNav()">Galerija</a>
+        <a href="#dostava" onclick="closeMobileNav()">Dostava</a>
+        <a href="#kontakt" onclick="closeMobileNav()">Kontakt</a>
+        <a href="tel:031512776">031 512 776</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🌿 Cvetličarna Šentjur · Savinjska</span>
+            </div>
+            <h1>Obarvajte si<br><em>življenje</em> s cvetjem</h1>
+            <p class="hero-sub">Rezano cvetje vseh sort in barv, poročni šopki, žalni aranžmaji in dostava po Savinjski. Obiščite nas in dovolite, da vam svetujemo.</p>
+            <div class="hero-buttons">
+                <a href="tel:031512776" class="btn btn-primary">📞 Pokličite nas</a>
+                <a href="#storitve" class="btn btn-outline">Odkrijte več ↓</a>
+            </div>
+        </div>
+        <div class="hero-scroll">Scroll</div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="section intro" id="about">
+        <div class="intro-images reveal">
+            <img src="images/zalni_3.webp" alt="Žalni aranžma" class="intro-img-main">
+            <img src="images/porocni_nov_1.webp" alt="Poročni šopek" class="intro-img-accent">
+            <div class="intro-float">
+                <div class="intro-float-number">5.0</div>
+                <div class="intro-float-text">★ Ocena strank</div>
+            </div>
+        </div>
+        <div>
+            <div class="section-label reveal">O nas</div>
+            <h2 class="section-title reveal reveal-delay-1">Cvetličarna, ki <em>razume</em> vaše želje</h2>
+            <p class="section-desc reveal reveal-delay-2">
+                V prijetni Cvetličarni Doris v Šentjurju na Savinjskem vas pričakuje raznovrstno rezano cvetje vseh sort in barv.
+                Strokovno vam bomo svetovali izbiro cvetja za vsako priložnost — od rojstnega dne do poroke, od žalne slovesnosti do preprostega razveselitve.
+            </p>
+            <p class="section-desc reveal reveal-delay-2" style="margin-top: 1rem;">
+                Ustvarjamo čudovite šopke, poročne dekoracije, žalne aranžmaje ter cvetlične dekoracije za poslovne dogodke.
+                Uporabljamo sveže cvetje, skrbno izbrano za vsak aranžma.
+            </p>
+            <div class="intro-stats reveal reveal-delay-3">
+                <div>
+                    <div class="intro-stat-number">10+</div>
+                    <div class="intro-stat-label">Vrsta storitev</div>
+                </div>
+                <div>
+                    <div class="intro-stat-number">5/5</div>
+                    <div class="intro-stat-label">Ocena strank</div>
+                </div>
+                <div>
+                    <div class="intro-stat-number">3</div>
+                    <div class="intro-stat-label">Območja dostave</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="storitve">
+        <div class="services-header">
+            <div class="section-label reveal">Ponudba</div>
+            <h2 class="section-title reveal reveal-delay-1">Naše <em>storitve</em></h2>
+            <p class="section-desc reveal reveal-delay-2">Od svežega rezanega cvetja do poročnih dekoracij — poskrbimo za vsako priložnost.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <img src="images/rezano_1.webp" alt="Rezano cvetje" class="service-card-img">
+                <div class="service-card-overlay">
+                    <div class="service-card-arrow">→</div>
+                    <div class="service-card-icon">🌸</div>
+                    <h3>Rezano cvetje</h3>
+                    <p>Vse sorte in barve — od vrtnic do orhidej. Sveže cvetje za vsak dan ali posebno priložnost.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-1">
+                <img src="images/porocni_nov_2.webp" alt="Poročni šopki" class="service-card-img">
+                <div class="service-card-overlay">
+                    <div class="service-card-arrow">→</div>
+                    <div class="service-card-icon">💐</div>
+                    <h3>Poročni šopki</h3>
+                    <p>Individualen pristop — skupaj ustvarimo šopek, ki se popolnoma ujema z vašim stilom in poroko.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <img src="images/zalni_nov_1.webp" alt="Žalni aranžmaji" class="service-card-img">
+                <div class="service-card-overlay">
+                    <div class="service-card-arrow">→</div>
+                    <div class="service-card-icon">🕊️</div>
+                    <h3>Žalni aranžmaji</h3>
+                    <p>Spoštovanje in eleganca — ustvarimo dostojne aranžmaje za zadnjo slovesnost.</p>
+                </div>
+            </div>
+            <div class="service-card reveal">
+                <img src="images/zalni_4.webp" alt="Žalni venci" class="service-card-img">
+                <div class="service-card-overlay">
+                    <div class="service-card-arrow">→</div>
+                    <div class="service-card-icon">🤍</div>
+                    <h3>Žalni venci</h3>
+                    <p>Ročno izdelani venci iz svežega cvetja — tradicija in spoštovanje v vsakem detajlu.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-1">
+                <img src="images/balkonsko_1.webp" alt="Balkonsko cvetje" class="service-card-img">
+                <div class="service-card-overlay">
+                    <div class="service-card-arrow">→</div>
+                    <div class="service-card-icon">🌱</div>
+                    <h3>Balkonsko cvetje</h3>
+                    <p>Geranije, surfinije in drugo balkonsko cvetje — za pisane in žive balkone.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <img src="images/svecano_1.webp" alt="Svečano cvetje" class="service-card-img">
+                <div class="service-card-overlay">
+                    <div class="service-card-arrow">→</div>
+                    <div class="service-card-icon">✨</div>
+                    <h3>Svečano cvetje</h3>
+                    <p>Dekoracije za poslovne dogodke, slovesnosti in posebne priložnosti.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galerija">
+        <div class="gallery-header">
+            <div class="section-label reveal">Naše delo</div>
+            <h2 class="section-title reveal reveal-delay-1">Galerija <em>aranžmajev</em></h2>
+            <p class="section-desc reveal reveal-delay-2">Odkrijte našo bogato ponudbo cvetličnih aranžmajev za vse priložnosti.</p>
+        </div>
+        <div class="gallery-tabs reveal">
+            <button class="gallery-tab active" data-filter="all">Vse</button>
+            <button class="gallery-tab" data-filter="zalni">Žalni</button>
+            <button class="gallery-tab" data-filter="porocni">Poročni</button>
+            <button class="gallery-tab" data-filter="rezano">Rezano</button>
+            <button class="gallery-tab" data-filter="balkonsko">Balkonsko</button>
+            <button class="gallery-tab" data-filter="dostava">Dostava</button>
+        </div>
+        <div class="gallery-grid reveal" id="galleryGrid">
+            <!-- Zalni -->
+            <div class="gallery-item tall" data-category="zalni"><img src="images/zalni_1.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="zalni"><img src="images/zalni_2.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="zalni"><img src="images/zalni_3.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="zalni"><img src="images/zalni_5.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="zalni"><img src="images/zalni_nov_1.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="zalni"><img src="images/zalni_nov_2.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="zalni"><img src="images/zalni_nov_3.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="zalni"><img src="images/zalni_6.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <!-- Poročni -->
+            <div class="gallery-item tall" data-category="porocni"><img src="images/porocni_1.webp" alt="Poročni šopek" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="porocni"><img src="images/porocni_2.webp" alt="Poročni šopek" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="porocni"><img src="images/porocni_3.webp" alt="Poročni šopek" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="porocni"><img src="images/porocni_nov_1.webp" alt="Poročni šopek" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="porocni"><img src="images/porocni_nov_2.webp" alt="Poročni šopek" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="porocni"><img src="images/porocni_nov_3.webp" alt="Poročni šopek" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <!-- Rezano -->
+            <div class="gallery-item" data-category="rezano"><img src="images/rezano_1.webp" alt="Rezano cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="rezano"><img src="images/rezano_2.webp" alt="Rezano cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="rezano"><img src="images/svecano_1.webp" alt="Svečano cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="rezano"><img src="images/svecano_2.webp" alt="Svečano cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="rezano"><img src="images/svecano_3.webp" alt="Svečano cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="rezano"><img src="images/svecano_4.webp" alt="Svečano cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="rezano"><img src="images/savinjska_1.webp" alt="Cvetličarna Savinjska" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="rezano"><img src="images/savinjska_2.webp" alt="Cvetličarna Savinjska" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="rezano"><img src="images/savinjska_3.webp" alt="Cvetličarna Savinjska" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <!-- Balkonsko -->
+            <div class="gallery-item" data-category="balkonsko"><img src="images/balkonsko_1.webp" alt="Balkonsko cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="balkonsko"><img src="images/balkonsko_2.webp" alt="Balkonsko cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="balkonsko"><img src="images/balkonsko_3.webp" alt="Balkonsko cvetje" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <!-- Dostava -->
+            <div class="gallery-item" data-category="dostava"><img src="images/dostava_1.webp" alt="Dostava cvetja" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="dostava"><img src="images/dostava_2.webp" alt="Dostava cvetja" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="dostava"><img src="images/dostava_3.webp" alt="Dostava cvetja" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="dostava"><img src="images/dostava_4.webp" alt="Dostava cvetja" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="porocni"><img src="images/porocni_4.webp" alt="Poročni šopek" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+            <div class="gallery-item" data-category="zalni"><img src="images/zalni_4.webp" alt="Žalni aranžma" loading="lazy"><div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div></div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="mnenja">
+        <div class="testimonials-header">
+            <div class="section-label reveal">Mnenja strank</div>
+            <h2 class="section-title reveal reveal-delay-1">Kaj pravijo <em>naše stranke</em></h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+                <h4>Zelo lep šopek po mojih željah</h4>
+                <p>V Cvetličarni Doris sem naročila poročni šopek in že ob prvem pogovoru so razumele, kakšen stil želim. Pokazale so različne možnosti cvetja in barv, nato pa pripravile šopek, ki se je res lepo ujemal z obleko in celotno poroko. Upoštevale so vse moje želje.</p>
+                <div class="testimonial-author">— MV, poročna stranka</div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+                <h4>Kupil lep šopek za hčerko</h4>
+                <p>Kupil lep šopek za hčerko, bila je zelo vesela. Hvala prijazni prodajalki cvetličarki, ki mi je svetovala zelo lepo.</p>
+                <div class="testimonial-author">— zadovoljna stranka</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DELIVERY -->
+    <section class="delivery" id="dostava">
+        <div class="delivery-images reveal">
+            <img src="images/dostava_1.webp" alt="Dostava cvetja 1">
+            <img src="images/dostava_2.webp" alt="Dostava cvetja 2">
+            <img src="images/dostava_3.webp" alt="Dostava cvetja 3">
+            <img src="images/dostava_4.webp" alt="Dostava cvetja 4">
+        </div>
+        <div class="delivery-content">
+            <div class="section-label reveal">Dostava</div>
+            <h2 class="section-title reveal reveal-delay-1">Dostava cvetja <em>po Savinjski</em></h2>
+            <p class="section-desc reveal reveal-delay-2">Naročite cvetje in mi ga dostavimo na želeni naslov. Presenetite svoje najdražje s svežim šopkom kar domov!</p>
+            <ul class="delivery-list reveal reveal-delay-3">
+                <li>
+                    <div class="delivery-list-icon">📍</div>
+                    <div class="delivery-list-text">
+                        <strong>Šentjur in okolica</strong>
+                        <span>Dostava po celotnem Šenturju in bližnji okolici</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="delivery-list-icon">🏙️</div>
+                    <div class="delivery-list-text">
+                        <strong>Celje</strong>
+                        <span>Dostava v mesto Celje in okolico</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="delivery-list-icon">🌾</div>
+                    <div class="delivery-list-text">
+                        <strong>Savinjska regija</strong>
+                        <span>Cela Savinjska — pokrijemo širše območje</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="delivery-list-icon">💐</div>
+                    <div class="delivery-list-text">
+                        <strong>Posebna naročila</strong>
+                        <span>Poroke, žalne slovesnosti, poslovni dogodki — prilagodimo se vašim željam</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="kontakt">
+        <div class="contact-info">
+            <div class="section-label">Kontakt</div>
+            <h2 class="section-title">Obiščite nas ali <em>pokličite</em></h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div class="contact-item-text">
+                        <strong>Naslov</strong>
+                        <span>Ulica Dušana Kvedra 43, 3230 Šentjur</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div class="contact-item-text">
+                        <strong>Telefon</strong>
+                        <a href="tel:031512776"><span>031 512 776</span></a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">✉️</div>
+                    <div class="contact-item-text">
+                        <strong>Email</strong>
+                        <a href="mailto:cvetlicarna.doris@gmail.com"><span>cvetlicarna.doris@gmail.com</span></a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📘</div>
+                    <div class="contact-item-text">
+                        <strong>Facebook</strong>
+                        <a href="https://www.facebook.com/profile.php?id=100086915877666" target="_blank"><span>Spremljajte nas na Facebooku</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-hours">
+                <h4>Delovni čas</h4>
+                <div class="hours-row"><span>Ponedeljek — Petek</span><strong>8:00 — 17:00</strong></div>
+                <div class="hours-row"><span>Sobota</span><strong>8:00 — 12:00</strong></div>
+                <div class="hours-row"><span>Nedelje in prazniki</span><strong>Zaprto</strong></div>
+            </div>
+        </div>
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785.5!2d15.39631!3d46.220012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476e2b6a4b6b6b6b%3A0x0!2zNDbCsDEzJzEyLjAiTiAxNcKwMjMnNDYuNyJF!5e0!3m2!1ssl!2ssi!4v1700000000000!5m2!1ssl!2ssi" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokacija Cvetličarne Doris"></iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="Cvetličarna Doris">
+                <p>Cvetličarna Doris v Šentjurju na Savinjskem. Rezano cvetje vseh sort in barv, poročni šopki, žalni aranžmaji in dostava cvetja. Obarvajte si življenje s cvetjem!</p>
+            </div>
+            <div>
+                <h5>Storitve</h5>
+                <ul>
+                    <li><a href="#storitve">Rezano cvetje</a></li>
+                    <li><a href="#storitve">Poročni šopki</a></li>
+                    <li><a href="#storitve">Žalni aranžmaji</a></li>
+                    <li><a href="#storitve">Balkonsko cvetje</a></li>
+                    <li><a href="#storitve">Svečano cvetje</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Področja</h5>
+                <ul>
+                    <li><a href="#dostava">Šentjur</a></li>
+                    <li><a href="#dostava">Celje</a></li>
+                    <li><a href="#dostava">Savinjska</a></li>
+                    <li><a href="#dostava">Dostava cvetja</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Kontakt</h5>
+                <ul>
+                    <li><a href="tel:031512776">031 512 776</a></li>
+                    <li><a href="mailto:cvetlicarna.doris@gmail.com">Email</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100086915877666" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.moja-dejavnost.si/dobra-cvetlicarna-na-savinjskem/cvetlicarna-doris" target="_blank">Moja dejavnost</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Cvetličarna Doris. Vse pravice pridržane.</span>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/profile.php?id=100086915877666" target="_blank" aria-label="Facebook">f</a>
+                <a href="mailto:cvetlicarna.doris@gmail.com" aria-label="Email">✉</a>
+                <a href="tel:031512776" aria-label="Telefon">📞</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Zapri">✕</button>
+        <img src="" alt="Galerija" id="lightboxImg">
+    </div>
+
+    <script>
+        // ═══ NAV SCROLL ═══
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            nav.classList.toggle('scrolled', y > 80);
+            lastScroll = y;
+        });
+
+        // ═══ MOBILE NAV ═══
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', () => mobileNav.classList.add('active'));
+        mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('active'));
+        function closeMobileNav() { mobileNav.classList.remove('active'); }
+
+        // ═══ SCROLL REVEAL ═══
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(el => revealObserver.observe(el));
+
+        // ═══ GALLERY FILTER ═══
+        const tabs = document.querySelectorAll('.gallery-tab');
+        const items = document.querySelectorAll('.gallery-item');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const filter = tab.dataset.filter;
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = '';
+                        setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.95)';
+                        setTimeout(() => { item.style.display = 'none'; }, 400);
+                    }
+                });
+            });
+        });
+
+        // ═══ LIGHTBOX ═══
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.querySelector('img').src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ═══ SMOOTH SCROLL ═══
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ═══ COUNTER ANIMATION ═══
+        const counters = document.querySelectorAll('.intro-stat-number, .intro-float-number');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const text = el.textContent;
+                    const num = parseFloat(text);
+                    if (!isNaN(num) && num > 1) {
+                        let current = 0;
+                        const step = num / 30;
+                        const suffix = text.replace(/[\d.]/g, '');
+                        const isFloat = text.includes('.');
+                        const timer = setInterval(() => {
+                            current += step;
+                            if (current >= num) {
+                                current = num;
+                                clearInterval(timer);
+                            }
+                            el.textContent = (isFloat ? current.toFixed(1) : Math.floor(current)) + suffix;
+                        }, 40);
+                    }
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => counterObserver.observe(c));
+    </script>
+</body>
+</html>

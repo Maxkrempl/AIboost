@@ -1,0 +1,1 @@
+![Loading](https://maps.gstatic.com/tactile/basepage/loader_beige_2x.gif)

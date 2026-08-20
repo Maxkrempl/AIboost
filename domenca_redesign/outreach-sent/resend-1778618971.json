@@ -1,0 +1,14 @@
+{
+  "timestamp": 1778618971.4276586,
+  "from": "max@hd-webdesign.si",
+  "results": [
+    {
+      "email": "darko@hd-webdesign.si",
+      "result": {
+        "statusCode": 403,
+        "message": "The hd-webdesign.si domain is not verified. Please, add and verify your domain on https://resend.com/domains",
+        "name": "validation_error"
+      }
+    }
+  ]
+}

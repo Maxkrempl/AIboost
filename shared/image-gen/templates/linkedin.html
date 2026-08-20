@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1200px; height: 627px; overflow: hidden; font-family: 'Segoe UI', system-ui, sans-serif; }
+.container {
+  width: 1200px; height: 627px;
+  background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 100%);
+  position: relative; display: flex; align-items: center; padding: 0 80px;
+}
+.glow1 { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%); top: -150px; right: 200px; }
+.glow2 { position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); bottom: -100px; left: 100px; }
+.circuits {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.08;
+  background-image:
+    linear-gradient(0deg, rgba(16,185,129,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,185,129,0.3) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.text-side { position: relative; z-index: 2; max-width: 600px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);
+  color: #34d399; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 24px;
+}
+.badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; }
+h1 { color: #fff; font-size: 46px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+h1 .green { color: #34d399; }
+h1 .blue { color: #60a5fa; }
+.subtitle { color: rgba(255,255,255,0.55); font-size: 17px; line-height: 1.6; margin-bottom: 28px; max-width: 500px; }
+.tags { display: flex; gap: 10px; flex-wrap: wrap; }
+.tag {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7); font-size: 12px; padding: 6px 14px; border-radius: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.tag-dot { width: 5px; height: 5px; border-radius: 50%; }
+.visual { position: absolute; right: 60px; top: 50%; transform: translateY(-50%); width: 400px; height: 400px; z-index: 2; }
+.node-center {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #3b82f6);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 40px rgba(16,185,129,0.4);
+}
+.node-center span { color: #fff; font-size: 28px; }
+.orbit-node {
+  position: absolute; width: 50px; height: 50px; border-radius: 50%;
+  background: rgba(15,23,42,0.9); border: 2px solid;
+  display: flex; align-items: center; justify-content: center;
+}
+.orbit-node span { font-size: 18px; }
+.on1 { left: 50%; top: 10px; transform: translateX(-50%); border-color: #8b5cf6; }
+.on2 { right: 20px; top: 30%; border-color: #3b82f6; }
+.on3 { right: 30px; bottom: 25%; border-color: #10b981; }
+.on4 { left: 50%; bottom: 10px; transform: translateX(-50%); border-color: #f59e0b; }
+.on5 { left: 20px; bottom: 25%; border-color: #ef4444; }
+.on6 { left: 10px; top: 30%; border-color: #06b6d4; }
+.float-data {
+  position: absolute; background: rgba(15,23,42,0.85); border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 8px; padding: 8px 12px; z-index: 4;
+}
+.fd1 { right: 10px; top: 5px; }
+.fd2 { left: 0; bottom: 10px; }
+.fd-label { color: rgba(255,255,255,0.4); font-size: 9px; }
+.fd-value { color: #34d399; font-size: 13px; font-weight: 700; }
+.fd-value.blue { color: #60a5fa; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="circuits"></div>
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="text-side">
+    <div class="badge"><div class="badge-dot"></div>{{FEATURES}}</div>
+    <h1>{{TITLE}}</h1>
+    <p class="subtitle">{{SUBTITLE}}</p>
+    <div class="tags">
+      <div class="tag"><div class="tag-dot" style="background:#8b5cf6"></div>MCP Protocol</div>
+      <div class="tag"><div class="tag-dot" style="background:#34d399"></div>x402 USDC</div>
+      <div class="tag"><div class="tag-dot" style="background:#60a5fa"></div>Stripe</div>
+    </div>
+  </div>
+  <div class="visual">
+    <div class="node-center"><span>⚡</span></div>
+    <div class="orbit-node on1"><span>🔍</span></div>
+    <div class="orbit-node on2"><span>📊</span></div>
+    <div class="orbit-node on3"><span>🤖</span></div>
+    <div class="orbit-node on4"><span>💰</span></div>
+    <div class="orbit-node on5"><span>🔒</span></div>
+    <div class="orbit-node on6"><span>🌐</span></div>
+    <div class="float-data fd1">
+      <div class="fd-label">x402 micropayment</div>
+      <div class="fd-value">{{STATS}}</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slikopleskarstvo Uroš Vrečko s.p. — Celje | Slikopleskarstvo, pleskanje, dekoracija</title>
+    <meta name="description" content="Slikopleskarstvo, Uroš Vrečko s.p. v Celju. Slikopleskarstvo, pleskanje, beljenje, dekorativno slikopleskarstvo, kitanje in brušenje sten. Kvalitetno in ugodno po celi Savinjski regiji.">
+    <meta name="keywords" content="slikopleskarstvo, Celje, Savinjska, pleskanje, beljenje, dekorativno slikopleskarstvo, kitanje, brušenje sten">
+    <meta property="og:title" content="Slikopleskarstvo Uroš Vrečko s.p. — Celje">
+    <meta property="og:description" content="Slikopleskarstvo, pleskanje, beljenje in dekorativni učinki. Kvalitetno in ugodno po Savinjski.">
+    <meta property="og:type" content="website">
+    <script src="tailwind.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --bg: #F2EFE9; /* Ovsena / Canvas podlaga */
+            --bg-dark: #1F2A24; /* Globoka temno zelena */
+            --accent: #C2410C; /* Terakota / Opečno rdeča */
+            --text: #1F2A24;
+            --muted: #5C5C5C;
+        }
+
+        /* * { cursor: none; } */
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.6s ease, color 0.6s ease;
+        }
+
+        .font-display { font-family: 'Fraunces', serif; letter-spacing: -0.02em; line-height: 0.95; font-weight: 700; }
+        .font-italic { font-style: italic; font-weight: 400; }
+
+        /* Canvas texture */
+        .texture::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            position: fixed; width: 6px; height: 6px; background: var(--accent);
+            border-radius: 50%; z-index: 9999; pointer-events: none;
+            transform: translate(-50%, -50%); mix-blend-mode: exclusion;
+            transition: background 0.3s;
+        }
+        .cursor-outline {
+            position: fixed; width: 30px; height: 30px; border: 1px solid var(--text);
+            border-radius: 50%; z-index: 9998; pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+        }
+        body.cursor-hover .cursor-dot { width: 0; height: 0; }
+        body.cursor-hover .cursor-outline { width: 50px; height: 50px; background: var(--accent); border-color: var(--accent); mix-blend-mode: exclusion; }
+
+        /* Vertical Marquee */
+        .marquee-v {
+            position: fixed; top: 0; right: 0; width: 60px; height: 100vh;
+            background: transparent; color: var(--text); z-index: 40;
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+            border-left: 1px solid rgba(31, 42, 36, 0.1);
+        }
+        .marquee-v-track {
+            display: flex; flex-direction: column; gap: 2rem;
+            animation: scroll-v 30s linear infinite; padding: 2rem 0;
+        }
+        .marquee-v-track span {
+            writing-mode: vertical-rl; text-orientation: mixed;
+            font-family: 'Manrope', sans-serif; font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.3em;
+        }
+        @keyframes scroll-v { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+
+        @media (min-width: 768px) {
+            body { margin-right: 60px; }
+            header { padding-right: calc(1.5rem + 60px) !important; }
+        }
+
+        /* Scroll Reveal */
+        .reveal-text span { display: inline-block; transform: translateY(100%); opacity: 0; }
+
+        /* Paint Drips */
+        .has-drips { position: relative; overflow: visible; }
+        .drip-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+        .drip { position: absolute; top: 0; width: 3px; background: var(--accent); border-radius: 0 0 6px 6px; height: 0; opacity: 0; transition: background 0.3s; }
+        .drip::after { content: ''; position: absolute; bottom: -3px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: var(--accent); border-radius: 50%; transition: background 0.3s; }
+
+        /* Process Step Hover */
+        .process-step {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: padding 0.4s ease, background 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .process-step:hover {
+            padding-left: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .process-step::before {
+            content: '';
+            position: absolute; left: 0; top: 0;
+            width: 2px; height: 100%; background: var(--accent);
+            transform: scaleY(0); transform-origin: top;
+            transition: transform 0.4s ease;
+        }
+        .process-step:hover::before { transform: scaleY(1); }
+
+        /* Dynamic Color Swatches */
+        .swatch {
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .swatch:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        /* 3D Tilt Card */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+        
+        /* Frame Styling */
+        .gallery-frame {
+            background: #fff;
+            padding: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transition: box-shadow 0.4s ease;
+        }
+        .gallery-frame:hover {
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Vertical Marquee -->
+    <div class="marquee-v hidden md:flex">
+        <div class="marquee-v-track">
+            <span>Celje • Savinjska</span>
+            <span>Slikopleskarstvo</span>
+            <span>Uroš Vrečko s.p.</span>
+            <span>Kitanje • Brušenje • Barvanje</span>
+            <span>Celje • Savinjska</span>
+            <span>Slikopleskarstvo</span>
+            <span>Uroš Vrečko s.p.</span>
+            <span>Kitanje • Brušenje • Barvanje</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-30">
+        <div class="font-display text-2xl tracking-tight">Uroš Vrečko</div>
+        <nav class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
+            <a href="#proces" class="hover:opacity-50 transition-opacity">Proces</a>
+            <a href="#storitve" class="hover:opacity-50 transition-opacity">Storitve</a>
+            <a href="#kontakt" class="hover:opacity-50 transition-opacity">Kontakt</a>
+        </nav>
+        <a href="#kontakt" class="text-xs font-bold uppercase tracking-widest border border-white px-4 py-2 hover:bg-white hover:text-black transition-all">Povpraševanje</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen w-full flex flex-col justify-center px-6 md:px-12 relative texture overflow-hidden pt-20">
+
+
+        <div class="relative z-10 mt-20 max-w-6xl">
+            <div class="overflow-hidden mb-6">
+                <h2 class="text-sm uppercase tracking-[0.3em] text-[var(--muted)] reveal-text font-bold"><span>Umetnost na vaših stenah</span></h2>
+            </div>
+            
+            <h1 class="font-display text-[14vw] md:text-[9vw] leading-[0.9] reveal-text mb-8">
+                <span>Ne le beljenje.</span><br>
+                <span class="font-italic text-[var(--accent)]" style="transition: color 0.3s;">Dekorativna</span><br>
+                <span>transformacija.</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mt-8 max-w-5xl">
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed border-l border-[var(--accent)] pl-4" style="transition: border-color 0.3s;">
+                    Na Savinjskem iščete mojstra za hitro, ugodno in kvalitetno pleskanje stanovanj? Poskrbimo, da vaš prostor s svežim nanosom barve ponovno zaživi – od mat odtenkov do naprednih dekorativnih učinkov.
+                </p>
+                <a href="#proces" class="group flex items-center gap-4 text-xl font-display border-b border-black pb-2 hover:gap-8 transition-all whitespace-nowrap">
+                    Kako delamo 
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proces Section -->
+    <section id="proces" class="py-24 px-6 md:px-12 relative overflow-hidden bg-[var(--bg-dark)] text-white">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="mb-16 flex flex-col md:flex-row justify-between items-start gap-8">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-[var(--accent)] font-bold" style="transition: color 0.3s;">// 01. Metodologija</span>
+                    <h2 class="font-display text-5xl md:text-7xl mt-4 max-w-2xl">Brez prašenja. <span class="font-italic">Brez kompromisov.</span></h2>
+                </div>
+                <p class="max-w-md text-gray-400 mt-4 md:mt-0">
+                    Dobra priprava je ključ do popolnega rezultata. Naši mojstri temeljito zaščitimo pohištvo in tla, pri brušenju poskrbimo za minimalno prašenje, uporabimo pa trajne in okolju prijazne premaze.
+                </p>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="process-step flex flex-col md:flex-row justify-between items-start md:items-center py-8 gap-4">
+                    <div class="flex items-center gap-6">
+                        <span class="font-mono text-sm text-[var(--accent)]" style="transition: color 0.3s;">[01]</span>
+                        <h3 class="font-display text-3xl md:text-4xl">Priprava površin</h3>
+                    </div>
+                    <p class="text-gray-500 max-w-md md:text-right text-sm">Kitanje, brušenje in odstranjevanje starih slojev. Temeljita zaščita pohištva in tal.</p>
+                </div>
+                <div class="process-step flex flex-col md:flex-row justify-between items-start md:items-center py-8 gap-4">
+                    <div class="flex items-center gap-6">
+                        <span class="font-mono text-sm text-[var(--accent)]" style="transition: color 0.3s;">[02]</span>
+                        <h3 class="font-display text-3xl md:text-4xl">Beljenje & Barvanje</h3>
+                    </div>
+                    <p class="text-gray-500 max-w-md md:text-right text-sm">Kakovostni premazi, izbrani glede na pogoje v prostoru, ki zagotavljajo obstojnost in lepoto.</p>
+                </div>
+                <div class="process-step flex flex-col md:flex-row justify-between items-start md:items-center py-8 gap-4">
+                    <div class="flex items-center gap-6">
+                        <span class="font-mono text-sm text-[var(--accent)]" style="transition: color 0.3s;">[03]</span>
+                        <h3 class="font-display text-3xl md:text-4xl">Dekorativni učinki</h3>
+                    </div>
+                    <p class="text-gray-500 max-w-md md:text-right text-sm">Od elegantnih mat odtenkov do živahnih modernih tekstur. Svetujemo pri izbiri kombinacij.</p>
+                </div>
+                <div class="process-step flex flex-col md:flex-row justify-between items-start md:items-center py-8 gap-4 border-b border-white/10">
+                    <div class="flex items-center gap-6">
+                        <span class="font-mono text-sm text-[var(--accent)]" style="transition: color 0.3s;">[04]</span>
+                        <h3 class="font-display text-3xl md:text-4xl">Končna ureditev</h3>
+                    </div>
+                    <p class="text-gray-500 max-w-md md:text-right text-sm">Zaključek projekta v dogovorjenem roku. Brez nepotrebnih zamud in s popolnim redom.</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Palette -->
+            <div class="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-400 font-mono text-xs">// PREVERI NAŠE ODTENKE Z MIŠKO:</p>
+                <div class="flex gap-4">
+                    <div class="swatch" style="background: #C2410C;" data-color="#C2410C" data-bg="#1F2A24"></div>
+                    <div class="swatch" style="background: #4A5A2E;" data-color="#4A5A2E" data-bg="#1F2A24"></div>
+                    <div class="swatch" style="background: #D4A547;" data-color="#D4A547" data-bg="#1F2A24"></div>
+                    <div class="swatch" style="background: #0F4C5C;" data-color="#0F4C5C" data-bg="#1F2A24"></div>
+                    <div class="swatch" style="background: #E8E0D5;" data-color="#E8E0D5" data-bg="#1F2A24"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Storitve / Reference Section -->
+    <section id="storitve" class="py-24 px-6 md:px-12 bg-[#F2EFE9] relative texture">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="mb-16">
+                <span class="text-xs uppercase tracking-widest text-[var(--muted)] font-bold">// 02. Realizacije</span>
+                <h2 class="font-display text-5xl md:text-7xl mt-4">Naše <span class="font-italic text-[var(--accent)]" style="transition: color 0.3s;">realizacije</span>.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="tilt-card has-drips gallery-frame relative group cursor-pointer">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 15%;" data-h="80px"></div>
+                        <div class="drip" style="left: 80%;" data-h="40px"></div>
+                    </div>
+                    <div class="aspect-[3/4] mb-4 overflow-hidden">
+                        <img src="images/slikopleskarstvo-1.webp" class="w-full h-full object-cover" style="filter: sepia(10%) contrast(110%);" alt="Slikopleskarstvo Celje">
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-display text-2xl">Beljenje Stanovanj</h3>
+                        <span class="font-mono text-xs text-[var(--accent)]" style="transition: color 0.3s;">01</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="tilt-card has-drips gallery-frame relative group cursor-pointer md:mt-12">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 30%;" data-h="120px"></div>
+                        <div class="drip" style="left: 70%;" data-h="60px"></div>
+                    </div>
+                    <div class="aspect-[3/4] mb-4 overflow-hidden">
+                        <img src="images/dekorativno-1.webp" class="w-full h-full object-cover" style="filter: sepia(10%) contrast(110%);" alt="Dekorativno slikopleskarstvo Celje">
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-display text-2xl">Dekorativni Učinki</h3>
+                        <span class="font-mono text-xs text-[var(--accent)]" style="transition: color 0.3s;">02</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="tilt-card has-drips gallery-frame relative group cursor-pointer">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 50%;" data-h="90px"></div>
+                        <div class="drip" style="left: 90%;" data-h="50px"></div>
+                    </div>
+                    <div class="aspect-[3/4] mb-4 overflow-hidden">
+                        <img src="images/pleskanje-1.webp" class="w-full h-full object-cover" style="filter: sepia(10%) contrast(110%);" alt="Pleskanje stanovanj Savinjska">
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-display text-2xl">Priprava Sten</h3>
+                        <span class="font-mono text-xs text-[var(--accent)]" style="transition: color 0.3s;">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 flex flex-col md:flex-row gap-8 items-center justify-between bg-white p-8 border border-black/10">
+                <p class="text-lg md:text-xl font-display">Več realizacij in modernih dekorativnih tehnik si oglejte na našem profilu.</p>
+                <a href="https://www.facebook.com/p/Slikopleskarstvo-Uro%C5%A1-Vre%C4%8Dko-100086735037466/" target="_blank" class="inline-block bg-[var(--bg-dark)] text-[#F2EFE9] font-bold text-sm uppercase tracking-widest px-8 py-4 hover:bg-[var(--accent)] transition-colors" style="transition: background 0.3s;">
+                    FB: Uroš Vrečko ↗
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section id="kontakt" class="py-24 px-6 md:px-12 bg-[var(--bg-dark)] text-[#F2EFE9] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent)] rounded-full filter blur-[150px] opacity-15" style="transition: background 0.3s;"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="overflow-hidden mb-8">
+                <h2 class="font-display text-[12vw] md:text-[8vw] reveal-text"><span>Začniva <span class="font-italic">projekt.</span></span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div class="flex flex-col gap-8">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold">// Lokacija</p>
+                        <p class="text-2xl font-display">Podgorje 1</p>
+                        <p class="text-xl text-gray-400">3000, Celje</p>
+                        <div class="mt-4 rounded-lg overflow-hidden" style="aspect-ratio: 16/9;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.5!2d15.261683!3d46.229389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDEzJzQ1LjgiTiAxNcKwMTUnNDIuMSJF!5e0!3m2!1ssl!2ssi!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold">// O delu</p>
+                        <p class="text-lg text-gray-300">Delujemo po vsej Savinjski regiji. Potrebujete svetovanje pri izbiri barv ali nujno pleskanje? Na voljo non-stop.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/10 md:pl-12 pt-8 md:pt-0">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-gray-500 mb-4 font-bold">// Cenik & Povpraševanje</p>
+                        <p class="text-lg text-gray-300 mb-6">Cena je odvisna od stanja površin in izbranih materialov. Pokličite za brezplačno oceno in svetovanje.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <a href="tel:+38631511053" class="flex items-center gap-4 text-3xl md:text-4xl font-display hover:text-[var(--accent)] transition-colors group" style="transition: color 0.3s;">
+                            <span class="text-[var(--accent)] font-mono text-sm" style="transition: color 0.3s;">01</span> 
+                            031 511 053
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="mailto:uros@slikopleskarstvo-vrecko.si" class="flex items-center gap-4 text-3xl md:text-4xl font-display hover:text-[var(--accent)] transition-colors group" style="transition: color 0.3s;">
+                            <span class="text-[var(--accent)] font-mono text-sm" style="transition: color 0.3s;">02</span> 
+                            Pošlji mail
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--bg-dark)] text-gray-600 py-8 px-6 md:px-12 flex justify-between items-center border-t border-white/5">
+        <p class="font-mono text-xs">© 2026 Slikopleskarstvo, Uroš Vrečko s.p.</p>
+        <p class="font-mono text-xs">Podgorje 1, 3000 Celje</p>
+    </footer>
+
+    <script>
+        // Cursor Logic
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(dot, { duration: 0.1, x: e.clientX, y: e.clientY });
+            gsap.to(outline, { duration: 0.3, x: e.clientX, y: e.clientY });
+        });
+        document.querySelectorAll('a, .group, .process-step, .swatch, .tilt-card').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        // GSAP Scroll
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Text reveal
+        document.querySelectorAll('.reveal-text').forEach(container => {
+            const spans = container.querySelectorAll('span');
+            gsap.to(spans, {
+                y: 0, opacity: 1, duration: 1, ease: 'power4.out', stagger: 0.1,
+                scrollTrigger: { trigger: container, start: 'top 85%' }
+            });
+        });
+
+        // Paint Drips Logic
+        document.querySelectorAll('.has-drips').forEach(section => {
+            const drips = section.querySelectorAll('.drip');
+            gsap.set(drips, { height: 0, opacity: 0 });
+            ScrollTrigger.create({
+                trigger: section, start: 'top 75%',
+                onEnter: () => {
+                    drips.forEach((drip, index) => {
+                        gsap.to(drip, {
+                            height: drip.dataset.h || '40px', opacity: 1,
+                            duration: 1.5, delay: index * 0.2, ease: 'power2.out'
+                        });
+                    });
+                }
+            });
+        });
+
+        // Process Steps Reveal
+        gsap.from('.process-step', {
+            x: -50, opacity: 0, duration: 1, stagger: 0.15, ease: 'power3.out',
+            scrollTrigger: { trigger: '#proces', start: 'top 70%' }
+        });
+
+        // Dynamic Color Palette
+        const swatches = document.querySelectorAll('.swatch');
+        swatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                const color = swatch.dataset.color;
+                document.documentElement.style.setProperty('--accent', color);
+            });
+            swatch.addEventListener('mouseenter', () => {
+                const color = swatch.dataset.color;
+                document.documentElement.style.setProperty('--accent', color);
+            });
+        });
+
+        // 3D Tilt Effect on Cards
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+    </script>
+</body>
+</html>

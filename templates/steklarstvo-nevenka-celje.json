@@ -1,0 +1,42 @@
+{
+  "company": "STEKLARSTVO \"NEVENKA\" NEVENKA LAZIĆ S.P.",
+  "contact_name": "Nevenka Lazić",
+  "phone": "+386 (0)31 384 391",
+  "email": null,
+  "website": null,
+  "address": "Mariborska cesta 61, 3000 Celje",
+  "city": "Celje",
+  "country": "Slovenia",
+  "davcna_stevilka": "42049300",
+  "maticna_stevilka": "1597230",
+  "category": "Steklarstvo / Glass works",
+  "source": "mojaobcina.si",
+  "source_url": "https://www.mojaobcina.si/celje/imenik/splosno-steklarstvo-in-uokvirjanje-slik-nevenka-nevenka-lazic-sp.html",
+  "region": ["Podravska", "Koroška", "Savinjska", "Zasavska"],
+  "description": "Steklarska dela že več kot 15 let. Zasteklitev oken, vrat, izložb, teras. Izdelava steklenih nadstreškov, balkonov, montaža ograj. Kuhinjske obloge, barvanje na steklo, uokvirjanje slik, tuš kabine, drsna vrata, zimski vrtovi.",
+  "services": [
+    "Zasteklitev oken, vrat, izložb, teras",
+    "Izdelava steklenih nadstreškov in balkonov",
+    "Montaža steklenih ograj",
+    "Steklene kuhinjske obloge",
+    "Barvanje na steklo",
+    "Uokvirjanje slik, priznanj, certifikatov",
+    "Taljenje stekla",
+    "Tuš kabine",
+    "Drsna steklena vrata",
+    "Zimski vrtovi",
+    "Stopnice iz stekla",
+    "Ogledala"
+  ],
+  "images": [
+    "https://img.mojaobcina.si/img/4502/D_MAX_500/9370_1552565807_5.jpg",
+    "https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_5.jpg",
+    "https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_4.jpg",
+    "https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_2.jpg",
+    "https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_7.jpg",
+    "https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_6.jpg",
+    "https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_3.jpg",
+    "https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_1.jpg"
+  ],
+  "extracted_at": "2026-07-18T14:25:00+02:00"
+}

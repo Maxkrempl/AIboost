@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meni — MenuBoost</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Georgia','Times New Roman',serif;background:#faf9f6;color:#2c2c2c;min-height:100vh}
+        .header{background:linear-gradient(135deg,#2C1810,#5C3D2E);color:#F5E6C8;padding:2.5rem 1rem;text-align:center}
+        .header h1{font-size:2rem;font-weight:400;letter-spacing:1px;margin-bottom:0.3rem}
+        .header .subtitle{font-size:0.9rem;opacity:0.8;font-family:'DM Sans',sans-serif}
+        .header .powered{font-size:0.75rem;opacity:0.5;margin-top:0.75rem;font-family:'DM Sans',sans-serif;letter-spacing:1px;text-transform:uppercase}
+        .container{max-width:700px;margin:0 auto;padding:1.5rem 1rem 3rem}
+        .lang-tabs{display:flex;justify-content:center;gap:6px;margin:1.5rem 0;flex-wrap:wrap}
+        .lang-tab{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1.5px solid #E8DDD0;background:white;color:#9C8878;cursor:pointer;transition:all .15s}
+        .lang-tab.active{border-color:#C4922A;background:#F5E6C8;color:#2C1810}
+        .dish{margin-bottom:2rem;padding:1.5rem;background:white;border-radius:12px;box-shadow:0 1px 6px rgba(0,0,0,0.04)}
+        .dish-name{font-size:1.4rem;color:#2C1810;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid #E8DDD0;font-weight:400}
+        .dish-desc{line-height:1.8;font-size:1rem;color:#5C3D2E;font-style:italic}
+        .dish-desc.hidden{display:none}
+        .dish-lang-label{font-family:'DM Sans',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#C4922A;margin-bottom:0.4rem;font-style:normal;font-weight:600}
+        .dish-lang-label.hidden{display:none}
+        .footer{text-align:center;padding:2rem 1rem;color:#9C8878;font-size:0.8rem;font-family:'DM Sans',sans-serif}
+        .error{text-align:center;padding:4rem 1rem;color:#666;font-family:'DM Sans',sans-serif}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="menu-title">🍽️ Meni</h1>
+        <div class="subtitle" id="menu-subtitle">Prevod v vašem jeziku</div>
+        <div class="powered">Powered by MenuBoost</div>
+    </div>
+    <div class="container" id="content">
+        <div class="error" id="error" style="display:none">
+            <p>Meni ni najden.<br>Prosimo, skenirajte veljavno QR kodo MenuBoost.</p>
+        </div>
+    </div>
+    <div class="footer">
+        Prevedeno z MenuBoost — AI opisi jedi v 6 jezikih
+    </div>
+
+    <script>
+    var FLAGS={en:'🇬🇧',de:'🇩🇪',it:'🇮🇹',sl:'🇸🇮',hr:'🇭🇷',sr:'🇷🇸'};
+    var NAMES={en:'English',de:'Deutsch',it:'Italiano',sl:'Slovenščina',hr:'Hrvatski',sr:'Srščina'};
+    var currentLang=null;
+
+    try{
+        var params=new URLSearchParams(window.location.search);
+        var data=params.get('data');
+        if(!data)throw new Error('No data');
+        var decoded=JSON.parse(decodeURIComponent(escape(atob(data))));
+
+        // Support both old format (single dish) and new format (bulk menu)
+        var dishes=[];
+        if(decoded.dishes&&Array.isArray(decoded.dishes)){
+            dishes=decoded.dishes;
+        }else if(decoded.name){
+            dishes=[{name:decoded.name,translations:decoded.translations}];
+        }else{
+            throw new Error('Invalid data format');
+        }
+
+        // Collect all available languages
+        var allLangs=new Set();
+        dishes.forEach(function(d){
+            if(d.translations)Object.keys(d.translations).forEach(function(l){allLangs.add(l);});
+        });
+        var langs=Array.from(allLangs);
+
+        // Determine default language (first available, prefer user's browser language)
+        var browserLang=navigator.language.split('-')[0];
+        currentLang=langs.indexOf(browserLang)!==-1?browserLang:langs[0];
+
+        var container=document.getElementById('content');
+
+        // Language tabs (only if more than 1 language)
+        if(langs.length>1){
+            var tabsHtml='<div class="lang-tabs">';
+            langs.forEach(function(l){
+                tabsHtml+='<div class="lang-tab'+(l===currentLang?' active':'')+'" onclick="switchLang(\''+l+'\')">'+(FLAGS[l]||'🌍')+' '+(NAMES[l]||l)+'</div>';
+            });
+            tabsHtml+='</div>';
+            container.insertAdjacentHTML('afterbegin',tabsHtml);
+        }
+
+        // Render dishes
+        dishes.forEach(function(dish){
+            var dishHtml='<div class="dish"><div class="dish-name">'+dish.name+'</div>';
+            langs.forEach(function(lang){
+                var text=(dish.translations||{})[lang]||'';
+                var hidden=lang!==currentLang?' hidden':'';
+                dishHtml+='<div class="dish-lang-label'+hidden+'" data-lang="'+lang+'">'+(FLAGS[lang]||'🌍')+' '+(NAMES[lang]||lang)+'</div>';
+                dishHtml+='<div class="dish-desc'+hidden+'" data-lang="'+lang+'">'+text+'</div>';
+            });
+            dishHtml+='</div>';
+            container.insertAdjacentHTML('beforeend',dishHtml);
+        });
+
+    }catch(e){
+        document.getElementById('error').style.display='block';
+    }
+
+    function switchLang(lang){
+        currentLang=lang;
+        document.querySelectorAll('.lang-tab').forEach(function(t){
+            t.classList.toggle('active',t.textContent.toLowerCase().indexOf((NAMES[lang]||lang).substring(0,3).toLowerCase())!==-1);
+        });
+        document.querySelectorAll('.dish-lang-label,.dish-desc').forEach(function(el){
+            el.classList.toggle('hidden',el.dataset.lang!==lang);
+        });
+    }
+    </script>
+</body>
+</html>

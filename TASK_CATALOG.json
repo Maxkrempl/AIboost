@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "tasks": [
+    {
+      "id": "growth:market_research",
+      "name": "Market Research (non-sensitive)",
+      "description": "Aggregate current SaaS user acquisition channels and trends from public sources and summarize implications for growth strategies.",
+      "category": "Growth",
+      "autonomous": true,
+      "risk": "low"
+    },
+    {
+      "id": "growth:competitor_monitor",
+      "name": "Competitor Monitoring (non-sensitive)",
+      "description": "Track competitor features, pricing, and messaging from public sources; produce a weekly digest.",
+      "category": "Growth",
+      "autonomous": true,
+      "risk": "low"
+    },
+    {
+      "id": "content:content_scheduler",
+      "name": "Content Planning & Scheduling",
+      "description": "Generate a quarterly content calendar for blog/newsletters and social channels.",
+      "category": "Content",
+      "autonomous": true,
+      "risk": "low"
+    },
+    {
+      "id": "ops:backup_tasks",
+      "name": "Data Backups & Logging",
+      "description": "Perform routine data backups and log rotation on internal workspace data (non-public).",
+      "category": "Ops",
+      "autonomous": true,
+      "risk": "low",
+      "notes": "Ensure no credential exfiltration; use internal store."
+    },
+    {
+      "id": "security:scan_public_endpoints",
+      "name": "Public Endpoint Health & Availability Checks",
+      "description": "Ping and monitor status of public API endpoints; alert on downtime.",
+      "category": "Security",
+      "autonomous": true,
+      "risk": "low"
+    },
+    {
+      "id": "admin:reporting",
+      "name": "Internal Reporting (non-sensitive)",
+      "description": "Aggregate internal metrics and produce a weekly internal dashboard/report.",
+      "category": "Admin",
+      "autonomous": true,
+      "risk": "low"
+    }
+  ]
+}

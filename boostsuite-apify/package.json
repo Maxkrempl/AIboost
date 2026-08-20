@@ -1,0 +1,28 @@
+{
+  "name": "boostsuite-mcp-server",
+  "version": "1.0.0",
+  "description": "BoostSuite — Website audit tools for AI agents (SEO, GEO, security, accessibility, GDPR)",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "build": "node src/main.js"
+  },
+  "dependencies": {
+    "apify": "^2.9.0",
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "apify": {
+    "actorSpecification": 1,
+    "name": "boostsuite-mcp-server",
+    "title": "BoostSuite MCP Server — Website Audit Tools",
+    "description": "6 website audit tools for AI agents: SEO audit, GEO check, ad copy, listing optimizer, combined audit, menu translate. Pay per call with USDC (x402) or API key.",
+    "version": "1.0.0",
+    "storages": {
+      "dataset": {
+        "actorSpecification": 1,
+        "views": {}
+      }
+    }
+  }
+}

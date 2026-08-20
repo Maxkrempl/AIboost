@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ListTranslate — AI跨境产品翻译优化工具</title>
+    <meta name="description" content="专为跨境电商卖家打造的AI翻译工具。一键将中文产品信息转换为亚马逊、Shopee、TikTok Shop等平台的高质量英文listing。">
+    <meta name="keywords" content="跨境电商,AI翻译,亚马逊listing,产品翻译,跨境卖家工具">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #ff4d4f;
+            --primary-dark: #d9363e;
+            --gold: #faad14;
+            --dark: #1a1a2e;
+            --gray: #666;
+            --light: #f5f5f5;
+            --white: #fff;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+            z-index: 1000;
+            padding: 0 2rem;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .logo span { color: var(--dark); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            transition: background 0.2s !important;
+        }
+        .nav-cta:hover { background: var(--primary-dark) !important; }
+
+        /* Hero */
+        .hero {
+            padding: 120px 2rem 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff5f5 0%, #fff 50%, #fffbe6 100%);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .hero h1 .highlight { color: var(--primary); }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        .stat { text-align: center; }
+        .stat-num { font-size: 2rem; font-weight: 900; color: var(--primary); }
+        .stat-label { font-size: 0.9rem; color: var(--gray); }
+
+        /* Tool Section */
+        .tool-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .tool-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .tool-section .subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        .tool-box {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #e8e8e8;
+        }
+        .tool-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .tool-row select, .tool-row input {
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+        }
+        .tool-row select { flex: 0 0 200px; }
+        .tool-row input { flex: 1; }
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+        textarea:focus, input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255,77,79,0.1);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+        .result-box {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result-box.show { display: block; }
+        .result-box h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary); }
+        .result-item {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .result-item label { font-weight: 700; color: var(--dark); display: block; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .result-item p { margin: 0; white-space: pre-wrap; }
+        .copy-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            float: right;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .free-count { text-align: center; color: var(--gray); font-size: 0.9rem; margin-top: 1rem; }
+
+        /* How it works */
+        .how-section {
+            background: var(--light);
+            padding: 4rem 2rem;
+        }
+        .how-inner { max-width: 1000px; margin: 0 auto; }
+        .how-section h2 { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 3rem; }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin: 0 auto 1rem;
+        }
+        .step h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .step p { color: var(--gray); }
+
+        /* Platforms */
+        .platforms {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .platforms h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .platforms .subtitle { color: var(--gray); margin-bottom: 2rem; }
+        .platform-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .platform-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .platform-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+            padding: 4rem 2rem;
+        }
+        .pricing h2 { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .pricing .subtitle { text-align: center; color: var(--gray); margin-bottom: 3rem; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .price-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid #e8e8e8;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .price-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+        .price-card.featured::before {
+            content: '最受欢迎';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .price-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .price { font-size: 2.5rem; font-weight: 900; color: var(--primary); margin: 1rem 0; }
+        .price span { font-size: 1rem; color: var(--gray); font-weight: 400; }
+        .price-card ul { list-style: none; text-align: left; margin: 1.5rem 0; }
+        .price-card li { padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0; }
+        .price-card li::before { content: '✓ '; color: var(--primary); font-weight: 700; }
+        .btn-outline {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover { background: var(--primary); color: white; }
+        .btn-filled {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--primary);
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .btn-filled:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+
+        /* FAQ */
+        .faq { padding: 4rem 2rem; max-width: 700px; margin: 0 auto; }
+        .faq h2 { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
+        .faq-item { border-bottom: 1px solid #eee; padding: 1.5rem 0; }
+        .faq-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; cursor: pointer; }
+        .faq-item h3::before { content: 'Q: '; color: var(--primary); }
+        .faq-item p { color: var(--gray); }
+        .faq-item p::before { content: 'A: '; font-weight: 700; color: var(--dark); }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer p { margin: 0.5rem 0; opacity: 0.8; }
+
+        /* Loading */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-stats { flex-direction: column; gap: 1rem; }
+            .steps { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .price-card.featured { transform: none; }
+            .tool-row { flex-direction: column; }
+            .tool-row select { flex: none; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">List<span>Translate</span></a>
+            <div class="nav-links">
+                <a href="#tool">免费体验</a>
+                <a href="#how">使用方法</a>
+                <a href="#pricing">价格</a>
+                <a href="#faq">常见问题</a>
+                <a href="#tool" class="nav-cta">免费开始</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>中文 → <span class="highlight">爆款 Listing</span><br>一键翻译优化</h1>
+        <p>专为跨境电商卖家打造。粘贴中文产品信息，秒出亚马逊、Shopee、TikTok Shop等平台的高质量英文listing。</p>
+        <a href="#tool" class="btn-primary">🚀 免费试用 5 条 Listing</a>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-num">10,000+</div>
+                <div class="stat-label">已优化 Listing</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">50+</div>
+                <div class="stat-label">国家和地区</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">3秒</div>
+                <div class="stat-label">翻译速度</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section" id="tool">
+        <h2>✨ 免费体验</h2>
+        <p class="subtitle">粘贴中文产品信息，选择目标平台，获取专业listing</p>
+        <div class="tool-box">
+            <div class="tool-row">
+                <select id="platform">
+                    <option value="amazon-us">🇺🇸 亚马逊美国站</option>
+                    <option value="amazon-uk">🇬🇧 亚马逊英国站</option>
+                    <option value="amazon-jp">🇯🇵 亚马逊日本站</option>
+                    <option value="shopee-th">🇹🇭 Shopee 泰国</option>
+                    <option value="shopee-my">🇲🇾 Shopee 马来西亚</option>
+                    <option value="tiktok-us">🎵 TikTok Shop 美国</option>
+                    <option value="etsy">🛍️ Etsy</option>
+                </select>
+                <select id="language">
+                    <option value="en">🇺🇸 英文</option>
+                    <option value="ja">🇯🇵 日文</option>
+                    <option value="th">🇹🇭 泰文</option>
+                    <option value="ms">🇲🇾 马来文</option>
+                </select>
+            </div>
+            <textarea id="input" placeholder="在此粘贴中文产品信息...&#10;&#10;例如：&#10;品名：不锈钢保温杯&#10;容量：500ml&#10;特点：双层真空隔热，食品级304不锈钢，防漏设计&#10;适用场景：办公、户外、旅行、运动&#10;颜色：黑色、银色、蓝色&#10;重量：350g"></textarea>
+            <div style="text-align: center;">
+                <button class="btn-primary" id="translateBtn" onclick="translate()">
+                    🔄 开始翻译
+                </button>
+            </div>
+            <div class="free-count">今日剩余免费次数：<span id="count">5</span>/5</div>
+            <div class="result-box" id="result">
+                <h3>📋 翻译结果</h3>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section" id="how">
+        <div class="how-inner">
+            <h2>三步搞定</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>粘贴产品信息</h3>
+                    <p>将中文产品名称、特点、规格等信息粘贴到输入框</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>选择目标平台</h3>
+                    <p>选择亚马逊、Shopee、TikTok Shop等目标销售平台</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>获取专业 Listing</h3>
+                    <p>3秒内获得平台优化后的标题、卖点、描述和关键词</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="platforms">
+        <h2>支持所有主流平台</h2>
+        <p class="subtitle">针对每个平台的算法规则优化翻译</p>
+        <div class="platform-grid">
+            <div class="platform-card">🇺🇸 Amazon US</div>
+            <div class="platform-card">🇬🇧 Amazon UK</div>
+            <div class="platform-card">🇯🇵 Amazon JP</div>
+            <div class="platform-card">🇹🇭 Shopee</div>
+            <div class="platform-card">🎵 TikTok Shop</div>
+            <div class="platform-card">🛍️ Etsy</div>
+            <div class="platform-card">📦 eBay</div>
+            <div class="platform-card">🏪 独立站</div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2>💰 价格方案</h2>
+        <p class="subtitle">按需付费，无隐藏费用</p>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>免费版</h3>
+                <div class="price">¥0</div>
+                <ul>
+                    <li>每月 5 条 Listing</li>
+                    <li>亚马逊美国站</li>
+                    <li>英文翻译</li>
+                    <li>基础优化</li>
+                </ul>
+                <button class="btn-outline" onclick="document.getElementById('tool').scrollIntoView()">免费开始</button>
+            </div>
+            <div class="price-card featured">
+                <h3>专业版</h3>
+                <div class="price">¥99<span>/月</span></div>
+                <ul>
+                    <li>每月 300 条 Listing</li>
+                    <li>所有平台支持</li>
+                    <li>8种语言</li>
+                    <li>关键词研究</li>
+                    <li>竞品分析</li>
+                    <li>优先客服</li>
+                </ul>
+                <button class="btn-filled">立即订阅</button>
+            </div>
+            <div class="price-card">
+                <h3>企业版</h3>
+                <div class="price">¥299<span>/月</span></div>
+                <ul>
+                    <li>无限 Listing</li>
+                    <li>所有平台支持</li>
+                    <li>8种语言</li>
+                    <li>批量翻译 API</li>
+                    <li>专属客服经理</li>
+                    <li>定制化服务</li>
+                </ul>
+                <button class="btn-outline">联系我们</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <h2>常见问题</h2>
+        <div class="faq-item">
+            <h3>翻译质量怎么样？</h3>
+            <p>我们使用先进的AI大模型（DeepSeek/小米MiMo），不是简单的机器翻译。翻译结果会根据目标平台的算法规则进行优化，包含正确的关键词、卖点表达和文化适应。</p>
+        </div>
+        <div class="faq-item">
+            <h3>支持哪些平台？</h3>
+            <p>目前支持亚马逊（美国/英国/日本/欧洲）、Shopee（泰国/马来/印尼/越南）、TikTok Shop、Etsy、eBay等主流跨境电商平台。持续新增中。</p>
+        </div>
+        <div class="faq-item">
+            <h3>免费版有什么限制？</h3>
+            <p>免费版每月可翻译5条listing，支持亚马逊美国站英文翻译。足够小卖家试用和评估效果。</p>
+        </div>
+        <div class="faq-item">
+            <h3>支持批量翻译吗？</h3>
+            <p>专业版支持最多50条批量翻译，企业版支持无限批量翻译和API接入。</p>
+        </div>
+        <div class="faq-item">
+            <h3>如何付款？</h3>
+            <p>支持微信支付、支付宝、银行卡转账。企业版支持对公转账和开具发票。</p>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">List<span style="color: var(--gold);">Translate</span></p>
+        <p>专为跨境电商卖家打造的AI翻译工具</p>
+        <p style="margin-top: 1rem;">
+            <a href="mailto:support@listtranslate.com">support@listtranslate.com</a> · 
+            微信客服：ListTranslate
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.5;">© 2026 ListTranslate. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let freeCount = 5;
+
+        async function translate() {
+            const input = document.getElementById('input').value.trim();
+            const platform = document.getElementById('platform').value;
+            const language = document.getElementById('language').value;
+            const btn = document.getElementById('translateBtn');
+
+            if (!input) {
+                alert('请输入中文产品信息');
+                return;
+            }
+
+            if (freeCount <= 0) {
+                alert('今日免费次数已用完，请升级到专业版');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> 翻译中...';
+
+            try {
+                const response = await fetch('/.netlify/functions/translate-listing', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ input, platform, language })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    alert('翻译失败：' + data.error);
+                    return;
+                }
+
+                freeCount--;
+                document.getElementById('count').textContent = freeCount;
+
+                const resultBox = document.getElementById('result');
+                const resultContent = document.getElementById('resultContent');
+                
+                resultContent.innerHTML = '';
+                
+                const sections = [
+                    { label: '📌 Title 标题', key: 'title' },
+                    { label: '🎯 Bullet Points 卖点', key: 'bullets' },
+                    { label: '📝 Description 产品描述', key: 'description' },
+                    { label: '🔍 Backend Keywords 后台关键词', key: 'keywords' }
+                ];
+
+                sections.forEach(s => {
+                    if (data[s.key]) {
+                        const div = document.createElement('div');
+                        div.className = 'result-item';
+                        div.innerHTML = `
+                            <button class="copy-btn" onclick="copyText(this)">复制</button>
+                            <label>${s.label}</label>
+                            <p>${data[s.key]}</p>
+                        `;
+                        resultContent.appendChild(div);
+                    }
+                });
+
+                resultBox.classList.add('show');
+                resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            } catch (err) {
+                alert('请求失败，请稍后重试');
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '🔄 开始翻译';
+            }
+        }
+
+        function copyText(btn) {
+            const text = btn.parentElement.querySelector('p').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = '已复制 ✓';
+                setTimeout(() => btn.textContent = '复制', 2000);
+            });
+        }
+    </script>
+</body>
+</html>

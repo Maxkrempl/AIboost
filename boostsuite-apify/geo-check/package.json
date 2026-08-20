@@ -1,0 +1,12 @@
+{
+  "name": "boostsuite-geo-check",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "apify": "^2.9.0",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}

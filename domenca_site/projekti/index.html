@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekti — HD Web Design | Web Lab</title>
+    <meta name="description" content="Projekti HD Web Design web lab — MenuBoost, BoostSuite, AI Authority, JobStal in drugi AI projekti. Oglejte si naša dela.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/images/hdwebdesign-favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Projekti — HD Web Design | Web Lab">
+    <meta property="og:description" content="Projekti HD Web Design web lab — AI orodja za restavracije, podjetja in SaaS.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hd-webdesign.si/projekti/">
+    <meta property="og:image" content="https://hd-webdesign.si/images/og-image.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hd-webdesign.si/projekti/">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Projekti — HD Web Design",
+        "description": "Projekti HD Web Design web lab — AI orodja za restavracije, podjetja in SaaS.",
+        "url": "https://hd-webdesign.si/projekti/",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "HD Web Design",
+            "url": "https://hd-webdesign.si"
+        }
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #0a0a0a; line-height: 1.6; }
+
+        /* Nav */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(100,116,139,0.15); padding: 0 clamp(1.5rem,4vw,4rem); display: flex; justify-content: space-between; align-items: center; height: 60px; }
+        .logo { font-size: 1.1rem; font-weight: 700; color: #0a0a0a; text-decoration: none; letter-spacing: -0.02em; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: inherit; text-decoration: none; font-weight: 500; font-size: 0.85rem; transition: color 0.2s; }
+        .nav-links a:hover { color: #0a0a0a; }
+
+        /* Hero */
+        .hero { padding: clamp(6rem,12vh,10rem) clamp(1.5rem,4vw,4rem) clamp(3rem,6vh,5rem); max-width: 800px; }
+        .hero h1 { font-size: clamp(2.5rem,6vw,4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .hero h1 em { font-style: italic; }
+        .hero p { font-size: 1.1rem; color: #555; max-width: 600px; }
+
+        /* Projects Grid */
+        .projects { padding: 0 clamp(1.5rem,4vw,4rem) clamp(4rem,8vh,6rem); max-width: 1200px; }
+        .project-card { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 3rem 0; border-bottom: 1px solid #eee; align-items: center; }
+        .project-card:nth-child(even) { direction: rtl; }
+        .project-card:nth-child(even) > * { direction: ltr; }
+        .project-info h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .project-info .tag { display: inline-block; background: #0a0a0a; color: #fff; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+        .project-info p { color: #555; margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .project-info .tech { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .project-info .tech span { background: #f5f5f5; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.75rem; font-weight: 500; }
+        .project-info .links { display: flex; gap: 1rem; }
+        .project-info .links a { color: #0a0a0a; text-decoration: none; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0a0a0a; padding-bottom: 2px; transition: all 0.2s; }
+        .project-info .links a:hover { color: #666; border-color: #666; }
+
+        .project-visual { background: #f8f8f8; border-radius: 12px; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; font-size: 3rem; overflow: hidden; }
+        .project-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Stats */
+        .stats { display: flex; gap: 3rem; padding: clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,4rem); background: #fafafa; }
+        .stat { text-align: center; }
+        .stat-num { font-size: clamp(2rem,4vw,3rem); font-weight: 700; letter-spacing: -0.02em; }
+        .stat-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem; }
+
+        /* CTA */
+        .cta-section { text-align: center; padding: clamp(4rem,8vh,6rem) clamp(1.5rem,4vw,4rem); }
+        .cta-section h2 { font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 700; margin-bottom: 1rem; }
+        .cta-section p { color: #555; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-button { display: inline-block; background: #0a0a0a; color: #fff; padding: 0.85rem 2rem; border-radius: 4px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+        .cta-button:hover { background: #333; }
+
+        /* Footer */
+        footer { padding: 3rem clamp(1.5rem,4vw,4rem); border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #888; }
+        footer a { color: inherit; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .project-card { grid-template-columns: 1fr; gap: 1.5rem; }
+            .project-card:nth-child(even) { direction: ltr; }
+            .stats { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">HD Web Design</a>
+        <ul class="nav-links">
+            <li><a href="/web-design/">Storitve</a></li>
+            <li><a href="/projekti/" style="font-weight:700">Projekti</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/about/">O nas</a></li>
+            <li><a href="/menu-boost/">MenuBoost</a></li>
+            <li><a href="/boost-suite/">BoostSuite</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Projekti, ki <em>delujejo</em></h1>
+        <p>Od ideje do produkcije — zgradili smo AI orodja, spletne platforme in rešitve za podjetja v Sloveniji in tujini.</p>
+    </section>
+
+    <section class="stats">
+        <div class="stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Projektov</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Jezikov</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">109+</div>
+            <div class="stat-label">Strani vsebine</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Države</div>
+        </div>
+    </section>
+
+    <section class="projects">
+
+        <!-- MenuBoost -->
+        <div class="project-card">
+            <div class="project-info">
+                <span class="tag">AI SaaS</span>
+                <h2>MenuBoost</h2>
+                <p>AI opisi jedi za restavracije v 6 jezikih z QR kodami. Generira opise, prevaja jedilnike in ustvarja QR kode v 10 sekundah.</p>
+                <div class="tech">
+                    <span>AI/LLM</span>
+                    <span>6 jezikov</span>
+                    <span>QR kode</span>
+                    <span>Stripe</span>
+                </div>
+                <div class="links">
+                    <a href="/menu-boost/">Orodje →</a>
+                    <a href="https://hd-webdesign.si/menu-boost/">Demo →</a>
+                </div>
+            </div>
+            <div class="project-visual">🍽️</div>
+        </div>
+
+        <!-- BoostSuite -->
+        <div class="project-card">
+            <div class="project-info">
+                <span class="tag">AI Suite</span>
+                <h2>BoostSuite</h2>
+                <p>4 AI orodja za digitalne agencije: SEO Audit, GEO Check, Ad Copy in Listing Optimizer. Celovita rešitev za optimizacijo spletnih strani.</p>
+                <div class="tech">
+                    <span>SEO Audit</span>
+                    <span>GEO Check</span>
+                    <span>Ad Copy</span>
+                    <span>MCP Server</span>
+                </div>
+                <div class="links">
+                    <a href="/boost-suite/">Orodje →</a>
+                    <a href="https://hd-webdesign.si/boost-suite/">Demo →</a>
+                </div>
+            </div>
+            <div class="project-visual">📈</div>
+        </div>
+
+        <!-- AI Authority -->
+        <div class="project-card">
+            <div class="project-info">
+                <span class="tag">GEO Optimizacija</span>
+                <h2>AI Authority Foundation</h2>
+                <p>GEO optimizacija za vidnost v AI priporočilih (ChatGPT, Gemini, Perplexity). Schema.org, llm.txt, 3-mesečno spremljanje.</p>
+                <div class="tech">
+                    <span>Schema.org</span>
+                    <span>llm.txt</span>
+                    <span>GEO</span>
+                    <span>AI-Algorithm Shield</span>
+                </div>
+                <div class="links">
+                    <a href="/ai-authority/">Več →</a>
+                </div>
+            </div>
+            <div class="project-visual">🤖</div>
+        </div>
+
+        <!-- JobStal -->
+        <div class="project-card">
+            <div class="project-info">
+                <span class="tag">Platforma</span>
+                <h2>JobStal</h2>
+                <p>Platforma za povezovanje fizičnih delavcev z delodajalci. Iskanje dela, oddaja prostih delovnih mest in upravljanje prijav.</p>
+                <div class="tech">
+                    <span>Full-stack</span>
+                    <span>Matching</span>
+                    <span>Platform</span>
+                </div>
+                <div class="links">
+                    <a href="https://jobstal.eu" target="_blank">Obišči →</a>
+                </div>
+            </div>
+            <div class="project-visual">💼</div>
+        </div>
+
+        <!-- Subvencije -->
+        <div class="project-card">
+            <div class="project-info">
+                <span class="tag">Dokumentacija</span>
+                <h2>Subvencije</h2>
+                <p>Pomoč pri pridobivanju EU sredstev za mala podjetja. Priprava vlog, svetovanje in spremljanje razpisov.</p>
+                <div class="tech">
+                    <span>EU Razpisi</span>
+                    <span>Dokumentacija</span>
+                    <span>Svetovanje</span>
+                </div>
+                <div class="links">
+                    <a href="/subvencije/">Več →</a>
+                </div>
+            </div>
+            <div class="project-visual">💰</div>
+        </div>
+
+    </section>
+
+    <section class="cta-section">
+        <h2>Imate idejo za projekt?</h2>
+        <p>Zgradimo rešitev, ki bo delovala. Od spletne strani do kompleksne AI platforme.</p>
+        <a href="/about/" class="cta-button">Kontaktirajte nas</a>
+    </section>
+
+    <footer>
+        <span>© 2026 HD Web Design</span>
+        <span>
+            <a href="/">Domov</a> ·
+            <a href="/projekti/">Projekti</a> ·
+            <a href="/blog.html">Blog</a> ·
+            <a href="/about/">Kontakt</a>
+        </span>
+    </footer>
+</body>
+</html>

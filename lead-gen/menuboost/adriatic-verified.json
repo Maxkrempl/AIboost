@@ -1,0 +1,193 @@
+[
+  {
+    "name": "Restaurant Dubrovnik",
+    "city": "Dubrovnik",
+    "email": "restorandubrovnik@gmail.com",
+    "website": "https://restorandubrovnik.com",
+    "mx_valid": true,
+    "has_menu": false,
+    "menu_info": {
+      "has_menu": false,
+      "reason": "no_menu_found"
+    }
+  },
+  {
+    "name": "Adriatic Luxury Hotels",
+    "city": "Dubrovnik",
+    "email": "corporate.communications@alh.hr",
+    "website": "https://adriaticluxuryhotels.com",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "https://adriaticluxuryhotels.com",
+      "type": "section_on_page"
+    }
+  },
+  {
+    "name": "Pelegrini",
+    "city": "Šibenik",
+    "email": "info@pelegrini.hr",
+    "website": "https://pelegrini.hr",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "https://pelegrini.hr/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1",
+      "all_menus": [
+        "https://pelegrini.hr/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1",
+        "https://pelegrini.hr/wp-content/uploads/elementor/css/custom-pro-widget-nav-menu.min.css?ver=1779410216",
+        "https://pelegrini.hr/wp-content/uploads/elementor/css/custom-pro-widget-woocommerce-menu-cart.min.css?ver=1779410216"
+      ]
+    }
+  },
+  {
+    "name": "Monte Restaurant",
+    "city": "Rovinj",
+    "email": "info@monte.hr",
+    "website": "https://monte.hr",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "/menu",
+      "all_menus": [
+        "/menu",
+        "/menu",
+        "/menu"
+      ]
+    }
+  },
+  {
+    "name": "Hotel Trieste",
+    "city": "Venezia Mestre",
+    "email": "info@hoteltrieste.com",
+    "website": "https://hoteltrieste.com",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "https://www.hoteltrieste.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1",
+      "all_menus": [
+        "https://www.hoteltrieste.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1"
+      ]
+    }
+  },
+  {
+    "name": "Adriatic Luxury Hotels",
+    "city": "Dubrovnik",
+    "email": "reservations@alh.hr",
+    "website": "https://adriaticluxuryhotels.com",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "https://adriaticluxuryhotels.com",
+      "type": "section_on_page"
+    }
+  },
+  {
+    "name": "Hotel Trieste",
+    "city": "Venezia Mestre",
+    "email": "info@hoteltrieste.com",
+    "website": "https://hoteltrieste.com",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "https://www.hoteltrieste.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1",
+      "all_menus": [
+        "https://www.hoteltrieste.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1"
+      ]
+    }
+  },
+  {
+    "name": "Navigando",
+    "city": "Trieste",
+    "email": "navigando.trieste@gmail.com",
+    "website": "https://navigandotrieste.com",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "https://navigandotrieste.com/menu/",
+      "all_menus": [
+        "https://navigandotrieste.com/menu/",
+        "https://navigandotrieste.com/menu/"
+      ]
+    }
+  },
+  {
+    "name": "Primo Trieste",
+    "city": "Trieste",
+    "email": "ristoranteprimots@gmail.com",
+    "website": "",
+    "mx_valid": true,
+    "has_menu": false,
+    "menu_info": {
+      "has_menu": false,
+      "menu_url": null,
+      "reason": "no_url"
+    }
+  },
+  {
+    "name": "Konoba Alla Beccaccia",
+    "city": "Valbandon",
+    "email": "kuzinica.istra@gmail.com",
+    "website": "https://konoba-allabeccaccia.com/en",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "http://konoba-allabeccaccia.com/en/menu",
+      "all_menus": [
+        "http://konoba-allabeccaccia.com/en/menu",
+        "http://konoba-allabeccaccia.com/en/menu",
+        "https://konoba-allabeccaccia.com/menu"
+      ]
+    }
+  },
+  {
+    "name": "Agritourism Istra Partner",
+    "city": "Barban",
+    "email": "agroistrapartner@gmail.com",
+    "website": "https://agrobratulici.com",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "https://agrobratulici.com",
+      "type": "section_on_page"
+    }
+  },
+  {
+    "name": "Restaurant Gold Istra",
+    "city": "Portorož",
+    "email": "bookme@residence-goldistra.com",
+    "website": "https://www.portoroz.si/en/gastronomy/restaurants-and-taverns/obj/35350-restaurant-golfd-istra",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "https://www.portoroz.si/en/gastronomy/restaurants-and-taverns/obj/35350-restaurant-golfd-istra",
+      "type": "section_on_page"
+    }
+  },
+  {
+    "name": "Konoba Dalmacija",
+    "city": "Zadar",
+    "email": "konobadalmatia@gmail.com",
+    "website": "https://konobadalmacija-zadar.eatbu.com",
+    "mx_valid": true,
+    "has_menu": true,
+    "menu_info": {
+      "has_menu": true,
+      "menu_url": "#menu",
+      "all_menus": [
+        "#menu",
+        "https://cdn.website.dish.co/media/5f/65/9134331/jelovnik.pdf",
+        "https://cdn.website.dish.co/media/5f/65/9134331/jelovnik.pdf"
+      ]
+    }
+  }
+]

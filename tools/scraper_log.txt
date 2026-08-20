@@ -1,0 +1,232 @@
+[2026-05-03 21:47:32] ==================================================
+[2026-05-03 21:47:32] 🕵️ MenuBoost Stealth Scraper
+[2026-05-03 21:47:32] ==================================================
+[2026-05-03 21:47:32] 📋 264 existing emails loaded for dedup
+[2026-05-03 21:47:32] 
+========================================
+[2026-05-03 21:47:32] 🌍 ITALY
+[2026-05-03 21:47:32] ========================================
+[2026-05-03 21:47:32] 
+📡 EmiliaRomagna Ristoranti (Emilia-Romagna)
+[2026-05-03 21:47:32]   🔍 https://www.emiliaromagnaturismo.it/en/where-to-eat?page=1...
+[2026-05-03 21:47:32]   ☕ Taking a coffee break (24s)...
+[2026-05-03 21:47:59]   ❌ HTTP 404: https://www.emiliaromagnaturismo.it/en/where-to-eat?page=1
+[2026-05-03 21:47:59]   🔍 https://www.emiliaromagnaturismo.it/en/where-to-eat?page=2...
+[2026-05-03 21:48:02]   ❌ Error (attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[2026-05-03 21:48:18]   ❌ HTTP 404: https://www.emiliaromagnaturismo.it/en/where-to-eat?page=2
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Veneto Ristoranti (Veneto)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 FVG Ristoranti (Friuli-Venezia Giulia)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Rimini (Emilia-Romagna)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Venezia (Veneto)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Udine (Friuli-Venezia Giulia)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Pisa (Toscana)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Roma (Lazio)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Napoli (Campania)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Bari (Puglia)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Palermo (Sicily)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+📡 Accademia Cagliari (Sardegna)
+[2026-05-03 21:48:18]   🛑 Max pages (2) reached
+[2026-05-03 21:48:18] 
+==================================================
+[2026-05-03 21:48:18] 🎉 SCRAPING COMPLETE
+[2026-05-03 21:48:18] ==================================================
+[2026-05-03 21:48:18]   Pages scraped: 2
+[2026-05-03 21:48:18]   New contacts: 0
+[2026-05-03 21:48:18]   Total contacts found this run: 0
+[2026-05-03 21:48:18] 
+✅ Done at 21:48:18
+[2026-05-03 21:49:22] ==================================================
+[2026-05-03 21:49:22] 🕵️ MenuBoost Stealth Scraper
+[2026-05-03 21:49:22] ==================================================
+[2026-05-03 21:49:22] 📋 264 existing emails loaded for dedup
+[2026-05-03 21:49:22] 
+========================================
+[2026-05-03 21:49:22] 🌍 ITALY
+[2026-05-03 21:49:22] ========================================
+[2026-05-03 21:49:22] 
+📡 OpenTourism Rimini (Emilia-Romagna)
+[2026-05-03 21:49:22]   🔍 https://www.opentourism.it/it/servizi/ristorante?page=1...
+[2026-05-03 21:49:22]   ☕ Taking a coffee break (20s)...
+[2026-05-03 21:49:42]   ❌ HTTP 404: https://www.opentourism.it/it/servizi/ristorante?page=1
+[2026-05-03 21:49:42]   🔍 https://www.opentourism.it/it/servizi/ristorante?page=2...
+[2026-05-03 21:49:46]   ❌ HTTP 404: https://www.opentourism.it/it/servizi/ristorante?page=2
+[2026-05-03 21:49:46]   🔍 https://www.opentourism.it/it/servizi/ristorante?page=3...
+[2026-05-03 21:49:53]   ❌ HTTP 404: https://www.opentourism.it/it/servizi/ristorante?page=3
+[2026-05-03 21:49:53] 
+📡 Accademia Rimini (Emilia-Romagna)
+[2026-05-03 21:49:53]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=99&comune=&r...
+[2026-05-03 21:50:10]   ✅ Guida ai Ristoranti → info@accademia1953.it
+[2026-05-03 21:50:22]   ✅ Alla Vittoria da Renato → info@darenato.it
+[2026-05-03 21:50:33]   ✅ 4 Leoni Firenze → info@4leoni-firenze.ch
+[2026-05-03 21:50:49]   ✅ 14Miglia → 14migliacaserta@gmail.com
+[2026-05-03 21:50:59]   ✅ 7 NANI → vlisa776@gmail.com
+[2026-05-03 21:51:01]   ☕ Taking a coffee break (19s)...
+[2026-05-03 21:51:31]   📊 Accademia Rimini: 5 new contacts
+[2026-05-03 21:51:31] 
+📡 Accademia Venezia (Veneto)
+[2026-05-03 21:51:31]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=27&comune=&r...
+[2026-05-03 21:52:32]   ☕ Taking a coffee break (26s)...
+[2026-05-03 21:53:00] 
+📡 Accademia Udine (Friuli-Venezia Giulia)
+[2026-05-03 21:53:00]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=30&comune=&r...
+[2026-05-03 21:54:14] 
+📡 Accademia Pisa (Toscana)
+[2026-05-03 21:54:14]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=50&comune=&r...
+[2026-05-03 21:54:14]   ☕ Taking a coffee break (28s)...
+[2026-05-03 21:55:54] 
+📡 Accademia Roma (Lazio)
+[2026-05-03 21:55:54]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=58&comune=&r...
+[2026-05-03 21:56:00]   ☕ Taking a coffee break (16s)...
+[2026-05-03 21:57:18] 
+📡 Accademia Napoli (Campania)
+[2026-05-03 21:57:18]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=63&comune=&r...
+[2026-05-03 21:57:33]   ☕ Taking a coffee break (22s)...
+[2026-05-03 21:58:44] 
+📡 Accademia Bari (Puglia)
+[2026-05-03 21:58:44]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=72&comune=&r...
+[2026-05-03 21:59:09]   ☕ Taking a coffee break (21s)...
+[2026-05-03 22:00:18] 
+📡 Accademia Palermo (Sicily)
+[2026-05-03 22:00:18]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=82&comune=&r...
+[2026-05-03 22:00:53]   ☕ Taking a coffee break (21s)...
+[2026-05-03 22:01:52] 
+📡 Accademia Cagliari (Sardegna)
+[2026-05-03 22:01:52]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=92&comune=&r...
+[2026-05-03 22:02:31]   ☕ Taking a coffee break (19s)...
+[2026-05-03 22:03:15] 
+========================================
+[2026-05-03 22:03:15] 🌍 CROATIA
+[2026-05-03 22:03:15] ========================================
+[2026-05-03 22:03:15] 
+📡 Istra Gastro (Istra)
+[2026-05-03 22:03:15]   🔍 https://www.istra.hr/en/gourmet/where-to-eat?page=1...
+[2026-05-03 22:03:41]   ✅ Tekka by Lone → tekkabylone@maistra.hr
+[2026-05-03 22:03:43]   🔍 https://www.istra.hr/en/gourmet/where-to-eat?page=2...
+[2026-05-03 22:03:59]   🔍 https://www.istra.hr/en/gourmet/where-to-eat?page=3...
+[2026-05-03 22:04:09]   ✅ Konoba Ćakula → cakulakonoba@gmail.com
+[2026-05-03 22:04:11]   ☕ Taking a coffee break (17s)...
+[2026-05-03 22:04:32]   🔍 https://www.istra.hr/en/gourmet/where-to-eat?page=4...
+[2026-05-03 22:04:44]   🔍 https://www.istra.hr/en/gourmet/where-to-eat?page=5...
+[2026-05-03 22:04:58]   📊 Istra Gastro: 2 new contacts
+[2026-05-03 22:04:58] 
+📡 Split Restaurants (Split-Dalmatia)
+[2026-05-03 22:04:58]   🔍 https://www.visitsplit.com/en/56/restaurants?page=1...
+[2026-05-03 22:05:12]   ❌ HTTP 404: https://www.visitsplit.com/en/56/restaurants?page=1
+[2026-05-03 22:05:12]   🔍 https://www.visitsplit.com/en/56/restaurants?page=2...
+[2026-05-03 22:05:17]   ❌ HTTP 404: https://www.visitsplit.com/en/56/restaurants?page=2
+[2026-05-03 22:05:17]   🔍 https://www.visitsplit.com/en/56/restaurants?page=3...
+[2026-05-03 22:05:24]   ❌ HTTP 404: https://www.visitsplit.com/en/56/restaurants?page=3
+[2026-05-03 22:05:24] 
+📡 Dubrovnik Restaurants (Dubrovnik-Neretva)
+[2026-05-03 22:05:24]   🔍 https://www.visitdubrovnik.hr/restaurants?page=1...
+[2026-05-03 22:06:01]   ☕ Taking a coffee break (21s)...
+[2026-05-03 22:07:14]   🚫 Forbidden: https://www.tripadvisor.com/Restaurants-g2569707-Dubrovnik_Neretva_County_Dalmatia.html
+[2026-05-03 22:07:34]   🔍 https://www.visitdubrovnik.hr/restaurants?page=2...
+[2026-05-03 22:08:19]   ☕ Taking a coffee break (18s)...
+[2026-05-03 22:09:04]   🚫 Forbidden: https://www.tripadvisor.com/Restaurants-g2569707-Dubrovnik_Neretva_County_Dalmatia.html
+[2026-05-03 22:09:24]   🔍 https://www.visitdubrovnik.hr/restaurants?page=3...
+[2026-05-03 22:10:43]   🚫 Forbidden: https://www.tripadvisor.com/Restaurants-g2569707-Dubrovnik_Neretva_County_Dalmatia.html
+[2026-05-03 22:11:04] 
+📡 Zadar Gastronomy (Zadar)
+[2026-05-03 22:11:04]   🔍 https://www.zadar.travel/en/gastronomy?page=1...
+[2026-05-03 22:11:16]   🔍 https://www.zadar.travel/en/gastronomy?page=2...
+[2026-05-03 22:11:19]   🔍 https://www.zadar.travel/en/gastronomy?page=3...
+[2026-05-03 22:11:24] 
+📡 Kvarner Gastro (Primorje-Gorski)
+[2026-05-03 22:11:24]   🔍 https://www.kvarner.hr/en/gastro?page=1...
+[2026-05-03 22:11:40]   ❌ Error (attempt 1/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=1 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:11:54]   ❌ Error (attempt 2/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=1 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:12:10]   ❌ Error (attempt 3/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=1 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:12:16]   🔍 https://www.kvarner.hr/en/gastro?page=2...
+[2026-05-03 22:12:24]   ❌ Error (attempt 1/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=2 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:12:38]   ❌ Error (attempt 2/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=2 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:12:57]   ❌ Error (attempt 3/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=2 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:13:02]   🔍 https://www.kvarner.hr/en/gastro?page=3...
+[2026-05-03 22:13:16]   ❌ Error (attempt 1/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=3 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:13:42]   ❌ Error (attempt 2/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=3 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:14:01]   ❌ Error (attempt 3/3): HTTPSConnectionPool(host='www.kvarner.hr', port=443): Max retries exceeded with url: /en/gastro?page=3 (Caused by SSLError(CertificateError("hostname 'www.kvarner.hr' doesn't match either of 'multilink.hr', '*.multilink.hr'")))
+[2026-05-03 22:14:06] 
+========================================
+[2026-05-03 22:14:06] 🌍 SLOVENIA
+[2026-05-03 22:14:06] ========================================
+[2026-05-03 22:14:06] 
+📡 Visit Ljubljana Restaurants (Ljubljana)
+[2026-05-03 22:14:06]   🔍 https://www.visitljubljana.com/en/visitors/see-do/cuisine/restaurants/?page=1...
+[2026-05-03 22:14:23]   🔍 https://www.visitljubljana.com/en/visitors/see-do/cuisine/restaurants/?page=2...
+[2026-05-03 22:14:31]   🔍 https://www.visitljubljana.com/en/visitors/see-do/cuisine/restaurants/?page=3...
+[2026-05-03 22:14:39] 
+📡 Slovenia Info Gastronomy (Slovenia)
+[2026-05-03 22:14:39]   🔍 https://www.slovenia.info/en/gastronomy...
+[2026-05-03 22:14:56]   ❌ HTTP 404: https://www.slovenia.info/en/gastronomy
+[2026-05-03 22:14:56]   🔍 https://www.slovenia.info/en/experiences/gastronomy...
+[2026-05-03 22:15:04]   ❌ HTTP 404: https://www.slovenia.info/en/experiences/gastronomy
+[2026-05-03 22:15:04] 
+==================================================
+[2026-05-03 22:15:04] 🎉 SCRAPING COMPLETE
+[2026-05-03 22:15:04] ==================================================
+[2026-05-03 22:15:04]   Pages scraped: 34
+[2026-05-03 22:15:04]   New contacts: 7
+[2026-05-03 22:15:04]   Total contacts found this run: 7
+[2026-05-03 22:15:04]   💾 Combined batch: /home/darko/.openclaw/workspace/lead-gen/menuboost/scraped-combined-batch.csv
+[2026-05-03 22:15:04] 
+✅ Done at 22:15:04
+[2026-05-04 09:45:31] ==================================================
+[2026-05-04 09:45:31] 🕵️ MenuBoost Stealth Scraper
+[2026-05-04 09:45:31] ==================================================
+[2026-05-04 09:45:31] 📋 271 existing emails loaded for dedup
+[2026-05-04 09:45:31] 
+========================================
+[2026-05-04 09:45:31] 🌍 ITALY
+[2026-05-04 09:45:31] ========================================
+[2026-05-04 09:45:31] 
+📡 OpenTourism Rimini (Emilia-Romagna)
+[2026-05-04 09:45:31]   🔍 https://www.opentourism.it/it/servizi/ristorante?page=1...
+[2026-05-04 09:45:31]   ☕ Taking a coffee break (20s)...
+[2026-05-04 09:45:52]   ❌ HTTP 404: https://www.opentourism.it/it/servizi/ristorante?page=1
+[2026-05-04 09:45:52]   🔍 https://www.opentourism.it/it/servizi/ristorante?page=2...
+[2026-05-04 09:45:56]   ❌ HTTP 404: https://www.opentourism.it/it/servizi/ristorante?page=2
+[2026-05-04 09:45:56]   🔍 https://www.opentourism.it/it/servizi/ristorante?page=3...
+[2026-05-04 09:46:02]   ❌ HTTP 404: https://www.opentourism.it/it/servizi/ristorante?page=3
+[2026-05-04 09:46:02] 
+📡 Accademia Rimini (Emilia-Romagna)
+[2026-05-04 09:46:02]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=99&comune=&r...
+[2026-05-04 09:47:09]   ☕ Taking a coffee break (23s)...
+[2026-05-04 09:47:33]   ✅ 1477 Reichhalter → info@1477reichhalter.com
+[2026-05-04 09:47:43]   ✅ A Paranza Tasca Italiana → aparanza19@gmail.com
+[2026-05-04 09:47:45]   📊 Accademia Rimini: 2 new contacts
+[2026-05-04 09:47:45] 
+📡 Accademia Venezia (Veneto)
+[2026-05-04 09:47:45]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=27&comune=&r...
+[2026-05-04 09:48:43]   ☕ Taking a coffee break (15s)...
+[2026-05-04 09:49:01] 
+📡 Accademia Udine (Friuli-Venezia Giulia)
+[2026-05-04 09:49:01]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=30&comune=&r...
+[2026-05-04 09:50:10] 
+📡 Accademia Pisa (Toscana)
+[2026-05-04 09:50:10]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=50&comune=&r...
+[2026-05-04 09:50:10]   ☕ Taking a coffee break (22s)...
+[2026-05-04 09:51:40] 
+📡 Accademia Roma (Lazio)
+[2026-05-04 09:51:40]   🔍 https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=58&comune=&r...

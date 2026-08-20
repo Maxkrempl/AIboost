@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGS CREW — Aljaž Orešnik s.p. | Slikopleskarstvo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --bg: #f3f0e7;
+            --bg-dark: #111111;
+            --accent: #ff3d00;
+            --text: #111111;
+            --text-muted: #555555;
+        }
+
+        * {
+            cursor: none;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Archivo Black', sans-serif;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+        }
+
+        /* Plaster texture effect */
+        .plaster-texture {
+            position: relative;
+        }
+        .plaster-texture::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 10px; height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+            mix-blend-mode: difference;
+        }
+        .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            width: 40px; height: 40px;
+            border: 1px solid var(--text);
+            border-radius: 50%;
+            z-index: 9998;
+            pointer-events: none;
+            transition: transform 0.1s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
+        }
+        .cursor-hover .cursor-dot {
+            transform: scale(0);
+        }
+        .cursor-hover .cursor-outline {
+            width: 60px; height: 60px;
+            background: var(--accent);
+            border-color: var(--accent);
+            mix-blend-mode: difference;
+        }
+
+        /* Scroll reveal classes */
+        .reveal-text span {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        /* Vertical Marquee */
+        .marquee-vertical-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 100vh;
+            background: #111111;
+            color: #ffffff;
+            z-index: 40;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 2px solid #000;
+        }
+        .marquee-vertical-track {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            animation: scroll-vertical 25s linear infinite;
+            padding: 2rem 0;
+        }
+        .marquee-vertical-track span {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
+        @keyframes scroll-vertical {
+            from { transform: translateY(0); }
+            to { transform: translateY(-50%); }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                margin-right: 80px;
+            }
+            header {
+                padding-right: calc(1.5rem + 80px) !important;
+            }
+        }
+
+        /* Review Card Hover */
+        .review-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .review-card:hover {
+            transform: translateY(-10px) rotate(-1deg);
+        }
+
+        /* Paint Splash */
+        .splash {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        /* PAINT DRIPS LOGIC */
+        .has-drips {
+            position: relative;
+            overflow: visible; /* Crucial: let drips hang out */
+        }
+        .drip-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .drip {
+            position: absolute;
+            top: 0;
+            width: 6px;
+            background: var(--accent);
+            border-radius: 0 0 8px 8px;
+            height: 0; /* Animated by GSAP */
+            opacity: 0;
+        }
+        .drip::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Image Gallery Frames */
+        .frame {
+            border: 2px solid #111;
+            padding: 12px;
+            background: #fff;
+            transition: transform 0.4s ease;
+            position: relative;
+        }
+        .frame:hover {
+            transform: scale(1.02);
+        }
+        .frame-img-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+        .frame-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(120%) brightness(90%);
+            transform: scale(1.1);
+            transition: transform 0.6s ease;
+        }
+        .frame:hover .frame-img {
+            transform: scale(1.0);
+            filter: grayscale(0%) contrast(110%);
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Vertical Marquee -->
+    <div class="marquee-vertical-container plaster-texture hidden md:flex">
+        <div class="marquee-vertical-track">
+            <span>Slikopleskarstvo</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff3d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="6" rx="1"/>
+                <path d="M17 7h2a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1H8"/>
+                <path d="M10 14v6"/>
+                <path d="M8 20h4"/>
+            </svg>
+            <span>Žalec &amp; Okolica</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff3d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="6" rx="1"/>
+                <path d="M17 7h2a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1H8"/>
+                <path d="M10 14v6"/>
+                <path d="M8 20h4"/>
+            </svg>
+            <span>BGS CREW</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff3d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="6" rx="1"/>
+                <path d="M17 7h2a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1H8"/>
+                <path d="M10 14v6"/>
+                <path d="M8 20h4"/>
+            </svg>
+            <span>5.0 Zadovoljstvo</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff3d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="6" rx="1"/>
+                <path d="M17 7h2a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1H8"/>
+                <path d="M10 14v6"/>
+                <path d="M8 20h4"/>
+            </svg>
+            <span>Slikopleskarstvo</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff3d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="6" rx="1"/>
+                <path d="M17 7h2a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1H8"/>
+                <path d="M10 14v6"/>
+                <path d="M8 20h4"/>
+            </svg>
+            <span>Žalec &amp; Okolica</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff3d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="6" rx="1"/>
+                <path d="M17 7h2a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1H8"/>
+                <path d="M10 14v6"/>
+                <path d="M8 20h4"/>
+            </svg>
+            <span>BGS CREW</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff3d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="6" rx="1"/>
+                <path d="M17 7h2a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1H8"/>
+                <path d="M10 14v6"/>
+                <path d="M8 20h4"/>
+            </svg>
+            <span>5.0 Zadovoljstvo</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff3d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="14" height="6" rx="1"/>
+                <path d="M17 7h2a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1H8"/>
+                <path d="M10 14v6"/>
+                <path d="M8 20h4"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-30 mix-blend-difference text-white">
+        <div class="font-display text-2xl tracking-tighter">BGS<span class="text-[#ff3d00]">.</span></div>
+        <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest">
+            <a href="#mnenja" class="hover:text-[#ff3d00] transition-colors">Mnenja</a>
+            <a href="#delo" class="hover:text-[#ff3d00] transition-colors">Delo</a>
+            <a href="#kontakt" class="hover:text-[#ff3d00] transition-colors">Kontakt</a>
+        </nav>
+        <a href="tel:051251796" class="text-sm uppercase tracking-widest border border-white px-4 py-2 hover:bg-white hover:text-black transition-all">051 251 796</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="h-screen w-full flex flex-col justify-center px-6 md:px-12 relative plaster-texture overflow-hidden">
+        <div class="splash w-[600px] h-[600px] top-[-100px] right-[-100px]"></div>
+        
+        <div class="relative z-10">
+            <div class="overflow-hidden mb-4">
+                <h2 class="text-lg md:text-xl uppercase tracking-[0.3em] text-[#555] reveal-text"><span>Aljaž Orešnik s.p.</span></h2>
+            </div>
+            
+            <h1 class="font-display text-[15vw] md:text-[10vw] leading-[0.8] reveal-text mb-8">
+                <span>Slikopleskarstvo</span><br>
+                <span class="text-[#ff3d00]">brez kompromisov.</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mt-12">
+                <p class="max-w-md text-lg text-[#333] leading-relaxed">
+                    Ne delamo samo sten gladke. Ustvarjamo površine, ki dihajo. BGS CREW je sinergija natančnosti, dela in vrhunskih materialov.
+                </p>
+                <a href="#kontakt" class="group flex items-center gap-4 text-2xl font-display border-b-2 border-black pb-2 hover:gap-8 transition-all">
+                    Začni projekt 
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews / Mnenja (With Drips) -->
+    <section id="mnenja" class="py-24 px-6 md:px-12 relative bg-[#f3f0e7]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-8">
+                <div>
+                    <span class="text-sm uppercase tracking-widest text-[#555]">Dokazano</span>
+                    <h2 class="font-display text-6xl md:text-8xl mt-4">5.0 <span class="text-[#ff3d00]">★</span></h2>
+                    <p class="text-[#555] mt-2">Na podlagi 4 preverjenih mnenj strank.</p>
+                </div>
+                <p class="text-xl md:text-2xl max-w-lg text-right">
+                    Beseda <span class="line-through opacity-50">gre</span> <strong>leti</strong>. Pustimo, da naše delo govori zase.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="has-drips review-card bg-white p-8 border-2 border-black relative">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 15%;" data-h="40px"></div>
+                        <div class="drip" style="left: 80%;" data-h="25px"></div>
+                    </div>
+                    <div class="absolute -top-4 -left-4 bg-[#ff3d00] text-white px-3 py-1 font-bold text-xs uppercase">8 mesecev nazaj</div>
+                    <div class="flex mb-4 text-2xl text-[#ff3d00]">★★★★★</div>
+                    <p class="text-xl mb-6">"Prenovil kopalnico v nulo! Good guy :)"</p>
+                    <div class="border-t border-black pt-4 font-bold">David Strencan</div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="has-drips review-card bg-black text-white p-8 border-2 border-black relative md:mt-12">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 30%;" data-h="60px"></div>
+                        <div class="drip" style="left: 70%;" data-h="15px"></div>
+                    </div>
+                    <div class="absolute -top-4 -left-4 bg-white text-black px-3 py-1 font-bold text-xs uppercase">3 mesece nazaj</div>
+                    <div class="flex mb-4 text-2xl text-[#ff3d00]">★★★★★</div>
+                    <p class="text-xl mb-6">"Stene bele in gladke!"</p>
+                    <div class="border-t border-white pt-4 font-bold">Jaka Penezic</div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="has-drips review-card bg-white p-8 border-2 border-black relative">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 50%;" data-h="45px"></div>
+                        <div class="drip" style="left: 90%;" data-h="30px"></div>
+                    </div>
+                    <div class="absolute -top-4 -left-4 bg-[#ff3d00] text-white px-3 py-1 font-bold text-xs uppercase">9 mesecev nazaj</div>
+                    <div class="flex mb-4 text-2xl text-[#ff3d00]">★★★★★</div>
+                    <p class="text-xl mb-6">"Zelo zadovoljni, priporočam!👍"</p>
+                    <div class="border-t border-black pt-4 font-bold">Daša J</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work / Delo Gallery -->
+    <section id="delo" class="py-24 px-6 md:px-12 bg-[#111] text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <span class="text-sm uppercase tracking-widest text-[#888]">Portfolio</span>
+                <h2 class="font-display text-5xl md:text-7xl mt-4">Surove <span class="text-[#ff3d00]">površine</span>.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="has-drips frame bg-[#222]">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 20%;" data-h="120px"></div>
+                        <div class="drip" style="left: 75%;" data-h="60px"></div>
+                    </div>
+                    <div class="frame-img-wrap aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop" class="frame-img" alt="Slikopleskanje stene">
+                    </div>
+                </div>
+                <div class="has-drips frame bg-[#222] md:mt-12">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 40%;" data-h="180px"></div>
+                        <div class="drip" style="left: 85%;" data-h="90px"></div>
+                    </div>
+                    <div class="frame-img-wrap aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=800&auto=format&fit=crop" class="frame-img" alt="Arhitektura in omet">
+                    </div>
+                </div>
+                <div class="has-drips frame bg-[#222]">
+                    <div class="drip-container">
+                        <div class="drip" style="left: 10%;" data-h="50px"></div>
+                        <div class="drip" style="left: 60%;" data-h="140px"></div>
+                    </div>
+                    <div class="frame-img-wrap aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=800&auto=format&fit=crop" class="frame-img" alt="Detajl stene">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="py-24 px-6 md:px-12 bg-[#111] text-white plaster-texture relative overflow-hidden border-t-2 border-[#333]">
+        <div class="splash w-[800px] h-[800px] bottom-[-300px] left-[-200px]"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="overflow-hidden mb-8">
+                <h2 class="font-display text-[15vw] md:text-[8vw] reveal-text"><span>Pogovarjajmo se.</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div class="flex flex-col gap-8">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-[#888] mb-2">Lokacija</p>
+                        <p class="text-2xl">Tomšičeva ulica 11</p>
+                        <p class="text-2xl">3310 Žalec</p>
+                        <a href="https://maps.google.com/?q=7533%2B8W+Žalec" target="_blank" class="text-sm text-[#ff3d00] hover:underline mt-2 inline-block">Plus Code: 7533+8W Žalec ↗</a>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-[#888] mb-2">Kontakt</p>
+                        <a href="tel:051251796" class="text-4xl md:text-6xl font-display hover:text-[#ff3d00] transition-colors block">051 251 796</a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#333] md:pl-12 pt-8 md:pt-0">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-[#888] mb-4">Stranka</p>
+                        <p class="text-lg text-[#ccc]">Ne čakaj na gradbiščne zamude. Pokliči BGS CREW in svoj prostor postavi v roke mojstra, ki ve, kako narediti površino, ki bo prestala čas.</p>
+                    </div>
+                    <div class="mt-12">
+                        <a href="tel:051251796" class="inline-block bg-[#ff3d00] text-black font-display text-2xl px-8 py-4 hover:bg-white transition-colors">
+                            POKLIČI ZDAJ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-[#555] py-8 px-6 md:px-12 flex justify-between items-center border-t border-[#222]">
+        <p class="text-sm">© 2024 BGS CREW — Aljaž Orešnik s.p.</p>
+        <p class="text-sm">Slikopleskarstvo &amp; Prenove</p>
+    </footer>
+
+    <script>
+        // Custom Cursor Logic
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(dot, { duration: 0.1, x: e.clientX, y: e.clientY });
+            gsap.to(outline, { duration: 0.3, x: e.clientX, y: e.clientY });
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Text reveal animation
+        document.querySelectorAll('.reveal-text').forEach(container => {
+            const spans = container.querySelectorAll('span');
+            gsap.to(spans, {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: 'power4.out',
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: container,
+                    start: 'top 85%'
+                }
+            });
+        });
+
+        // Review cards stagger
+        gsap.from('.review-card', {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#mnenja',
+                start: 'top 70%'
+            }
+        });
+
+        // PAINT DRIPS ANIMATION LOGIC
+        document.querySelectorAll('.has-drips').forEach(section => {
+            const drips = section.querySelectorAll('.drip');
+            
+            // Set initial state
+            gsap.set(drips, { height: 0, opacity: 0 });
+
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top 75%',
+                onEnter: () => {
+                    drips.forEach((drip, index) => {
+                        const targetHeight = drip.dataset.h || '40px';
+                        gsap.to(drip, {
+                            height: targetHeight,
+                            opacity: 1,
+                            duration: 1.5,
+                            delay: index * 0.2, // Stagger the drips
+                            ease: 'power2.out'
+                        });
+                    });
+                }
+            });
+        });
+
+        // Gallery Images Reveal
+        gsap.from('.frame', {
+            y: 80,
+            opacity: 0,
+            scale: 0.95,
+            duration: 1.2,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#delo',
+                start: 'top 70%'
+            }
+        });
+    </script>
+</body>
+</html>

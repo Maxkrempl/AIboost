@@ -1,0 +1,57 @@
+[
+  {
+    "original": "EGG YOLK 64°, potato espuma, basil seeds",
+    "translations": {
+      "hr": "ŽUMANJCE 64°, pjena od krumpira, sjemenke bosiljka: Biranim postupkom kuhanja na 64°C, žumanjak postaje baršunasto kremast, savršeno se stapajući s laganom pjenom od krumpira i osvježavajućim sjemenkama bosiljka koji dodaju notu elegancije.",
+      "en": "EGG YOLK 64°, potato espuma, basil seeds: Slowly cooked at 64°C, the yolk turns velvety and rich, paired with a light potato foam and delicate basil seeds for a refined, modern twist.",
+      "de": "EIGELB 64°, Kartoffelespuma, Basilikumsamen: Bei 64°C schonend gegart, wird das Eigelb samtig-cremig, harmoniert mit luftiger Kartoffelespuma und feinen Basilikumsamen für eine elegante, moderne Note.",
+      "it": "TUORLO D'UOVO 64°, spuma di patate, semi di basilico: Cotto lentamente a 64°C, il tuorlo diventa vellutato e ricco, accompagnato da una leggera spuma di patate e delicati semi di basilico per un tocco raffinato e moderno.",
+      "sl": "RUMENJAK 64°, pene iz krompirja, semena bazilike: Počasno kuhan pri 64°C, rumenjak postane žametno kremast, v kombinaciji z lahkotno peno iz krompirja in nežnimi semeni bazilike za prefinjen sodoben pridih.",
+      "sr": "ŽUMANCE 64°, pjena od krompira, semenke bosiljka: Lagano kuvano na 64°C, žumance postaje baršunasto kremasto, uz laganu pjenu od krompira i delikatne semenke bosiljka za sofisticiran moderni dodir."
+    }
+  },
+  {
+    "original": "TOMATO DOBRAVAC, aubergine, avocado, white tomato juice",
+    "translations": {
+      "HR": "Dobravac od rajčice, patlidžan, avokado, bijeli sok od rajčice",
+      "EN": "Dobravac tomato, aubergine, avocado, white tomato juice",
+      "DE": "Dobravac-Tomate, Aubergine, Avocado, weißer Tomatensaft",
+      "IT": "Pomodoro Dobravac, melanzane, avocado, succo di pomodoro bianco",
+      "SL": "Dobravški paradižnik, jajčevci, avokado, beli paradižnikov sok",
+      "SR": "Dobravac paradajz, patlidžan, avokado, beli sok od paradajza"
+    }
+  },
+  {
+    "original": "BEETROOT gnocchi, carpaccio, sesame, ginger, horseradish",
+    "translations": {
+      "hr": "Gnjoki od cikle s carpacciom, sezamom, đumbirom i hrenom - nježni domaći gnjoki od cikle posluženi s tanko rezanom carpacciom, hrskavim sezamom, svježim đumbirom i pikantnim hrenom za savršen balans okusa.",
+      "en": "Beetroot gnocchi with carpaccio, sesame, ginger, and horseradish - delicate homemade beetroot gnocchi served with thinly sliced carpaccio, crunchy sesame, fresh ginger, and zesty horseradish for a perfect flavor balance.",
+      "de": "Rote-Bete-Gnocchi mit Carpaccio, Sesam, Ingwer und Meerrettich - zarte hausgemachte Rote-Bete-Gnocchi serviert mit hauchdünnem Carpaccio, knusprigem Sesam, frischem Ingwer und scharfem Meerrettich für ein perfektes Geschmackserlebnis.",
+      "it": "Gnocchi di barbabietola con carpaccio, sesamo, zenzero e rafano - delicati gnocchi fatti in casa di barbabietola serviti con carpaccio tagliato sottile, sesamo croccante, zenzero fresco e rafano piccante per un perfetto equilibrio di sapori.",
+      "sl": "Gnjoki iz rdeče pese s carpacciom, sezamom, ingverjem in hrenom - nežni domači gnjoki iz rdeče pese, postreženi s tanko rezanim carpacciom, hrustljavim sezamom, svežim ingverjem in ostrim hrenom za popolno ravnovesje okusov.",
+      "sr": "Gnjoki od cvekle sa carpacciom, susamom, đumbirom i renom - nežni domaći gnjoki od cvekle servirani sa tanko rezanom carpacciom, hrskavim susamom, svežim đumbirom i pikantnim renom za savršen balans ukusa."
+    }
+  },
+  {
+    "original": "TUNA X 3 tartar tartelette, dried, with sesame",
+    "translations": {
+      "HR": "Tartar od tune X 3 u tarteleti, sušeni, sa sezamom",
+      "EN": "Tuna X 3 tartar tartelette, dried, with sesame",
+      "DE": "Thunfisch X 3 Tatar-Tartelette, getrocknet, mit Sesam",
+      "IT": "Tartare di tonno X 3 in tartelette, essiccata, con sesamo",
+      "SL": "Tartar iz tune X 3 v tarteleti, sušen, s sezamom",
+      "SR": "Tartar od tune X 3 u tarteleti, sušeni, sa susamom"
+    }
+  },
+  {
+    "original": "LOBSTER vierge, dumpling, carrot cream, bisque espuma",
+    "translations": {
+      "HR": "JASTOG vierge, okruglica, krem od mrkve, espuma od bisquea",
+      "EN": "LOBSTER vierge, dumpling, carrot cream, bisque espuma",
+      "DE": "HUMMER vierge, Teigtäschchen, Karottencreme, Bisque-Espuma",
+      "IT": "ARAGOSTA vierge, raviolo, crema di carote, espuma di bisque",
+      "SL": "JASTOG vierge, cmok, korenčkova krema, bisque espuma",
+      "SR": "ЈАСТОГ vierge, кнедла, крем од шаргарепе, еспума од биска"
+    }
+  }
+]

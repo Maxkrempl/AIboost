@@ -1,0 +1,70 @@
+=== BOOSTSUITE LEAD SCOUT REPORT ===
+Timestamp: 2026-05-20 15:41 CEST (Europe/Ljubljana)
+
+--- STEP 1: Lead Scout Queries ---
+Query 1: "SEO agency email contact"
+Query 2: "\"SEO freelancer\" email contact"
+
+--- STEP 2-3: Web Search & Email Extraction ---
+Searches performed: 6 queries total
+Results analyzed: ~60 search results + ~15 page fetches
+
+New lead found from web search:
+  - Super Digital | heroes@super-digital.co.uk | https://wearesuper.digital/ | agency (UK)
+    Source: web-search, non-generic branded email
+
+Filtered out (generic emails):
+  - seoagency.com → info@seoagency.com (info@)
+  - seattleorganicseo.com → hello@seattleorganicseo.com (hello@)
+  - usseoservices.net → info@usseoservices.net (info@)
+  - buddhaseo.com → info@buddhaseo.com (info@)
+  - legenddigitech.com → hello@legenddigitech.com (hello@)
+
+Filtered out (already in DB):
+  - Siege Media → contact@siegemedia.com (already exists)
+  - Wixseoexpert → dhruvnimbark@gmail.com (already exists)
+  - SEO Inc → info@seoinc.com (already exists)
+
+--- STEP 4: CSV Saved ---
+File: lead-gen/boostsuite/leads-2026-05-20.csv
+Leads saved: 1 (Super Digital)
+
+--- STEP 5: Audit Pipeline ---
+Script: python3 agents/lead_pipeline.py --app boostsuite --limit 2
+Source CSV: new-agencies.csv (pipeline's internal source)
+
+Lead 1: Risely Digital
+  Website: https://riselydigital.com
+  Email: info@riselydigital.com
+  Audit Score: 30/100 (Grade: F)
+  Issues found:
+    - ❌ SEO: Title Tag — Missing or too short
+    - ❌ SEO: Meta Description — Missing or too short
+    - ❌ Security: HSTS — Strict-Transport-Security not set
+    - ❌ Security: MIME Type Protection — X-Content-Type-Options not set
+    - ⚠️ Security: Server Info — Server exposed: Apache
+    - ❌ Performance: Compression — No compression detected
+    - ❌ Performance: Browser Caching — No cache headers
+    - ⚠️ Performance: Resource Hints — No preconnect/preload hints
+  Email queued: boostsuite-20260520-154124-0.json
+
+Lead 2: SLADE
+  Website: https://slade.hr
+  Email: info@slade.hr
+  Audit Score: 59/100 (Grade: F)
+  Issues found:
+    - ❌ Security: HSTS — Strict-Transport-Security not set
+    - ❌ Security: MIME Type Protection — X-Content-Type-Options not set
+    - ⚠️ Security: Server Info — Server exposed: cloudflare
+    - ❌ Performance: Viewport Meta — No viewport meta tag
+    - ⚠️ Performance: Resource Hints — No preconnect/preload hints
+    - ❌ Accessibility: Zoom Allowed — Zoom is disabled!
+    - ⚠️ Accessibility: Heading Hierarchy — 6 skipped heading levels
+    - ❌ Cookies & Privacy: Privacy Policy — No privacy policy link
+  Email queued: boostsuite-20260520-154124-1.json
+
+--- STEP 6: Summary ---
+Total leads found this run: 1 (new from web search) + 2 (from pipeline CSV)
+Emails queued: 2
+Queue dir: /home/darko/.openclaw/workspace/outreach/queue
+Status: ✅ COMPLETE

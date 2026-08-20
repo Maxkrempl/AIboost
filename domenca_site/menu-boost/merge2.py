@@ -1,0 +1,464 @@
+#!/usr/bin/env python3
+"""Merge landing page + app into single index.html — clean version"""
+import re
+
+# Read files
+with open('/home/darko/.openclaw/workspace/domenca_site/menu-boost/app.html') as f:
+    app = f.read()
+
+# We'll build the index.html from scratch using the landing page structure
+# and embedding the app inside it
+
+# Extract app CSS
+app_css_match = re.search(r'<style>(.*?)</style>', app, re.DOTALL)
+app_css = app_css_match.group(1) if app_css_match else ''
+
+# Extract app HTML body (between <body> and first <script>)
+app_body_match = re.search(r'<body>\s*(.*?)\s*<script>', app, re.DOTALL)
+app_body = app_body_match.group(1).strip() if app_body_match else ''
+
+# Extract app JS (the main IIFE script)
+app_js_match = re.search(r'<script>\s*\(function\(\)\s*\{.*?\}\)\(\);\s*</script>', app, re.DOTALL)
+app_js = app_js_match.group(0) if app_js_match else ''
+
+# Prefix CSS: replace :root with #appOverlay, prefix selectors
+def prefix_css(css, prefix):
+    """Prefix CSS selectors, handling :root and @keyframes properly"""
+    # First, replace :root with the prefix element
+    css = css.replace(':root{', f'{prefix}{{')
+    css = css.replace(':root {', f'{prefix} {{')
+    
+    # Now prefix all other selectors
+    result = []
+    i = 0
+    while i < len(css):
+        # Skip comments
+        if css[i:i+2] == '/*':
+            end = css.find('*/', i)
+            if end == -1:
+                result.append(css[i:])
+                break
+            result.append(css[i:end+2])
+            i = end + 2
+            continue
+        
+        # Skip whitespace
+        if css[i] in ' \t\n\r':
+            result.append(css[i])
+            i += 1
+            continue
+        
+        # Find next rule
+        brace = css.find('{', i)
+        if brace == -1:
+            result.append(css[i:])
+            break
+        
+        selector = css[i:brace].strip()
+        
+        # Skip @keyframes (don't prefix)
+        if selector.startswith('@keyframes'):
+            depth = 1
+            j = brace + 1
+            while j < len(css) and depth > 0:
+                if css[j] == '{': depth += 1
+                elif css[j] == '}': depth -= 1
+                j += 1
+            result.append(css[i:j])
+            i = j
+            continue
+        
+        # Skip @media (prefix the inner selectors)
+        if selector.startswith('@media'):
+            depth = 1
+            j = brace + 1
+            while j < len(css) and depth > 0:
+                if css[j] == '{': depth += 1
+                elif css[j] == '}': depth -= 1
+                j += 1
+            result.append(css[i:j])
+            i = j
+            continue
+        
+        # Find closing brace
+        depth = 1
+        j = brace + 1
+        while j < len(css) and depth > 0:
+            if css[j] == '{': depth += 1
+            elif css[j] == '}': depth -= 1
+            j += 1
+        
+        props = css[brace:j]
+        
+        # Skip if already prefixed
+        if selector.startswith(prefix):
+            result.append(css[i:j])
+            i = j
+            continue
+        
+        # Skip html, body selectors (don't apply inside a div)
+        if selector in ('html', 'body', 'html,body'):
+            i = j
+            continue
+        
+        # Prefix selector
+        selectors = [s.strip() for s in selector.split(',')]
+        prefixed = [f'{prefix} {s}' for s in selectors]
+        result.append(', '.join(prefixed) + ' ' + props)
+        i = j
+    
+    return ''.join(result)
+
+prefixed_css = prefix_css(app_css, '#appOverlay')
+
+# Fix app body: update back button
+app_body = app_body.replace(
+    '<button class="header-btn" id="btnPrefsBack">← Nazaj</button>',
+    '<button class="header-btn" id="btnPrefsBack" onclick="closeApp()">← Nazaj</button>'
+)
+
+# Fix app JS: add openApp/closeApp functions
+app_js_fixed = app_js.replace(
+    "function showScreen(name) {",
+    """function closeApp() {
+    document.getElementById('appOverlay').style.display = 'none';
+    document.getElementById('landingView').style.display = 'block';
+    if (typeof state !== 'undefined' && state.stream) {
+      state.stream.getTracks().forEach(function(t) { t.stop(); });
+      state.stream = null;
+    }
+  }
+  function openApp() {
+    document.getElementById('appOverlay').style.display = 'block';
+    document.getElementById('landingView').style.display = 'none';
+    showScreen('welcome');
+  }
+  function showScreen(name) {"""
+)
+
+# Fix camera close button
+app_js_fixed = app_js_fixed.replace(
+    "$('btnCameraClose').onclick = () => { stopCamera(); showScreen('welcome'); };",
+    "$('btnCameraClose').onclick = () => { stopCamera(); closeApp(); };"
+)
+
+# Build the complete index.html
+html = '''<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MenuBoost — AI Menu Descriptions for Restaurants | 10 Languages</title>
+<meta name="description" content="MenuBoost uses AI to generate appetizing menu descriptions in 10 languages. Photograph your menu, get descriptions in seconds. Free to try.">
+<meta name="keywords" content="AI menu, restaurant menu, menu description, menu translation, AI for restaurants, menu generator">
+<meta property="og:title" content="MenuBoost — AI Menu Descriptions for Restaurants">
+<meta property="og:description" content="Photograph menus, translate instantly, generate AI descriptions in 10 languages.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hd-webdesign.si/menu-boost/">
+<meta property="og:image" content="https://hd-webdesign.si/menu-boost/images/menuboost-icon-512.png">
+<link rel="canonical" href="https://hd-webdesign.si/menu-boost/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MenuBoost",
+  "description": "AI-powered menu description generator for restaurants.",
+  "url": "https://hd-webdesign.si/menu-boost/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "19", "priceCurrency": "EUR"},
+  "featureList": "Menu translation, AI descriptions, 10 languages, 6 writing styles, photo scanning"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is MenuBoost?", "acceptedAnswer": {"@type": "Answer", "text": "MenuBoost is an AI tool that generates professional menu descriptions for restaurants in 10 languages."}}},
+    {"@type": "Question", "name": "How much does MenuBoost cost?", "acceptedAnswer": {"@type": "Answer", "text": "3 free dishes. Pro: €19/month for unlimited dishes, all languages and styles."}}},
+    {"@type": "Question", "name": "What languages does MenuBoost support?", "acceptedAnswer": {"@type": "Answer", "text": "Slovenian, English, German, Italian, Croatian, Serbian, French, Spanish, Turkish, and Greek."}}}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+<meta name="theme-color" content="#F4F1EA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="images/menuboost-favicon.svg">
+<link rel="apple-touch-icon" href="images/menuboost-icon-180.png">
+<style>
+/* === LANDING PAGE STYLES === */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F1EA;--text:#111111;--text-secondary:#555555;--text-tertiary:#888888;
+  --accent-green:#6D8654;--accent-green-light:#E8EDE3;--accent-green-dark:#5A7045;
+  --accent-orange:#B96A3C;--accent-orange-light:#F5E6DA;
+  --warm:#F3EDE3;
+  --border:#D8D2C8;--border-light:#E8E4DD;
+  --white:#FFFFFF;--white-warm:#FAFAF7;
+  --shadow-sm:0 1px 3px rgba(17,17,17,0.04);
+  --shadow-md:0 4px 16px rgba(17,17,17,0.06);
+  --shadow-lg:0 8px 32px rgba(17,17,17,0.08);
+  --shadow-card:0 2px 8px rgba(17,17,17,0.04),0 0 0 1px rgba(17,17,17,0.03);
+  --radius:24px;--radius-sm:16px;--radius-xs:12px;
+}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.page{max-width:430px;margin:0 auto;min-height:100dvh;position:relative;overflow:hidden}
+.serif{font-family:'Instrument Serif',serif}
+h1{font-family:'Instrument Serif',serif;font-weight:400;line-height:1.05;letter-spacing:-0.03em}
+h2{font-family:'Instrument Serif',serif;font-weight:400;line-height:1.1;letter-spacing:-0.02em}
+h3{font-family:'Space Grotesk',sans-serif;font-weight:600;line-height:1.2;letter-spacing:-0.01em}
+.label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-tertiary)}
+.section{padding:0 24px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;position:sticky;top:0;z-index:100;background:rgba(244,241,234,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);letter-spacing:-0.02em}
+.nav-logo span{color:var(--accent-green)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-link{font-size:13px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:color 0.15s}
+.nav-link:hover{color:var(--text)}
+.nav-cta{font-size:13px;font-weight:500;color:var(--white);background:var(--text);padding:10px 20px;border-radius:100px;transition:all 0.2s}
+.nav-cta:hover{opacity:0.85}
+.hero{padding:60px 24px 48px;text-align:center;position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:0.08em;color:var(--accent-green);margin-bottom:24px;text-transform:uppercase}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-green)}
+.hero h1{font-size:clamp(48px,12vw,72px);margin-bottom:20px;color:var(--text)}
+.hero h1 em{font-style:italic;color:var(--accent-green)}
+.hero-sub{font-size:clamp(17px,4.5vw,20px);color:var(--text-secondary);max-width:340px;margin:0 auto 40px;line-height:1.5;font-weight:300}
+.hero-note{font-size:13px;color:var(--text-tertiary);margin-top:16px;font-weight:300}
+.hero-illustration{width:100%;max-width:340px;height:220px;margin:0 auto 40px;position:relative;display:flex;align-items:center;justify-content:center}
+.illust-plate{width:160px;height:160px;border-radius:50%;border:2px solid var(--border);background:var(--white);position:relative;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md)}
+.illust-plate::before{content:'';position:absolute;inset:8px;border-radius:50%;border:1px solid var(--border-light)}
+.illust-plate-icon{font-size:48px;opacity:0.6}
+.illust-menu{position:absolute;right:20px;top:10px;width:100px;height:130px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px;box-shadow:var(--shadow-sm);transform:rotate(3deg)}
+.illust-menu-line{height:2px;background:var(--border);border-radius:1px;margin-bottom:8px}
+.illust-menu-line:nth-child(1){width:60%;background:var(--text-tertiary);opacity:0.3}
+.illust-menu-line:nth-child(2){width:80%;opacity:0.2}
+.illust-menu-line:nth-child(3){width:50%;opacity:0.15}
+.illust-menu-line:nth-child(4){width:70%;opacity:0.2}
+.illust-menu-line:nth-child(5){width:40%;opacity:0.15}
+.illust-branch{position:absolute;left:16px;bottom:20px;font-size:32px;opacity:0.4;transform:rotate(-15deg)}
+.illust-texture{position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(17,17,17,0.03) 1px,transparent 0);background-size:16px 16px;pointer-events:none;border-radius:var(--radius)}
+.scan-cta{padding:0 24px;margin-bottom:64px}
+.scan-card{background:var(--accent-green);border-radius:var(--radius);padding:32px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(109,134,84,0.2)}
+.scan-card::before{content:'';position:absolute;top:-40%;right:-20%;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.06)}
+.scan-card::after{content:'';position:absolute;bottom:-30%;left:-10%;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.scan-card h2{color:var(--white);font-size:32px;margin-bottom:8px;position:relative;z-index:1}
+.scan-card p{color:rgba(255,255,255,0.75);font-size:14px;margin-bottom:24px;position:relative;z-index:1;font-weight:300}
+.scan-btn{display:inline-flex;align-items:center;gap:10px;background:var(--white);color:var(--accent-green);padding:16px 32px;border-radius:100px;font-size:15px;font-weight:600;transition:all 0.2s;position:relative;z-index:1;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+.scan-btn:hover{transform:scale(1.02);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.scan-btn:active{transform:scale(0.98)}
+.scan-btn svg{width:20px;height:20px}
+.scan-note{font-size:12px;color:rgba(255,255,255,0.5);margin-top:16px;position:relative;z-index:1}
+.features{padding:0 24px;margin-bottom:72px}
+.features .label{margin-bottom:20px}
+.features-grid{display:flex;flex-direction:column;gap:12px}
+.feature-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius);padding:24px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s;cursor:pointer;box-shadow:var(--shadow-card)}
+.feature-card:hover{border-color:var(--border);box-shadow:var(--shadow-md)}
+.feature-icon{width:52px;height:52px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.feature-icon.green{background:var(--accent-green-light)}
+.feature-icon.orange{background:var(--accent-orange-light)}
+.feature-icon.warm{background:var(--warm)}
+.feature-content{flex:1;min-width:0}
+.feature-name{font-size:16px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.feature-desc{font-size:13px;color:var(--text-secondary);line-height:1.5;font-weight:300}
+.feature-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.feature-tag{font-size:11px;font-weight:500;padding:4px 10px;border-radius:100px;background:var(--bg);color:var(--text-tertiary);border:1px solid var(--border-light)}
+.how{padding:0 24px;margin-bottom:72px}
+.how .label{margin-bottom:12px}
+.how h2{font-size:clamp(32px,8vw,42px);margin-bottom:40px}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--border)}
+.timeline-step{position:relative;margin-bottom:32px}
+.timeline-step:last-child{margin-bottom:0}
+.timeline-dot{position:absolute;left:-28px;top:6px;width:15px;height:15px;border-radius:50%;border:2px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center}
+.timeline-step.active .timeline-dot{border-color:var(--accent-green);background:var(--accent-green)}
+.timeline-step.active .timeline-dot::after{content:'✓';color:white;font-size:8px;font-weight:700}
+.timeline-num{font-size:11px;font-weight:600;color:var(--text-tertiary);letter-spacing:0.1em;margin-bottom:4px}
+.timeline-title{font-size:17px;font-weight:600;color:var(--text);margin-bottom:4px}
+.timeline-desc{font-size:13px;color:var(--text-secondary);font-weight:300;line-height:1.5}
+.benefits{padding:0 24px;margin-bottom:72px}
+.benefits .label{margin-bottom:12px}
+.benefits h2{font-size:clamp(32px,8vw,42px);margin-bottom:32px}
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.benefit-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius);padding:24px 20px;text-align:center;box-shadow:var(--shadow-card);transition:all 0.2s}
+.benefit-card:hover{border-color:var(--border);box-shadow:var(--shadow-md)}
+.benefit-icon{font-size:32px;margin-bottom:12px}
+.benefit-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.benefit-desc{font-size:12px;color:var(--text-secondary);font-weight:300;line-height:1.4}
+.final-cta{padding:0 24px;margin-bottom:72px}
+.final-card{background:var(--text);border-radius:var(--radius);padding:48px 32px;text-align:center;position:relative;overflow:hidden}
+.final-card::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;border-radius:50%;background:rgba(109,134,84,0.15)}
+.final-card h2{color:var(--white);font-size:clamp(28px,7vw,36px);margin-bottom:12px;position:relative}
+.final-card p{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:28px;position:relative;font-weight:300}
+.final-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent-green);color:var(--white);padding:16px 36px;border-radius:100px;font-size:15px;font-weight:600;transition:all 0.2s;position:relative}
+.final-btn:hover{background:var(--accent-green-dark)}
+.final-btn:active{transform:scale(0.97)}
+.footer{padding:32px 24px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Instrument Serif',serif;font-size:18px;color:var(--text)}
+.footer-logo span{color:var(--accent-green)}
+.footer-links{display:flex;gap:16px}
+.footer-link{font-size:12px;color:var(--text-tertiary);text-decoration:none}
+.footer-link:hover{color:var(--text-secondary)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero{animation:fadeUp 0.6s ease}
+.scan-card{animation:fadeUp 0.6s ease 0.1s both}
+.feature-card{animation:fadeUp 0.4s ease both}
+.feature-card:nth-child(1){animation-delay:0.15s}
+.feature-card:nth-child(2){animation-delay:0.25s}
+.feature-card:nth-child(3){animation-delay:0.35s}
+.timeline-step{animation:fadeUp 0.4s ease both}
+.timeline-step:nth-child(1){animation-delay:0.1s}
+.timeline-step:nth-child(2){animation-delay:0.15s}
+.timeline-step:nth-child(3){animation-delay:0.2s}
+.timeline-step:nth-child(4){animation-delay:0.25s}
+.timeline-step:nth-child(5){animation-delay:0.3s}
+@media(min-width:768px){
+  .page{max-width:480px}
+  .hero{padding:80px 32px 56px}
+  .features-grid{gap:16px}
+  .benefits-grid{gap:16px}
+}
+
+/* === APP OVERLAY === */
+#appOverlay{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:#FAF7F2;overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+#appOverlay .app{height:auto;min-height:100dvh;display:flex;flex-direction:column}
+</style>
+<style>
+/* === APP STYLES (scoped) === */
+''' + prefixed_css + '''
+</style>
+</head>
+<body>
+
+<!-- LANDING VIEW -->
+<div id="landingView">
+<div class="page">
+  <nav class="nav">
+    <div class="nav-logo">Menu<span>Boost</span></div>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Funkcije</a>
+      <a href="#how" class="nav-link">Kako deluje</a>
+      <a class="nav-cta" href="#" onclick="openApp();return false;">Začni</a>
+    </div>
+  </nav>
+  <section class="hero section">
+    <div class="hero-eyebrow">AI for modern restaurants</div>
+    <h1 class="serif">Your menu,<br><em>beautifully</em> told.</h1>
+    <p class="hero-sub">Photograph your menu, get AI descriptions in 10 languages. Instant, appetizing, ready to print.</p>
+    <div class="hero-illustration">
+      <div class="illust-texture"></div>
+      <div class="illust-plate"><div class="illust-plate-icon">🍽️</div></div>
+      <div class="illust-menu">
+        <div class="illust-menu-line"></div><div class="illust-menu-line"></div>
+        <div class="illust-menu-line"></div><div class="illust-menu-line"></div>
+        <div class="illust-menu-line"></div>
+      </div>
+      <div class="illust-branch">🫒</div>
+    </div>
+    <p class="hero-note">Brezplačno začnite z 3 jedmi</p>
+  </section>
+  <div class="scan-cta">
+    <div class="scan-card">
+      <h2 class="serif">Skeniraj meni</h2>
+      <p>Fotografiraj ali naloži sliko svojega menija</p>
+      <button class="scan-btn" onclick="openApp()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+        Odpri kamero
+      </button>
+      <p class="scan-note">Takoj brez registracije</p>
+    </div>
+  </div>
+  <section class="features" id="features">
+    <div class="label">Funkcije</div>
+    <h2 class="serif" style="font-size:clamp(32px,8vw,42px);margin-bottom:24px">Vse kar vaš meni potrebuje.</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon green">🌐</div><div class="feature-content"><div class="feature-name">Prevajanje menijev</div><div class="feature-desc">Takojšnje prevajanje v 10 jezikov. Idealno za turistične restavracije.</div><div class="feature-tags"><span class="feature-tag">🇸🇮 Slovenščina</span><span class="feature-tag">🇬🇧 Angleščina</span><span class="feature-tag">🇩🇪 Nemščina</span><span class="feature-tag">+7</span></div></div></div>
+      <div class="feature-card"><div class="feature-icon orange">✨</div><div class="feature-content"><div class="feature-name">AI opisi jedi</div><div class="feature-desc">Profesionalni opisi prilagojeni vašemu slogu — od fine dining do Instagrama.</div><div class="feature-tags"><span class="feature-tag">Fine Dining</span><span class="feature-tag">Casual</span><span class="feature-tag">Michelin</span><span class="feature-tag">Instagram</span></div></div></div>
+      <div class="feature-card"><div class="feature-icon warm">📋</div><div class="feature-content"><div class="feature-name">Moji meniji</div><div class="feature-desc">Shranjujte, urejajte in izvažajte svoje menije. Vedno pri roki.</div><div class="feature-tags"><span class="feature-tag">Shrani</span><span class="feature-tag">Uredi</span><span class="feature-tag">Izvozi</span></div></div></div>
+    </div>
+  </section>
+  <section class="how" id="how">
+    <div class="label">Kako deluje</div>
+    <h2 class="serif">Pet preprostih korakov.</h2>
+    <div class="timeline">
+      <div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-num">01</div><div class="timeline-title">Slikajte meni</div><div class="timeline-desc">Odprite kamero in fotografirajte svoj papirnat meni.</div></div>
+      <div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-num">02</div><div class="timeline-title">AI prepozna jedi</div><div class="timeline-desc">Naša umetna inteligenca samodejno prepozna vse jedi na sliki.</div></div>
+      <div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-num">03</div><div class="timeline-title">Izberite slog</div><div class="timeline-desc">Izberite slog opisov: poetski, klasičen, enostaven, za dostavo ali social.</div></div>
+      <div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-num">04</div><div class="timeline-title">Prevajanje</div><div class="timeline-desc">Opisi se samodejno prevedejo v 10 jezikov.</div></div>
+      <div class="timeline-step active"><div class="timeline-dot"></div><div class="timeline-num">05</div><div class="timeline-title">Kopirajte in uporabite</div><div class="timeline-desc">Kopirajte opise z enim klikom in jih dodajte v svoj meni.</div></div>
+    </div>
+  </section>
+  <section class="benefits">
+    <div class="label">Prednosti</div>
+    <h2 class="serif" style="margin-bottom:32px">Zakaj restavracije izberejo MenuBoost.</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon">⚡</div><div class="benefit-name">10 sekund</div><div class="benefit-desc">Namesto ur pisanja — takojšni rezultati.</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🌍</div><div class="benefit-name">10 jezikov</div><div class="benefit-desc">En klik za prevod v 10 jezikov.</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🎨</div><div class="benefit-name">5 slogov</div><div class="benefit-desc">Od fine dining do Instagrama.</div></div>
+      <div class="benefit-card"><div class="benefit-icon">💰</div><div class="benefit-name">€19/mesec</div><div class="benefit-desc">Manj kot en gost na mesec.</div></div>
+    </div>
+  </section>
+  <section class="how" style="margin-bottom:72px">
+    <div class="label">Pogosta vprašanja</div>
+    <h2 class="serif" style="font-size:clamp(28px,7vw,36px);margin-bottom:32px">Vprašanja in odgovori.</h2>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-card)"><h3 style="font-size:15px;font-weight:600;margin-bottom:6px">Kaj je MenuBoost?</h3><p style="font-size:13px;color:var(--text-secondary);font-weight:300;line-height:1.5">MenuBoost je AI orodje ki v 10 sekundah ustvari profesionalne opise jedi za vaš jedilnik v 10 jezikih.</p></div>
+      <div style="background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-card)"><h3 style="font-size:15px;font-weight:600;margin-bottom:6px">Koliko stane?</h3><p style="font-size:13px;color:var(--text-secondary);font-weight:300;line-height:1.5">3 jedi brezplačno. Pro paket: €19/mesec za neomejeno število jedi, vse jezike in vse slog.</p></div>
+      <div style="background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-card)"><h3 style="font-size:15px;font-weight:600;margin-bottom:6px">Katere jezike podpirate?</h3><p style="font-size:13px;color:var(--text-secondary);font-weight:300;line-height:1.5">Slovenščino, angleščino, nemščino, italijanščino, hrvaščino, srbščino, francoščino, španščino, turščino in grščino.</p></div>
+      <div style="background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-card)"><h3 style="font-size:15px;font-weight:600;margin-bottom:6px">Ali lahko slikam papirnati meni?</h3><p style="font-size:13px;color:var(--text-secondary);font-weight:300;line-height:1.5">Da! AI prepozna jedi direktno iz fotografije vašega jedilnika. Vpišete lahko tudi ročno.</p></div>
+      <div style="background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-card)"><h3 style="font-size:15px;font-weight:600;margin-bottom:6px">Katere slogi opisov so na voljo?</h3><p style="font-size:13px;color:var(--text-secondary);font-weight:300;line-height:1.5">6 slogov: Poetično, Klasično, Enostavno, Dostava (za Wolt/Bolt), Social (za Instagram), Michelin (fine dining).</p></div>
+    </div>
+  </section>
+  <section class="final-cta">
+    <div class="final-card">
+      <h2 class="serif">Pripravljeni začeti?</h2>
+      <p>Brezplačno začnite z 3 jedmi. Brez kartice.</p>
+      <button class="final-btn" onclick="openApp()">Začni brezplačno
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-logo">Menu<span>Boost</span></div>
+    <div class="footer-links">
+      <a href="privacy.html" class="footer-link">Zasebnost</a>
+      <a href="#" class="footer-link" onclick="openApp();return false;">Aplikacija</a>
+    </div>
+  </footer>
+</div>
+</div>
+
+<!-- APP OVERLAY (hidden by default) -->
+<div id="appOverlay">
+''' + app_body + '''
+</div>
+
+<script src="i18n-app.js"></script>
+<script>
+''' + app_js_fixed + '''
+</script>
+</body>
+</html>'''
+
+with open('/home/darko/.openclaw/workspace/domenca_site/menu-boost/index.html', 'w') as f:
+    f.write(html)
+
+print(f"Written {len(html)} bytes")

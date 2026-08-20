@@ -1,0 +1,166 @@
+{
+  "url": "https://www.restavracijamak.si",
+  "timestamp": "2026-06-15T18:51:34.527128",
+  "schema_org": {
+    "has_json_ld": true,
+    "json_ld_types": [
+      "ImageGallery"
+    ],
+    "has_microdata": false,
+    "microdata_types": [],
+    "raw_schemas": [
+      {
+        "@context": "https://schema.org/",
+        "@type": "ImageGallery",
+        "associatedMedia": [
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/300747166_593988492428781_3535187586549452839_n.jpg",
+            "name": "300747166_593988492428781_3535187586549452839_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/299999443_590720699422227_8927121665364395916_n.jpg",
+            "name": "299999443_590720699422227_8927121665364395916_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/297226333_579373573890273_10271084485902961_n.jpg",
+            "name": "297226333_579373573890273_10271084485902961_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/297142390_579373523890278_3492329184317763812_n.jpg",
+            "name": "297142390_579373523890278_3492329184317763812_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/297027182_579373413890289_25046382855207805_n.jpg",
+            "name": "297027182_579373413890289_25046382855207805_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/296274292_579909590503338_17944321495621004_n.jpg",
+            "name": "296274292_579909590503338_17944321495621004_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/296044718_574759597685004_2257814286261529476_n.jpg",
+            "name": "296044718_574759597685004_2257814286261529476_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/290548374_5288101804579956_8242231642083842685_n.jpg",
+            "name": "290548374_5288101804579956_8242231642083842685_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/288217013_5256439287746208_7603456263467412535_n.jpg",
+            "name": "288217013_5256439287746208_7603456263467412535_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/287449123_5246661568723980_3311769880403466544_n.jpg",
+            "name": "287449123_5246661568723980_3311769880403466544_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/286379941_5236281103095360_7277574983621837448_n.jpg",
+            "name": "286379941_5236281103095360_7277574983621837448_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/286173599_5232642716792532_2176362069108728738_n.jpg",
+            "name": "286173599_5232642716792532_2176362069108728738_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/285341153_5226772397379564_9091316673822232970_n.jpg",
+            "name": "285341153_5226772397379564_9091316673822232970_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/284566912_5212933955430075_5023040733927722401_n.jpg",
+            "name": "284566912_5212933955430075_5023040733927722401_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/284174251_5183155505074587_2601296460437703390_n.jpg",
+            "name": "284174251_5183155505074587_2601296460437703390_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/282565032_5183155201741284_592732279250070059_n.jpg",
+            "name": "282565032_5183155201741284_592732279250070059_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/281752759_5147217052001766_3523562432271161060_n.jpg",
+            "name": "281752759_5147217052001766_3523562432271161060_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/281012424_5162824960440975_3235602149753288542_n.jpg",
+            "name": "281012424_5162824960440975_3235602149753288542_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/280654903_5143301429059995_4541786138654455845_n.jpg",
+            "name": "280654903_5143301429059995_4541786138654455845_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/280068701_5124597040930434_7960994960891228837_n.jpg",
+            "name": "280068701_5124597040930434_7960994960891228837_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/279892655_5112909232099215_7344504210109130170_n.jpg",
+            "name": "279892655_5112909232099215_7344504210109130170_n"
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.restavracijamak.si/wp-content/uploads/2022/09/278707460_5072588769464595_5463665298428834201_n.jpg",
+            "name": "278707460_5072588769464595_5463665298428834201_n"
+          }
+        ]
+      }
+    ]
+  },
+  "robots_txt": {
+    "exists": true,
+    "url": "https://www.restavracijamak.si/robots.txt",
+    "sitemaps": [
+      "https://www.restavracijamak.si/wp-sitemap.xml"
+    ],
+    "has_user_agent": true,
+    "allows_ai_crawlers": true
+  },
+  "llm_txt": {
+    "found": false,
+    "files": {}
+  },
+  "sitemap": {
+    "exists": true,
+    "urls": [
+      "https://www.restavracijamak.si/wp-sitemap.xml"
+    ],
+    "url_count": 3
+  },
+  "seo_basics": {
+    "has_title": true,
+    "title": "Restavracija Mak |",
+    "has_meta_description": false,
+    "meta_description": "",
+    "has_og_tags": false,
+    "og_tags": {},
+    "has_canonical": true,
+    "canonical": "https://www.restavracijamak.si/",
+    "has_h1": true,
+    "h1_count": 2,
+    "has_viewport_meta": true
+  },
+  "emails": [
+    "restavracija.mak@gmail.com"
+  ]
+}

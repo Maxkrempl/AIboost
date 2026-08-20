@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uspešno plačilo — MenuBoost</title>
+<meta name="theme-color" content="#2C1810">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#FAF7F2;--brown:#2C1810;--gold:#C4922A;--gold-light:#F5E6C8;--mute:#9C8878;--white:#FFFFFF;--success:#2D6A4F;--success-bg:#D8F3DC}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--brown);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.card{background:var(--white);border-radius:24px;padding:3rem 2rem;max-width:400px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(44,24,16,0.08)}
+.check{width:80px;height:80px;border-radius:50%;background:var(--success-bg);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:40px;animation:bounceIn .5s ease}
+@keyframes bounceIn{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+h1{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;margin-bottom:0.5rem}
+p{color:var(--mute);font-size:15px;line-height:1.6;margin-bottom:1.5rem}
+.features{text-align:left;background:var(--cream);border-radius:16px;padding:1.25rem;margin-bottom:2rem}
+.feature{display:flex;align-items:center;gap:10px;font-size:14px;padding:8px 0;color:var(--brown)}
+.feature::before{content:'✓';color:var(--success);font-weight:700;font-size:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--brown);color:var(--gold-light);border:none;border-radius:14px;padding:16px 36px;font-size:17px;font-weight:600;font-family:'Cormorant Garamond',serif;cursor:pointer;transition:all .15s;text-decoration:none}
+.btn:active{transform:scale(0.97);background:#5C3D2E}
+.note{font-size:12px;color:var(--mute);margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="check">✅</div>
+  <h1>Hvala za nakup!</h1>
+  <p>Tvoj MenuBoost je sedaj aktiven. Uživaj v neomejenih opisih jedi.</p>
+  <div class="features">
+    <div class="feature">Neomejeno število jedi</div>
+    <div class="feature">10 jezikov</div>
+    <div class="feature">6 slogov opisov</div>
+    <div class="feature">SEO optimizirano</div>
+  </div>
+  <a href="app.html" class="btn">Odpri MenuBoost →</a>
+  <p class="note">Plačilo obdelano preko Stripe. Račun prejmeš po emailu.</p>
+</div>
+
+<script>
+// Verify payment and unlock app
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+  if (sessionId) {
+    fetch('api/verify-payment.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.paid) {
+        localStorage.setItem('menuboost_paid', 'true');
+        localStorage.setItem('menuboost_session', sessionId);
+      }
+    })
+    .catch(() => {});
+  }
+})();
+</script>
+</body>
+</html>

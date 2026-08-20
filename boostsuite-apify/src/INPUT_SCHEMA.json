@@ -1,0 +1,40 @@
+{
+  "title": "BoostSuite MCP Server",
+  "description": "Website audit tools for AI agents. Select a tool or leave empty to list all tools.",
+  "type": "object",
+  "schemaVersion": 1,
+  "required": [],
+  "properties": {
+    "tool": {
+      "title": "Tool",
+      "description": "Which tool to call. Leave empty to list all available tools.",
+      "type": "string",
+      "editor": "select",
+      "default": "",
+      "enum": [
+        "",
+        "seo_audit",
+        "geo_check",
+        "ad_copy_generator",
+        "listing_optimizer",
+        "combined_audit",
+        "menu_translate"
+      ],
+      "enumTitles": [
+        "List all tools",
+        "SEO Audit",
+        "GEO Check",
+        "Ad Copy Generator",
+        "Listing Optimizer",
+        "Combined Audit",
+        "Menu Translate"
+      ]
+    },
+    "arguments": {
+      "title": "Arguments",
+      "description": "Tool arguments as JSON. Example: {\"url\": \"https://example.com\"} for SEO audit.",
+      "type": "object",
+      "editor": "json"
+    }
+  }
+}

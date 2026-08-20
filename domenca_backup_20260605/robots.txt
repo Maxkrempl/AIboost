@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hd-webdesign.si/sitemap.xml
+
+# Disallow private paths
+Disallow: /api/

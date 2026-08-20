@@ -1,0 +1,268 @@
+#!/usr/bin/env python3
+"""
+Bulk scraper for MenuBoost leads from tourism directories.
+Extracts restaurant/agriturismo names, emails, cities, regions.
+"""
+
+import requests
+import re
+import csv
+import json
+import os
+import time
+from urllib.parse import urljoin, urlparse
+
+BASE_DIR = "/home/darko/.openclaw/workspace/lead-gen/menuboost"
+EXISTING_EMAILS = set()
+
+def load_existing_emails():
+    """Load all existing emails to avoid duplicates."""
+    global EXISTING_EMAILS
+    for f in os.listdir(BASE_DIR):
+        if f.endswith(".csv"):
+            try:
+                with open(os.path.join(BASE_DIR, f), encoding="utf-8", errors="replace") as fh:
+                    reader = csv.DictReader(fh)
+                    for row in reader:
+                        for key in ["email", "Email"]:
+                            if key in row and row[key]:
+                                EXISTING_EMAILS.add(row[key].strip().lower())
+            except: pass
+    
+    # Also load sent
+    sent_dir = "/home/darko/.openclaw/workspace/outreach/sent"
+    if os.path.exists(sent_dir):
+        for f in os.listdir(sent_dir):
+            if f.endswith(".csv"):
+                try:
+                    with open(os.path.join(sent_dir, f), encoding="utf-8", errors="replace") as fh:
+                        for line in fh:
+                            parts = line.strip().split(",")
+                            if len(parts) >= 3:
+                                email = parts[2].strip().lower()
+                                if "@" in email:
+                                    EXISTING_EMAILS.add(email)
+                except: pass
+    
+    print(f"📋 Loaded {len(EXISTING_EMAILS)} existing emails for dedup")
+
+def extract_emails_from_text(text):
+    """Extract email addresses from text."""
+    pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+    emails = re.findall(pattern, text)
+    # Filter out common non-contact emails
+    skip = ['noreply', 'no-reply', 'donotreply', 'mailer-daemon', 'abuse', 
+            'postmaster', 'hostmaster', 'webmaster', 'admin@localhost']
+    return [e for e in emails if not any(s in e.lower() for s in skip)]
+
+def fetch_page(url, timeout=15):
+    """Fetch a page with reasonable headers."""
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0',
+        'Accept': 'text/html,application/xhtml+xml',
+        'Accept-Language': 'en-US,en;q=0.9,it;q=0.8',
+    }
+    try:
+        resp = requests.get(url, headers=headers, timeout=timeout)
+        resp.raise_for_status()
+        return resp.text
+    except Exception as e:
+        print(f"  ⚠️ Failed to fetch {url}: {e}")
+        return None
+
+def scrape_agriturismo_it():
+    """Scrape agriturismo.it for Italian agriturismos with restaurants."""
+    contacts = []
+    regions = [
+        ("toscana", "Toscana"),
+        ("veneto", "Veneto"),
+        ("friuli-venezia-giulia", "Friuli-Venezia Giulia"),
+        ("emilia-romagna", "Emilia-Romagna"),
+        ("puglia", "Puglia"),
+        ("sicilia", "Sicily"),
+        ("sardegna", "Sardegna"),
+        ("lazio", "Lazio"),
+        ("campania", "Campania"),
+        ("umbria", "Umbria"),
+    ]
+    
+    for slug, region_name in regions:
+        print(f"\n🇮🇹 Scraping agriturismo.it/{slug}...")
+        for page in range(1, 4):  # 3 pages per region
+            url = f"https://www.agriturismo.it/it/agriturismi/{slug}?page={page}"
+            html = fetch_page(url)
+            if not html:
+                continue
+            
+            # Extract individual agriturismo links
+            links = re.findall(r'href="(/it/agriturismi/[^"]+/[^"]+)"', html)
+            links = list(set(links))
+            
+            for link in links[:10]:  # Limit per page
+                full_url = f"https://www.agriturismo.it{link}"
+                detail = fetch_page(full_url)
+                if not detail:
+                    continue
+                
+                emails = extract_emails_from_text(detail)
+                # Get name from title
+                name_match = re.search(r'<title>([^<]+)</title>', detail)
+                name = name_match.group(1).split('–')[0].strip() if name_match else ""
+                
+                for email in emails:
+                    email = email.lower()
+                    if email not in EXISTING_EMAILS and not any(e['email'] == email for e in contacts):
+                        contacts.append({
+                            'name': name,
+                            'city': '',
+                            'region': region_name,
+                            'email': email,
+                            'website': full_url,
+                            'type': 'Agriturismo',
+                            'source': 'agriturismo.it'
+                        })
+                        EXISTING_EMAILS.add(email)
+                        print(f"  ✅ {name} → {email}")
+                
+                time.sleep(0.5)  # Be polite
+            
+            time.sleep(1)
+    
+    return contacts
+
+def scrape_croatia_coast():
+    """Scrape Croatian coastal tourism sites for restaurants."""
+    contacts = []
+    
+    # Croatia info pages with restaurant listings
+    sources = [
+        ("https://www.visitdubrovnik.hr/restaurants", "Dubrovnik", "Dubrovnik-Neretva"),
+        ("https://www.visitsplit.com/en/56/restaurants", "Split", "Split-Dalmatia"),
+        ("https://www.zadar.travel/en/gastronomy", "Zadar", "Zadar"),
+        ("https://www.istra.hr/en/gastro", "Istria", "Istra"),
+        ("https://www.kvarner.hr/en/gastro", "Kvarner", "Primorje-Gorski"),
+    ]
+    
+    for url, city, region in sources:
+        print(f"\n🇭🇷 Scraping {url}...")
+        html = fetch_page(url)
+        if not html:
+            continue
+        
+        emails = extract_emails_from_text(html)
+        for email in emails:
+            email = email.lower()
+            if email not in EXISTING_EMAILS and not any(e['email'] == email for e in contacts):
+                contacts.append({
+                    'name': f"Restaurant in {city}",
+                    'city': city,
+                    'region': region,
+                    'email': email,
+                    'website': url,
+                    'type': 'Ristorante',
+                    'source': f'{urlparse(url).netloc}'
+                })
+                EXISTING_EMAILS.add(email)
+                print(f"  ✅ {city} → {email}")
+    
+    return contacts
+
+def scrape_slovenia_tourism():
+    """Scrape Slovenian tourism sites for restaurants/farms."""
+    contacts = []
+    
+    sources = [
+        ("https://www.slovenia.info/en/gastronomy", "Slovenia"),
+        ("https://www.slovenia.info/en/places-to-eat", "Slovenia"),
+        ("https://www.visitljubljana.com/en/visitors/see-do/cuisine/restaurants/", "Ljubljana"),
+        ("https://www.portoroz.si/en/gastro", "Piran"),
+    ]
+    
+    for url, area in sources:
+        print(f"\n🇸🇮 Scraping {url}...")
+        html = fetch_page(url)
+        if not html:
+            continue
+        
+        emails = extract_emails_from_text(html)
+        for email in emails:
+            email = email.lower()
+            if email not in EXISTING_EMAILS and not any(e['email'] == email for e in contacts):
+                contacts.append({
+                    'name': f"Restaurant in {area}",
+                    'city': area,
+                    'region': 'Slovenia',
+                    'email': email,
+                    'website': url,
+                    'type': 'Ristorante',
+                    'source': f'{urlparse(url).netloc}'
+                })
+                EXISTING_EMAILS.add(email)
+                print(f"  ✅ {area} → {email}")
+    
+    return contacts
+
+def save_contacts(contacts, filename, country):
+    """Save contacts to CSV."""
+    if not contacts:
+        print(f"\n⚠️ No new {country} contacts found")
+        return
+    
+    filepath = os.path.join(BASE_DIR, filename)
+    
+    # Check if file exists to append or create
+    existing = []
+    if os.path.exists(filepath):
+        with open(filepath, encoding="utf-8") as f:
+            existing = list(csv.DictReader(f))
+    
+    fieldnames = ['name', 'city', 'region', 'email', 'website', 'type', 'source']
+    
+    with open(filepath, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in existing + contacts:
+            writer.writerow(row)
+    
+    print(f"\n💾 Saved {len(contacts)} new {country} contacts → {filename}")
+
+def main():
+    print("🔍 MenuBoost Bulk Lead Scraper")
+    print("=" * 40)
+    
+    load_existing_emails()
+    
+    all_contacts = {
+        'italy': [],
+        'croatia': [],
+        'slovenia': [],
+    }
+    
+    # Scrape Italy
+    print("\n" + "=" * 40)
+    print("🇮🇹 ITALY — agriturismo.it")
+    all_contacts['italy'] = scrape_agriturismo_it()
+    save_contacts(all_contacts['italy'], 'bulk-italy-new.csv', 'Italy')
+    
+    # Scrape Croatia
+    print("\n" + "=" * 40)
+    print("🇭🇷 CROATIA — tourism boards")
+    all_contacts['croatia'] = scrape_croatia_coast()
+    save_contacts(all_contacts['croatia'], 'bulk-croatia-new.csv', 'Croatia')
+    
+    # Scrape Slovenia
+    print("\n" + "=" * 40)
+    print("🇸🇮 SLOVENIA — tourism sites")
+    all_contacts['slovenia'] = scrape_slovenia_tourism()
+    save_contacts(all_contacts['slovenia'], 'bulk-slovenia-new.csv', 'Slovenia')
+    
+    # Summary
+    total = sum(len(v) for v in all_contacts.values())
+    print(f"\n{'=' * 40}")
+    print(f"🎉 Total new contacts scraped: {total}")
+    for country, contacts in all_contacts.items():
+        if contacts:
+            print(f"   {country.upper()}: {len(contacts)}")
+
+if __name__ == "__main__":
+    main()

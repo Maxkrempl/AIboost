@@ -26,6 +26,30 @@ HEARTBEAT.md
 POLICY.md
 README.md
 
+# API keys & secrets (NEVER commit these)
+*.env
+.env*
+config.php
+stripe-config.php
+api_keys.json
+credentials.json
+secrets.json
+
+# PHP error logs
+*.log
+error_log
+
+# Backup files
+*.backup
+*.bak
+
+# Memory & outreach (private)
+memory/
+outreach/
+
+# Geo tools (contains API keys)
+geo-tools/
+
 # Misc files
 1{e=
 *.csv

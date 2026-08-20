@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Authority Foundation — HD WebDesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#fff;color:#0a0a0a;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(100,116,139,.15);padding:0 clamp(1.5rem,4vw,4rem);display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{display:block;line-height:0}.logo img{height:36px;width:auto}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-links{display:flex;list-style:none;gap:2rem}
+.nav-links a{color:inherit;text-decoration:none;font-weight:500;font-size:.85rem;transition:color .2s}
+.nav-links a:hover{color:#0a0a0a}
+.lang-switch{display:flex;gap:.3rem}
+.lang-btn{background:none;border:1px solid currentColor;color:inherit;padding:.3rem .55rem;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:600;font-family:inherit;transition:all .15s}
+.lang-btn:hover,.lang-btn.active{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+
+/* HERO — COMET CURSOR REVEAL */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(6rem,12vh,10rem) clamp(1.5rem,4vw,4rem) clamp(4rem,8vh,6rem);overflow:hidden}
+
+/* Background — image revealed by comet */
+.hero-bg{position:absolute;inset:0;z-index:1;background:#08080c;background-image:url('AI-auth.png');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:rgba(255,255,255,0.85)}
+
+
+
+
+/* Content on top */
+.hero-content{position:relative;z-index:3;max-width:680px}
+.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(2.8rem,7vw,5.2rem);font-weight:400;line-height:1.02;letter-spacing:-.025em;margin-bottom:1.5rem;color:#0a0a0a}
+.hero h1 em{font-style:italic}
+.hero-sub{font-size:1.1rem;color:#555;max-width:480px;margin-bottom:3rem;line-height:1.7;font-weight:300}
+.hero-stats{display:flex;gap:clamp(2.5rem,5vw,4rem);margin-bottom:3rem}
+.hero-stats .stat{display:flex;flex-direction:column}
+.hero-stats .stat-num{font-family:'Instrument Serif',serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:400;letter-spacing:-.02em;color:#0a0a0a}
+.hero-stats .stat-label{font-size:.75rem;color:#555;text-transform:uppercase;letter-spacing:.08em;margin-top:.15rem}
+.cta-row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.cta-primary{display:inline-block;background:#0a0a0a;color:#fff;padding:.75rem 1.8rem;border-radius:4px;font-size:.85rem;font-weight:500;text-decoration:none;transition:all .15s;letter-spacing:.01em}
+.cta-primary:hover{background:#e8e8e8}
+.cta-secondary{display:inline-block;color:#0a0a0a;padding:.75rem 1.8rem;font-size:.85rem;font-weight:400;text-decoration:none;border:1px solid #ccc;border-radius:4px;transition:all .15s;letter-spacing:.01em}
+.cta-secondary:hover{border-color:rgba(255,255,255,.5)}
+
+/* SECTION */
+.section{max-width:1100px;margin:0 auto;padding:clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,4rem)}
+.section-divider{width:100%;height:1px;background:#f0f0f0}
+
+/* SECTION HEADER */
+.section-num{font-family:'Instrument Serif',serif;font-size:.95rem;color:#ccc;margin-bottom:.5rem}
+.section h2{font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:400;letter-spacing:-.02em;line-height:1.15}
+.section-sub{color:#666;margin-top:.75rem;font-size:1rem;max-width:480px;line-height:1.7}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);margin-top:2.5rem;align-items:start}
+.about-cards{display:grid;gap:1rem}
+.about-card{border:1px solid #f0f0f0;padding:1.75rem;border-radius:6px;transition:border-color .2s}
+.about-card:hover{border-color:#ddd}
+.about-card h3{font-size:1rem;font-weight:600;margin-bottom:.4rem;letter-spacing:-.01em}
+.about-card p{font-size:.9rem;color:#666;line-height:1.65}
+
+/* STEPS */
+.steps{margin-top:2.5rem}
+.step-row{display:flex;align-items:flex-start;padding:1.25rem 0;border-bottom:1px solid #f0f0f0;transition:background .15s}
+.step-num{font-family:'Instrument Serif',serif;font-size:.9rem;color:#bbb;width:2.5rem;flex-shrink:0;padding-top:.15rem}
+.step-content{flex:1}
+.step-content h3{font-size:1.05rem;font-weight:600;margin-bottom:.25rem}
+.step-content p{font-size:.9rem;color:#666;line-height:1.65}
+
+/* PRICING */
+.pricing-header{text-align:center;margin-bottom:3rem}
+.pricing-header h2{font-family:'Instrument Serif',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;letter-spacing:-.02em}
+.pricing-header p{color:#888;margin-top:.75rem;font-size:.95rem;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.7}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:0}
+.price-card{border:1px solid #f0f0f0;border-radius:8px;padding:2rem 1.75rem;transition:all .15s;position:relative}
+.price-card.featured{border-color:#0a0a0a;border-width:1.5px}
+.price-card h3{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
+.price-card .price{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;letter-spacing:-.02em;margin:.75rem 0 .15rem}
+.price-card .price span{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:400;color:#999}
+.price-card .price-note{font-size:.75rem;color:#999;margin-bottom:1rem}
+.price-card .badge{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .5rem;border-radius:3px;margin-bottom:.75rem}
+.price-card .badge.report{background:#f5f5f5;color:#888}
+.price-card .badge.full{background:#0a0a0a;color:#fff}
+.price-card ul{list-style:none;margin:1rem 0 0}
+.price-card li{font-size:.8rem;color:#555;padding:.35rem 0;display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+.price-card li::before{content:'—';color:#ccc;font-weight:400;flex-shrink:0}
+.price-card li.included::before{content:'✓';color:#0a0a0a;font-weight:700}
+.price-card li.not-included{color:#bbb}
+.price-card li.not-included::before{content:'—';color:#ddd}
+.price-card a{display:block;text-align:center;padding:.65rem;border-radius:4px;text-decoration:none;font-size:.8rem;font-weight:500;transition:all .15s;margin-top:1.25rem}
+.price-card a.btn-dark{background:#0a0a0a;color:#fff}
+.price-card a.btn-dark:hover{background:#222}
+.price-card a.btn-outline{border:1px solid #e0e0e0;color:#0a0a0a}
+.price-card a.btn-outline:hover{border-color:#0a0a0a}
+.compare-table{margin-top:3rem;border:1px solid #f0f0f0;border-radius:8px;overflow:hidden}
+.compare-table table{width:100%;border-collapse:collapse;font-size:.8rem}
+.compare-table th,.compare-table td{padding:.7rem 1rem;text-align:left;border-bottom:1px solid #f0f0f0}
+.compare-table th{font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:#999;background:#fafafa}
+.compare-table td:first-child{font-weight:500;color:#333}
+.compare-table .check{color:#0a0a0a;font-weight:700}
+.compare-table .dash{color:#ddd}
+.compare-table tr:last-child td{border-bottom:none}
+
+/* BLOG CARDS */
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2.5rem}
+.blog-card{border:1px solid #f0f0f0;border-radius:8px;padding:1.5rem;transition:all .15s;text-decoration:none;color:inherit;display:block}
+.blog-card:hover{border-color:#ccc;transform:translateY(-2px)}
+.blog-card .blog-tag{font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#999;margin-bottom:.5rem}
+.blog-card h3{font-size:.95rem;font-weight:600;margin-bottom:.4rem;line-height:1.3}
+.blog-card p{font-size:.8rem;color:#666;line-height:1.5}
+.blog-card .blog-read{font-size:.75rem;font-weight:500;color:#0a0a0a;margin-top:.75rem;display:inline-block}
+@media(max-width:768px){.blog-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid #f0f0f0}
+.faq-q{padding:1.1rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:500;font-size:.9rem;transition:color .15s}
+.faq-q:hover{color:#444}
+.faq-q::after{content:'+';font-size:1.1rem;color:#ccc;transition:transform .25s;font-weight:300}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 0 1.1rem;max-height:0;overflow:hidden;transition:all .3s;color:#666;font-size:.85rem;line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:1.1rem}
+
+/* FINAL CTA */
+.final-cta{text-align:center;padding:clamp(4rem,8vh,6rem) clamp(1.5rem,4vw,4rem)}
+.final-cta .section-num{margin-bottom:.5rem}
+.final-cta h2{font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:400;letter-spacing:-.02em;margin-bottom:.75rem}
+.final-cta p{color:#888;margin-bottom:2rem;font-size:.95rem}
+
+/* FOOTER */
+footer{border-top:1px solid #f0f0f0;padding:1.5rem clamp(1.5rem,4vw,4rem);display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.75rem;color:#bbb}
+footer a{color:#0a0a0a;text-decoration:none}
+
+/* REVEAL */
+.reveal{opacity:1;transform:translateY(0);transition:all .5s cubic-bezier(.4,0,.2,1)}
+.reveal.hidden-init{opacity:0;transform:translateY(20px)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* CURSOR HINT */
+.cursor-hint{position:absolute;bottom:2rem;left:clamp(1.5rem,4vw,4rem);z-index:4;font-size:.7rem;color:#999;display:flex;align-items:center;gap:.4rem;letter-spacing:.03em;animation:pulse-hint 2.5s ease-in-out infinite}
+@keyframes pulse-hint{0%,100%{opacity:.2}50%{opacity:.5}}
+
+@media(max-width:768px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .hero{padding:7rem 1.25rem 3.5rem}
+  .hero-stats{flex-direction:column;gap:1.25rem}
+  .cta-row{flex-direction:column;align-items:flex-start}
+  .about-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .section{padding:2.5rem 1.25rem}
+  footer{flex-direction:column;gap:.4rem;text-align:center}
+  .cursor-hint{display:none}
+  
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="https://hd-webdesign.si/images/hdwebdesign-logo-dark.svg" alt="HD WebDesign" style="height:36px;width:auto"></a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#problem" data-sl="Težava" data-en="Problem">Težava</a>
+      <a href="#solution" data-sl="Rešitev" data-en="Solution">Rešitev</a>
+      <a href="#pricing" data-sl="Cena" data-en="Pricing">Cena</a>
+      <a href="#faq" data-sl="VP" data-en="FAQ">VP</a>
+    </div>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('sl')">SL</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hr')">HR</button>
+      <button class="lang-btn" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('it')">IT</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — COMET CURSOR REVEAL -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="reveal" data-sl='Vaša stran je <em>nevidna</em> za AI.' data-en='Your website is <em>invisible</em> to AI.' data-hr='Vaša stranica je <em>nevidna</em> za AI.' data-de='Ihre Website ist für KI <em>unsichtbar</em>.' data-it='Il vostro sito è <em>invisibile</em> all'\''IA.'>Vaša stran je <em>nevidna</em> za AI.</h1>
+    <p class="hero-sub reveal" data-sl="ChatGPT, Perplexity in Gemini ne priporočajo vaše strani. Vaši konkurenti so tam. Mi poskrbimo, da vas AI modeli vidijo in priporočajo." data-en="ChatGPT, Perplexity and Gemini don't recommend your website. Your competitors are there. We make AI models see and recommend you." data-hr="ChatGPT, Perplexity i Gemini ne preporučuju vašu stranicu. Vaši konkurenti su tamo. Mi osiguravamo da vas AI modeli vide i preporuče." data-de="ChatGPT, Perplexity und Gemini empfehlen Ihre Website nicht. Ihre Konkurrenten sind dort. Wir sorgen dafür, dass KI-Modelle Sie sehen und empfehlen." data-it="ChatGPT, Perplexity e Gemini non raccomandano il vostro sito. I vostri concorrenti ci sono. Noi facciamo in modo che i modelli AI vi vedano e vi raccomandino.">ChatGPT, Perplexity in Gemini ne priporočajo vaše strani. Vaši konkurenti so tam. Mi poskrbimo, da vas AI modeli vidijo in priporočajo.</p>
+    <div class="hero-stats reveal">
+      <div class="stat"><div class="stat-num">87%</div><div class="stat-label" data-sl="spletnih strani je nevidnih za AI" data-en="of websites invisible to AI" data-hr="web stranica nevidnih za AI" data-de="der Websites unsichtbar für KI" data-it="dei siti web invisibili all'AI">spletnih strani je nevidnih za AI</div></div>
+      <div class="stat"><div class="stat-num">24h</div><div class="stat-label" data-sl="implementacija" data-en="implementation" data-hr="implementacija" data-de="Implementierung" data-it="implementazione">implementacija</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label" data-sl="mesece spremljanja" data-en="months monitoring" data-hr="mjeseci praćenja" data-de="Monate Überwachung" data-it="mesi di monitoraggio">mesece spremljanja</div></div>
+    </div>
+    <div class="cta-row reveal">
+      <a href="#pricing" class="cta-primary" data-sl="Začnite zdaj — €699" data-en="Start Now — €699" data-hr="Započnite sada — €699" data-de="Jetzt starten — €699" data-it="Inizia ora — €699">Začnite zdaj — €699</a>
+      <a href="https://hd-webdesign.si/boost-suite/" class="cta-secondary" data-sl="Brezplačna GEO analiza →" data-en="Free GEO Check →" data-hr="Besplatna GEO analiza →" data-de="Kostenlose GEO-Analyse →" data-it="Analisi GEO gratuita →">Brezplačna GEO analiza →</a>
+    </div>
+  </div>
+  <div class="cursor-hint">← Premakni miško za razkritje slike</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROBLEM -->
+<section class="section" id="problem">
+  <div class="section-num reveal">01</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="reveal" data-sl="Zakaj AI ne vidi vaše strani?" data-en="Why can't AI see your website?" data-hr="Zašto AI ne vidi vašu stranicu?" data-de="Warum sieht KI Ihre Website nicht?" data-it="Perché l'AI non vede il vostro sito?">Zakaj AI ne vidi vaše strani?</h2>
+      <p class="section-sub reveal" data-sl="AI modeli ne morejo brati vaše strani kot Google. Potrebujejo strukturirane podatke — llms.txt, Schema.org markup, GEO optimizacijo. Brez tega vas AI modeli ne morejo priporočiti." data-en="AI models can't read your website like Google. They need structured data — llms.txt, Schema.org markup, GEO optimization. Without it, AI models can't recommend you." data-hr="AI modeli ne mogu čitati vašu stranicu kao Google. Trebaju strukturirane podatke — llms.txt, Schema.org markup, GEO optimizacija. Bez toga vas AI modeli ne mogu preporučiti." data-de="KI-Modelle können Ihre Website nicht wie Google lesen. Sie brauchen strukturierte Daten — llms.txt, Schema.org-Markup, GEO-Optimierung. Ohne das können KI-Modelle Sie nicht empfehlen." data-it="I modelli AI non sanno leggere il vostro sito come Google. Hanno bisogno di dati strutturati — llms.txt, markup Schema.org, ottimizzazione GEO. Senza di ciò, i modelli AI non possono raccomandarvi.">AI modeli ne morejo brati vaše strani kot Google. Potrebujejo strukturirane podatke — llms.txt, Schema.org markup, GEO optimizacijo. Brez tega vas AI modeli ne morejo priporočiti.</p>
+    </div>
+    <div class="about-cards">
+      <div class="about-card reveal">
+        <h3 data-sl="Konkurenti že imajo to" data-en="Competitors already have this" data-hr="Konkurenti već ovo imaju" data-de="Konkurrenten haben das bereits" data-it="I concorrenti già lo hanno">Konkurenti že imajo to</h3>
+        <p data-sl="Podjetja, ki so že optimizirana za AI, prejemajo priporočila. Vi pa izgubljate stranki vsak dan." data-en="Companies optimized for AI are getting recommended. You're losing customers every day." data-hr="Optimizirana poduzeća već dobivaju preporuke. Vi gubite klijente svaki dan." data-de="Für KI optimierte Unternehmen werden bereits empfohlen. Sie verlieren jeden Tag Kunden." data-it="Le aziende ottimizzate per l'AI vengono raccomandate. State perdendo clienti ogni giorno.">Podjetja, ki so že optimizirana za AI, prejemajo priporočila. Vi pa izgubljate stranki vsak dan.</p>
+      </div>
+      <div class="about-card reveal">
+        <h3 data-sl="Vsak dan šteje" data-en="Every day counts" data-hr="Svaki dan se broji" data-de="Jeder Tag zählt" data-it="Ogni giorno conta">Vsak dan šteje</h3>
+        <p data-sl="AI modeli se posodabljajo vsakih 2–3 mesece. Če niste pripravljeni, boste izginili iz priporočil." data-en="AI models update every 2–3 months. If you're not ready, you'll disappear from recommendations." data-hr="AI modeli se ažuriraju svaka 2–3 mjeseca. Ako niste spremni, nestat ćete iz preporuka." data-de="KI-Modelle aktualisieren sich alle 2–3 Monate. Wenn Sie nicht bereit sind, verschwinden Sie aus den Empfehlungen." data-it="I modelli AI si aggiornano ogni 2–3 mesi. Se non siete pronti, scomparirete dai suggerimenti.">AI modeli se posodabljajo vsakih 2–3 mesece. Če niste pripravljeni, boste izginili iz priporočil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SOLUTION -->
+<section class="section" id="solution">
+  <div class="section-num reveal">02</div>
+  <h2 class="reveal" style="margin-top:.5rem">AI Authority Foundation</h2>
+  <p class="section-sub reveal" data-sl="Trije stebri, ki vašo stran naredijo vidno za AI modele." data-en="Three pillars that make your website visible to AI models." data-hr="Tri stupa koji vašu stranicu čine vidljivom za AI modele." data-de="Drei Säulen, die Ihre Website für KI-Modelle sichtbar machen." data-it="Tre pilastri che rendono il vostro sito visibile ai modelli AI.">Trije stebri, ki vašo stran naredijo vidno za AI modele.</p>
+  <div class="steps">
+    <div class="step-row reveal">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h3 data-sl="Implementacija" data-en="Implementation" data-hr="Implementacija" data-de="Implementierung" data-it="Implementazione">Implementacija</h3>
+        <p data-sl="Nastavimo llms.txt, Schema.org markup in GEO optimizacijo. Vaša stran postane berljiva za ChatGPT, Perplexity, Gemini in Claude." data-en="We set up llms.txt, Schema.org markup and GEO optimization. Your website becomes readable by ChatGPT, Perplexity, Gemini and Claude." data-hr="Postavljamo llms.txt, Schema.org markup i GEO optimizaciju. Vaša stran postaje čitljiva za ChatGPT, Perplexity, Gemini i Claude." data-de="Wir richten llms.txt, Schema.org-Markup und GEO-Optimierung ein. Ihre Website wird für ChatGPT, Perplexity, Gemini und Claude lesbar." data-it="Configuriamo llms.txt, markup Schema.org e ottimizzazione GEO. Il vostro sito diventa leggibile per ChatGPT, Perplexity, Gemini e Claude.">Nastavimo llms.txt, Schema.org markup in GEO optimizacijo. Vaša stran postane berljiva za ChatGPT, Perplexity, Gemini in Claude.</p>
+      </div>
+    </div>
+    <div class="step-row reveal">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h3 data-sl="AI-Algorithm Shield" data-en="AI-Algorithm Shield" data-hr="AI-Algorithm Shield" data-de="AI-Algorithm Shield" data-it="AI-Algorithm Shield">AI-Algorithm Shield</h3>
+        <p data-sl="3 mesece spremljanja. Ko se AI modeli posodobijo, se prilagodimo. Vaša stran ostane vidna skozi vse posodobitve." data-en="3 months of monitoring. When AI models update, we adapt. Your website stays visible through all updates." data-hr="3 mjeseca praćenja. Kad se AI modeli ažuriraju, mi se prilagođavamo. Vaša stran ostaje vidljiva kroz sva ažuriranja." data-de="3 Monate Überwachung. Wenn KI-Modelle aktualisiert werden, passen wir an. Ihre Website bleibt durch alle Updates sichtbar." data-it="3 mesi di monitoraggio. Quando i modelli AI si aggiornano, ci adattiamo. Il vostro sito resta visibile attraverso tutti gli aggiornamenti.">3 mesece spremljanja. Ko se AI modeli posodobijo, se prilagodimo. Vaša stran ostane vidna skozi vse posodobitve.</p>
+      </div>
+    </div>
+    <div class="step-row reveal">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h3 data-sl="Mesečna poročila" data-en="Monthly Reports" data-hr="Mjesečna izvješća" data-de="Monatsberichte" data-it="Report mensili">Mesečna poročila</h3>
+        <p data-sl="Vsak mesec prejmete dokument o AI vidljivosti. Vidite, kateri modeli vas priporočajo in kako pogosto." data-en="Every month you receive an AI visibility report. See which models recommend you and how often." data-hr="Svaki mjesec primate izvješće o AI vidljivosti. Vidite koji modeli vas preporučuju i koliko često." data-de="Jeden Monat erhalten Sie einen KI-Sichtbarkeitsbericht. Sehen Sie, welche Modelle Sie empfehlen und wie oft." data-it="Ogni mese ricevete un report sulla visibilità AI. Vedete quali modelli vi raccomandano e con quale frequenza.">Vsak mesec prejmete dokument o AI vidljivosti. Vidite, kateri modeli vas priporočajo in kako pogosto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-num reveal">03</div>
+  <div class="pricing-header">
+    <h2 class="reveal" data-sl="Kaj dobite?" data-en="What do you get?" data-hr="Što dobivate?" data-de="Was erhalten Sie?" data-it="Cosa ottenete?">Kaj dobite?</h2>
+    <p class="reveal" data-sl="Brezplačna analiza vam pokaže težavo. AI Authority Foundation jo reši." data-en="Free analysis shows you the problem. AI Authority Foundation fixes it." data-hr="Besplatna analiza vam pokazuje problem. AI Authority Foundation ga rješava." data-de="Die kostenlose Analyse zeigt Ihnen das Problem. AI Authority Foundation löst es." data-it="L'analisi gratuita vi mostra il problema. AI Authority Foundation lo risolve.">Brezplačna analiza vam pokaže težavo. AI Authority Foundation jo reši.</p>
+  </div>
+  <div class="pricing-grid">
+    <!-- FREE — BoostSuite GEO Check -->
+    <div class="price-card reveal">
+      <div class="badge report" data-sl="SAMO POROČILO" data-en="REPORT ONLY" data-hr="SAMO IZVJEŠĆE" data-de="NUR BERICHT" data-it="SOLO REPORT">SAMO POROČILO</div>
+      <h3>BoostSuite GEO Check</h3>
+      <div class="price">€0</div>
+      <div class="price-note" data-sl="Brezplačna analiza" data-en="Free analysis" data-hr="Besplatna analiza" data-de="Kostenlose Analyse" data-it="Analisi gratuita">Brezplačna analiza</div>
+      <ul>
+        <li class="included" data-sl="AI vidljivost vaše strani" data-en="AI visibility score" data-hr="AI ocjena vidljivosti" data-de="KI-Sichtbarkeits-Score" data-it="Punteggio visibilità AI">AI vidljivost vaše strani</li>
+        <li class="included" data-sl="Schema.org pregled" data-en="Schema.org review" data-hr="Schema.org pregled" data-de="Schema.org-Überprüfung" data-it="Revisione Schema.org">Schema.org pregled</li>
+        <li class="included" data-sl="llms.txt analiza" data-en="llms.txt analysis" data-hr="llms.txt analiza" data-de="llms.txt-Analyse" data-it="Analisi llms.txt">llms.txt analiza</li>
+        <li class="not-included" data-sl="Implementacija — ni vključena" data-en="Implementation — not included" data-hr="Implementacija — nije uključena" data-de="Implementierung — nicht enthalten" data-it="Implementazione — non inclusa">Implementacija — ni vključena</li>
+        <li class="not-included" data-sl="Schema.org markup — ni vključen" data-en="Schema.org markup — not included" data-hr="Schema.org markup — nije uključen" data-de="Schema.org-Markup — nicht enthalten" data-it="Markup Schema.org — non incluso">Schema.org markup — ni vključen</li>
+        <li class="not-included" data-sl="llms.txt datoteka — ni vključena" data-en="llms.txt file — not included" data-hr="llms.txt datoteka — nije uključena" data-de="llms.txt-Datei — nicht enthalten" data-it="File llms.txt — non incluso">llms.txt datoteka — ni vključena</li>
+        <li class="not-included" data-sl="Spremljanje — ni vključeno" data-en="Monitoring — not included" data-hr="Praćenje — nije uključeno" data-de="Überwachung — nicht enthalten" data-it="Monitoraggio — non incluso">Spremljanje — ni vključeno</li>
+      </ul>
+      <a href="https://hd-webdesign.si/boost-suite/" class="btn-outline" data-sl="Brezplačna analiza →" data-en="Free check →" data-hr="Besplatna analiza →" data-de="Kostenlose Analyse →" data-it="Analisi gratuita →">Brezplačna analiza →</a>
+    </div>
+    <!-- FULL — AI Authority Foundation -->
+    <div class="price-card featured reveal">
+      <div class="badge full" data-sl="POPOLNA REŠITEV" data-en="FULL SOLUTION" data-hr="POTPUNO RJEŠENJE" data-de="VOLLSTÄNDIGE LÖSUNG" data-it="SOLUZIONE COMPLETA">POPOLNA REŠITEV</div>
+      <h3>AI Authority Foundation</h3>
+      <div class="price">€699 <span data-sl="enkratno" data-en="one-time" data-hr="jednokratno" data-de="einmalig" data-it="una tantum">enkratno</span></div>
+      <div class="price-note" data-sl="Vse kar potrebujete za AI vidljivost" data-en="Everything for AI visibility" data-hr="Sve za AI vidljivost" data-de="Alles für KI-Sichtbarkeit" data-it="Tutto per la visibilità AI">Vse kar potrebujete za AI vidljivost</div>
+      <ul>
+        <li class="included" data-sl="AI vidljivost vaše strani" data-en="AI visibility score" data-hr="AI ocjena vidljivosti" data-de="KI-Sichtbarkeits-Score" data-it="Punteggio visibilità AI">AI vidljivost vaše strani</li>
+        <li class="included" data-sl="Schema.org pregled" data-en="Schema.org review" data-hr="Schema.org pregled" data-de="Schema.org-Überprüfung" data-it="Revisione Schema.org">Schema.org pregled</li>
+        <li class="included" data-sl="llms.txt analiza" data-en="llms.txt analysis" data-hr="llms.txt analiza" data-de="llms.txt-Analyse" data-it="Analisi llms.txt">llms.txt analiza</li>
+        <li class="included" data-sl="Implementacija — nastavimo vse" data-en="Implementation — we set it all up" data-hr="Implementacija — postavimo sve" data-de="Implementierung — wir richten alles ein" data-it="Implementazione — configuriamo tutto">Implementacija — nastavimo vse</li>
+        <li class="included" data-sl="Schema.org markup — namestimo" data-en="Schema.org markup — we install it" data-hr="Schema.org markup — instaliramo" data-de="Schema.org-Markup — wir installieren es" data-it="Markup Schema.org — lo installiamo">Schema.org markup — namestimo</li>
+        <li class="included" data-sl="llms.txt datoteka — ustvarimo" data-en="llms.txt file — we create it" data-hr="llms.txt datoteka — kreiramo" data-de="llms.txt-Datei — wir erstellen sie" data-it="File llms.txt — lo creiamo">llms.txt datoteka — ustvarimo</li>
+        <li class="included" data-sl="3 mesece AI-Algorithm Shield" data-en="3 months AI-Algorithm Shield" data-hr="3 mjeseca AI-Algorithm Shield" data-de="3 Monate AI-Algorithm Shield" data-it="3 mesi AI-Algorithm Shield">3 mesece AI-Algorithm Shield</li>
+        <li class="included" data-sl="Mesečna AI poročila" data-en="Monthly AI reports" data-hr="Mjesečna AI izvješća" data-de="Monatliche KI-Berichte" data-it="Report AI mensili">Mesečna AI poročila</li>
+      </ul>
+      <a href="#" class="btn-dark" onclick="checkout('ai_authority');return false;" data-sl="Začnite zdaj — €699" data-en="Start now — €699" data-hr="Započnite sada — €699" data-de="Jetzt starten — €699" data-it="Inizia ora — €699">Začnite zdaj — €699</a>
+    </div>
+    <!-- MONTHLY -->
+    <div class="price-card reveal">
+      <div class="badge report" data-sl="VZDRŽEVANJE" data-en="MAINTENANCE" data-hr="ODRŽAVANJE" data-de="WARTUNG" data-it="MANUTENZIONE">VZDRŽEVANJE</div>
+      <h3 data-sl="Mesečno vzdrževanje" data-en="Monthly Maintenance" data-hr="Mjesečno održavanje" data-de="Monatliche Wartung" data-it="Manutenzione mensile">Mesečno vzdrževanje</h3>
+      <div class="price">€49 <span data-sl="/mesec" data-en="/mo" data-hr="/mjesec" data-de="/Monat" data-it="/mese">/mesec</span></div>
+      <div class="price-note" data-sl="Po izteku 3 mesecev" data-en="After 3-month period" data-hr="Nakon 3-mjesečnog razdoblja" data-de="Nach dem 3-Monats-Zeitraum" data-it="Dopo il periodo di 3 mesi">Po izteku 3 mesecev</div>
+      <ul>
+        <li class="included" data-sl="Nadaljno spremljanje" data-en="Ongoing monitoring" data-hr="Nastavno praćenje" data-de="Laufende Überwachung" data-it="Monitoraggio continuo">Nadaljno spremljanje</li>
+        <li class="included" data-sl="Prilagoditve ob posodobitvah" data-en="Adjustments on updates" data-hr="Prilagodbe pri ažuriranjima" data-de="Anpassungen bei Updates" data-it="Aggiornamenti">Prilagoditve ob posodobitvah</li>
+        <li class="included" data-sl="Mesečna poročila" data-en="Monthly reports" data-hr="Mjesečna izvješća" data-de="Monatsberichte" data-it="Report mensili">Mesečna poročila</li>
+        <li class="included" data-sl="Podpora po emailu" data-en="Email support" data-hr="Podrška putem e-pošte" data-de="E-Mail-Support" data-it="Supporto email">Podpora po emailu</li>
+      </ul>
+      <a href="#" class="btn-outline" onclick="checkout('ai_authority_monthly');return false;" data-sl="Naroči se — €49/mesec" data-en="Subscribe — €49/mo" data-hr="Pretplata — €49/mj" data-de="Abonnieren — €49/Mon" data-it="Abbonati — €49/mese">Naroči se — €49/mesec</a>
+    </div>
+  </div>
+  <!-- COMPARISON TABLE -->
+  <div class="compare-table reveal">
+    <table>
+      <thead>
+        <tr>
+          <th data-sl="Primerjava" data-en="Comparison" data-hr="Usporedba" data-de="Vergleich" data-it="Confronto">Primerjava</th>
+          <th>BoostSuite GEO Check</th>
+          <th>AI Authority Foundation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-sl="AI vidljivost poročilo" data-en="AI visibility report" data-hr="AI izvješće vidljivosti" data-de="KI-Sichtbarkeitsbericht" data-it="Report visibilità AI">AI vidljivost poročilo</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td data-sl="Schema.org pregled" data-en="Schema.org review" data-hr="Schema.org pregled" data-de="Schema.org-Überprüfung" data-it="Revisione Schema.org">Schema.org pregled</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td data-sl="llms.txt analiza" data-en="llms.txt analysis" data-hr="llms.txt analiza" data-de="llms.txt-Analyse" data-it="Analisi llms.txt">llms.txt analiza</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td data-sl="Schema.org markup namestitev" data-en="Schema.org markup installation" data-hr="Schema.org markup instalacija" data-de="Schema.org-Markup-Installation" data-it="Installazione markup Schema.org">Schema.org markup namestitev</td>
+          <td class="dash">—</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td data-sl="llms.txt datoteka ustvaritev" data-en="llms.txt file creation" data-hr="llms.txt datoteka kreiranje" data-de="llms.txt-Datei-Erstellung" data-it="Creazione file llms.txt">llms.txt datoteka ustvaritev</td>
+          <td class="dash">—</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td data-sl="GEO optimizacija" data-en="GEO optimization" data-hr="GEO optimizacija" data-de="GEO-Optimierung" data-it="Ottimizzazione GEO">GEO optimizacija</td>
+          <td class="dash">—</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td data-sl="3 mesece spremljanja" data-en="3 months monitoring" data-hr="3 mjeseca praćenja" data-de="3 Monate Überwachung" data-it="3 mesi di monitoraggio">3 mesece spremljanja</td>
+          <td class="dash">—</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td data-sl="Mesečna poročila" data-en="Monthly reports" data-hr="Mjesečna izvješća" data-de="Monatsberichte" data-it="Report mensili">Mesečna poročila</td>
+          <td class="dash">—</td>
+          <td class="check">✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- BLOG -->
+<section class="section" id="blog">
+  <div class="section-num reveal">04</div>
+  <h2 class="reveal" style="margin-top:.5rem" data-sl="Več o GEO optimizaciji" data-en="Learn more about GEO" data-hr="Saznajte više o GEO" data-de="Mehr über GEO" data-it="Scopri di più sul GEO">Več o GEO optimizaciji</h2>
+  <p class="section-sub reveal" data-sl="Preberite naše članke o tem, kako deluje GEO optimizacija in zakaj je pomembna za vašo prisotnost v AI priporočilih." data-en="Read our articles on how GEO optimization works and why it matters for your AI recommendation presence." data-hr="Pročitajte naše članke o tome kako funkcionira GEO optimizacija i zašto je važna za vašu prisutnost u AI preporukama." data-de="Lesen Sie unsere Artikel darüber, wie GEO-Optimierung funktioniert und warum sie für Ihre KI-Empfehlungen wichtig ist." data-it="Leggete i nostri articoli su come funziona l'ottimizzazione GEO e perché è importante per la vostra presenza nelle raccomandazioni AI.">Preberite naše članke o tem, kako deluje GEO optimizacija in zakaj je pomembna za vašo prisotnost v AI priporočilih.</p>
+  <div class="blog-grid">
+    <a href="/blog/geo-for-agencies.html" class="blog-card reveal">
+      <div class="blog-tag">Agency Guide · GEO</div>
+      <h3>GEO for Agencies: How to Sell AI Visibility Services to Your Clients</h3>
+      <p>How digital agencies can use GEO as a new revenue stream. Sell AI visibility audits and Schema.org implementation to your clients.</p>
+      <span class="blog-read">Preberi →</span>
+    </a>
+    <a href="/blog/geo-checklist-chatgpt-recommendations.html" class="blog-card reveal">
+      <div class="blog-tag">GEO Guide · Checklist</div>
+      <h3>How to Make ChatGPT Recommend Your Business: A Complete GEO Checklist</h3>
+      <p>A 10-step GEO checklist to make ChatGPT, Gemini, and Perplexity recommend your business. Actionable steps with code examples.</p>
+      <span class="blog-read">Preberi →</span>
+    </a>
+    <a href="/blog/structured-data-llms-txt-ai-visibility.html" class="blog-card reveal">
+      <div class="blog-tag">Technical · GEO</div>
+      <h3>Structured Data, llms.txt & FAQ: Why AI Can't Find Your Website</h3>
+      <p>Your website might be invisible to ChatGPT, Gemini, and Perplexity. Here's why structured data, llms.txt, and FAQ markup are the technical foundation.</p>
+      <span class="blog-read">Preberi →</span>
+    </a>
+    <a href="/blog/geo-optimization-2026.html" class="blog-card reveal">
+      <div class="blog-tag">GEO Guide</div>
+      <h3>GEO: The New SEO — How AI Engines See Your Website</h3>
+      <p>What is GEO and how is it different from SEO? Learn how AI search engines work and how to optimize for them.</p>
+      <span class="blog-read">Preberi →</span>
+    </a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-num reveal">05</div>
+  <h2 class="reveal" style="margin-top:.5rem" data-sl="Pogosta vprašanja" data-en="FAQ" data-hr="Česta pitanja" data-de="Häufige Fragen" data-it="FAQ">Pogosta vprašanja</h2>
+  <div style="margin-top:2rem">
+    <div class="faq-item reveal">
+      <div class="faq-q" data-sl="Kaj je GEO optimizacija?" data-en="What is GEO optimization?" data-hr="Što je GEO optimizacija?" data-de="Was ist GEO-Optimierung?" data-it="Cos'è l'ottimizzazione GEO?">Kaj je GEO optimizacija?</div>
+      <div class="faq-a" data-sl="GEO (Generative Engine Optimization) je optimizacija vaše spletne strani za AI modele kot so ChatGPT, Perplexity, Gemini in Claude. Vključuje strukturirane podatke, Schema.org markup in llms.txt datoteko, da vas AI modeli lahko najdejo in priporočijo." data-en="GEO (Generative Engine Optimization) is optimizing your website for AI models like ChatGPT, Perplexity, Gemini and Claude. It includes structured data, Schema.org markup and llms.txt file, so AI models can find and recommend you." data-hr="GEO (Generative Engine Optimization) je optimizacija vaše web stranice za AI modele kao što su ChatGPT, Perplexity, Gemini i Claude. Uključuje strukturirane podatke, Schema.org markup i llms.txt datoteku, da vas AI modeli mogu pronaći i preporučiti." data-de="GEO (Generative Engine Optimization) ist die Optimierung Ihrer Website für KI-Modelle wie ChatGPT, Perplexity, Gemini und Claude. Es umfasst strukturierte Daten, Schema.org-Markup und llms.txt-Datei, damit KI-Modelle Sie finden und empfehlen können." data-it="GEO (Generative Engine Optimization) è l'ottimizzazione del vostro sito per modelli AI come ChatGPT, Perplexity, Gemini e Claude. Comprende dati strutturati, markup Schema.org e file llms.txt, affinché i modelli AI possano trovarvi e raccomandarvi.">GEO (Generative Engine Optimization) je optimizacija vaše spletne strani za AI modele kot so ChatGPT, Perplexity, Gemini in Claude. Vključuje strukturirane podatke, Schema.org markup in llms.txt datoteko, da vas AI modeli lahko najdejo in priporočijo.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" data-sl="Kako dolgo traja implementacija?" data-en="How long does implementation take?" data-hr="Koliko traje implementacija?" data-de="Wie lange dauert die Implementierung?" data-it="Quanto dura l'implementazione?">Kako dolgo traja implementacija?</div>
+      <div class="faq-a" data-sl="Implementacija običajno traja 24 ur. V tem času nastavimo llms.txt, Schema.org markup in GEO optimizacijo za vašo spletno stran." data-en="Implementation usually takes 24 hours. During this time we set up llms.txt, Schema.org markup and GEO optimization for your website." data-hr="Implementacija običajno traje 24 sata. U tom vremenu postavimo llms.txt, Schema.org markup i GEO optimizaciju za vašu web stranicu." data-de="Die Implementierung dauert in der Regel 24 Stunden. In dieser Zeit richten wir llms.txt, Schema.org-Markup und GEO-Optimierung für Ihre Website ein." data-it="L'implementazione richiede solitamente 24 ore. Durante questo tempo configuriamo llms.txt, markup Schema.org e ottimizzazione GEO per il vostro sito.">Implementacija običajno traja 24 ur. V tem času nastavimo llms.txt, Schema.org markup in GEO optimizacijo za vašo spletno stran.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" data-sl="Kaj je AI-Algorithm Shield?" data-en="What is AI-Algorithm Shield?" data-hr="Što je AI-Algorithm Shield?" data-de="Was ist AI-Algorithm Shield?" data-it="Cos'è l'AI-Algorithm Shield?">Kaj je AI-Algorithm Shield?</div>
+      <div class="faq-a" data-sl="AI-Algorithm Shield je 3-mesečno spremljanje vaše spletne strani. Ko se AI modeli posodobijo, prilagodimo optimizacijo, da vaša stran ostane vidna v priporočilih." data-en="AI-Algorithm Shield is 3 months of monitoring your website. When AI models update, we adjust the optimization to keep your website visible in recommendations." data-hr="AI-Algorithm Shield je 3-mjesečno praćenje vaše web stranice. Kad se AI modeli ažuriraju, prilagođavamo optimizaciju kako bi vaša stranica ostala vidljiva u preporukama." data-de="AI-Algorithm Shield ist 3 Monate Überwachung Ihrer Website. Wenn KI-Modelle aktualisiert werden, passen wir die Optimierung an, damit Ihre Website in den Empfehlungen sichtbar bleibt." data-it="L'AI-Algorithm Shield è 3 mesi di monitoraggio del vostro sito. Quando i modelli AI si aggiornano, adattiamo l'ottimizzazione per mantenere il vostro sito visibile nei suggerimenti.">AI-Algorithm Shield je 3-mesečno spremljanje vaše spletne strani. Ko se AI modeli posodobijo, prilagodimo optimizacijo, da vaša stran ostane vidna v priporočilih.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" data-sl="Ali garantirate rezultate?" data-en="Do you guarantee results?" data-hr="Jamčite li rezultate?" data-de="Garantieren Sie Ergebnisse?" data-it="Garantite i risultati?">Ali garantirate rezultate?</div>
+      <div class="faq-a" data-sl="Da. Če vaša stran ni vidna v AI priporočilih po implementaciji, vam vrnemo denar. 100% garancija zadovoljstva." data-en="Yes. If your website isn't visible in AI recommendations after implementation, we refund your money. 100% satisfaction guarantee." data-hr="Da. Ako vaša stranica nije vidljiva u AI preporukama nakon implementacije, vraćamo vam novac. 100% garancija zadovoljstva." data-de="Ja. Wenn Ihre Website nach der Implementierung nicht in KI-Empfehlungen sichtbar ist, erstatten wir Ihr Geld. 100% Zufriedenheitsgarantie." data-it="Sì. Se il vostro sito non è visibile nelle raccomandazioni AI dopo l'implementazione, vi rimborsiamo. Garanzia di soddisfazione al 100%.">Da. Če vaša stran ni vidna v AI priporočilih po implementaciji, vam vrnemo denar. 100% garancija zadovoljstva.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" data-sl="Za koga je ta storitev?" data-en="Who is this service for?" data-hr="Za koga je ova usluga?" data-de="Für wen ist dieser Dienst?" data-it="Per chi è questo servizio?">Za koga je ta storitev?</div>
+      <div class="faq-a" data-sl="Za vsa podjetja, ki želijo biti vidna v AI priporočilih. Posebej koristno za agencije, ki želijo ponuditi GEO storitve svojim strankam." data-en="For any business that wants to be visible in AI recommendations. Especially useful for agencies that want to offer GEO services to their clients." data-hr="Za sva poduzeća koja žele biti vidljiva u AI preporukama. Posebno korisno za agencije koje žele ponuditi GEO usluge svojim klijentima." data-de="Für jedes Unternehmen, das in KI-Empfehlungen sichtbar sein möchte. Besonders nützlich für Agenturen, die ihren Kunden GEO-Dienste anbieten möchten." data-it="Per qualsiasi azienda che desidera essere visibile nelle raccomandazioni AI. Particolarmente utile per le agenzie che vogliono offrire servizi GEO ai loro clienti.">Za vsa podjetja, ki želijo biti vidna v AI priporočilih. Posebej koristno za agencije, ki želijo ponuditi GEO storitve svojim strankam.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-num reveal">06</div>
+  <h2 class="reveal" data-sl="Preverite, ali je vaša stran vidna AI." data-en="Check if your website is visible to AI." data-hr="Provjerite je li vaša stranica vidljiva AI-ju." data-de="Prüfen Sie, ob Ihre Website für KI sichtbar ist." data-it="Controllate se il vostro sito è visibile all'AI.">Preverite, ali je vaša stran vidna AI.</h2>
+  <p class="reveal" data-sl="Brezplačna analiza — takoj vidite rezultate." data-en="Free analysis — see results instantly." data-hr="Besplatna analiza — odmah vidite rezultate." data-de="Kostenlose Analyse — sehen Sie sofort die Ergebnisse." data-it="Analisi gratuita — vedete i risultati immediatamente.">Brezplačna analiza — takoj vidite rezultate.</p>
+  <div class="reveal">
+    <a href="https://hd-webdesign.si/boost-suite/" class="cta-primary" style="background:#0a0a0a;color:#fff;padding:.85rem 2.2rem;font-size:.9rem" data-sl="Brezplačna GEO analiza →" data-en="Free GEO Check →" data-hr="Besplatna GEO analiza →" data-de="Kostenlose GEO-Analyse →" data-it="Analisi GEO gratuita →">Brezplačna GEO analiza →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 HD WebDesign</p>
+  <p><a href="mailto:hercegdarko@hd-webdesign.si">hercegdarko@hd-webdesign.si</a></p>
+</footer>
+
+<script>
+// LANG SWITCH
+function setLang(lang){
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+    const t=el.getAttribute('data-'+lang);
+    if(t) el.innerHTML=t;
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang);
+  });
+  document.documentElement.lang=lang;
+}
+
+// REVEAL ON SCROLL
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}
+  });
+},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>{
+  el.classList.add('hidden-init');
+  observer.observe(el);
+});
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+
+
+</script>
+
+
+<script>
+function checkout(priceId) {
+  fetch('/api/create-checkout.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({price_id: priceId})
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.checkout_url) {
+      window.location.href = data.checkout_url;
+    } else {
+      alert('Napaka: ' + (data.error || 'Poskusite znova.'));
+    }
+  })
+  .catch(() => alert('Napaka pri povezavi. Poskusite znova.'));
+}
+</script>
+</body>
+</html>

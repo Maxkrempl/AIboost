@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 800px; height: 600px; overflow: hidden; font-family: 'Segoe UI', system-ui, sans-serif; }
+.container {
+  width: 800px; height: 600px;
+  background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 100%);
+  position: relative; padding: 40px;
+}
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.logo { color: #fff; font-size: 20px; font-weight: 800; }
+.logo .suite { color: #10b981; }
+.date { color: rgba(255,255,255,0.4); font-size: 12px; }
+.url-badge {
+  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2);
+  color: #34d399; font-size: 11px; padding: 4px 12px; border-radius: 12px;
+}
+.score-section { display: flex; gap: 24px; margin-bottom: 30px; }
+.score-card {
+  background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 20px; flex: 1; text-align: center;
+}
+.score-value { font-size: 42px; font-weight: 800; margin-bottom: 4px; }
+.score-label { color: rgba(255,255,255,0.4); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+.good { color: #10b981; }
+.warn { color: #f59e0b; }
+.bad { color: #ef4444; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.metric {
+  background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+}
+.metric-name { color: rgba(255,255,255,0.6); font-size: 12px; }
+.metric-value { color: #fff; font-size: 14px; font-weight: 600; }
+.metric-value.good { color: #10b981; }
+.metric-value.warn { color: #f59e0b; }
+.footer {
+  position: absolute; bottom: 30px; left: 40px; right: 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px;
+}
+.footer-text { color: rgba(255,255,255,0.3); font-size: 11px; }
+.cta {
+  background: linear-gradient(135deg, #10b981, #3b82f6);
+  color: #fff; font-size: 12px; font-weight: 600; padding: 8px 20px;
+  border-radius: 8px;
+}
+/* Progress bars */
+.bar-section { margin-bottom: 16px; }
+.bar-label { display: flex; justify-content: space-between; color: rgba(255,255,255,0.5); font-size: 11px; margin-bottom: 4px; }
+.bar-track { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo">Boost<span class="suite">Suite</span></div>
+    <div class="url-badge">{{FEATURES}}</div>
+    <div class="date">{{STATS}}</div>
+  </div>
+
+  <div class="score-section">
+    <div class="score-card">
+      <div class="score-value good">87</div>
+      <div class="score-label">SEO Score</div>
+    </div>
+    <div class="score-card">
+      <div class="score-value good">92</div>
+      <div class="score-label">GEO Score</div>
+    </div>
+    <div class="score-card">
+      <div class="score-value warn">68</div>
+      <div class="score-label">Speed</div>
+    </div>
+    <div class="score-card">
+      <div class="score-value good">95</div>
+      <div class="score-label">Mobile</div>
+    </div>
+  </div>
+
+  <div class="bar-section">
+    <div class="bar-label"><span>Meta Tags</span><span>95%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:95%;background:#10b981"></div></div>
+  </div>
+  <div class="bar-section">
+    <div class="bar-label"><span>Content Quality</span><span>82%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:82%;background:#10b981"></div></div>
+  </div>
+  <div class="bar-section">
+    <div class="bar-label"><span>AI Visibility (GEO)</span><span>78%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:78%;background:#f59e0b"></div></div>
+  </div>
+  <div class="bar-section">
+    <div class="bar-label"><span>Page Speed</span><span>68%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:68%;background:#f59e0b"></div></div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><span class="metric-name">Load Time</span><span class="metric-value warn">2.1s</span></div>
+    <div class="metric"><span class="metric-name">Mobile Score</span><span class="metric-value good">95/100</span></div>
+    <div class="metric"><span class="metric-name">AI Visibility</span><span class="metric-value good">High</span></div>
+    <div class="metric"><span class="metric-name">Schema Markup</span><span class="metric-value good">✓ Valid</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">Powered by BoostSuite — AI-Powered Website Optimization</div>
+    <div class="cta">{{SUBTITLE}}</div>
+  </div>
+</div>
+</body>
+</html>

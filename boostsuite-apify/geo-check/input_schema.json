@@ -1,0 +1,20 @@
+{
+  "title": "BoostSuite GEO Check",
+  "description": "Check Generative Engine Optimization (GEO) readiness — how well does a URL serve AI agents like ChatGPT, Perplexity, and Claude.",
+  "type": "object",
+  "schemaVersion": 1,
+  "editorSchemaVersion": 1,
+  "fields": [
+    {
+      "key": "url",
+      "type": "string",
+      "title": "Website URL",
+      "description": "The URL to check for GEO readiness",
+      "editor": {
+        "type": "textfield"
+      },
+      "prefill": "https://example.com"
+    }
+  ],
+  "groups": []
+}

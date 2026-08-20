@@ -1,0 +1,6 @@
+export OPENROUTER_API_KEY="***REMOVED***"
+export GITLAB_TOKEN="***REMOVED***"
+export DEEPSEEK_API_KEY="***REMOVED***"
+export NETLIFY_AUTH_TOKEN="***REMOVED***"
+export TAVILY_API_KEY="***REMOVED***"
+export EMAIL_PASSWORD="***REMOVED***"

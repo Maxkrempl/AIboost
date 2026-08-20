@@ -1,0 +1,49 @@
+Deep Audit Results
+==================================================
+
+MenuBoost:
+  URL: https://menuboostai.netlify.app/
+  Title: ListTranslate — AI跨境产品翻译优化工具
+  Viewport: True (width=device-width, initial-scale=1.0)
+  Gumroad link: False (None)
+  Pricing link: True (#pricing)
+  CTA button: False
+  Footer: True
+
+BoostSuite:
+  URL: https://boostsuite.netlify.app/
+  Title: BoostSuite — AI Marketing Toolkit for Agencies
+  Viewport: True (width=device-width, initial-scale=1.0)
+  Gumroad link: True (https://herceg23.gumroad.com/l/uvoetm)
+  Pricing link: False (None)
+  CTA button: True
+  Footer: True
+
+AdBoost:
+  URL: https://adboost-mvp.netlify.app/
+  Title: AdBoost – AI‑Powered Ad Copy Generator
+  Viewport: True (width=device-width, initial-scale=1.0)
+  Gumroad link: False (None)
+  Pricing link: False (None)
+  CTA button: False
+  Footer: True
+
+ListTranslate:
+  URL: https://listtranslate.netlify.app/
+  Title: BoostSuite — AI Marketing Toolkit for Agencies
+  Viewport: True (width=device-width, initial-scale=1.0)
+  Gumroad link: True (https://herceg23.gumroad.com/l/uvoetm)
+  Pricing link: False (None)
+  CTA button: True
+  Footer: True
+
+HD WebDesign:
+  URL: https://hd-webdesign.si/
+  Title: Darko Herceg — Developer & SaaS Builder | HD Web Design
+  Viewport: True (width=device-width, initial-scale=1.0)
+  Gumroad link: False (None)
+  Pricing link: False (None)
+  CTA button: True
+  Footer: True
+  Broken links: 1
+    - https://www.linkedin.com/in/darko-herceg-073a322b9 → 999

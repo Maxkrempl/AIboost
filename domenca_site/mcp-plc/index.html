@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP PLC Core — Universal PLC ↔ AI Bridge</title>
+    <meta name="description" content="Open-source MCP server that connects any industrial PLC to AI agents. Siemens, Schneider, ABB, Mitsubishi — write an adapter, it works.">
+    <link rel="canonical" href="https://hd-webdesign.si/mcp-plc/">
+    <meta property="og:title" content="MCP PLC Core — Universal PLC ↔ AI Bridge">
+    <meta property="og:description" content="Connect any PLC to Claude, GPT, or OpenClaw via MCP protocol.">
+    <meta property="og:url" content="https://hd-webdesign.si/mcp-plc/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0c0e12;
+            --surface: #13161c;
+            --surface2: #1a1e26;
+            --border: #252a34;
+            --border-bright: #3a4150;
+            --text: #c8cdd6;
+            --text-bright: #eef0f4;
+            --text-dim: #6b7280;
+            --green: #22c55e;
+            --green-dim: #166534;
+            --amber: #f59e0b;
+            --amber-dim: #92400e;
+            --red: #ef4444;
+            --red-dim: #991b1b;
+            --cyan: #06b6d4;
+            --mono: 'IBM Plex Mono', 'SF Mono', monospace;
+            --sans: 'DM Sans', -apple-system, sans-serif;
+            --heading: 'Space Grotesk', var(--sans);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── SCANLINE OVERLAY ─── */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.03) 2px,
+                rgba(0,0,0,0.03) 4px
+            );
+        }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(12,14,18,0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 56px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand {
+            font-family: var(--mono);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--green);
+            letter-spacing: 0.05em;
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .nav-brand .dot {
+            width: 8px; height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--green);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-bright); text-decoration: none; }
+        .nav-cta {
+            background: var(--green) !important;
+            color: var(--bg) !important;
+            padding: 0.35rem 1rem !important;
+            border-radius: 4px;
+            font-weight: 600 !important;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            padding: 7rem 3rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-label {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--green);
+            margin-bottom: 1.2rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .hero-label::before {
+            content: '';
+            width: 20px; height: 1px;
+            background: var(--green);
+        }
+        .hero h1 {
+            font-family: var(--heading);
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.08;
+            color: var(--text-bright);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+        .hero h1 span { color: var(--green); }
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            max-width: 480px;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .hero-actions { display: flex; gap: 0.8rem; }
+        .btn {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.7rem 1.6rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.15s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .btn-green { background: var(--green); color: var(--bg); }
+        .btn-green:hover { background: #16a34a; text-decoration: none; }
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border-bright);
+        }
+        .btn-outline:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+
+        /* Hero terminal */
+        .hero-terminal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .term-bar {
+            display: flex; align-items: center; gap: 0.4rem;
+            padding: 0.6rem 1rem;
+            background: var(--surface2);
+            border-bottom: 1px solid var(--border);
+        }
+        .term-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .term-dot.r { background: #ef4444; }
+        .term-dot.y { background: #f59e0b; }
+        .term-dot.g { background: #22c55e; }
+        .term-title {
+            margin-left: 0.6rem;
+            color: var(--text-dim);
+            font-size: 0.7rem;
+        }
+        .term-body { padding: 1.2rem; line-height: 1.8; }
+        .term-body .prompt { color: var(--green); }
+        .term-body .cmd { color: var(--text-bright); }
+        .term-body .flag { color: var(--cyan); }
+        .term-body .comment { color: #4b5563; }
+        .term-body .output { color: var(--text-dim); }
+        .term-body .success { color: var(--green); }
+        .term-body .warn { color: var(--amber); }
+
+        /* ─── STATS BAR ─── */
+        .stats {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-val {
+            font-family: var(--mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-bright);
+        }
+        .stat-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-dim);
+            margin-top: 0.3rem;
+        }
+
+        /* ─── SECTION ─── */
+        .section {
+            padding: 6rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-tag {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--green);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .section-tag::before {
+            content: '';
+            width: 12px; height: 1px;
+            background: var(--green);
+        }
+        .section h2 {
+            font-family: var(--heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .section-sub {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            max-width: 500px;
+        }
+
+        /* ─── ARCHITECTURE ─── */
+        .arch-flow {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
+        .arch-node {
+            flex: 1;
+            min-width: 150px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.5rem 1.2rem;
+            position: relative;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .arch-node:first-child { border-radius: 8px 0 0 8px; }
+        .arch-node:last-child { border-radius: 0 8px 8px 0; }
+        .arch-node:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -8px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            background: var(--bg);
+            color: var(--text-dim);
+            width: 16px; text-align: center;
+            font-size: 0.9rem;
+        }
+        .arch-node.core {
+            border-color: var(--green);
+            background: rgba(34,197,94,0.04);
+        }
+        .arch-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+        .arch-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+        .arch-sub {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-top: 0.2rem;
+        }
+
+        /* ─── PLC GRID ─── */
+        .plc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        .plc-cell {
+            background: var(--surface);
+            padding: 1.4rem;
+            display: flex; flex-direction: column; gap: 0.4rem;
+            transition: background 0.15s;
+        }
+        .plc-cell:hover { background: var(--surface2); }
+        .plc-cell-name {
+            font-family: var(--heading);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+        .plc-cell-proto {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+        .plc-cell-status {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: auto;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .status-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+        }
+        .status-dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+        .status-dot.amber { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+        .s-green { color: var(--green); }
+        .s-amber { color: var(--amber); }
+
+        /* ─── CODE PANELS ─── */
+        .code-panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        .code-panel {
+            background: var(--surface);
+            overflow: hidden;
+        }
+        .code-panel-head {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.6rem 1rem;
+            background: var(--surface2);
+            border-bottom: 1px solid var(--border);
+        }
+        .code-panel-title {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .code-panel-tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--green);
+            background: rgba(34,197,94,0.1);
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+        }
+        .code-panel pre {
+            padding: 1.2rem;
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            color: var(--text);
+        }
+        .code-panel .hl-green { color: var(--green); }
+        .code-panel .hl-cyan { color: var(--cyan); }
+        .code-panel .hl-amber { color: var(--amber); }
+        .code-panel .hl-dim { color: #4b5563; }
+        .code-panel .hl-bright { color: var(--text-bright); }
+
+        /* ─── TOOLS TABLE ─── */
+        .tools-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+        }
+        .tools-table th {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            text-align: left;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .tools-table td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        .tools-table tr:last-child td { border-bottom: none; }
+        .tools-table tr:hover td { background: var(--surface); }
+        .tools-table .tool-name {
+            font-family: var(--mono);
+            font-weight: 600;
+            color: var(--green);
+            font-size: 0.82rem;
+        }
+        .tools-table .tool-desc { color: var(--text-dim); }
+        .tools-table .tool-example {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* ─── SAFETY ─── */
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        .safety-cell {
+            background: var(--surface);
+            padding: 1.5rem;
+        }
+        .safety-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+        .safety-cell h3 {
+            font-family: var(--heading);
+            font-size: 0.9rem;
+            color: var(--text-bright);
+            margin-bottom: 0.3rem;
+        }
+        .safety-cell p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* ─── CTA ─── */
+        .cta {
+            padding: 6rem 3rem;
+            text-align: center;
+            position: relative;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 10%; right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .cta h2 {
+            font-family: var(--heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 0.8rem;
+        }
+        .cta p {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .cta .hero-actions { justify-content: center; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 3rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        footer p {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+        footer a { color: var(--text-dim); }
+        footer a:hover { color: var(--green); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .hero { padding: 6rem 1.5rem 3rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .section { padding: 4rem 1.5rem; }
+            .plc-grid { grid-template-columns: repeat(2, 1fr); }
+            .code-panels { grid-template-columns: 1fr; }
+            .safety-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats { gap: 2rem; padding: 1.5rem; flex-wrap: wrap; }
+            .arch-flow { flex-direction: column; }
+            .arch-node { border-radius: 0 !important; }
+            .arch-node:first-child { border-radius: 8px 8px 0 0 !important; }
+            .arch-node:last-child { border-radius: 0 0 8px 8px !important; }
+            .arch-node:not(:last-child)::after { content: '↓'; right: 50%; top: auto; bottom: -8px; transform: translateX(50%); }
+            nav { padding: 0 1rem; }
+            .nav-links { gap: 1rem; }
+            footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+        @media (max-width: 600px) {
+            .plc-grid { grid-template-columns: 1fr; }
+            .safety-grid { grid-template-columns: 1fr; }
+            .stats { gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-brand"><div class="dot"></div> MCP PLC CORE</div>
+    <div class="nav-links">
+        <a href="#plcs">PLCs</a>
+        <a href="#code">Code</a>
+        <a href="#tools">Tools</a>
+        <a href="/mcp-plc/dashboard.html">Dashboard</a>
+        <a href="https://github.com/Maxkrempl/mcp-plc-core" class="nav-cta">GitHub</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div>
+            <div class="hero-label">Open Source · MIT License</div>
+            <h1>Connect <span>any PLC</span> to AI agents</h1>
+            <p class="hero-desc">One MCP server. Any industrial controller. Siemens, Schneider, ABB, Mitsubishi, Omron, Allen-Bradley — or write your own adapter in 15 minutes.</p>
+            <div class="hero-actions">
+                <a href="https://github.com/Maxkrempl/mcp-plc-core" class="btn btn-green">★ GitHub</a>
+                <a href="#code" class="btn btn-outline">View Code ↓</a>
+            </div>
+        </div>
+        <div class="hero-terminal">
+            <div class="term-bar">
+                <div class="term-dot r"></div>
+                <div class="term-dot y"></div>
+                <div class="term-dot g"></div>
+                <span class="term-title">mcp-plc — bash</span>
+            </div>
+            <div class="term-body">
+                <div><span class="prompt">$</span> <span class="cmd">npm install</span> <span class="flag">mcp-plc-core</span></div>
+                <div class="output">added 12 packages in 2s</div>
+                <div>&nbsp;</div>
+                <div><span class="prompt">$</span> <span class="cmd">PLC_HOST=192.168.1.100 npx mcp-plc</span> <span class="flag">--adapter s7</span></div>
+                <div class="output">🔌 MCP PLC Core starting...</div>
+                <div class="output">   Adapter: Siemens S7 (s7)</div>
+                <div class="success">✅ Connected to PLC via S7 protocol</div>
+                <div class="success">🚀 MCP PLC Core ready</div>
+                <div>&nbsp;</div>
+                <div class="output"><span class="comment">// Ask your AI agent:</span></div>
+                <div><span class="hl-amber">"What's the temperature on the line?"</span></div>
+                <div class="output">→ read_sensor(temperature)</div>
+                <div class="success">→ 24.7°C — Normal operation</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat">
+        <div class="stat-val">12+</div>
+        <div class="stat-label">PLC Brands</div>
+    </div>
+    <div class="stat">
+        <div class="stat-val">6</div>
+        <div class="stat-label">MCP Tools</div>
+    </div>
+    <div class="stat">
+        <div class="stat-val">15min</div>
+        <div class="stat-label">Custom Adapter</div>
+    </div>
+    <div class="stat">
+        <div class="stat-val">MIT</div>
+        <div class="stat-label">License</div>
+    </div>
+</div>
+
+<!-- ARCHITECTURE -->
+<section class="section">
+    <div class="section-tag">Architecture</div>
+    <h2>How it works</h2>
+    <p class="section-sub">One server, one adapter interface, any PLC underneath.</p>
+    <div class="arch-flow">
+        <div class="arch-node">
+            <div class="arch-icon">🤖</div>
+            <div class="arch-label">AI Agent</div>
+            <div class="arch-sub">Claude / GPT / OpenClaw</div>
+        </div>
+        <div class="arch-node">
+            <div class="arch-icon">📡</div>
+            <div class="arch-label">MCP Protocol</div>
+            <div class="arch-sub">stdio transport</div>
+        </div>
+        <div class="arch-node core">
+            <div class="arch-icon">🏭</div>
+            <div class="arch-label">MCP PLC Core</div>
+            <div class="arch-sub">adapter interface</div>
+        </div>
+        <div class="arch-node">
+            <div class="arch-icon">🔌</div>
+            <div class="arch-label">Your Adapter</div>
+            <div class="arch-sub">Modbus / S7 / OPC UA</div>
+        </div>
+        <div class="arch-node">
+            <div class="arch-icon">⚙️</div>
+            <div class="arch-label">PLC</div>
+            <div class="arch-sub">Sensors & Actuators</div>
+        </div>
+    </div>
+</section>
+
+<!-- SUPPORTED PLCs -->
+<section class="section" id="plcs">
+    <div class="section-tag">Supported PLCs</div>
+    <h2>Works with any controller</h2>
+    <p class="section-sub">Built-in adapters handle the most common protocols. Community adapters fill the rest.</p>
+    <div class="plc-grid">
+        <div class="plc-cell">
+            <div class="plc-cell-name">Siemens S7</div>
+            <div class="plc-cell-proto">S7-200/300/400/1200/1500 · RFC1006</div>
+            <div class="plc-cell-status s-green"><div class="status-dot green"></div> Built-in</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">Schneider</div>
+            <div class="plc-cell-proto">M340/M580/Modicon · Modbus TCP</div>
+            <div class="plc-cell-status s-green"><div class="status-dot green"></div> Built-in</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">ABB</div>
+            <div class="plc-cell-proto">AC500/AC580 · Modbus TCP</div>
+            <div class="plc-cell-status s-green"><div class="status-dot green"></div> Built-in</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">WAGO</div>
+            <div class="plc-cell-proto">PFC200/750 · Modbus TCP</div>
+            <div class="plc-cell-status s-green"><div class="status-dot green"></div> Built-in</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">CODESYS</div>
+            <div class="plc-cell-proto">Any CODESYS controller · Modbus TCP</div>
+            <div class="plc-cell-status s-green"><div class="status-dot green"></div> Built-in</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">Arduino / ESP32</div>
+            <div class="plc-cell-proto">EthernetShield · Modbus TCP</div>
+            <div class="plc-cell-status s-green"><div class="status-dot green"></div> Built-in</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">Mitsubishi</div>
+            <div class="plc-cell-proto">MELSEC iQ-R/F/L · MC Protocol</div>
+            <div class="plc-cell-status s-amber"><div class="status-dot amber"></div> Community</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">Omron</div>
+            <div class="plc-cell-proto">NJ/NX/NP · FINS</div>
+            <div class="plc-cell-status s-amber"><div class="status-dot amber"></div> Community</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">Allen-Bradley</div>
+            <div class="plc-cell-proto">ControlLogix/CompactLogix · CIP</div>
+            <div class="plc-cell-status s-amber"><div class="status-dot amber"></div> Community</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">Beckhoff</div>
+            <div class="plc-cell-proto">TwinCAT · ADS/OpcUa</div>
+            <div class="plc-cell-status s-amber"><div class="status-dot amber"></div> Community</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">Bosch Rexroth</div>
+            <div class="plc-cell-proto">IndraMotion · OPC UA</div>
+            <div class="plc-cell-status s-amber"><div class="status-dot amber"></div> Community</div>
+        </div>
+        <div class="plc-cell">
+            <div class="plc-cell-name">CNC Machines</div>
+            <div class="plc-cell-proto">Fanuc/Haas/DMG Mori · FOCAS/NGC</div>
+            <div class="plc-cell-status s-amber"><div class="status-dot amber"></div> Community</div>
+        </div>
+    </div>
+</section>
+
+<!-- CODE -->
+<section class="section" id="code">
+    <div class="section-tag">Quick Start</div>
+    <h2>Up and running in 30 seconds</h2>
+    <p class="section-sub">One command. Any PLC. AI reads your sensors.</p>
+    <div class="code-panels">
+        <div class="code-panel">
+            <div class="code-panel-head">
+                <span class="code-panel-title">Terminal</span>
+                <span class="code-panel-tag">Run</span>
+            </div>
+            <pre><code><span class="hl-dim"># Install once</span>
+<span class="hl-green">$</span> npm install <span class="hl-cyan">mcp-plc-core</span>
+
+<span class="hl-dim"># Run with any PLC</span>
+<span class="hl-green">$</span> PLC_HOST=<span class="hl-amber">192.168.1.100</span> npx mcp-plc <span class="hl-cyan">--adapter modbus</span>
+<span class="hl-green">$</span> PLC_HOST=<span class="hl-amber">192.168.1.100</span> npx mcp-plc <span class="hl-cyan">--adapter s7</span>
+<span class="hl-green">$</span> npx mcp-plc <span class="hl-cyan">--adapter ./my-plc.js</span></code></pre>
+        </div>
+        <div class="code-panel">
+            <div class="code-panel-head">
+                <span class="code-panel-title">claude_desktop_config.json</span>
+                <span class="code-panel-tag">Config</span>
+            </div>
+            <pre><code>{
+  <span class="hl-bright">"mcpServers"</span>: {
+    <span class="hl-bright">"plc"</span>: {
+      <span class="hl-bright">"command"</span>: <span class="hl-green">"npx"</span>,
+      <span class="hl-bright">"args"</span>: [
+        <span class="hl-green">"mcp-plc"</span>,
+        <span class="hl-green">"--adapter"</span>,
+        <span class="hl-green">"modbus"</span>
+      ],
+      <span class="hl-bright">"env"</span>: {
+        <span class="hl-bright">"PLC_HOST"</span>: <span class="hl-amber">"192.168.1.100"</span>
+      }
+    }
+  }
+}</code></pre>
+        </div>
+    </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section" id="tools">
+    <div class="section-tag">MCP Tools</div>
+    <h2>6 tools. Full PLC access.</h2>
+    <p class="section-sub">Read sensors, check alarms, control setpoints — all through natural language.</p>
+    <table class="tools-table">
+        <thead>
+            <tr><th>Tool</th><th>Description</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tool-name">read_sensor</td>
+                <td class="tool-desc">Read any sensor value from the PLC</td>
+                <td class="tool-example">"What's the temperature?"</td>
+            </tr>
+            <tr>
+                <td class="tool-name">get_alarms</td>
+                <td class="tool-desc">Active alarms with priority and recommended action</td>
+                <td class="tool-example">"Any alarms active?"</td>
+            </tr>
+            <tr>
+                <td class="tool-name">get_status</td>
+                <td class="tool-desc">Full system status in one call</td>
+                <td class="tool-example">"How's the line running?"</td>
+            </tr>
+            <tr>
+                <td class="tool-name">get_setpoints</td>
+                <td class="tool-desc">Current setpoint values from the PLC</td>
+                <td class="tool-example">"What are the setpoints?"</td>
+            </tr>
+            <tr>
+                <td class="tool-name">write_setpoint</td>
+                <td class="tool-desc">Write setpoints with safety limits validated</td>
+                <td class="tool-example">"Set temperature to 35°C"</td>
+            </tr>
+            <tr>
+                <td class="tool-name">get_all</td>
+                <td class="tool-desc">Everything at once — complete PLC snapshot</td>
+                <td class="tool-example">"Give me all data"</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- SAFETY -->
+<section class="section">
+    <div class="section-tag">Safety</div>
+    <h2>Built for production environments</h2>
+    <p class="section-sub">Industrial-grade safety by design, not afterthought.</p>
+    <div class="safety-grid">
+        <div class="safety-cell">
+            <div class="safety-icon">🔒</div>
+            <h3>Read-Only Default</h3>
+            <p>No writes happen without explicit tool call. Safe by default.</p>
+        </div>
+        <div class="safety-cell">
+            <div class="safety-icon">🛡️</div>
+            <h3>Safety Limits</h3>
+            <p>Configurable min/max per setpoint. Out-of-range values rejected instantly.</p>
+        </div>
+        <div class="safety-cell">
+            <div class="safety-icon">📋</div>
+            <h3>Audit Logging</h3>
+            <p>Every tool call logged. Full traceability for compliance.</p>
+        </div>
+        <div class="safety-cell">
+            <div class="safety-icon">🔌</div>
+            <h3>Adapter Isolation</h3>
+            <p>Protocol errors stay in the adapter. Clean error boundaries.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Start connecting your PLC today</h2>
+    <p>Open source. MIT license. Works with any industrial controller.</p>
+    <div class="hero-actions">
+        <a href="https://github.com/Maxkrempl/mcp-plc-core" class="btn btn-green">★ Star on GitHub</a>
+        <a href="https://github.com/Maxkrempl/mcp-plc-core#quick-start" class="btn btn-outline">Read the Docs →</a>
+    </div>
+</section>
+
+<footer>
+    <p>MCP PLC Core by <a href="https://hd-webdesign.si">HD WebDesign</a> · MIT License</p>
+    <p><a href="https://github.com/Maxkrempl/mcp-plc-core">github.com/Maxkrempl/mcp-plc-core</a></p>
+</footer>
+
+<script src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DJER0DNGTF');</script>
+</body>
+</html>

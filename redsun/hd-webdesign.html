@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HD Web Design — AI-Powered Digital Presence</title>
+  <meta name="description" content="We make your business visible to AI. AI Izkaznica, GEO optimization, SEO tools — all in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #08080a; --bg2: #0e0e12; --card: #131318; --card2: #1a1a22;
+      --t1: #f0f0f5; --t2: #8a8a9a; --tm: #55556a;
+      --acc: #a855f7; --acc2: #c084fc; --glow: rgba(168,85,247,0.4); --soft: rgba(168,85,247,0.1);
+      --i2: #6366f1; --grad: linear-gradient(135deg, #a855f7, #6366f1);
+      --gsoft: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(99,102,241,0.15));
+      --b: rgba(255,255,255,0.06); --bh: rgba(168,85,247,0.25);
+      --r: #ef4444; --rs: rgba(239,68,68,0.1);
+      --g: #22c55e; --gs: rgba(34,197,94,0.1);
+      --y: #eab308; --ys: rgba(234,179,8,0.1);
+      --bl: #3b82f6;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--t1); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* CURSOR */
+    .cg { position: fixed; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%); pointer-events: none; z-index: 0; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s; filter: blur(80px); }
+
+    /* NAV */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(24px) saturate(1.4); background: rgba(8,8,10,.6); border-bottom: 1px solid var(--b); transition: all .3s; }
+    .nav.sc { padding: 12px 48px; background: rgba(8,8,10,.85); }
+    .nlogo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nlogo-i { width: 34px; height: 34px; background: var(--grad); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; color: #fff; }
+    .nlogo-t { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--t1); }
+    .nlinks { display: flex; align-items: center; gap: 36px; }
+    .nlinks a { text-decoration: none; color: var(--t2); font-size: 14px; font-weight: 500; transition: color .2s; position: relative; }
+    .nlinks a:hover { color: var(--t1); }
+    .nlinks a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--grad); border-radius: 100px; transition: width .3s; }
+    .nlinks a:hover::after { width: 100%; }
+    .ncta { display: flex; align-items: center; gap: 12px; }
+
+    /* BUTTONS */
+    .bg { padding: 10px 22px; border: 1px solid var(--b); border-radius: 100px; background: transparent; color: var(--t1); font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all .25s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .bg:hover { border-color: rgba(255,255,255,.15); background: rgba(255,255,255,.04); }
+    .bgl { padding: 10px 24px; border: none; border-radius: 100px; background: var(--grad); color: #fff; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .3s; text-decoration: none; box-shadow: 0 0 24px var(--glow), 0 0 60px rgba(168,85,247,.1); display: inline-flex; align-items: center; gap: 8px; }
+    .bgl:hover { transform: translateY(-1px); box-shadow: 0 0 32px var(--glow), 0 0 80px rgba(168,85,247,.15); }
+    .bgl svg { transition: transform .2s; } .bgl:hover svg { transform: translateX(3px); }
+    .bo { padding: 10px 24px; border: 1px solid var(--b); border-radius: 100px; background: transparent; color: var(--t1); font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all .25s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .bo:hover { border-color: var(--acc); background: var(--soft); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 140px 48px 80px; position: relative; overflow: hidden; }
+    .hg { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse, rgba(168,85,247,.12) 0%, rgba(99,102,241,.06) 40%, transparent 70%); filter: blur(60px); pointer-events: none; }
+    .hbadge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 6px 6px 14px; border-radius: 100px; border: 1px solid var(--b); background: rgba(255,255,255,.03); font-size: 13px; color: var(--t2); margin-bottom: 36px; opacity: 0; transform: translateY(20px); animation: fu .8s .2s forwards; position: relative; z-index: 1; }
+    .hbt { padding: 4px 12px; border-radius: 100px; background: var(--gsoft); color: var(--acc2); font-weight: 600; font-size: 12px; }
+    .hbadge svg { width: 14px; height: 14px; color: var(--tm); transition: transform .2s; }
+    .hbadge:hover svg { transform: translateX(3px); }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(42px, 6.5vw, 78px); font-weight: 800; line-height: 1.05; letter-spacing: -.035em; max-width: 850px; margin-bottom: 24px; opacity: 0; transform: translateY(30px); animation: fu .8s .35s forwards; position: relative; z-index: 1; }
+    .gt { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hsub { font-size: 18px; color: var(--t2); max-width: 560px; line-height: 1.65; margin-bottom: 40px; opacity: 0; transform: translateY(30px); animation: fu .8s .5s forwards; position: relative; z-index: 1; }
+    .hbtns { display: flex; gap: 14px; margin-bottom: 72px; opacity: 0; transform: translateY(30px); animation: fu .8s .65s forwards; position: relative; z-index: 1; }
+
+    /* IZKAZNICA PREVIEW */
+    .hp { position: relative; width: 100%; max-width: 960px; opacity: 0; transform: translateY(40px) scale(.96); animation: dr 1s .85s forwards; z-index: 1; }
+    .pg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,.2) 0%, rgba(99,102,241,.08) 40%, transparent 70%); filter: blur(80px); animation: pu 5s ease-in-out infinite; }
+    .pc { position: relative; z-index: 1; width: 100%; background: var(--card); border: 1px solid var(--b); border-radius: 20px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 80px rgba(168,85,247,.06); }
+    .pt { display: flex; align-items: center; gap: 8px; padding: 14px 20px; border-bottom: 1px solid var(--b); background: rgba(255,255,255,.02); }
+    .pd { width: 10px; height: 10px; border-radius: 50%; }
+    .pd.r { background: #ff5f57; } .pd.y { background: #febc2e; } .pd.g { background: #28c840; }
+    .pu { flex: 1; margin-left: 12px; padding: 6px 14px; border-radius: 8px; background: rgba(255,255,255,.04); font-size: 12px; color: var(--tm); font-family: 'Space Grotesk', sans-serif; }
+    .pb { padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .is { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px; }
+    .sr { position: relative; width: 140px; height: 140px; margin-bottom: 20px; }
+    .sr svg { transform: rotate(-90deg); width: 140px; height: 140px; }
+    .sr circle { fill: none; stroke-width: 8; stroke-linecap: round; }
+    .sr .bgc { stroke: rgba(255,255,255,.06); }
+    .sr .pr { stroke: url(#sg); stroke-dasharray: 408; stroke-dashoffset: 408; animation: sr 1.5s 1.5s ease-out forwards; }
+    .sv { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .sl { font-size: 14px; color: var(--t2); text-align: center; }
+    .ssl { font-size: 12px; color: var(--tm); margin-top: 4px; }
+    .id { display: flex; flex-direction: column; gap: 12px; }
+    .di { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; background: rgba(255,255,255,.02); border: 1px solid var(--b); transition: all .3s; }
+    .di:hover { border-color: var(--bh); background: var(--soft); }
+    .dico { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .dico.gr { background: var(--gs); } .dico.rd { background: var(--rs); } .dico.yl { background: var(--ys); }
+    .dit { flex: 1; }
+    .dit-t { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .dit-d { font-size: 11px; color: var(--tm); }
+    .db { padding: 3px 8px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+    .db.pa { background: var(--gs); color: var(--g); }
+    .db.fa { background: var(--rs); color: var(--r); }
+    .db.pa { background: var(--ys); color: var(--y); }
+
+    /* MARQUEE */
+    .ms { padding: 48px 0; border-top: 1px solid var(--b); border-bottom: 1px solid var(--b); overflow: hidden; }
+    .mr { display: flex; margin-bottom: 12px; } .mr:last-child { margin-bottom: 0; }
+    .mt { display: flex; animation: ms 35s linear infinite; flex-shrink: 0; }
+    .mr:nth-child(2) .mt { animation-direction: reverse; animation-duration: 40s; }
+    .mi { display: flex; align-items: center; gap: 12px; padding: 0 32px; white-space: nowrap; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px; color: var(--tm); opacity: .6; transition: opacity .3s; }
+    .mi:hover { opacity: 1; }
+    .mi .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--acc); opacity: .5; }
+    .mi .num { font-weight: 800; font-size: 28px; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 1; }
+    .mi .uni { font-size: 14px; color: var(--t2); font-weight: 500; }
+
+    /* STATS */
+    .ss { padding: 100px 48px; }
+    .sg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+    .sc { background: var(--card); border: 1px solid var(--b); border-radius: 16px; padding: 32px; text-align: center; transition: all .4s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; }
+    .sc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); opacity: 0; transition: opacity .3s; }
+    .sc:hover { transform: translateY(-4px); border-color: var(--bh); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+    .sc:hover::before { opacity: 1; }
+    .sn { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+    .slbl { font-size: 14px; color: var(--t2); line-height: 1.4; }
+
+    /* SECTION */
+    .sec { padding: 120px 48px; position: relative; }
+    .sh { text-align: center; max-width: 620px; margin: 0 auto 64px; }
+    .slbl2 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
+    .st { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.12; letter-spacing: -.025em; margin-bottom: 16px; }
+    .sd { font-size: 16px; color: var(--t2); line-height: 1.65; }
+
+    /* PRODUCTS */
+    .pg2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+    .pc2 { background: var(--card); border: 1px solid var(--b); border-radius: 16px; padding: 36px; position: relative; overflow: hidden; transition: all .4s cubic-bezier(.4,0,.2,1); text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+    .pc2::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); opacity: 0; transition: opacity .4s; }
+    .pc2:hover { border-color: var(--bh); transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,.3), 0 0 40px rgba(168,85,247,.04); }
+    .pc2:hover::before { opacity: 1; }
+    .pi { width: 52px; height: 52px; border-radius: 14px; background: var(--gsoft); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 24px; }
+    .pc2 h3 { font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+    .pc2 p { font-size: 14px; color: var(--t2); line-height: 1.6; flex: 1; }
+    .pl { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 13px; font-weight: 600; color: var(--acc2); transition: gap .2s; }
+    .pc2:hover .pl { gap: 10px; }
+    .pl svg { width: 14px; height: 14px; transition: transform .2s; }
+    .pc2:hover .pl svg { transform: translateX(3px); }
+
+    /* PRICING */
+    .prg { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
+    .prc { background: var(--card); border: 1px solid var(--b); border-radius: 20px; padding: 40px; position: relative; transition: all .3s; }
+    .prc.ft { border-color: var(--acc); box-shadow: 0 0 50px rgba(168,85,247,.08); }
+    .prc.ft::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 5px 16px; background: var(--grad); color: #fff; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; border-radius: 100px; white-space: nowrap; }
+    .prc:hover { transform: translateY(-4px); }
+    .prn { font-size: 14px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 12px; }
+    .prp { font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 800; margin-bottom: 4px; }
+    .prp .per { font-size: 16px; font-weight: 400; color: var(--tm); }
+    .prd { font-size: 14px; color: var(--tm); margin-bottom: 28px; line-height: 1.5; }
+    .prf { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .prf li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--t2); }
+    .prck { width: 20px; height: 20px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .prck svg { width: 11px; height: 11px; color: var(--acc2); }
+    .prb { display: block; width: 100%; padding: 14px; border-radius: 12px; text-align: center; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: all .3s; text-decoration: none; }
+    .prb.ol { background: transparent; border: 1px solid var(--b); color: var(--t1); }
+    .prb.ol:hover { border-color: var(--acc); background: var(--soft); }
+    .prb.fl { background: var(--grad); border: none; color: #fff; box-shadow: 0 0 24px var(--glow); }
+    .prb.fl:hover { box-shadow: 0 0 32px var(--glow), 0 0 60px rgba(168,85,247,.12); transform: translateY(-1px); }
+
+    /* INDEX */
+    .isec { padding: 100px 48px; }
+    .ip { max-width: 900px; margin: 0 auto; background: var(--card); border: 1px solid var(--b); border-radius: 20px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.3); }
+    .ih { padding: 24px 32px; border-bottom: 1px solid var(--b); display: flex; align-items: center; justify-content: space-between; }
+    .ih h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; }
+    .isr { display: flex; gap: 8px; }
+    .isr input { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--b); background: rgba(255,255,255,.04); color: var(--t1); font-family: 'Outfit', sans-serif; font-size: 13px; outline: none; width: 200px; }
+    .isr input::placeholder { color: var(--tm); }
+    .ib { padding: 0; }
+    .ir { display: grid; grid-template-columns: 40px 1.5fr 1fr 80px 80px 100px; align-items: center; padding: 14px 32px; border-bottom: 1px solid var(--b); transition: background .2s; gap: 12px; }
+    .ir:hover { background: rgba(255,255,255,.02); }
+    .ir.hd { background: rgba(255,255,255,.03); }
+    .ir.hd span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--tm); }
+    .irk { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; color: var(--tm); }
+    .ic { display: flex; align-items: center; gap: 10px; }
+    .ica { width: 32px; height: 32px; border-radius: 8px; background: var(--gsoft); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--acc2); }
+    .inm { font-size: 14px; font-weight: 600; }
+    .ido { font-size: 11px; color: var(--tm); }
+    .isb { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 14px; }
+    .isb.a { background: var(--gs); color: var(--g); }
+    .isb.b { background: rgba(59,130,246,.1); color: var(--bl); }
+    .isb.c { background: var(--ys); color: var(--y); }
+    .isb.d { background: rgba(249,115,22,.1); color: #f97316; }
+    .isb.f { background: var(--rs); color: var(--r); }
+    .icat { font-size: 12px; color: var(--t2); }
+    .ibd { padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+    .ibd.vis { background: var(--gs); color: var(--g); }
+    .ibd.hid { background: var(--rs); color: var(--r); }
+
+    /* CTA */
+    .ctas { padding: 120px 48px; }
+    .ctab { max-width: 900px; margin: 0 auto; background: var(--card); border: 1px solid var(--b); border-radius: 24px; padding: 72px 48px; text-align: center; position: relative; overflow: hidden; }
+    .ctab::before { content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,.15) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
+    .ctab h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; margin-bottom: 16px; position: relative; letter-spacing: -.02em; }
+    .ctab > p { font-size: 16px; color: var(--t2); margin-bottom: 36px; position: relative; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .ctab2 { display: flex; gap: 14px; justify-content: center; position: relative; }
+
+    /* FOOTER */
+    .ft2 { border-top: 1px solid var(--b); padding: 64px 48px 40px; }
+    .fi { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .fb p { font-size: 14px; color: var(--tm); line-height: 1.65; margin-top: 16px; max-width: 300px; }
+    .fc h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--t2); margin-bottom: 18px; }
+    .fc a { display: block; font-size: 14px; color: var(--tm); text-decoration: none; padding: 5px 0; transition: color .2s; }
+    .fc a:hover { color: var(--t1); }
+    .fbot { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--b); font-size: 13px; color: var(--tm); }
+    .fbot a { color: var(--t2); text-decoration: none; transition: color .2s; }
+    .fbot a:hover { color: var(--t1); }
+
+    /* ANIM */
+    @keyframes fu { to { opacity: 1; transform: translateY(0); } }
+    @keyframes dr { to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes pu { 0%, 100% { opacity: .5; transform: translate(-50%,-50%) scale(1); } 50% { opacity: .9; transform: translate(-50%,-50%) scale(1.06); } }
+    @keyframes sr { to { stroke-dashoffset: 122; } }
+    @keyframes ms { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .rv { opacity: 0; transform: translateY(40px); transition: all .8s cubic-bezier(.4,0,.2,1); }
+    .rv.v { opacity: 1; transform: translateY(0); }
+    .rd1 { transition-delay: .1s; } .rd2 { transition-delay: .2s; } .rd3 { transition-delay: .3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) { .sg { grid-template-columns: repeat(2, 1fr); } .pg2 { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
+    @media (max-width: 900px) {
+      .nav { padding: 14px 20px; } .nlinks { display: none; }
+      .hero { padding: 120px 20px 60px; } .hero h1 { font-size: 38px; } .hsub { font-size: 16px; }
+      .hbtns { flex-direction: column; align-items: center; }
+      .sec, .ss, .isec, .ctas { padding: 80px 20px; }
+      .pb { grid-template-columns: 1fr; } .sg { grid-template-columns: 1fr 1fr; }
+      .prg { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .ctab { padding: 48px 24px; } .ctab2 { flex-direction: column; align-items: center; }
+      .fi { grid-template-columns: 1fr 1fr; }
+      .ir { grid-template-columns: 40px 1.5fr 80px 80px; } .ir .icat, .ir .ibd { display: none; }
+    }
+    @media (max-width: 480px) { .sg { grid-template-columns: 1fr; } .fi { grid-template-columns: 1fr; } .fbot { flex-direction: column; gap: 12px; text-align: center; } }
+  </style>
+</head>
+<body>
+  <div class="cg" id="cg"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nlogo"><div class="nlogo-i">HD</div><span class="nlogo-t">HD Web Design</span></a>
+    <div class="nlinks">
+      <a href="#products">Products</a>
+      <a href="#stats">Results</a>
+      <a href="#index">AI Index</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="ncta">
+      <a href="#contact" class="bg">AI Izkaznica</a>
+      <a href="#contact" class="bgl">Let's Talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hg"></div>
+    <div class="hbadge">
+      <span class="hbt">🤖 AI Visibility</span>
+      Your business is invisible to AI. We fix that.
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </div>
+    <h1>Make Your Business <span class="gt">Visible to AI</span></h1>
+    <p class="hsub">We optimize your digital presence for ChatGPT, Gemini, and every AI that recommends businesses. Be the one AI recommends — not your competitor.</p>
+    <div class="hbtns">
+      <a href="#contact" class="bgl" style="padding:14px 32px;font-size:15px;">Get Free AI Izkaznica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <a href="#index" class="bo" style="padding:14px 32px;font-size:15px;">See the AI Index</a>
+    </div>
+
+    <!-- IZKAZNICA PREVIEW -->
+    <div class="hp">
+      <div class="pg"></div>
+      <div class="pc">
+        <div class="pt">
+          <div class="pd r"></div><div class="pd y"></div><div class="pd g"></div>
+          <div class="pu">hd-webdesign.si/ai-izkaznica/</div>
+        </div>
+        <div class="pb">
+          <div class="is">
+            <div class="sr">
+              <svg viewBox="0 0 140 140">
+                <defs><linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs>
+                <circle class="bgc" cx="70" cy="70" r="65"/>
+                <circle class="pr" cx="70" cy="70" r="65"/>
+              </svg>
+              <div class="sv">B+</div>
+            </div>
+            <div class="sl">AI Visibility Score</div>
+            <div class="ssl">Above average — 3 fixes to reach A</div>
+          </div>
+          <div class="id">
+            <div class="di"><div class="dico gr">✓</div><div class="dit"><div class="dit-t">Schema.org Markup</div><div class="dit-d">Structured data detected</div></div><span class="db pa">Pass</span></div>
+            <div class="di"><div class="dico gr">✓</div><div class="dit"><div class="dit-t">llms.txt File</div><div class="dit-d">AI-readable content found</div></div><span class="db pa">Pass</span></div>
+            <div class="di"><div class="dico rd">✗</div><div class="dit"><div class="dit-t">Meta Descriptions</div><div class="dit-d">Missing on 4 pages</div></div><span class="db fa">Fix</span></div>
+            <div class="di"><div class="dico yl">!</div><div class="dit"><div class="dit-t">Open Graph Tags</div><div class="dit-d">Partial implementation</div></div><span class="db pa">Partial</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="ms">
+    <div class="mr">
+      <div class="mt">
+        <div class="mi"><span class="dot"></span>MenuBoost</div>
+        <div class="mi"><span class="num">730+</span> <span class="uni">Podjetij</span></div>
+        <div class="mi"><span class="dot"></span>BoostSuite</div>
+        <div class="mi"><span class="num">87%</span> <span class="uni">Nevidnih za AI</span></div>
+        <div class="mi"><span class="dot"></span>AI Authority</div>
+        <div class="mi"><span class="num">286</span> <span class="uni">Indeks Podjetij</span></div>
+        <div class="mi"><span class="dot"></span>AI Izkaznica</div>
+        <div class="mi"><span class="num">5</span> <span class="uni">Jezikov</span></div>
+        <div class="mi"><span class="dot"></span>MenuBoost</div>
+        <div class="mi"><span class="num">730+</span> <span class="uni">Podjetij</span></div>
+        <div class="mi"><span class="dot"></span>BoostSuite</div>
+        <div class="mi"><span class="num">87%</span> <span class="uni">Nevidnih za AI</span></div>
+        <div class="mi"><span class="dot"></span>AI Authority</div>
+        <div class="mi"><span class="num">286</span> <span class="uni">Indeks Podjetij</span></div>
+        <div class="mi"><span class="dot"></span>AI Izkaznica</div>
+        <div class="mi"><span class="num">5</span> <span class="uni">Jezikov</span></div>
+      </div>
+    </div>
+    <div class="mr">
+      <div class="mt">
+        <div class="mi"><span class="dot"></span>GEO Optimization</div>
+        <div class="mi"><span class="num">€699</span> <span class="uni">enakratno</span></div>
+        <div class="mi"><span class="dot"></span>SEO Tools</div>
+        <div class="mi"><span class="num">4</span> <span class="uni">AI Orodja</span></div>
+        <div class="mi"><span class="dot"></span>Schema.org</div>
+        <div class="mi"><span class="num">€49</span> <span class="uni">/mesec</span></div>
+        <div class="mi"><span class="dot"></span>Menu Translations</div>
+        <div class="mi"><span class="num">12</span> <span class="uni">Držav</span></div>
+        <div class="mi"><span class="dot"></span>GEO Optimization</div>
+        <div class="mi"><span class="num">€699</span> <span class="uni">enakratno</span></div>
+        <div class="mi"><span class="dot"></span>SEO Tools</div>
+        <div class="mi"><span class="num">4</span> <span class="uni">AI Orodja</span></div>
+        <div class="mi"><span class="dot"></span>Schema.org</div>
+        <div class="mi"><span class="num">€49</span> <span class="uni">/mesec</span></div>
+        <div class="mi"><span class="dot"></span>Menu Translations</div>
+        <div class="mi"><span class="num">12</span> <span class="uni">Držav</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section class="ss" id="stats">
+    <div class="sg">
+      <div class="sc rv"><div class="sn" data-target="730">0</div><div class="slbl">Podjetij v Indeksu</div></div>
+      <div class="sc rv rd1"><div class="sn" data-target="87" data-suffix="%">0</div><div class="slbl">Podjetij nevidnih za AI</div></div>
+      <div class="sc rv rd2"><div class="sn" data-target="5">0</div><div class="slbl">Jezikov za Prevode</div></div>
+      <div class="sc rv rd3"><div class="sn" data-target="4">0</div><div class="slbl">AI Orodja v BoostSuite</div></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="sec" id="products">
+    <div class="sh rv"><div class="slbl2">Products</div><h2 class="st">AI Tools That Work For You</h2><p class="sd">From menu descriptions to full AI visibility audits — everything your business needs to be found in the age of AI.</p></div>
+    <div class="pg2">
+      <a href="/menu-boost/" class="pc2 rv"><div class="pi">🍽️</div><h3>MenuBoost</h3><p>AI-powered menu descriptions that translate your dishes into 5 languages. Boost your restaurant's online presence and attract international guests.</p><span class="pl">Explore MenuBoost <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a href="/boostsuite/" class="pc2 rv rd1"><div class="pi">⚡</div><h3>BoostSuite</h3><p>4 AI-powered tools in one suite: SEO Audit, GEO Optimization, Google Ads, and Local Listings. Everything to dominate search and AI results.</p><span class="pl">Explore BoostSuite <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a href="#contact" class="pc2 rv rd2"><div class="pi">🤖</div><h3>AI Authority</h3><p>Full GEO optimization: Schema.org markup, llms.txt files, structured data. Make your website the authority that AI models cite and recommend.</p><span class="pl">Get AI Authority <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- INDEX -->
+  <section class="isec" id="index">
+    <div class="sh rv"><div class="slbl2">Indeks AI Vidljivosti</div><h2 class="st">Slovenian Businesses Ranked by AI Visibility</h2><p class="sd">286 companies scored on how visible they are to AI. Is your business on the list?</p></div>
+    <div class="ip rv">
+      <div class="ih"><h3>🏢 Indeks Podjetij</h3><div class="isr"><input type="text" placeholder="Search company..."></div></div>
+      <div class="ib">
+        <div class="ir hd"><span>#</span><span>Company</span><span>Industry</span><span>Score</span><span>Grade</span><span>Status</span></div>
+        <div class="ir"><div class="irk">1</div><div class="ic"><div class="ica">GR</div><div><div class="inm">Gorenje</div><div class="ido">gorenje.com</div></div></div><div class="icat">Manufacturing</div><div class="isb a">A</div><div class="isb a">92</div><div class="ibd vis">Visible</div></div>
+        <div class="ir"><div class="irk">2</div><div class="ic"><div class="ica">KR</div><div><div class="inm">Krka</div><div class="ido">krka.si</div></div></div><div class="icat">Pharmaceuticals</div><div class="isb b">B+</div><div class="isb b">78</div><div class="ibd vis">Visible</div></div>
+        <div class="ir"><div class="irk">3</div><div class="ic"><div class="ica">TL</div><div><div class="inm">Triglav</div><div class="ido">triglav.eu</div></div></div><div class="icat">Insurance</div><div class="isb c">C+</div><div class="isb c">61</div><div class="ibd hid">Hidden</div></div>
+        <div class="ir"><div class="irk">4</div><div class="ic"><div class="ica">SP</div><div><div class="inm">Spar Slovenija</div><div class="ido">spar.si</div></div></div><div class="icat">Retail</div><div class="isb d">D</div><div class="isb d">42</div><div class="ibd hid">Hidden</div></div>
+        <div class="ir"><div class="irk">5</div><div class="ic"><div class="ica">MB</div><div><div class="inm">Mercator</div><div class="ido">mercator.si</div></div></div><div class="icat">Retail</div><div class="isb f">F</div><div class="isb f">18</div><div class="ibd hid">Hidden</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="sec" id="pricing">
+    <div class="sh rv"><div class="slbl2">Pricing</div><h2 class="st">Simple, Transparent Pricing</h2><p class="sd">Choose what fits your business. No hidden fees, no surprises.</p></div>
+    <div class="prg">
+      <div class="prc rv">
+        <div class="prn">AI Authority</div>
+        <div class="prp">€699</div>
+        <div class="prd">One-time setup. Full GEO optimization for your website.</div>
+        <ul class="prf">
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> Schema.org structured data</li>
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> llms.txt file creation</li>
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> AI readability audit</li>
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> Meta & Open Graph optimization</li>
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> Monthly AI visibility report</li>
+        </ul>
+        <a href="#contact" class="prb ol">Get Started</a>
+      </div>
+      <div class="prc ft rv rd1">
+        <div class="prn">BoostSuite</div>
+        <div class="prp">€49 <span class="per">/mo</span></div>
+        <div class="prd">All-in-one AI suite. SEO, GEO, Ads, and Listings.</div>
+        <ul class="prf">
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> SEO Audit (crawlability, speed, meta)</li>
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> GEO Audit (AI visibility scoring)</li>
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> Google Ads Generator</li>
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> Local Listings optimizer</li>
+          <li><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div> Unlimited scans & reports</li>
+        </ul>
+        <a href="/boostsuite/" class="prb fl">Start Free Trial</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="ctas" id="contact">
+    <div class="ctab rv">
+      <h2>Let's Make You <span class="gt">AI Visible</span></h2>
+      <p>Get your free AI Izkaznica in 60 seconds. See exactly where you stand and what to fix.</p>
+      <div class="ctab2">
+        <a href="/ai-izkaznica/" class="bgl" style="padding:14px 32px;font-size:15px;">Free AI Izkaznica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a href="mailto:hercegdarko@hd-webdesign.si" class="bo" style="padding:14px 32px;font-size:15px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ft2">
+    <div class="fi">
+      <div class="fb">
+        <a href="#" class="nlogo" style="margin-bottom:8px;"><div class="nlogo-i">HD</div><span class="nlogo-t">HD Web Design</span></a>
+        <p>AI-powered digital presence for modern businesses. Based in Slovenia, serving globally.</p>
+      </div>
+      <div class="fc"><h4>Products</h4><a href="/menu-boost/">MenuBoost</a><a href="/boostsuite/">BoostSuite</a><a href="#contact">AI Authority</a><a href="/ai-izkaznica/">AI Izkaznica</a></div>
+      <div class="fc"><h4>Resources</h4><a href="/indeks-ai-vidljivosti/">AI Index</a><a href="/blog/">Blog</a><a href="#">Documentation</a><a href="#">Changelog</a></div>
+      <div class="fc"><h4>Contact</h4><a href="mailto:hercegdarko@hd-webdesign.si">hercegdarko@hd-webdesign.si</a><a href="tel:+38640270696">+386 40 270 696</a><a href="#">Slovenia 🇸🇮</a></div>
+    </div>
+    <div class="fbot"><span>© 2026 HD Web Design. All rights reserved.</span><div style="display:flex;gap:20px;"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+  </footer>
+
+  <script>
+    // Cursor
+    const cg=document.getElementById('cg');let mx=0,my=0,gx=0,gy=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cg.style.opacity='1';});
+    document.addEventListener('mouseleave',()=>{cg.style.opacity='0';});
+    (function a(){gx+=(mx-gx)*.07;gy+=(my-gy)*.07;cg.style.left=gx+'px';cg.style.top=gy+'px';requestAnimationFrame(a)})();
+
+    // Nav scroll
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('sc',window.scrollY>50));
+
+    // Reveal
+    const rvs=document.querySelectorAll('.rv');
+    const obs=new IntersectionObserver((e)=>{e.forEach((x,i)=>{if(x.isIntersecting){setTimeout(()=>x.target.classList.add('v'),i*80);obs.unobserve(x.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+    rvs.forEach(el=>obs.observe(el));
+
+    // Counters
+    const sns=document.querySelectorAll('.sn[data-target]');
+    const cobs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){const el=x.target;const t=+el.dataset.target;const s=el.dataset.suffix||'';let c=0;const step=Math.ceil(t/60);const iv=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(iv);}el.textContent=c+s;},20);cobs.unobserve(el);}});},{threshold:.5});
+    sns.forEach(el=>cobs.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+  </script>
+</body>
+</html>

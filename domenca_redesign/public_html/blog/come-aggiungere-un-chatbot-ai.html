@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Come aggiungere un chatbot AI al tuo sito web (passo dopo passo) — Herceg Darko</title>
+    <meta name="description" content="Guida completa per aggiungere un chatbot AI al tuo sito web. Dalla scelta della piattaforma al deployment.">
+    <meta property="og:title" content="Come aggiungere un chatbot AI al tuo sito web (passo dopo passo)">
+    <meta property="og:description" content="Guida completa per aggiungere un chatbot AI al tuo sito web. Dalla scelta della piattaforma al deployment.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hd-webdesign.si/blog/come-aggiungere-un-chatbot-ai.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://hd-webdesign.si/blog/come-aggiungere-un-chatbot-ai.html">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+        .article-meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+        .article-meta span { margin-right: 1rem; }
+        .tag { background: #e8f4f8; color: #0a66c2; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        .comparison-table th { background: #f8f9fa; font-weight: 600; }
+        .comparison-table .highlight { background: #f0fdf4; font-weight: 600; }
+        blockquote { border-left: 4px solid #0a66c2; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f9fa; font-style: italic; }
+        .cta-box { background: linear-gradient(135deg, #0a66c2, #004182); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+        .cta-box a { color: white; text-decoration: underline; }
+        .stat { font-size: 2.5rem; font-weight: 700; color: #0a66c2; }
+        .stat-label { font-size: 0.9rem; color: #666; }
+        .stats-row { display: flex; justify-content: space-around; text-align: center; margin: 2rem 0; flex-wrap: wrap; }
+        .stat-item { padding: 1rem; }
+        .blog-header { background: #1a1a2e; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .blog-header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .blog-header .logo { display: block; }
+        .blog-header .logo img { height: 42px; width: auto; }
+        .blog-header nav { display: flex; align-items: center; gap: 20px; }
+        .blog-header nav a { color: #9C8878; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .blog-header nav a:hover { color: #F5E6C8; }
+        .theme-toggle { background: none; border: 1.5px solid #4A2E1A; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 16px; transition: all 0.15s; }
+        .theme-toggle:hover { border-color: #C4922A; background: rgba(196,146,42,0.1); }
+        body.dark-mode .blog-header { background: #0f0f1a; }
+        body.dark-mode { background: #0f0f1a; color: #e0e0e0; }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #e0e0e0; }
+        body.dark-mode p, body.dark-mode li { color: #ccc; }
+        body.dark-mode .verdict-box { background: #1a1a3e; color: #e0e0e0; }
+        body.dark-mode table th { background: #1e1e2e; color: #e0e0e0; }
+        body.dark-mode table td { border-bottom-color: #333; }
+        .read-more { color: #F59E0B !important; font-weight: 600; }
+        .read-more:hover { color: #D97706 !important; text-decoration: underline; }
+        a.read-more { color: #F59E0B !important; }
+        .lang-switcher { display: flex; gap: 12px; margin: 1.5rem 0; }
+        .lang-link { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; border: 1.5px solid #ddd; color: #555; transition: all 0.15s; }
+        .lang-link.active { background: #0a66c2; color: white; border-color: #0a66c2; }
+        .lang-link:hover { border-color: #0a66c2; }
+
+    </style>
+</head>
+<body>
+<header class="blog-header">
+    <div class="blog-header-inner">
+        <a href="/" class="logo"><img src="/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign" style="height:42px;width:auto"></a>
+        <nav>
+            <a href="/blog/">Blog</a>
+            <a href="/boost-suite/">BoostSuite</a>
+            <a href="/menu-boost/">MenuBoost</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        </nav>
+    </div>
+</header>
+
+    <main class="container">
+        <article>
+            <p><a href="/blog/">← Torna al Blog</a></p>
+
+<div class="lang-switcher">
+    <a href="/blog/ki-chatbot-auf-der-webseite-einrichten.html" class="lang-link" title="DE">🇩🇪 DE</a>
+    <a href="/blog/add-ai-chatbot-website.html" class="lang-link" title="EN">🇬🇧 EN</a>
+    <a href="/blog/kako-dodati-ai-chatbot.html" class="lang-link" title="HR">🇭🇷 HR</a>
+    <a href="/blog/come-aggiungere-un-chatbot-ai.html" class="lang-link active" title="IT">🇮🇹 IT</a>
+    <a href="/blog/kako-dodati-ai-chatbot.html" class="lang-link" title="SL">🇸🇮 SL</a>
+</div>
+
+<h1>Come Aggiungere un Chatbot AI al Tuo Sito Web — Guida per Principianti</h1>
+
+  <p>Dunque hai sentito tutti parlare di chatbot AI. Il tuo concorrente ne ha appena aggiunto uno. L'amico di tuo cugino dice che "ha cambiato tutto" per la loro attività. E tu sei lì a chiederti: <em>ma cosa diavolo è un chatbot AI, e ne ho davvero bisogno?</em></p>
+
+  <p>Risposta breve: sì, probabilmente sì. Ma non anticipiamo i tempi. In questa guida ti guiderò passo dopo passo — cosa sono i chatbot AI, perché sono importanti nel 2026 e i tre modi principali per aggiungerne uno al tuo sito web oggi. Nessuna laurea in informatica richiesta.</p>
+
+  <h2>Cos'è un Chatbot AI (E Perché Non È Quello Che Pensi)</h2>
+
+  <p>Chiariamo una cosa. Quando la maggior parte delle persone sente "chatbot", pensa a quei pop-up fastidiosi e robotici che ti fanno selezionare da un elenco di opzioni e poi ti trasferiscono a un umano comunque. Quelli sono <strong>chatbot basati su regole</strong> — sostanzialmente alberi decisionali mascherati da conversazioni.</p>
+
+  <p>Un <strong>chatbot AI</strong> è qualcosa di completamente diverso. Usa i large language model (la stessa tecnologia dietro ChatGPT) per <em>capire</em> davvero cosa sta chiedendo qualcuno e rispondere in linguaggio naturale. Non fa solo corrispondenza di parole chiave — legge il contesto, ricorda la conversazione e può gestire domande di approfondimento.</p>
+
+  <p>Ecco un rapido confronto:</p>
+
+  <ul>
+    <li><strong>Chatbot basato su regole:</strong> "Digita 1 per orari, digita 2 per indicazioni..." — rigido, limitato, frustrante.</li>
+    <li><strong>Chatbot AI:</strong> "Siamo aperti da lunedì a venerdì, dalle 8 alle 18, e il sabato fino alle 14. Vuoi le indicazioni?" — naturale, utile, intelligente.</li>
+  </ul>
+
+  <p>Secondo un rapporto Gartner del 2025, le aziende che usano chatbot potenziati dall'AI hanno registrato una <strong>riduzione del 35% dei costi di assistenza clienti</strong> e un <strong>aumento del 25% della conversione dei lead</strong>. Non è un piccolo miglioramento — è un numero che cambia le sorti di un'attività.</p>
+
+  <blockquote>Entro il 2026, oltre il 70% delle interazioni con i clienti si prevede che coinvolgeranno chatbot AI, sia come canale principale che come strumento di supporto. — Juniper Research</blockquote>
+
+  <h2>Perché Ogni Azienda Ha Bisogno di un Chatbot nel 2026</h2>
+
+  <p>Ecco la realtà: i tuoi clienti non vogliono chiamarti. Non vogliono aspettare una risposta email. Vogliono risposte <em>adesso</em>, che siano le 14:00 o le 2:00 di notte. E se il tuo sito web non può dargli quelle risposte, ne troveranno uno che può.</p>
+
+  <p>Pensa al tuo stesso comportamento. Quando è stata l'ultima volta che hai compilato un modulo di contatto su un sito web e hai aspettato due giorni per una risposta? Frustrante, vero? Ora immagina dall'altra parte — l'azienda che perde quel cliente perché nessuno era disponibile per rispondere.</p>
+
+  <p>Un chatbot AI risolve tre enormi problemi contemporaneamente:</p>
+
+  <ol>
+    <li><strong>Disponibilità 24/7</strong> — Non dorme mai, non fa pause, non va mai in vacanza.</li>
+    <li><strong>Risposte istantanee</strong> — Nessuna attesa, nessun "ti risponderemo entro 48 ore."</li>
+    <li><strong>Scalabilità</strong> — Può gestire 10 conversazioni o 1.000 senza assumere nessuno.</li>
+  </ol>
+
+  <p>Per le aziende in Slovenia e nella più ampia regione adriatica, c'è un vantaggio aggiuntivo: i chatbot AI possono gestire conversazioni multilingua. Un turista tedesco può chiedere del tuo menu in tedesco, mentre un cliente locale riceve una risposta in sloveno — tutto dallo stesso chatbot.</p>
+
+  <h2>3 Modi per Aggiungere un Chatbot al Tuo Sito Web</h2>
+
+  <p>Ora vediamo la parte pratica. Ci sono tre approcci principali, e quello giusto dipende dal tuo budget, dalle tue competenze tecniche e da quanto seriamente vuoi investire in questo.</p>
+
+  <h3>Opzione 1: Strumenti No-Code (Tidio, Chatbase, Voiceflow)</h3>
+
+  <p>Se vuoi iniziare velocemente senza programmare, le piattaforme di chatbot no-code sono il tuo migliore amico. Strumenti come <strong>Tidio</strong>, <strong>Chatbase</strong> e <strong>Voiceflow</strong> ti permettono di costruire e distribuire un chatbot in un pomeriggio.</p>
+
+  <p><strong>Come funziona:</strong> Ti iscrivi, carichi le FAQ o la base di conoscenza del tuo sito web, personalizzi l'aspetto e incidi uno snippet di codice sul tuo sito. Fatto.</p>
+
+  <p><strong>Ideale per:</strong> Piccole imprese, imprenditori solitari, chiunque voglia fare un test prima di investire grosse somme.</p>
+
+  <p><strong>Costo:</strong> I piani gratuiti sono generosi (Tidio offre un piano gratuito con AI base). I piani a pagamento vanno da <strong>€20–50/mese</strong> per funzionalità più avanzate come integrazione GPT-4, formazione personalizzata e analytics.</p>
+
+  <p><strong>Vantaggi:</strong> Veloce da configurare, non serve uno sviluppatore, la maggior parte include un builder visuale.</p>
+
+  <p><strong>Svantaggi:</strong> Personalizzazione limitata, dipendi dalla loro piattaforma, i dati di formazione sono basilari.</p>
+
+  <h3>Opzione 2: Plugin WordPress (WP Chatbot, AI Engine)</h3>
+
+  <p>Gestisci un sito WordPress? Ci sono plugin solide che aggiungono funzionalità di chatbot AI direttamente al tuo sito. <strong>WP Chatbot</strong> e <strong>AI Engine</strong> sono due opzioni popolari che si integrano con l'API di OpenAI.</p>
+
+  <p><strong>Come funziona:</strong> Installi il plugin, colleghi la tua chiave API, lo addestrai sui tuoi contenuti e vai online. Alcune plugin ti permettono anche di perfezionare le risposte per abbinarle al tono del tuo brand.</p>
+
+  <p><strong>Ideale per:</strong> Gli utenti WordPress che vogliono più controllo degli strumenti no-code ma non sono pronti per una costruzione completamente personalizzata.</p>
+
+  <p><strong>Costo:</strong> Le licenze delle plugin costano <strong>€30–100/anno</strong>, più il tuo utilizzo personale dell'API OpenAI (tipicamente €5–20/mese a seconda del traffico).</p>
+
+  <p><strong>Vantaggi:</strong> Integrate nel tuo sito esistente, più personalizzabili degli strumenti no-code, possiedi i dati.</p>
+
+  <p><strong>Svantaggi:</strong> Richiedono conoscenze base di WordPress, i costi API possono crescere, sei responsabile degli aggiornamenti e della manutenzione.</p>
+
+  <h3>Opzione 3: Integrazione Personalizzata (L'Approccio HD WebDesign)</h3>
+
+  <p>Per le aziende che vogliono un chatbot su misura per le loro esigenze esatte — addestrato sui loro dati specifici, integrato con il loro sistema di prenotazione, CRM o database — una costruzione personalizzata è la strada da percorrere.</p>
+
+  <p><strong>Come funziona:</strong> Lavoriamo con te per capire le tue interazioni con i clienti, costruiamo un chatbot addestrato sulle tue conoscenze aziendali e lo integriamo senza soluzione di continuità nel tuo sito web. Può estrarre dati in tempo reale, gestire prenotazioni, elaborare richieste e passare agli umani quando necessario.</p>
+
+  <p><strong>Ideale per:</strong> Hotel, ristoranti con menu complessi, aziende di servizi con calcolatori di prezzi, qualsiasi azienda che voglia che il chatbot <em>faccia cose</em>, non solo risponda alle domande.</p>
+
+  <p><strong>Costo:</strong> Configurazione iniziale: <strong>€500–2.000</strong> a seconda della complessità. Manutenzione e hosting mensili: <strong>€50–150/mese</strong>.</p>
+
+  <p><strong>Vantaggi:</strong> Completamente su misura, si integra con i tuoi sistemi, gestisce flussi di lavoro complessi, addestrato sui TUOI dati.</p>
+
+  <p><strong>Svantaggi:</strong> Costo iniziale più elevato, richiede configurazione professionale.</p>
+
+  <h2>Casi d'Uso Reali: Cosa Fanno Davvero i Chatbot AI per le Aziende</h2>
+
+  <p>Parliamo di come si traduce nella realtà — specificamente per aziende come la tua.</p>
+
+  <h3>Ristorante & Café: Domande sul Menu</h3>
+
+  <p>Un cliente visita il tuo sito web alle 22:00 e si chiede: <em>"Avete opzioni senza glutine?" "Cosa c'è nel piatto del pesce del giorno?" "Posso vedere la carta dei vini?"</em></p>
+
+  <p>Un chatbot AI risponde istantaneamente. Conosce l'intero menu, inclusi allergeni, ingredienti e specialità del giorno. Può anche consigliare piatti: "Se ti piace il cibo piccante, ti suggerisco i gamberi al peperoncino con pasta — è il nostro piatto più popolare."</p>
+
+  <h3>Hotel & Strutture Ricettive: Disponibilità</h3>
+
+  <p>"Avete una camera doppia per il 15 luglio?" — invece di mandarli a un motore di prenotazione, il chatbot può controllare la disponibilità, dare un prezzo e guidarli nella prenotazione. Per gli hotel a Pirano, Bled o Lubiana che trattano turisti internazionali, questo è oro.</p>
+
+  <h3>Azienda di Servizi: Prezzi e Preventivi</h3>
+
+  <p>Sia che tu sia un'agenzia di web design (come noi), un'impresa di pulizie o un idraulico, il chatbot può rispondere alle domande sui prezzi, spiegare i pacchetti e anche dare stime approssimative. "Quanto costa un sito web?" diventa una conversazione, non un lead perso.</p>
+
+  <h2>Cosa Dovrebbe Gestire un BUON Chatbot vs. Cosa Non Dovrebbe</h2>
+
+  <p>Qui è dove la maggior parte delle aziende sbaglia. Provano a far fare tutto al chatbot, e non funziona. Ecco la suddivisione onesta:</p>
+
+  <h3>Cosa un BUON chatbot dovrebbe gestire:</h3>
+
+  <ul>
+    <li>Domande frequenti (orari, posizione, prezzi, servizi)</li>
+    <li>Informazioni su menu e prodotti</li>
+    <li>Richieste di prenotazione e riserve</li>
+    <li>Assistenza clienti semplice (stato ordini, modifiche appuntamenti)</li>
+    <li>Cattura lead (raccolta nomi, email, numeri di telefono)</li>
+    <li>Conversazioni multilingua (particolarmente utile per le zone turistiche)</li>
+  </ul>
+
+  <h3>Cosa NON dovrebbe cercare di fare:</h3>
+
+  <ul>
+    <li>Gestire reclami complessi o situazioni emotive — passali agli umani</li>
+    <li>Elaborare pagamenti (a meno che non sia profondamente integrato con il tuo sistema di pagamento)</li>
+    <li>Prendere decisioni legali o mediche</li>
+    <li>Sostituire l'intero team di assistenza clienti — è uno strumento, non un sostituto</li>
+    <li>Fornire consulenze finanziarie o qualsiasi cosa con implicazioni di responsabilità</li>
+  </ul>
+
+  <p>I migliori chatbot conoscono i loro limiti. Sono abbastanza intelligenti da dire "Mi metto in contatto con un membro del team che può aiutarti con questo" quando la domanda diventa troppo complessa. Questo è il segno di un bot ben progettato.</p>
+
+  <h2>Il Punto Finale: Ne Vale la Pena?</h2>
+
+  <p>Facciamo i conti. Se il tuo sito web riceve 500 visitatori al mese e un chatbot converte anche solo il 5% di questi in lead (rispetto all'1-2% che potresti ottenere da un modulo di contatto da solo), sono 25 lead extra al mese. Anche se solo il 10% di questi diventa cliente pagante, sono 2-3 nuovi clienti ogni mese.</p>
+
+  <p>Per un'azienda dove ogni cliente vale €200+, un chatbot si ripaga nel primo mese.</p>
+
+  <p>E la parte migliore? Diventa più intelligente nel tempo. Man mano che più persone interagiscono con esso, puoi perfezionare le sue risposte, aggiungere nuove informazioni e renderlo un asset sempre più potente per la tua attività.</p>
+
+  <h2>Pronto a Provarlo? Parliamone.</h2>
+
+  <p>Offriamo una <strong>consulenza chatbot gratuita</strong> per qualsiasi azienda curiosa di aggiungere AI al proprio sito web. Esamineremo le tue esigenze specifiche, raccomanderemo l'approccio giusto (che sia una semplice configurazione no-code o una costruzione personalizzata) e ti daremo una valutazione onesta di cosa aspettarti.</p>
+
+  <p>Nessuna pressione, nessun discorso di vendita — solo una conversazione su se un chatbot AI ha senso per la tua attività.</p>
+
+  <p><strong><a href="https://hd-webdesign.si/contact">Prenota la tua consulenza gratuita →</a></strong></p>
+
+  <section>
+    <h2>Domande Frequenti</h2>
+
+    <h3>Ho bisogno di competenze tecniche per aggiungere un chatbot AI al mio sito web?</h3>
+    <p>Non necessariamente. Gli strumenti no-code come Tidio e Chatbase richiedono zero programmazione — basta iscriversi, configurare e incorporare. I plugin WordPress richiedono accesso admin base ma non competenze da sviluppatore. Per le integrazioni personalizzate, lavoreresti con un team come HD WebDesign per gestire tutta la configurazione tecnica.</p>
+
+    <h3>Quanto costa un chatbot AI per una piccola impresa?</h3>
+    <p>I costi variano da gratuito a qualche centinaio di euro al mese. Gli strumenti no-code iniziano con piani gratuiti (ottimi per i test), poi €20–50/mese per funzionalità premium. Le plugin WordPress costano €30–100/anno più una piccola quota mensile API. Le costruzioni personalizzate costano €500–2.000 inizialmente con €50–150/mese di manutenzione.</p>
+
+    <h3>Un chatbot può capire lo sloveno?</h3>
+    <p>Sì. I moderni chatbot AI costruiti su GPT-4 e modelli simili gestiscono sloveno, croato, tedesco, inglese e decine di altre lingue nativamente. Questo è particolarmente prezioso per le aziende nelle zone turistiche della Slovenia.</p>
+
+    <h3>Il chatbot sostituirà il mio team di assistenza clienti?</h3>
+    <p>No, e non dovrebbe. Il miglior uso di un chatbot è gestire le domande repetitive ad alto volume (orari, prezzi, FAQ) così il tuo team può concentrarsi sulle questioni complesse che richiedono un tocco umano. Pensa a esso come prima linea di difesa, non come sostituto.</p>
+
+    <h3>Come addestro il chatbot sui dati della mia attività?</h3>
+    <p>Per gli strumenti no-code, tipicamente carichi documenti, incidi il testo delle tue FAQ o colleghi il tuo sito web. Le plugin WordPress possono scansionare i contenuti del tuo sito. Le costruzioni personalizzate possono integrarsi con il tuo database, la tua base di conoscenza o anche il tuo sistema di prenotazione per accesso ai dati in tempo reale.</p>
+
+    <h3>Cosa succede se il chatbot dà una risposta sbagliata?</h3>
+    <p>Un chatbot ben configurato include un meccanismo di fallback — se non è sicuro, lo dice e offre di mettere in contatto il cliente con un umano. Puoi anche rivedere regolarmente i log delle chat per intercettare e correggere eventuali risposte inaccurate. La chiave è stabilire limiti chiari su cosa il chatbot dovrebbe e non dovrebbe rispondere.</p>
+
+    <h3>Posso provare un chatbot prima di impegnarmi con un piano a pagamento?</h3>
+    <p>Assolutamente. Tidio, Chatbase e la maggior parte delle altre piattaforme offrono piani gratuiti o periodi di prova. Raccomandiamo di testarlo per 2-4 settimane con traffico reale di visitatori prima di prendere una decisione. Questo è esattamente il motivo per cui offriamo una consulenza gratuita — per aiutarti a trovare il punto di partenza giusto.</p>
+  </section>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 Herceg Darko. Tutti i diritti riservati.</p>
+    </footer>
+
+    <!-- Article Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Come aggiungere un chatbot AI al tuo sito web (passo dopo passo)",
+        "description": "Guida completa per aggiungere un chatbot AI al tuo sito web. Dalla scelta della piattaforma al deployment.",
+        "datePublished": "2026-06-08",
+        "dateModified": "2026-06-08",
+        "author": {
+            "@type": "Person",
+            "name": "Darko Herceg"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HD Web Design",
+            "url": "https://hd-webdesign.si"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://hd-webdesign.si/blog/come-aggiungere-un-chatbot-ai.html"
+        }
+    }
+    </script>
+<script src="/js/main.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+
+<div class="hd-chatbot">
+        <button class="hd-chat-toggle" id="hdChatToggle" aria-label="Odpri klepet">
+            <span class="chat-icon">💬</span>
+            <span class="close-icon">✕</span>
+        </button>
+        <div class="hd-chat-window" id="hdChatWindow">
+            <div class="hd-chat-header">
+                <div class="hd-chat-header-avatar">🤖</div>
+                <div class="hd-chat-header-info">
+                    <h3>HD Assistant</h3>
+                    <span>HD Web Design</span>
+                </div>
+            </div>
+            <div class="hd-chat-messages" id="hdChatMessages">
+                <div class="hd-msg bot">Zdravo! 👋 Sem HD Web Design asistent. Kako vam lahko pomagam?</div>
+                <div class="hd-typing" id="hdTyping">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="hd-chat-input">
+                <input type="text" id="hdChatInput" placeholder="Vpišite vprašanje..." autocomplete="off">
+                <button id="hdChatSend" aria-label="Pošlji">➤</button>
+            </div>
+            <div class="hd-chat-footer">Powered by DeepSeek AI</div>
+        </div>
+    </div>
+</body></html>

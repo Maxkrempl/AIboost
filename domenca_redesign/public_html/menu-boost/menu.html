@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu — MenuBoost</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; background: #faf9f6; color: #2c2c2c; min-height: 100vh; }
+        .header { background: #2d6a4f; color: white; padding: 2rem 1rem; text-align: center; }
+        .header h1 { font-size: 1.8rem; font-weight: 400; letter-spacing: 1px; }
+        .header .powered { font-size: 0.8rem; opacity: 0.7; margin-top: 0.5rem; font-family: sans-serif; }
+        .container { max-width: 700px; margin: 0 auto; padding: 1.5rem 1rem; }
+        .dish-name { font-size: 1.6rem; text-align: center; margin: 1.5rem 0 2rem; color: #2d6a4f; font-weight: 400; }
+        .lang-section { margin-bottom: 2rem; padding: 1.5rem; background: white; border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+        .lang-label { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .lang-label .flag { font-size: 1.3rem; }
+        .lang-label .name { font-family: sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #40916c; font-weight: 600; }
+        .lang-section p { line-height: 1.7; font-size: 1.05rem; color: #333; }
+        .footer { text-align: center; padding: 2rem 1rem; color: #999; font-size: 0.8rem; font-family: sans-serif; }
+        .error { text-align: center; padding: 4rem 1rem; color: #666; font-family: sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🍽️ Menu</h1>
+        <div class="powered">Powered by MenuBoost</div>
+    </div>
+    <div class="container" id="content">
+        <div class="error" id="error" style="display:none;">
+            <p>Menu data not found.<br>Please scan a valid MenuBoost QR code.</p>
+        </div>
+    </div>
+    <div class="footer">
+        Translated with MenuBoost — AI menu descriptions in 6 languages
+    </div>
+
+    <script>
+        const FLAGS = { en: '🇬🇧', de: '🇩🇪', it: '🇮🇹', sl: '🇸🇮', hr: '🇭🇷', sr: '🇷🇸', es: '🇪🇸', fr: '🇫🇷' };
+        const NAMES = { en: 'English', de: 'Deutsch', it: 'Italiano', sl: 'Slovenščina', hr: 'Hrvatski', sr: 'Srpski', es: 'Español', fr: 'Français' };
+
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const data = params.get('data');
+            if (!data) throw new Error('No data');
+            
+            const decoded = JSON.parse(decodeURIComponent(escape(atob(data))));
+            const container = document.getElementById('content');
+            
+            container.insertAdjacentHTML('afterbegin', `<div class="dish-name">${decoded.name}</div>`);
+            
+            for (const [lang, text] of Object.entries(decoded.translations)) {
+                container.insertAdjacentHTML('beforeend', `
+                    <div class="lang-section">
+                        <div class="lang-label">
+                            <span class="flag">${FLAGS[lang] || '🌍'}</span>
+                            <span class="name">${NAMES[lang] || lang}</span>
+                        </div>
+                        <p>${text}</p>
+                    </div>
+                `);
+            }
+            
+
+        } catch {
+            document.getElementById('error').style.display = 'block';
+        }
+    </script>
+<script src="/chatbot/widget.js" defer></script>
+    </body>
+</html>

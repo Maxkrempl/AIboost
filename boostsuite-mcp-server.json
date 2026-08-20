@@ -1,0 +1,22 @@
+{
+  "schema_version": "2025-12-11",
+  "name": "boostsuite-mcp",
+  "version": "1.0.0",
+  "title": "BoostSuite MCP",
+  "description": "AI-powered SEO audit, GEO check, Ad Copy & Listing Optimizer for SMBs. Freelancer & agency ready.",
+  "websiteUrl": "https://hd-webdesign.si",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://hd-webdesign.si/mcp",
+      "headers": {
+        "Authorization": "Bearer {api_key}"
+      }
+    }
+  ],
+  "capabilities": {
+    "tools": true,
+    "prompts": false,
+    "resources": false
+  }
+}

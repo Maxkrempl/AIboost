@@ -38,7 +38,8 @@ function keyFingerprint(apiKey) {
 const keyStore = new Map();
 
 function registerKey(email, plan = 'starter') {
-    const secret = process.env.API_MASTER_SECRET || '***REMOVED***';
+    const secret = process.env.API_MASTER_SECRET;
+    if (!secret) throw new Error('API_MASTER_SECRET env var not set');
     const apiKey = deriveKey(email, secret);
     const fp = keyFingerprint(apiKey);
     keyStore.set(fp, {

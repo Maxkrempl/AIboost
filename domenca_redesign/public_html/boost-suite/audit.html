@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoostSuite — Free Website Audit Tool</title>
+    <meta name="description" content="Get a comprehensive website audit covering SEO, Security, Performance, Accessibility, and GDPR compliance. Free instant report with actionable fixes.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.1.0/css/flag-icons.min.css">
+    <style>
+        .audit-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .audit-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .audit-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .audit-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .audit-hero h1 span {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .audit-hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 32px;
+        }
+        .audit-input-group {
+            display: flex;
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .audit-input-group input {
+            flex: 1;
+            padding: 16px 20px;
+            font-size: 1rem;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            background: #1e293b;
+            color: white;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .audit-input-group input:focus {
+            border-color: #6366f1;
+        }
+        .audit-input-group button {
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .audit-input-group button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99,102,241,0.4);
+        }
+        .audit-input-group button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .audit-features {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .audit-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        .audit-feature i {
+            color: #6366f1;
+        }
+
+        /* Report Styles */
+        .report-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: none;
+        }
+        .report-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .report-url {
+            font-size: 1rem;
+            color: #6366f1;
+            margin-bottom: 8px;
+        }
+        .report-overall {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 32px 48px;
+            margin: 20px 0;
+        }
+        .report-grade {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .grade-a { color: #22c55e; }
+        .grade-b { color: #84cc16; }
+        .grade-c { color: #eab308; }
+        .grade-d { color: #f97316; }
+        .grade-f { color: #ef4444; }
+        .report-score {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+        .report-summary {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-top: 16px;
+        }
+
+        /* Audit Cards */
+        .audit-cards {
+            display: grid;
+            gap: 24px;
+        }
+        .audit-card {
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .audit-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .audit-card-header:hover {
+            background: #334155;
+        }
+        .audit-card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+        }
+        .audit-card-score {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .score-bar {
+            width: 100px;
+            height: 8px;
+            background: #334155;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease-out;
+        }
+        .score-text {
+            font-weight: 600;
+            min-width: 40px;
+            text-align: right;
+        }
+        .audit-card-body {
+            padding: 0 24px 24px;
+            display: none;
+        }
+        .audit-card.open .audit-card-body {
+            display: block;
+        }
+        .audit-card.open .audit-card-header {
+            border-bottom: 1px solid #334155;
+        }
+        .audit-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+        .audit-check:last-child {
+            border-bottom: none;
+        }
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.7rem;
+        }
+        .check-pass { background: #065f46; color: #34d399; }
+        .check-warn { background: #713f12; color: #fbbf24; }
+        .check-fail { background: #7f1d1d; color: #f87171; }
+        .check-info { flex: 1; }
+        .check-name {
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+        .check-detail {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+        .check-solution {
+            font-size: 0.85rem;
+            color: #6366f1;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+        .solutions-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+        .solution-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .solution-item:last-child {
+            border-bottom: none;
+        }
+        .solution-priority {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .priority-critical { background: #7f1d1d; color: #fca5a5; }
+        .priority-high { background: #78350f; color: #fcd34d; }
+        .priority-medium { background: #1e3a5f; color: #93c5fd; }
+        .solution-text {
+            flex: 1;
+            color: #e2e8f0;
+        }
+        .solution-impact {
+            font-size: 0.8rem;
+            color: #a5b4fc;
+            margin-top: 4px;
+        }
+
+        /* CTA */
+        .audit-cta {
+            text-align: center;
+            padding: 48px 20px;
+            background: #0f172a;
+        }
+        .audit-cta h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 16px;
+        }
+        .audit-cta p {
+            color: #94a3b8;
+            margin-bottom: 24px;
+        }
+
+        /* Loading */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15,23,42,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .loading-overlay.active {
+            display: flex;
+        }
+        .loading-content {
+            text-align: center;
+        }
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #334155;
+            border-top-color: #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .loading-text {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+        .loading-step {
+            color: #6366f1;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* PDF Download Button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .audit-hero h1 { font-size: 2rem; }
+            .audit-input-group { flex-direction: column; }
+            .audit-features { gap: 16px; }
+        }
+    </style>
+    <script src="i18n.js?v=20260604"></script>
+</head>
+<body>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text" data-i18n="audit.loading">Analyzing your website...</div>
+            <div class="loading-step" id="loadingStep" data-i18n="audit.step0">Starting audit...</div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="audit-hero" id="heroSection">
+        <div class="audit-hero-content">
+            <div style="margin-bottom:20px;display:flex;justify-content:center;gap:8px;align-items:center;">
+                <a href="index.html" style="color:#94a3b8;text-decoration:none;font-size:0.9rem;"><i class="fas fa-arrow-left"></i> <span data-i18n="audit.backToTools">Back to Tools</span></a>
+                <span style="color:#334155">|</span>
+                <select id="langSelect" style="background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:8px;padding:6px 12px;font-size:0.85rem;cursor:pointer;">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="sl">🇸🇮 Slovenščina</option>
+                    <option value="hr">🇭🇷 Hrvatski</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                </select>
+            </div>
+            <h1 data-i18n="audit.heroTitle">Free <span>Website Audit</span> Report</h1>
+            <p data-i18n="audit.heroDesc">Get a comprehensive analysis of your website covering SEO, Security, Performance, Accessibility, and GDPR compliance — with actionable fixes.</p>
+            
+            <div class="audit-input-group">
+                <input type="url" id="urlInput" placeholder="https://your-website.com" required>
+                <button onclick="startAudit()" id="auditBtn">
+                    <i class="fas fa-search"></i> <span data-i18n="audit.auditBtn">Audit Now</span>
+                </button>
+            </div>
+            
+            <div class="audit-features">
+                <div class="audit-feature"><i class="fas fa-check-circle"></i> <span data-i18n="audit.feat1">No signup required</span></div>
+                <div class="audit-feature"><i class="fas fa-check-circle"></i> <span data-i18n="audit.feat2">Instant results</span></div>
+                <div class="audit-feature"><i class="fas fa-check-circle"></i> <span data-i18n="audit.feat3">Actionable fixes</span></div>
+                <div class="audit-feature"><i class="fas fa-check-circle"></i> <span data-i18n="audit.feat4">Free forever</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Section -->
+    <section class="report-container" id="reportSection">
+        <div class="report-header">
+            <div class="report-url" id="reportUrl"></div>
+            <h1 data-i18n="audit.reportTitle">Website Audit Report</h1>
+            <div class="report-overall">
+                <div class="report-grade" id="reportGrade"></div>
+                <div class="report-score" id="reportScore"></div>
+            </div>
+            <div class="report-summary" id="reportSummary"></div>
+            <button class="download-btn" onclick="showEmailModal()">
+                <i class="fas fa-download"></i> <span data-i18n="audit.downloadPdf">Download PDF Report</span>
+            </button>
+        </div>
+
+        <div class="audit-cards" id="auditCards"></div>
+
+        <!-- Solutions Summary -->
+        <div class="solutions-section" id="solutionsSection">
+            <h2 class="solutions-title"><i class="fas fa-wrench"></i> <span data-i18n="audit.topFixes">Top Fixes to Improve Your Score</span></h2>
+            <div id="solutionsList"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="audit-cta">
+            <h2 data-i18n="audit.ctaTitle">Want us to fix these issues for you?</h2>
+            <p data-i18n="audit.ctaDesc">BoostSuite Pro provides automated fixes, monitoring, and white-label reports for your clients.</p>
+            <a href="#pricing" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                <i class="fas fa-rocket"></i> <span data-i18n="audit.ctaBtn">Get BoostSuite Pro</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Email Capture Modal -->
+    <div id="emailModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
+        <div style="background:#1e293b; border-radius:16px; padding:40px; max-width:400px; text-align:center;">
+            <h3 style="color:white; margin-bottom:12px;" data-i18n="audit.modalTitle">Get Your Full Report</h3>
+            <p style="color:#94a3b8; margin-bottom:20px;" data-i18n="audit.modalDesc">Enter your email to receive the complete PDF report with detailed solutions.</p>
+            <input type="email" id="emailInput" placeholder="your@email.com" style="width:100%; padding:12px; border:1px solid #334155; border-radius:8px; background:#0f172a; color:white; margin-bottom:12px;">
+            <button onclick="submitEmail()" style="width:100%; padding:12px; background:#6366f1; color:white; border:none; border-radius:8px; font-weight:600; cursor:pointer;" data-i18n="audit.sendReport">Send Report</button>
+            <button onclick="closeModal(); downloadReport();" style="width:100%; padding:12px; background:transparent; color:#94a3b8; border:none; margin-top:8px; cursor:pointer;" data-i18n="audit.noThanks">No thanks</button>
+        </div>
+    </div>
+
+    <script>
+        let auditData = null;
+
+        // ============ USAGE LIMIT ============
+        const AUDIT_STORAGE_KEY = 'boostsuite_audit_used';
+        const auditUsed = localStorage.getItem(AUDIT_STORAGE_KEY);
+
+        if (auditUsed === '1') {
+            // Show limit notification
+            const heroContent = document.querySelector('.audit-hero-content');
+            const limitBanner = document.createElement('div');
+            limitBanner.style.cssText = 'background:linear-gradient(135deg,#78350f,#92400e);border:1px solid #b45309;border-radius:12px;padding:20px 24px;margin-bottom:24px;text-align:left;';
+            limitBanner.innerHTML = `
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+                    <i class="fas fa-info-circle" style="color:#fbbf24;font-size:1.2rem;"></i>
+                    <strong style="color:#fde68a;font-size:1.1rem;">${t('audit.limitTitle') || 'Free Audit Used'}</strong>
+                </div>
+                <p style="color:#fcd34d;margin:0 0 12px 0;font-size:0.95rem;">${t('audit.limitMsg') || 'You already used your 1 free website audit. Contact us for a detailed analysis or try our other tools.'}</p>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <a href="mailto:hercegdarko@hd-webdesign.se?subject=SEO%20Consultation%20Request" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#f59e0b;color:#1e1b4b;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">
+                        <i class="fas fa-envelope"></i> ${t('audit.limitCta1') || 'Get Free Consultation'}
+                    </a>
+                    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(255,255,255,0.1);color:#e2e8f0;border-radius:8px;text-decoration:none;font-size:0.9rem;">
+                        <i class="fas fa-tools"></i> ${t('audit.limitCta2') || 'Try BoostSuite Tools'}
+                    </a>
+                </div>
+            `;
+            heroContent.insertBefore(limitBanner, heroContent.firstChild);
+
+            document.getElementById('urlInput').placeholder = t('audit.limitReached') || 'You already used your free audit';
+            document.getElementById('urlInput').disabled = true;
+            document.getElementById('auditBtn').disabled = true;
+            document.getElementById('auditBtn').innerHTML = '<i class="fas fa-lock"></i> ' + (t('audit.limitReached') || 'Free audit used');
+        }
+
+        async function startAudit() {
+            const url = document.getElementById('urlInput').value.trim();
+            if (!url) {
+                alert(t('audit.alertUrl') || 'Please enter a URL');
+                return;
+            }
+
+            // Validate URL
+            try {
+                new URL(url);
+            } catch {
+                alert(t('audit.alertValid') || 'Please enter a valid URL (including https://)');
+                return;
+            }
+
+            // Check usage limit
+            if (localStorage.getItem(AUDIT_STORAGE_KEY) === '1') {
+                alert(t('audit.limitReached') || 'You already used your free audit.');
+                return;
+            }
+
+            const btn = document.getElementById('auditBtn');
+            const loading = document.getElementById('loadingOverlay');
+            const step = document.getElementById('loadingStep');
+
+            btn.disabled = true;
+            loading.classList.add('active');
+
+            const steps = [
+                t('audit.step1'),
+                t('audit.step2'),
+                t('audit.step3'),
+                t('audit.step4'),
+                t('audit.step5'),
+                t('audit.step6'),
+                t('audit.step7')
+            ];
+
+            let stepIndex = 0;
+            const stepInterval = setInterval(() => {
+                if (stepIndex < steps.length) {
+                    step.textContent = steps[stepIndex];
+                    stepIndex++;
+                }
+            }, 800);
+
+            try {
+                const response = await fetch('/boost-suite/api/combined-audit.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+
+                if (!response.ok) throw new Error('Audit failed');
+
+                auditData = await response.json();
+                localStorage.setItem(AUDIT_STORAGE_KEY, '1');
+                displayReport(auditData);
+
+            } catch (error) {
+                alert((t('audit.alertFailed') || 'Audit failed') + ': ' + error.message);
+            } finally {
+                clearInterval(stepInterval);
+                loading.classList.remove('active');
+                btn.disabled = false;
+            }
+        }
+
+        function displayReport(data) {
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('reportSection').style.display = 'block';
+            
+            document.getElementById('reportUrl').textContent = data.url;
+            
+            const grade = data.overall.grade;
+            const gradeEl = document.getElementById('reportGrade');
+            gradeEl.textContent = grade;
+            gradeEl.className = 'report-grade grade-' + grade.toLowerCase();
+            
+            document.getElementById('reportScore').textContent = data.overall.score + t('audit.scoreText');
+            document.getElementById('reportSummary').textContent = data.overall.summary;
+
+            // Build audit cards
+            const cardsHtml = Object.entries(data.audits).map(([key, audit]) => {
+                const scoreColor = audit.score >= 80 ? '#22c55e' : 
+                                  audit.score >= 60 ? '#eab308' : 
+                                  audit.score >= 40 ? '#f97316' : '#ef4444';
+                
+                const checksHtml = audit.checks.map(check => {
+                    const iconClass = check.status === 'pass' ? 'check-pass' : 
+                                     check.status === 'warn' ? 'check-warn' : 'check-fail';
+                    const icon = check.status === 'pass' ? 'fa-check' : 
+                                check.status === 'warn' ? 'fa-exclamation' : 'fa-times';
+                    
+                    const solution = getSolution(key, check.check, check.status);
+                    
+                    return `
+                        <div class="audit-check">
+                            <div class="check-icon ${iconClass}"><i class="fas ${icon}"></i></div>
+                            <div class="check-info">
+                                <div class="check-name">${check.check}</div>
+                                <div class="check-detail">${check.detail}</div>
+                                ${solution ? `<div class="check-solution"><i class="fas fa-lightbulb"></i> ${solution}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                // Map category names to i18n keys
+                const catKey = {
+                    'SEO': t('audit.catSeo'),
+                    'Security': t('audit.catSecurity'),
+                    'Performance': t('audit.catPerformance'),
+                    'Accessibility': t('audit.catAccessibility'),
+                    'Cookies & Privacy': t('audit.catCookies'),
+                    'Cookies and Privacy': t('audit.catCookies'),
+                };
+                const categoryName = catKey[audit.category] || audit.category;
+
+                return `
+                    <div class="audit-card open">
+                        <div class="audit-card-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="audit-card-title">${categoryName}</div>
+                            <div class="audit-card-score">
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width:${audit.score}%; background:${scoreColor}"></div>
+                                </div>
+                                <div class="score-text" style="color:${scoreColor}">${audit.score}/100</div>
+                            </div>
+                        </div>
+                        <div class="audit-card-body">${checksHtml}</div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('auditCards').innerHTML = cardsHtml;
+
+            // Build solutions
+            const solutions = generateSolutions(data);
+            document.getElementById('solutionsList').innerHTML = solutions.map(s => `
+                <div class="solution-item">
+                    <span class="solution-priority priority-${s.priority}">${t('audit.' + s.priority) || s.priority}</span>
+                    <div class="solution-text">
+                        ${s.text}
+                        <div class="solution-impact">${s.impact}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Score-based CTA
+            const ctaSection = document.querySelector('.audit-cta');
+            const score = data.overall?.score || 0;
+            let ctaHtml = '';
+
+            if (score < 40) {
+                ctaHtml = `
+                    <div style="background:linear-gradient(135deg,#7f1d1d,#991b1b);border-radius:16px;padding:32px;margin-bottom:24px;">
+                        <h2 style="color:#fca5a5;margin-bottom:8px;">🚨 Your website needs urgent attention!</h2>
+                        <p style="color:#fecaca;margin-bottom:16px;">Score ${score}/100 means potential customers are leaving. We can fix this.</p>
+                    </div>
+                    <h2>${t('audit.ctaTitle') || 'Want us to fix these issues for you?'}</h2>
+                    <p>${t('audit.ctaDesc') || 'BoostSuite Pro provides automated fixes, monitoring, and white-label reports for your clients.'}</p>
+                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
+                        <a href="mailto:hercegdarko@hd-webdesign.si?subject=SEO%20Help%20-%20Score%20${score}&body=Hi%2C%20I%20ran%20an%20audit%20on%20${encodeURIComponent(data.url)}%20and%20got%20score%20${score}.%20Can%20you%20help%20fix%20it%3F" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
+                            <i class="fas fa-envelope"></i> Get Free SEO Consultation
+                        </a>
+                        <a href="index.html" class="btn btn-secondary" style="display:inline-flex;align-items:center;gap:8px;">
+                            <i class="fas fa-tools"></i> Try BoostSuite Tools
+                        </a>
+                    </div>
+                `;
+            } else if (score < 70) {
+                ctaHtml = `
+                    <h2>${t('audit.ctaTitle') || 'Want us to fix these issues for you?'}</h2>
+                    <p>Your score is ${score}/100 — good start, but there's room to grow. Our SEO & GEO tools can help you reach 90+.</p>
+                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
+                        <a href="index.html" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
+                            <i class="fas fa-rocket"></i> ${t('audit.ctaBtn') || 'Get BoostSuite Pro'}
+                        </a>
+                        <a href="mailto:hercegdarko@hd-webdesign.si?subject=SEO%20Help%20-%20Score%20${score}&body=Hi%2C%20I%20ran%20an%20audit%20on%20${encodeURIComponent(data.url)}%20and%20got%20score%20${score}.%20Interested%20in%20improvement." style="color:#6366f1;text-decoration:none;font-weight:600;">
+                            <i class="fas fa-headset"></i> Talk to an Expert
+                        </a>
+                    </div>
+                `;
+            } else {
+                ctaHtml = `
+                    <h2>🎉 Great score! Keep it up.</h2>
+                    <p>Your website is performing well at ${score}/100. Want to maintain or improve it further?</p>
+                    <a href="index.html" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;">
+                        <i class="fas fa-rocket"></i> ${t('audit.ctaBtn') || 'Get BoostSuite Pro'}
+                    </a>
+                `;
+            }
+
+            ctaSection.innerHTML = ctaHtml;
+
+            // Scroll to report
+            document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getSolution(auditType, checkName, status) {
+            if (status === 'pass') return null;
+            
+            const solutions = {
+                seo: {
+                    'Title Tag': 'Add a unique, descriptive title tag (50-60 characters) to every page.',
+                    'Meta Description': 'Write a compelling meta description (150-160 characters) for each page.',
+                    'Canonical Tag': 'Add <link rel="canonical" href="..."> to prevent duplicate content issues.',
+                    'Open Graph': 'Add og:title, og:description, and og:image tags for social sharing.',
+                    'Structured Data': 'Implement Schema.org markup (JSON-LD) for rich search results.',
+                    'H1 Tag': 'Use exactly one H1 tag per page that describes the page content.',
+                    'Image Alt Text': 'Add descriptive alt text to all images for SEO and accessibility.',
+                    'Content Length': 'Add more quality content (aim for 500+ words per page).'
+                },
+                security: {
+                    'HTTPS': 'Install an SSL certificate and redirect all HTTP to HTTPS.',
+                    'HSTS': 'Add header: Strict-Transport-Security: max-age=31536000; includeSubDomains',
+                    'MIME Protection': 'Add header: X-Content-Type-Options: nosniff',
+                    'Clickjacking Protection': 'Add header: X-Frame-Options: SAMEORIGIN',
+                    'XSS Protection': 'Add header: X-XSS-Protection: 1; mode=block',
+                    'CSP': 'Implement Content-Security-Policy header to prevent XSS attacks.',
+                    'Referrer Policy': 'Add header: Referrer-Policy: strict-origin-when-cross-origin',
+                    'Permissions Policy': 'Add Permissions-Policy header to restrict browser features.',
+                    'Server Hidden': 'Remove Server header to hide server information.',
+                    'Powered-By Hidden': 'Remove X-Powered-By header to hide technology stack.',
+                    'Mixed Content': 'Update all HTTP resource links to HTTPS.'
+                },
+                performance: {
+                    'Load Time': 'Optimize server response, use CDN, and minimize redirects.',
+                    'Page Size': 'Compress images, minify CSS/JS, and enable compression.',
+                    'Compression': 'Enable gzip or Brotli compression on your server.',
+                    'Caching': 'Set Cache-Control headers with appropriate max-age values.',
+                    'Lazy Loading': 'Add loading="lazy" to below-the-fold images.',
+                    'External Resources': 'Reduce external scripts and styles, self-host critical resources.',
+                    'Image Alt Text': 'Add descriptive alt text to all images.'
+                },
+                accessibility: {
+                    'Language Attribute': 'Add lang attribute to <html> tag: <html lang="en">',
+                    'H1 Tag': 'Use exactly one H1 tag per page.',
+                    'Image Alt Text': 'Add descriptive alt text to all images.',
+                    'ARIA Landmarks': 'Use semantic HTML5 elements (header, nav, main, footer).',
+                    'Form Labels': 'Associate all form inputs with <label> elements.',
+                    'Skip Navigation': 'Add a "Skip to main content" link at the top.',
+                    'Focus Indicators': 'Ensure focus styles are visible for keyboard navigation.',
+                    'Zoom Allowed': 'Remove user-scalable=no and maximum-scale=1 from viewport meta.'
+                },
+                cookies: {
+                    'Cookie Banner': 'Implement a GDPR-compliant cookie consent banner.',
+                    'Cookie Categories': 'Organize cookies into categories (necessary, analytics, marketing).',
+                    'Privacy Policy': 'Create and link to a privacy policy page.',
+                    'GDPR Compliance': 'Add GDPR references and data processing information.',
+                    'Cookie Policy': 'Create a dedicated cookie policy page.',
+                    'Opt-out Mechanism': 'Provide cookie preference management for users.'
+                }
+            };
+
+            return solutions[auditType]?.[checkName] || null;
+        }
+
+        function generateSolutions(data) {
+            const solutions = [];
+            
+            Object.entries(data.audits).forEach(([key, audit]) => {
+                audit.checks.forEach(check => {
+                    if (check.status === 'fail') {
+                        solutions.push({
+                            priority: 'critical',
+                            text: `${audit.category}: ${check.check} — ${getSolution(key, check.check, 'fail') || check.detail}`,
+                            impact: 'High impact on your score'
+                        });
+                    } else if (check.status === 'warn') {
+                        solutions.push({
+                            priority: 'high',
+                            text: `${audit.category}: ${check.check} — ${getSolution(key, check.check, 'warn') || check.detail}`,
+                            impact: 'Medium impact on your score'
+                        });
+                    }
+                });
+            });
+
+            // Sort by priority
+            const order = { critical: 0, high: 1, medium: 2 };
+            solutions.sort((a, b) => order[a.priority] - order[b.priority]);
+
+            return solutions.slice(0, 10);
+        }
+
+        function downloadReport() {
+            if (!auditData) return;
+            
+            // Simple text report
+            let report = `WEBSITE AUDIT REPORT\n`;
+            report += `====================\n\n`;
+            report += `URL: ${auditData.url}\n`;
+            report += `Date: ${new Date().toLocaleDateString()}\n`;
+            report += `Overall Score: ${auditData.overall.score}/100 (${auditData.overall.grade})\n\n`;
+            
+            Object.entries(auditData.audits).forEach(([key, audit]) => {
+                report += `\n${audit.category}: ${audit.score}/100\n`;
+                report += `${'-'.repeat(40)}\n`;
+                audit.checks.forEach(check => {
+                    const icon = check.status === 'pass' ? '✓' : check.status === 'warn' ? '⚠' : '✗';
+                    report += `  ${icon} ${check.check}: ${check.detail}\n`;
+                    const solution = getSolution(key, check.check, check.status);
+                    if (solution) report += `    → Fix: ${solution}\n`;
+                });
+            });
+
+            report += `\n\nTOP FIXES\n`;
+            report += `${'='.repeat(40)}\n`;
+            const solutions = generateSolutions(auditData);
+            solutions.forEach((s, i) => {
+                report += `${i+1}. [${s.priority.toUpperCase()}] ${s.text}\n`;
+            });
+
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `audit-report-${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Handle enter key
+        document.getElementById('urlInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') startAudit();
+        });
+
+        // Email modal
+        function showEmailModal() {
+            document.getElementById('emailModal').style.display = 'flex';
+        }
+
+        function submitEmail() {
+            const email = document.getElementById('emailInput').value;
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email');
+                return;
+            }
+
+            // Save lead to backend
+            if (auditData) {
+                const categoryScores = {};
+                const topIssues = [];
+                if (auditData.audits) {
+                    Object.entries(auditData.audits).forEach(([key, audit]) => {
+                        categoryScores[key] = audit.score;
+                        audit.checks.forEach(check => {
+                            if (check.status !== 'pass') {
+                                topIssues.push(check.check + ': ' + check.detail);
+                            }
+                        });
+                    });
+                }
+
+                fetch('/boost-suite/api/capture-audit-lead.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        url: auditData.url,
+                        score: auditData.overall?.score || 0,
+                        grade: auditData.overall?.grade || '',
+                        categoryScores: categoryScores,
+                        topIssues: topIssues
+                    })
+                }).catch(err => console.error('Lead capture failed:', err));
+            }
+
+            closeModal();
+            downloadReport();
+        }
+
+        function closeModal() {
+            document.getElementById('emailModal').style.display = 'none';
+        }
+        // Apply initial translations
+        if (typeof applyAuditTranslations === 'function') {
+            setTimeout(applyAuditTranslations, 50);
+        }
+
+        // ============ LANGUAGE SWITCHER ============
+        const langSelect = document.getElementById('langSelect');
+        if (langSelect) {
+            langSelect.value = getLang();
+            langSelect.addEventListener('change', function() {
+                localStorage.setItem('boostsuite_lang', this.value);
+                applyAuditTranslations();
+            });
+        }
+
+        function applyAuditTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const val = t(key);
+                if (val && val !== key) {
+                    if (val.includes('<')) {
+                        el.innerHTML = val;
+                    } else {
+                        el.textContent = val;
+                    }
+                }
+            });
+            // Update placeholders
+            const urlInput = document.getElementById('urlInput');
+            if (urlInput && !urlInput.disabled) {
+                urlInput.placeholder = 'https://your-website.com';
+            }
+            // Re-render limit banner if shown
+            if (localStorage.getItem(AUDIT_STORAGE_KEY) === '1') {
+                const banner = document.querySelector('.audit-hero-content div[style*="linear-gradient"]');
+                if (banner) {
+                    const titleEl = banner.querySelector('strong');
+                    const msgEl = banner.querySelector('p');
+                    if (titleEl) titleEl.textContent = t('audit.limitTitle') || 'Free Audit Used';
+                    if (msgEl) msgEl.textContent = t('audit.limitMsg') || 'You already used your free audit.';
+                }
+            }
+        }
+    </script>
+<script src="/chatbot/widget.js" defer></script>
+    </body>
+</html>

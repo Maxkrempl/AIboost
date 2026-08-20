@@ -47,6 +47,18 @@
         body.dark-mode .blog-post-card h2 a { color: #e0e0e0; }
         body.dark-mode .post-tag { background: #333; color: #aaa; }
     
+        /* Blog hero section — forced light bg, explicit colors */
+        .blog-hero { padding: 3rem 2rem; background: #ffffff !important; }
+        .blog-hero h1 { color: #1a1a2e !important; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .blog-hero .subtitle { color: #555 !important; font-size: 1.1rem; }
+        body.dark-mode .blog-hero { background: #0f0f1a !important; }
+        body.dark-mode .blog-hero h1 { color: #e0e0e0 !important; }
+        body.dark-mode .blog-hero .subtitle { color: #aaa !important; }
+        /* Force light mode body bg */
+        body:not(.dark-mode) { background: #ffffff !important; }
+        body:not(.dark-mode) .blog-hero { background: #ffffff !important; }
+        body:not(.dark-mode) .blog-hero h1 { color: #1a1a2e !important; }
+
         .read-more { color: #F59E0B !important; font-weight: 600; }
         .read-more:hover { color: #D97706 !important; text-decoration: underline; }
         a.read-more { color: #F59E0B !important; }
@@ -69,7 +81,7 @@
     
 
     <main class="container">
-        <section class="blog-header">
+        <section class="blog-hero">
             <h1 data-en="Blog" data-sl="Blog">Blog</h1>
             <p class="subtitle" data-en="Thoughts on AI, SaaS, and building tools that solve real problems." data-sl="Razmišljanja o AI, SaaS in ustvarjanju orodij, ki rešujejo resnične probleme.">
                 Thoughts on AI, SaaS, and building tools that solve real problems.

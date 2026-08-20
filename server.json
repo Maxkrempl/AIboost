@@ -1,0 +1,31 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Maxkrempl/boostsuite-mcp",
+  "title": "BoostSuite MCP",
+  "description": "AI-powered SEO audit, GEO check, Ad Copy & Listing Optimizer for SMBs. Freelancer & agency ready.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/Maxkrempl/AIboost.git",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@maxkrempl/boostsuite-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "streamable-http",
+        "url": "https://hd-webdesign.si/mcp"
+      },
+      "environmentVariables": [
+        {
+          "description": "BoostSuite API key for authenticated access",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true,
+          "name": "BOOSTSUITE_API_KEY"
+        }
+      ]
+    }
+  ]
+}

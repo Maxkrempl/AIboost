@@ -1,0 +1,49 @@
+Website Health Check Results
+==================================================
+
+MenuBoost (https://menuboostai.netlify.app):
+  HTTP Status: 200
+  Title: ListTranslate — AI跨境产品翻译优化工具
+  Viewport: True
+  Gumroad: False (None) - Works: None
+  Pricing link: True (#pricing)
+  CTA button: False
+  Footer: True
+
+BoostSuite (https://boostsuite.netlify.app):
+  HTTP Status: 200
+  Title: BoostSuite — AI Marketing Toolkit for Agencies
+  Viewport: True
+  Gumroad: True (https://herceg23.gumroad.com/l/uvoetm) - Works: True
+  Pricing link: False (None)
+  CTA button: True
+  Footer: True
+
+AdBoost (https://adboost-mvp.netlify.app):
+  HTTP Status: 200
+  Title: AdBoost – AI‑Powered Ad Copy Generator
+  Viewport: True
+  Gumroad: False (None) - Works: None
+  Pricing link: False (None)
+  CTA button: False
+  Footer: True
+
+ListTranslate (https://listtranslate.netlify.app):
+  HTTP Status: 200
+  Title: BoostSuite — AI Marketing Toolkit for Agencies
+  Viewport: True
+  Gumroad: True (https://herceg23.gumroad.com/l/uvoetm) - Works: True
+  Pricing link: False (None)
+  CTA button: True
+  Footer: True
+
+HD WebDesign (https://hd-webdesign.si):
+  HTTP Status: 200
+  Title: Darko Herceg — Developer & SaaS Builder | HD Web Design
+  Viewport: True
+  Gumroad: False (None) - Works: None
+  Pricing link: False (None)
+  CTA button: True
+  Footer: True
+  Broken links: 1
+    - https://www.linkedin.com/in/darko-herceg-073a322b9 → 405

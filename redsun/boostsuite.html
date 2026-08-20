@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoostSuite — AI Marketing Toolkit for Agencies</title>
+    <meta name="description" content="BoostSuite: SEO Audit, GEO Check, Ad Copy Generator, and Listing Optimizer — all in one AI-powered platform for agencies.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hd-webdesign.si/boost-suite/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="BoostSuite — AI Marketing Toolkit for Agencies">
+    <meta property="og:description" content="4-in-1 AI marketing toolkit: SEO Audit, GEO Check, Ad Copy Generator, and Listing Optimizer. Start free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hd-webdesign.si/boost-suite/">
+    <meta property="og:image" content="https://hd-webdesign.si/images/og-image.jpg">
+    <meta property="og:site_name" content="HD Web Design">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BoostSuite — AI Marketing Toolkit for Agencies">
+    <meta name="twitter:description" content="4-in-1 AI marketing toolkit: SEO Audit, GEO Check, Ad Copy Generator, and Listing Optimizer.">
+    <meta name="twitter:image" content="https://hd-webdesign.si/images/og-image.jpg">
+    <link rel="icon" type="image/svg+xml" href="images/boostsuite-favicon.svg">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "BoostSuite",
+        "description": "4-in-1 AI marketing toolkit for agencies: SEO Audit, GEO Check, Ad Copy Generator, and Listing Optimizer.",
+        "url": "https://hd-webdesign.si/boost-suite/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": [
+            {"@type":"Offer","price":"0","priceCurrency":"EUR","name":"Free"},
+            {"@type":"Offer","price":"49","priceCurrency":"EUR","name":"Freelancer","billingIncrement":"P1M"},
+            {"@type":"Offer","price":"99","priceCurrency":"EUR","name":"Agency","billingIncrement":"P1M"}
+        ],
+        "author": {"@type":"Person","name":"Darko Herceg","url":"https://hd-webdesign.si/about/"},
+        "provider": {"@type":"Organization","name":"HD Web Design","url":"https://hd-webdesign.si"}
+    }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #08080a; --bg2: #0e0e12; --card: #131318; --card2: #1a1a22;
+      --t1: #f0f0f5; --t2: #8a8a9a; --tm: #55556a;
+      --acc: #a855f7; --acc2: #c084fc; --glow: rgba(168,85,247,0.4); --soft: rgba(168,85,247,0.1);
+      --i2: #6366f1; --grad: linear-gradient(135deg, #a855f7, #6366f1);
+      --gsoft: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(99,102,241,0.15));
+      --b: rgba(255,255,255,0.06); --bh: rgba(168,85,247,0.25);
+      --r: #ef4444; --rs: rgba(239,68,68,0.1);
+      --g: #22c55e; --gs: rgba(34,197,94,0.1);
+      --y: #eab308; --ys: rgba(234,179,8,0.1);
+      --bl: #3b82f6;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--t1); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* CURSOR */
+    .cg { position: fixed; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%); pointer-events: none; z-index: 0; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s; filter: blur(80px); }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(24px) saturate(1.4); background: rgba(8,8,10,0.75); border-bottom: 1px solid var(--b); }
+    .nlogo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nlogo-i { width: 32px; height: 32px; background: var(--grad); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; color: #fff; }
+    .nlogo-t { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; color: var(--t1); }
+    .nlinks { display: flex; align-items: center; gap: 28px; }
+    .nlinks a { text-decoration: none; color: var(--t2); font-size: 13px; font-weight: 500; transition: color .2s; }
+    .nlinks a:hover { color: var(--t1); }
+    .ncta { display: flex; align-items: center; gap: 10px; }
+    .usage-pill { padding: 5px 12px; border-radius: 100px; border: 1px solid var(--b); font-size: 12px; color: var(--t2); display: flex; align-items: center; gap: 6px; }
+    .usage-pill .count { color: var(--acc2); font-weight: 700; }
+    .lang-sel { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--b); background: transparent; color: var(--t2); font-family: 'Outfit', sans-serif; font-size: 12px; cursor: pointer; outline: none; }
+    .lang-sel option { background: var(--card); }
+
+    /* BUTTONS */
+    .bgl { padding: 10px 22px; border: none; border-radius: 100px; background: var(--grad); color: #fff; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all .3s; text-decoration: none; box-shadow: 0 0 20px var(--glow); display: inline-flex; align-items: center; gap: 6px; }
+    .bgl:hover { transform: translateY(-1px); box-shadow: 0 0 28px var(--glow); }
+    .bo { padding: 10px 22px; border: 1px solid var(--b); border-radius: 100px; background: transparent; color: var(--t1); font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .25s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .bo:hover { border-color: var(--acc); background: var(--soft); }
+    .bo-sm { padding: 8px 18px; font-size: 12px; }
+
+    /* HERO */
+    .hero { position: relative; padding: 80px 48px 60px; text-align: center; overflow: hidden; }
+    .hero-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(ellipse, rgba(168,85,247,0.1) 0%, rgba(99,102,241,0.05) 40%, transparent 70%); filter: blur(60px); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 5px 5px 14px; border-radius: 100px; border: 1px solid var(--b); background: rgba(255,255,255,0.03); font-size: 13px; color: var(--t2); margin-bottom: 28px; position: relative; z-index: 1; }
+    .hero-badge-tag { padding: 3px 10px; border-radius: 100px; background: var(--gsoft); color: var(--acc2); font-weight: 600; font-size: 11px; }
+    .hero-badge svg { width: 13px; height: 13px; color: var(--tm); }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 5.5vw, 64px); font-weight: 800; line-height: 1.08; letter-spacing: -.03em; max-width: 750px; margin: 0 auto 20px; position: relative; z-index: 1; }
+    .gt { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 17px; color: var(--t2); max-width: 520px; line-height: 1.6; margin: 0 auto 32px; position: relative; z-index: 1; }
+    .hero-stats { display: flex; justify-content: center; gap: 40px; margin-top: 28px; position: relative; z-index: 1; }
+    .hero-stat .num { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-stat .label { font-size: 12px; color: var(--tm); margin-top: 2px; }
+    .hero-stars { color: #F59E0B; font-size: 14px; margin-right: 4px; }
+    .hero-trust { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px; font-size: 13px; color: var(--tm); position: relative; z-index: 1; }
+
+    /* MARQUEE */
+    .ms { padding: 36px 0; border-top: 1px solid var(--b); border-bottom: 1px solid var(--b); overflow: hidden; }
+    .mr { display: flex; margin-bottom: 8px; } .mr:last-child { margin-bottom: 0; }
+    .mt { display: flex; animation: mscroll 30s linear infinite; flex-shrink: 0; }
+    .mr:nth-child(2) .mt { animation-direction: reverse; animation-duration: 35s; }
+    .mi { display: flex; align-items: center; gap: 10px; padding: 0 28px; white-space: nowrap; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; color: var(--tm); opacity: .55; }
+    .mi .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--acc); opacity: .5; }
+    .mi .num { font-weight: 800; font-size: 24px; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 1; }
+    .mi .uni { font-size: 13px; color: var(--t2); font-weight: 500; }
+
+    /* TOOL TABS */
+    .tabs-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+    .tabs { display: flex; gap: 6px; padding: 4px; background: var(--card); border: 1px solid var(--b); border-radius: 14px; margin-bottom: 32px; overflow-x: auto; }
+    .tab { flex: 1; padding: 12px 16px; border: none; border-radius: 10px; background: transparent; color: var(--t2); font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all .25s; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+    .tab:hover { color: var(--t1); background: rgba(255,255,255,0.03); }
+    .tab.active { background: var(--grad); color: #fff; box-shadow: 0 0 20px var(--glow); }
+    .tab i { font-size: 13px; }
+
+    /* TOOL CARD */
+    .tool { display: none; background: var(--card); border: 1px solid var(--b); border-radius: 20px; padding: 36px; margin-bottom: 48px; }
+    .tool.active { display: block; }
+    .tool-hdr { margin-bottom: 28px; }
+    .tool-hdr h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .tool-hdr h2 i { color: var(--acc2); font-size: 18px; }
+    .tool-hdr p { font-size: 14px; color: var(--t2); }
+
+    /* INPUTS */
+    .ig { margin-bottom: 16px; }
+    .ig label { display: block; font-size: 12px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+    .ig input, .ig select, .ig textarea {
+      width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--b); background: rgba(255,255,255,0.03); color: var(--t1); font-family: 'Outfit', sans-serif; font-size: 14px; outline: none; transition: border-color .2s;
+    }
+    .ig input::placeholder, .ig textarea::placeholder { color: var(--tm); }
+    .ig input:focus, .ig select:focus, .ig textarea:focus { border-color: var(--acc); }
+    .ig select { cursor: pointer; }
+    .ig select option { background: var(--card); }
+    .ig textarea { resize: vertical; min-height: 80px; }
+    .irow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .irow3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .btn-run { padding: 12px 28px; border: none; border-radius: 10px; background: var(--grad); color: #fff; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .3s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 0 20px var(--glow); margin-top: 8px; }
+    .btn-run:hover { box-shadow: 0 0 28px var(--glow); transform: translateY(-1px); }
+    .btn-run:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    /* RESULTS */
+    .result { margin-top: 24px; min-height: 120px; background: rgba(255,255,255,0.02); border: 1px solid var(--b); border-radius: 14px; padding: 24px; }
+    .result .placeholder { text-align: center; padding: 32px; color: var(--tm); }
+    .result .placeholder i { font-size: 28px; margin-bottom: 12px; display: block; color: var(--acc); opacity: .4; }
+    .result .placeholder p { font-size: 14px; }
+    .result-content { line-height: 1.7; font-size: 14px; }
+    .result-content h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--t1); }
+    .result-content .score { font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .result-content .check { color: var(--g); margin-right: 6px; }
+    .result-content .cross { color: var(--r); margin-right: 6px; }
+    .result-content .warn { color: var(--y); margin-right: 6px; }
+
+    /* AUDIT LINK */
+    .audit-link { display: inline-flex; align-items: center; gap: 6px; color: var(--acc2); text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 28px; transition: gap .2s; }
+    .audit-link:hover { gap: 10px; }
+
+    /* PRICING */
+    .pricing { padding: 100px 48px; }
+    .pricing .sh { text-align: center; max-width: 600px; margin: 0 auto 56px; }
+    .sh .slbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
+    .sh h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; letter-spacing: -.02em; margin-bottom: 12px; }
+    .sh p { font-size: 15px; color: var(--t2); }
+    .prg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 960px; margin: 0 auto; }
+    .prc { background: var(--card); border: 1px solid var(--b); border-radius: 18px; padding: 32px; position: relative; transition: all .3s; }
+    .prc:hover { transform: translateY(-4px); }
+    .prc.ft { border-color: var(--acc); box-shadow: 0 0 40px rgba(168,85,247,0.08); }
+    .prc.ft::before { content: 'Best for Agencies'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); padding: 4px 14px; background: var(--grad); color: #fff; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; border-radius: 100px; white-space: nowrap; }
+    .prc .prn { font-size: 13px; font-weight: 600; color: var(--t2); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+    .prc .prp { font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 800; margin-bottom: 4px; }
+    .prc .prp span { font-size: 14px; font-weight: 400; color: var(--tm); }
+    .prc .prd { font-size: 13px; color: var(--tm); margin-bottom: 24px; line-height: 1.5; }
+    .prf { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
+    .prf li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--t2); }
+    .prf li i { color: var(--acc2); font-size: 11px; margin-top: 3px; flex-shrink: 0; }
+    .prb { display: block; width: 100%; padding: 12px; border-radius: 10px; text-align: center; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .3s; text-decoration: none; }
+    .prb.ol { background: transparent; border: 1px solid var(--b); color: var(--t1); }
+    .prb.ol:hover { border-color: var(--acc); background: var(--soft); }
+    .prb.fl { background: var(--grad); border: none; color: #fff; box-shadow: 0 0 20px var(--glow); }
+    .prb.fl:hover { box-shadow: 0 0 28px var(--glow); transform: translateY(-1px); }
+
+    /* FAQ */
+    .faq { padding: 80px 48px 100px; }
+    .faq .sh { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
+    .faq-item { background: var(--card); border: 1px solid var(--b); border-radius: 14px; padding: 24px; transition: all .3s; }
+    .faq-item:hover { border-color: var(--bh); }
+    .faq-item h3 { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .faq-item p { font-size: 13px; color: var(--t2); line-height: 1.6; }
+
+    /* BLOG LINKS */
+    .blog-links { max-width: 900px; margin: 0 auto; padding: 0 48px 80px; }
+    .blog-box { padding: 24px; background: var(--card); border: 1px solid var(--b); border-radius: 14px; border-left: 3px solid var(--acc); }
+    .blog-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--acc2); }
+    .blog-box a { display: block; font-size: 13px; color: var(--t2); text-decoration: none; padding: 3px 0; transition: color .2s; }
+    .blog-box a:hover { color: var(--acc2); }
+
+    /* FOOTER */
+    .ft { border-top: 1px solid var(--b); padding: 48px 48px 32px; }
+    .ft-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; margin-bottom: 32px; }
+    .ft-brand p { font-size: 13px; color: var(--tm); margin-top: 8px; max-width: 280px; line-height: 1.5; }
+    .ft-links { display: flex; gap: 24px; }
+    .ft-links a { font-size: 13px; color: var(--tm); text-decoration: none; transition: color .2s; }
+    .ft-links a:hover { color: var(--t1); }
+    .ft-bot { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--b); font-size: 12px; color: var(--tm); }
+
+    /* MODAL */
+    .modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.7); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+    .modal.show { display: flex; }
+    .modal-box { background: var(--card); border: 1px solid var(--b); border-radius: 20px; padding: 40px; max-width: 440px; width: 90%; text-align: center; }
+    .modal-box h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .modal-box p { font-size: 14px; color: var(--t2); margin-bottom: 28px; line-height: 1.6; }
+    .modal-btns { display: flex; gap: 10px; justify-content: center; }
+
+    /* ANIM */
+    @keyframes mscroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .rv { opacity: 0; transform: translateY(30px); transition: all .7s cubic-bezier(.4,0,.2,1); }
+    .rv.v { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav { padding: 12px 20px; } .nlinks { display: none; }
+      .hero { padding: 60px 20px 40px; }
+      .tabs-wrap { padding: 0 20px; }
+      .tabs { gap: 4px; }
+      .tab { padding: 10px 12px; font-size: 11px; }
+      .tab span { display: none; }
+      .tool { padding: 24px; margin: 0 20px 32px; }
+      .irow, .irow3 { grid-template-columns: 1fr; }
+      .pricing, .faq, .blog-links { padding-left: 20px; padding-right: 20px; }
+      .prg { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .ft { padding: 32px 20px 24px; }
+      .ft-inner { flex-direction: column; gap: 24px; }
+      .ft-bot { flex-direction: column; gap: 8px; text-align: center; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; }
+    }
+    </style>
+</head>
+<body>
+
+<div class="cg" id="cg"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nlogo"><div class="nlogo-i">HD</div><span class="nlogo-t">BoostSuite</span></a>
+  <div class="nlinks">
+    <a href="#tools">Tools</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="audit.html">Full Audit</a>
+  </div>
+  <div class="ncta">
+    <select id="langSelect" class="lang-sel">
+      <option value="en">🇬🇧 EN</option>
+      <option value="sl">🇸🇮 SL</option>
+      <option value="hr">🇭🇷 HR</option>
+      <option value="de">🇩🇪 DE</option>
+      <option value="it">🇮🇹 IT</option>
+    </select>
+    <div class="usage-pill"><span class="count" id="usageCount">0</span> / 2 free</div>
+    <button class="bgl" onclick="startCheckout('boostsuite')" style="padding:8px 18px;font-size:12px;">
+      <i class="fas fa-crown"></i> Upgrade
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <span class="hero-badge-tag">🚀 4-in-1 Toolkit</span>
+    AI Marketing Tools for Agencies
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </div>
+  <h1 data-i18n="heroTitle">Is AI <span class="gt">Recommending</span> Your Business?</h1>
+  <p class="hero-sub" data-i18n="heroSub">ChatGPT, Gemini, and Perplexity are the new search engines. Check if your website is visible — and what to fix. Plus SEO audits, ad copy, and listing optimization.</p>
+  <div style="display:flex;gap:12px;justify-content:center;position:relative;z-index:1;flex-wrap:wrap;">
+    <a href="#tools" class="bgl" style="padding:12px 28px;font-size:14px;" onclick="activateGeoTab();return false;">
+      <i class="fas fa-globe"></i> Check AI Visibility — Free
+    </a>
+    <a href="audit.html" class="bo" style="padding:12px 28px;font-size:14px;">
+      <i class="fas fa-chart-line"></i> Full Website Audit
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">87%</div><div class="label" data-i18n="heroStat1">websites invisible to AI</div></div>
+    <div class="hero-stat"><div class="num">30sec</div><div class="label" data-i18n="heroStat2">analysis time</div></div>
+    <div class="hero-stat"><div class="num">4</div><div class="label" data-i18n="heroStat3">AI-powered tools</div></div>
+  </div>
+  <div class="hero-trust">
+    <span class="hero-stars">★★★★★</span>
+    <span>Uporablja 8+ agencij</span>
+    <span>·</span>
+    <span>✓ Brez registracije</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="ms">
+  <div class="mr">
+    <div class="mt">
+      <div class="mi"><span class="dot"></span>SEO Audit</div>
+      <div class="mi"><span class="num">87%</span><span class="uni">nevidnih</span></div>
+      <div class="mi"><span class="dot"></span>GEO Check</div>
+      <div class="mi"><span class="num">30s</span><span class="uni">analiza</span></div>
+      <div class="mi"><span class="dot"></span>Ad Copy</div>
+      <div class="mi"><span class="num">5</span><span class="uni">platform</span></div>
+      <div class="mi"><span class="dot"></span>Listings</div>
+      <div class="mi"><span class="num">3</span><span class="uni">tržišča</span></div>
+      <div class="mi"><span class="dot"></span>SEO Audit</div>
+      <div class="mi"><span class="num">87%</span><span class="uni">nevidnih</span></div>
+      <div class="mi"><span class="dot"></span>GEO Check</div>
+      <div class="mi"><span class="num">30s</span><span class="uni">analiza</span></div>
+      <div class="mi"><span class="dot"></span>Ad Copy</div>
+      <div class="mi"><span class="num">5</span><span class="uni">platform</span></div>
+      <div class="mi"><span class="dot"></span>Listings</div>
+      <div class="mi"><span class="num">3</span><span class="uni">tržišča</span></div>
+    </div>
+  </div>
+  <div class="mr">
+    <div class="mt">
+      <div class="mi"><span class="dot"></span>Freelancer</div>
+      <div class="mi"><span class="num">€49</span><span class="uni">/mesec</span></div>
+      <div class="mi"><span class="dot"></span>Agency</div>
+      <div class="mi"><span class="num">€99</span><span class="uni">/mesec</span></div>
+      <div class="mi"><span class="dot"></span>Generations</div>
+      <div class="mi"><span class="num">200+</span><span class="uni">/mesec</span></div>
+      <div class="mi"><span class="dot"></span>Languages</div>
+      <div class="mi"><span class="num">10</span><span class="uni">jezikov</span></div>
+      <div class="mi"><span class="dot"></span>Freelancer</div>
+      <div class="mi"><span class="num">€49</span><span class="uni">/mesec</span></div>
+      <div class="mi"><span class="dot"></span>Agency</div>
+      <div class="mi"><span class="num">€99</span><span class="uni">/mesec</span></div>
+      <div class="mi"><span class="dot"></span>Generations</div>
+      <div class="mi"><span class="num">200+</span><span class="uni">/mesec</span></div>
+      <div class="mi"><span class="dot"></span>Languages</div>
+      <div class="mi"><span class="num">10</span><span class="uni">jezikov</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tabs-wrap" id="tools">
+  <a href="audit.html" class="audit-link"><i class="fas fa-chart-line"></i> Get Full Website Audit Report <i class="fas fa-arrow-right" style="font-size:11px;"></i></a>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tool="seo-audit"><i class="fas fa-search"></i> <span>SEO Audit</span></button>
+    <button class="tab" data-tool="geo-check"><i class="fas fa-globe"></i> <span>GEO Check</span></button>
+    <button class="tab" data-tool="ad-copy"><i class="fas fa-ad"></i> <span>Ad Copy</span></button>
+    <button class="tab" data-tool="listing-optimize"><i class="fas fa-tags"></i> <span>Listing Opt.</span></button>
+  </div>
+
+  <!-- SEO Audit -->
+  <div class="tool active" id="seo-audit">
+    <div class="tool-hdr">
+      <h2><i class="fas fa-search"></i> SEO Audit</h2>
+      <p>Analyze any URL for on-page SEO, get a score and actionable fixes.</p>
+    </div>
+    <div class="ig">
+      <label>Enter URL to audit:</label>
+      <input type="url" id="seo-url" placeholder="https://example.com">
+    </div>
+    <button class="btn-run" id="seo-submit"><i class="fas fa-play"></i> Run Audit</button>
+    <div class="result" id="seo-result"><div class="placeholder"><i class="fas fa-chart-line"></i><p>Your SEO audit report will appear here.</p></div></div>
+  </div>
+
+  <!-- GEO Check -->
+  <div class="tool" id="geo-check">
+    <div class="tool-hdr">
+      <h2><i class="fas fa-globe"></i> GEO Check (AI Visibility)</h2>
+      <p>Enter your website URL — we analyze your AI visibility across assistants and directories.</p>
+    </div>
+    <div class="ig">
+      <label>Enter website URL:</label>
+      <input type="url" id="geo-url" placeholder="https://your-website.com">
+    </div>
+    <button class="btn-run" id="geo-submit"><i class="fas fa-search"></i> Check AI Visibility</button>
+    <div class="result" id="geo-result"><div class="placeholder"><i class="fas fa-map-marker-alt"></i><p>Your AI visibility report will appear here.</p></div></div>
+  </div>
+
+  <!-- Ad Copy -->
+  <div class="tool" id="ad-copy">
+    <div class="tool-hdr">
+      <h2><i class="fas fa-ad"></i> Ad Copy Generator</h2>
+      <p>Generate platform-ready ad copy for Google, Facebook, LinkedIn, X, and Email.</p>
+    </div>
+    <div class="irow">
+      <div class="ig"><label>Product / Service</label><input type="text" id="ad-product" placeholder="Project management software"></div>
+      <div class="ig"><label>Target Audience</label><input type="text" id="ad-audience" placeholder="Small business owners"></div>
+    </div>
+    <div class="irow3">
+      <div class="ig"><label>Tone</label><select id="ad-tone"><option value="professional">Professional</option><option value="friendly">Friendly</option><option value="urgent">Urgent</option><option value="casual">Casual</option></select></div>
+      <div class="ig"><label>Call to Action</label><input type="text" id="ad-cta" placeholder="Start free trial"></div>
+      <div class="ig"><label>Platform</label><select id="ad-platform"><option value="google">Google Ads</option><option value="facebook">Facebook/Instagram</option><option value="linkedin">LinkedIn</option><option value="x">X (Twitter)</option><option value="email">Email</option></select></div>
+    </div>
+    <button class="btn-run" id="ad-submit"><i class="fas fa-magic"></i> Generate Ad Copy</button>
+    <div class="result" id="ad-result"><div class="placeholder"><i class="fas fa-file-alt"></i><p>Your generated ad copy will appear here.</p></div></div>
+  </div>
+
+  <!-- Listing Optimizer -->
+  <div class="tool" id="listing-optimize">
+    <div class="tool-hdr">
+      <h2><i class="fas fa-tags"></i> Listing Optimizer</h2>
+      <p>Optimize product listings for Etsy, Amazon, or Google Business.</p>
+    </div>
+    <div class="irow">
+      <div class="ig"><label>Product Name</label><input type="text" id="listing-product" placeholder="Handmade ceramic mug"></div>
+      <div class="ig"><label>Category</label><input type="text" id="listing-category" placeholder="Home & Kitchen"></div>
+    </div>
+    <div class="ig"><label>Key Features / Materials</label><textarea id="listing-features" rows="3" placeholder="Ceramic, dishwasher safe, 12 oz capacity, ergonomic handle"></textarea></div>
+    <div class="irow">
+      <div class="ig"><label>Target Buyer Persona</label><input type="text" id="listing-target" placeholder="Home decor enthusiasts, gift shoppers"></div>
+      <div class="ig"><label>Platform</label><select id="listing-platform"><option value="etsy">Etsy</option><option value="amazon">Amazon</option><option value="google">Google Business</option></select></div>
+    </div>
+    <button class="btn-run" id="listing-submit"><i class="fas fa-rocket"></i> Optimize Listing</button>
+    <div class="result" id="listing-result"><div class="placeholder"><i class="fas fa-list-alt"></i><p>Your optimized listing will appear here.</p></div></div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="sh rv"><div class="slbl">Pricing</div><h2>Simple Pricing</h2><p>Start free. Scale with your clients.</p></div>
+  <div class="prg">
+    <div class="prc rv">
+      <div class="prn">Free</div>
+      <div class="prp">€0</div>
+      <div class="prd">forever</div>
+      <ul class="prf">
+        <li><i class="fas fa-check"></i> 2 generations / day</li>
+        <li><i class="fas fa-check"></i> SEO Audit</li>
+        <li><i class="fas fa-check"></i> GEO Check</li>
+        <li><i class="fas fa-check"></i> Ad Copy Generator</li>
+        <li><i class="fas fa-check"></i> Listing Optimizer</li>
+      </ul>
+      <button class="prb ol" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Try Free</button>
+    </div>
+    <div class="prc rv" style="transition-delay:.1s">
+      <div class="prn">Freelancer</div>
+      <div class="prp">€49<span>/mo</span></div>
+      <div class="prd">For solo practitioners</div>
+      <ul class="prf">
+        <li><i class="fas fa-check"></i> 200 generations / month</li>
+        <li><i class="fas fa-check"></i> All 4 tools included</li>
+        <li><i class="fas fa-check"></i> PDF export reports</li>
+        <li><i class="fas fa-check"></i> Email support</li>
+      </ul>
+      <a class="prb ol" onclick="startCheckout('boostsuite_freelancer')">Get Freelancer</a>
+    </div>
+    <div class="prc ft rv" style="transition-delay:.2s">
+      <div class="prn">Agency</div>
+      <div class="prp">€99<span>/mo</span></div>
+      <div class="prd">For teams & agencies</div>
+      <ul class="prf">
+        <li><i class="fas fa-check"></i> Unlimited generations</li>
+        <li><i class="fas fa-check"></i> All 4 tools included</li>
+        <li><i class="fas fa-check"></i> White-label client reports</li>
+        <li><i class="fas fa-check"></i> API access</li>
+        <li><i class="fas fa-check"></i> Priority AI processing</li>
+        <li><i class="fas fa-check"></i> Team seats (up to 5)</li>
+      </ul>
+      <a class="prb fl" onclick="startCheckout('boostsuite_agency')"><i class="fas fa-rocket"></i> Get Agency</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="sh rv"><div class="slbl">FAQ</div><h2>Frequently Asked Questions</h2></div>
+  <div class="faq-grid">
+    <div class="faq-item rv"><h3>Is BoostSuite free?</h3><p>Yes! You get 2 free generations per day with no signup. Freelancer (€49/mo) gives you 200/month, and Agency (€99/mo) is unlimited with white-label reports and API access.</p></div>
+    <div class="faq-item rv"><h3>Which tools are included?</h3><p>BoostSuite includes 4 tools: SEO Audit, GEO Check (AI Visibility), Ad Copy Generator, and Listing Optimizer for Etsy/Amazon/Google Business.</p></div>
+    <div class="faq-item rv"><h3>What AI models does BoostSuite use?</h3><p>We use DeepSeek for ad copy and listing optimization, and a combination of web search + DeepSeek for SEO audits and GEO checks.</p></div>
+    <div class="faq-item rv"><h3>Can I use BoostSuite for my clients?</h3><p>Yes! BoostSuite is designed for agencies. You can white-label reports and use the tools for unlimited client projects with a Pro subscription.</p></div>
+    <div class="faq-item rv"><h3>Which languages does BoostSuite support?</h3><p>BoostSuite is available in English, Slovenian, Croatian, Serbian, German, Italian, French, Spanish, Dutch, and Polish.</p></div>
+    <div class="faq-item rv"><h3>How does the GEO Check work?</h3><p>GEO Check searches the web for your business presence across directories, review sites, and social media, then analyzes how likely AI assistants are to recommend you.</p></div>
+  </div>
+</section>
+
+<!-- BLOG LINKS -->
+<div class="blog-links">
+  <div class="blog-box rv">
+    <h4>📚 Learn more about AI Visibility</h4>
+    <a href="/blog/geo-for-agencies.html">GEO for Agencies: How to Sell AI Visibility Services →</a>
+    <a href="/blog/geo-checklist-chatgpt-recommendations.html">GEO Checklist: 10 Steps to AI Visibility →</a>
+    <a href="/blog/structured-data-llms-txt-ai-visibility.html">Why AI Can't Find Your Website →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-inner">
+    <div class="ft-brand">
+      <a href="/" class="nlogo"><div class="nlogo-i">HD</div><span class="nlogo-t">BoostSuite</span></a>
+      <p>AI Marketing Toolkit for Agencies. Based in Slovenia.</p>
+    </div>
+    <div class="ft-links">
+      <a href="/about/">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="mailto:hercegdarko@hd-webdesign.si">Contact</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 BoostSuite — Powered by HD Web Design</span>
+    <span>🟢 Live</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="upgradeModal">
+  <div class="modal-box">
+    <h2><i class="fas fa-crown" style="color:var(--acc2);"></i> Upgrade to Pro</h2>
+    <p>You've used all 2 free uses. Upgrade for unlimited access, priority support, and advanced analytics.</p>
+    <div class="modal-btns">
+      <button class="bo bo-sm" id="closeModal">Maybe Later</button>
+      <a class="bgl" onclick="startCheckout('boostsuite_freelancer')" style="font-size:13px;"><i class="fas fa-rocket"></i> Upgrade Now (€49/mo)</a>
+    </div>
+  </div>
+</div>
+
+<script src="i18n.js?v=2"></script>
+<script src="app-final.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+<script>
+// Apply translations on load
+if(typeof applyTranslations==='function' && getLang()!=='en'){applyTranslations();}
+const langSel=document.getElementById('langSelect');
+if(langSel){langSel.value=getLang();langSel.addEventListener('change',()=>{localStorage.setItem('boostsuite_lang',langSel.value);applyTranslations();});}
+// Cursor
+const cg=document.getElementById('cg');let mx=0,my=0,gx=0,gy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cg.style.opacity='1';});
+document.addEventListener('mouseleave',()=>{cg.style.opacity='0';});
+(function a(){gx+=(mx-gx)*.07;gy+=(my-gy)*.07;cg.style.left=gx+'px';cg.style.top=gy+'px';requestAnimationFrame(a)})();
+
+// Tabs
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tool').forEach(c=>c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tool).classList.add('active');
+  });
+});
+
+function activateGeoTab(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tool').forEach(c=>c.classList.remove('active'));
+  const geoTab=document.querySelector('[data-tool="geo-check"]');
+  const geoCard=document.getElementById('geo-check');
+  if(geoTab)geoTab.classList.add('active');
+  if(geoCard){geoCard.classList.add('active');geoCard.scrollIntoView({behavior:'smooth',block:'start'});}
+}
+
+// Reveal
+const rvs=document.querySelectorAll('.rv');
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');obs.unobserve(x.target);}});},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+rvs.forEach(el=>obs.observe(el));
+
+// Modal
+const modal=document.getElementById('upgradeModal');
+document.getElementById('closeModal')?.addEventListener('click',()=>modal.classList.remove('show'));
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show');});
+
+// Checkout
+async function startCheckout(product){
+  var btn=event.target.closest('button,a')||event.target;
+  var orig=btn.innerHTML;btn.innerHTML='Loading...';btn.disabled=true;
+  try{
+    var resp=await fetch('/api/create-checkout.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({price_id:product})});
+    var data=await resp.json();
+    if(data.checkout_url){window.location.href=data.checkout_url;}
+    else{alert(data.error||'Stripe connection error.');btn.innerHTML=orig;btn.disabled=false;}
+  }catch(e){alert('Connection error.');btn.innerHTML=orig;btn.disabled=false;}
+}
+</script>
+</body>
+</html>

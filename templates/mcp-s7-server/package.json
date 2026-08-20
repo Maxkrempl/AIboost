@@ -1,0 +1,23 @@
+{
+  "name": "mcp-s7-server",
+  "version": "1.0.0",
+  "description": "MCP Server za Siemens S7-1500 PLC — poveže AI s Siemens krmilniki",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "simulator": "python3 simulator/s7_simulator.py",
+    "demo": "echo '1. Run: npm run simulator (terminal 1)' && echo '2. Run: npm run dev (terminal 2)' && echo '3. Connect AI to MCP server'"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "nodes7": "^0.3.18",
+    "zod": "^3.25.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

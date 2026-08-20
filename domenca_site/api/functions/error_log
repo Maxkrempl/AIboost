@@ -1,9 +1,0 @@
-[17-May-2026 01:04:33 Europe/Ljubljana] PHP Parse error:  syntax error, unexpected token "." in /home/hdwebd88/public_html/api/functions/seo-audit.php on line 47
-[17-May-2026 01:04:55 Europe/Ljubljana] PHP Parse error:  syntax error, unexpected token "." in /home/hdwebd88/public_html/api/functions/seo-audit.php on line 47
-[23-May-2026 20:58:12 Europe/Ljubljana] PHP Parse error:  Unclosed '(' on line 596 does not match ']' in /home/hdwebd88/public_html/api/functions/combined-audit.php on line 608
-[23-May-2026 20:58:17 Europe/Ljubljana] PHP Parse error:  Unclosed '(' on line 596 does not match ']' in /home/hdwebd88/public_html/api/functions/combined-audit.php on line 608
-[23-May-2026 20:58:21 Europe/Ljubljana] PHP Parse error:  Unclosed '(' on line 596 does not match ']' in /home/hdwebd88/public_html/api/functions/combined-audit.php on line 608
-[23-May-2026 20:58:37 Europe/Ljubljana] PHP Parse error:  Unclosed '(' on line 600 does not match ']' in /home/hdwebd88/public_html/api/functions/combined-audit.php on line 612
-[23-May-2026 20:58:42 Europe/Ljubljana] PHP Parse error:  Unclosed '(' on line 600 does not match ']' in /home/hdwebd88/public_html/api/functions/combined-audit.php on line 612
-[23-May-2026 20:58:47 Europe/Ljubljana] PHP Parse error:  Unclosed '(' on line 600 does not match ']' in /home/hdwebd88/public_html/api/functions/combined-audit.php on line 612
-[23-May-2026 20:58:47 Europe/Ljubljana] PHP Parse error:  Unclosed '(' on line 600 does not match ']' in /home/hdwebd88/public_html/api/functions/combined-audit.php on line 612

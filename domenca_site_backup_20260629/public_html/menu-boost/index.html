@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MenuBoost — AI Menu Description Generator for Restaurants</title>
+<meta name="description" content="Generate appetizing menu descriptions for restaurants in 10 languages using AI. Free to try. Perfect for gostilne, restaurants, cafes and tourist farms.">
+<link rel="icon" type="image/svg+xml" href="images/menuboost-favicon.svg">
+<link rel="icon" type="image/svg+xml" href="images/menuboost-favicon-12.svg" sizes="12x12">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MenuBoost","description":"AI menu description generator for restaurants in 10 languages.","url":"https://menuboostai.netlify.app","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"19","priceCurrency":"EUR"}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="i18n.js?v=5"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#FAF7F2;--warm:#F3EDE3;--brown:#2C1810;--brown-mid:#5C3D2E;--gold:#C4922A;--gold-light:#F5E6C8;--mute:#9C8878;--border:#E8DDD0;--white:#FFFFFF;--success:#2D6A4F;--success-bg:#D8F3DC}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--brown);min-height:100vh;font-size:15px;line-height:1.6}
+header{background:var(--brown);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold-light)}
+.logo span{color:var(--gold);font-style:italic}
+.header-badge{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid #4A2E1A;padding:4px 12px;border-radius:2px}
+.hero{text-align:center;padding:4rem 1.5rem 2.5rem;max-width:680px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--brown);line-height:1.1;margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{font-size:16px;color:var(--mute);font-weight:300;max-width:420px;margin:0 auto}
+.container{max-width:960px;margin:0 auto;padding:0 1.5rem 4rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+@media(max-width:680px){.grid{grid-template-columns:1fr}.hero h1{font-size:36px}}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem}
+.card-label{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--mute);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.card-label::after{content:'';flex:1;height:1px;background:var(--border)}
+label{display:block;font-size:12px;font-weight:500;color:var(--brown-mid);margin-bottom:5px;margin-top:16px}
+label:first-of-type{margin-top:0}
+input[type="text"],textarea,select{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--brown);background:var(--cream);outline:none;transition:border-color .15s}
+input:focus,textarea:focus,select:focus{border-color:var(--gold);background:var(--white)}
+textarea{height:60px;resize:none;line-height:1.5}
+.lang-group,.style-group{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.lang-pill,.style-pill{font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);background:var(--cream);color:var(--mute);cursor:pointer;transition:all .15s;user-select:none}
+.style-pill{font-size:11px;padding:4px 10px;border-radius:6px;border-width:1px}
+.lang-pill.active{border-color:var(--gold);background:var(--gold-light);color:var(--brown)}
+.style-pill.active{border-color:var(--brown);background:var(--brown);color:var(--gold-light)}
+
+/* Dish list */
+.dish-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.dish-row{background:var(--cream);border:1.5px solid var(--border);border-radius:10px;padding:12px;position:relative;animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.dish-row-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.dish-number{font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+.btn-remove-dish{background:none;border:none;color:var(--mute);font-size:18px;cursor:pointer;padding:0 4px;line-height:1;transition:color .15s}
+.btn-remove-dish:hover{color:#c0392b}
+.dish-row input[type="text"]{font-weight:500}
+.dish-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:500px){.dish-fields{grid-template-columns:1fr}}
+.btn-add-dish{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;margin-top:8px;background:var(--white);border:1.5px dashed var(--border);border-radius:10px;font-size:13px;font-weight:500;color:var(--mute);cursor:pointer;transition:all .15s}
+.btn-add-dish:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-light)}
+
+.btn-generate{width:100%;margin-top:1.5rem;padding:14px;background:var(--brown);color:var(--gold-light);border:none;border-radius:10px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-generate:hover{background:var(--brown-mid)}
+.btn-generate:disabled{opacity:.5;cursor:not-allowed}
+.spinner{width:16px;height:16px;border:2px solid rgba(196,146,42,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.credits-row{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:12px;color:var(--mute)}
+.credit-dots{display:flex;gap:4px}
+.cdot{width:8px;height:8px;border-radius:50%;background:var(--gold);transition:background .3s}
+.cdot.used{background:var(--border)}
+.no-credits-banner{display:none;margin-top:1rem;padding:12px 16px;background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;font-size:13px;color:var(--brown);text-align:center}
+.no-credits-banner a{color:var(--gold);font-weight:500;text-decoration:underline;cursor:pointer}
+.output-area{display:flex;flex-direction:column;gap:1.5rem}
+.empty-state{background:var(--white);border:1.5px dashed var(--border);border-radius:16px;padding:3.5rem 2rem;text-align:center;color:var(--mute)}
+.empty-state p{font-size:13px}
+.dish-result{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;animation:fadeIn .3s ease}
+.dish-result-name{padding:14px 16px 10px;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--brown);border-bottom:1px solid var(--border)}
+.dish-result-langs{display:flex;flex-direction:column;gap:0}
+.result-card{border-bottom:1px solid var(--border)}
+.result-card:last-child{border-bottom:none}
+.result-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--warm)}
+.result-lang{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--brown-mid)}
+.result-style-badge{font-size:10px;padding:2px 8px;border-radius:4px;background:var(--gold-light);color:var(--gold);font-weight:500;text-transform:uppercase}
+.btn-copy{font-size:11px;font-weight:500;color:var(--gold);background:none;border:1px solid var(--gold-light);border-radius:5px;padding:3px 10px;cursor:pointer;transition:all .15s}
+.btn-copy:hover{background:var(--gold-light)}
+.btn-copy.copied{color:var(--success);border-color:var(--success-bg);background:var(--success-bg)}
+.result-body{padding:14px 16px;font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.75;color:var(--brown);font-style:italic;min-height:40px}
+.result-body.plain{font-family:'DM Sans',sans-serif;font-style:normal;font-size:14px}
+.cursor{display:inline-block;width:2px;height:16px;background:var(--gold);margin-left:2px;animation:blink .8s step-end infinite;vertical-align:middle}
+@keyframes blink{50%{opacity:0}}
+.upgrade-card{background:var(--brown);border-radius:16px;padding:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.upgrade-text h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold-light);margin-bottom:3px}
+.upgrade-text p{font-size:13px;color:var(--mute)}
+.btn-upgrade{padding:11px 22px;background:var(--gold);color:var(--brown);border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap}
+.btn-upgrade:hover{opacity:.9}
+.seo-content{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:2rem}
+.seo-content h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--brown);margin-bottom:1rem}
+.seo-content h3{font-size:15px;font-weight:500;color:var(--brown);margin:1.2rem 0 .4rem}
+.seo-content p{font-size:14px;color:var(--mute);line-height:1.7;margin-bottom:.8rem}
+.faq-item{border-top:1px solid var(--border);padding:1rem 0}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-q{font-size:14px;font-weight:500;color:var(--brown);margin-bottom:.4rem}
+.faq-a{font-size:13px;color:var(--mute);line-height:1.6}
+.lang-switch{position:relative;display:inline-block}
+.lang-switch-btn{padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500;letter-spacing:1px;transition:all .15s;border:1.5px solid var(--border);background:var(--cream);color:var(--brown);display:flex;align-items:center;gap:5px;font-family:'DM Sans',sans-serif}
+.lang-switch-btn:hover{border-color:var(--gold)}
+.lang-switch-btn.active{border-color:var(--gold);background:var(--gold-light)}
+.lang-dropdown{position:absolute;top:100%;right:0;margin-top:4px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:4px;z-index:200;display:none;min-width:120px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.lang-dropdown.show{display:block}
+.lang-option{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:12px;font-weight:500;color:var(--brown);transition:background .1s}
+.lang-option:hover{background:var(--warm)}
+.lang-option.active{background:var(--gold-light);color:var(--brown-mid)}
+.qr-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:1.5rem;display:none;text-align:center}
+.qr-section.show{display:block;animation:fadeIn .3s ease}
+.qr-section h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--brown);margin-bottom:0.5rem}
+.qr-section .qr-subtitle{font-size:13px;color:var(--mute);margin-bottom:1.5rem}
+#qrcode{display:inline-block;padding:16px;background:var(--white);border:2px solid var(--border);border-radius:12px}
+.qr-actions{display:flex;gap:10px;justify-content:center;margin-top:1.5rem;flex-wrap:wrap}
+.btn-qr{font-size:12px;font-weight:500;padding:8px 18px;border-radius:8px;border:1.5px solid var(--brown);background:var(--cream);color:var(--brown);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px}
+.btn-qr:hover{background:var(--brown);color:var(--gold-light)}
+.btn-qr.primary{background:var(--brown);color:var(--gold-light);border-color:var(--brown)}
+.btn-qr.primary:hover{background:var(--brown-mid)}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><img src="images/menuboost-logo-light.svg" alt="MenuBoost" height="32" style="vertical-align:middle;margin-right:6px">Menu<span>Boost</span></div>
+  <div style="display:flex;align-items:center;gap:12px">
+  <div class="lang-switch" id="lang-switch">
+  <div class="lang-switch-btn" id="lang-toggle">🇸🇮 SL ▾</div>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <div class="lang-option active" data-lang="sl">🇸🇮 Slovenščina</div>
+    <div class="lang-option" data-lang="hr">🇭🇷 Hrvatski</div>
+    <div class="lang-option" data-lang="en">🇬🇧 English</div>
+    <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+    <div class="lang-option" data-lang="it">🇮🇹 Italiano</div>
+    <div class="lang-option" data-lang="sr">🇷🇸 Srpski</div>
+    <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+    <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+    <div class="lang-option" data-lang="tr">🇹🇷 Türkçe</div>
+    <div class="lang-option" data-lang="el">🇬🇷 Ελληνικά</div>
+  </div>
+</div>
+  <div class="header-badge">AI opisi jedi</div>
+</div>
+</header>
+<div style="text-align:center;padding:2rem 0 0">
+  <img src="images/menuboost-logo-light.svg" alt="MenuBoost" height="80" style="opacity:0.85">
+</div>
+<div class="hero">
+  <div class="hero-eyebrow">AI opisi jedi za restavracije</div>
+  <h1>Jedilnik ki <em>prodaja</em><br>sam od sebe</h1>
+  <p>Vpišite jedi in dobite apetitne opise v vašem jeziku. Cel jedilnik naenkrat.</p>
+</div>
+<div class="container">
+  <div class="grid">
+    <div>
+      <div class="card">
+        <div class="card-label">Vaše jedi</div>
+        <div class="dish-list" id="dish-list">
+          <!-- Dynamic dish rows go here -->
+        </div>
+        <button class="btn-add-dish" id="btn-add-dish" onclick="addDish()">+ Dodaj jed</button>
+        <label style="margin-top:20px">Vrsta restavracije</label>
+        <select id="rest-type">
+          <option value="gostilna">Gostilna / domača kuhinja</option>
+          <option value="restavracija">Restavracija / fine dining</option>
+          <option value="pizzeria">Pizzeria / italijanska</option>
+          <option value="fast food">Hitra prehrana</option>
+          <option value="cafe">Kavarna / slaščičarna</option>
+          <option value="morska">Morska hrana</option>
+          <option value="azijska">Azijska kuhinja</option>
+          <option value="veganska">Veganska / vegetarijanska</option>
+        </select>
+        <label>Slog opisa</label>
+        <div class="style-group">
+          <span class="style-pill active" data-style="poetic">Poetičen</span>
+          <span class="style-pill" data-style="classic">Klasičen</span>
+          <span class="style-pill" data-style="simple">Preprost</span>
+          <span class="style-pill" data-style="delivery">Za dostavo</span>
+          <span class="style-pill" data-style="social">Social media</span>
+        </div>
+        <label>Jeziki</label>
+        <div class="lang-group">
+          <span class="lang-pill active" data-lang="slovenian">SLO</span>
+          <span class="lang-pill active" data-lang="croatian">HR</span>
+          <span class="lang-pill" data-lang="english">EN</span>
+          <span class="lang-pill" data-lang="german">DE</span>
+          <span class="lang-pill" data-lang="italian">IT</span>
+          <span class="lang-pill" data-lang="serbian">SR</span>
+          <span class="lang-pill" data-lang="french">FR</span>
+          <span class="lang-pill" data-lang="spanish">ES</span>
+          <span class="lang-pill" data-lang="turkish">TR</span>
+          <span class="lang-pill" data-lang="greek">EL</span>
+        </div>
+        <button class="btn-generate" id="gen-btn" onclick="generate()">
+          <div class="spinner" id="spinner"></div>
+          <span id="btn-text"></span>
+        </button>
+        <div class="credits-row">
+          <span>Brezplačni opisi: <strong id="credits-num">3</strong></span>
+          <div class="credit-dots">
+            <div class="cdot" id="d1"></div>
+            <div class="cdot" id="d2"></div>
+            <div class="cdot" id="d3"></div>
+          </div>
+        </div>
+        <div class="no-credits-banner" id="no-credits-banner">
+          Porabili ste brezplačne opise.
+          <a onclick="checkout()">Nadgradite na Pro (19 EUR/mes)</a>
+        </div>
+      </div>
+    </div>
+    <div class="output-area" id="output-area">
+      <div class="empty-state" id="empty-state">
+        <p id="empty-text">Vpišite jedi in kliknite<br>Ustvari opise</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Code Section -->
+  <div class="qr-section" id="qr-section">
+    <h3>📱 QR koda za vaš jedilnik</h3>
+    <p class="qr-subtitle">Natisnite to kodo na papirni jedilnik. Gostje jo skenirajo in vidijo prevod v svojem jeziku.</p>
+    <div id="qrcode"></div>
+    <p style="font-size:12px;color:var(--mute);margin-top:0.75rem">Deluje s kamero kateregakoli pametnega telefona</p>
+    <div class="qr-actions">
+      <button class="btn-qr primary" onclick="downloadQR()">📥 Prenesi QR kodo</button>
+      <button class="btn-qr" onclick="downloadPDF()">📄 Prenesi PDF</button>
+      <button class="btn-qr" onclick="copyMenuLink()">🔗 Kopiraj povezavo</button>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem">
+    <div class="upgrade-card">
+      <div class="upgrade-text">
+        <h3>Neomejeni opisi za vaš jedilnik</h3>
+        <p>19 EUR / mesec · Vsi jeziki · Neomejene jedi · Vsi slogi</p>
+      </div>
+      <button class="btn-upgrade" onclick="checkout()">Začni Pro</button>
+    </div>
+  </div>
+
+  <div class="seo-content">
+    <h2>AI generator opisov jedi za restavracije</h2>
+    <p>MenuBoost je AI orodje ki v 10 sekundah ustvari poetske opise jedi za vaš jedilnik v slovenščini, hrvaščini, angleščini, nemščini, italijanščini, srščini, francoščini, španščini, turščini in grščini. Brez pisanja, brez agencij.</p>
+    <p>Idealno za gostilne, restavracije, kavarne, turistične kmetije in hotele ki želijo privabiti domače in tuje goste z apetitnimi opisi svojih jedi.</p>
+    <h3>Pogosta vprašanja</h3>
+    <div class="faq-item">
+      <div class="faq-q">Je MenuBoost brezplačen?</div>
+      <div class="faq-a">Da — dobite 3 brezplačne generacije brez registracije. Za neomejeno uporabo nadgradite na Pro za 19 EUR na mesec.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">V katerih jezikih deluje MenuBoost?</div>
+      <div class="faq-a">MenuBoost ustvarja opise v slovenščini, hrvaščini, angleščini, nemščini, italijanščini, srščini, francoščini, španščini, turščini in grščini.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Kateri slogi pisanja so na voljo?</div>
+      <div class="faq-a">Na voljo je pet slogov: poetski, klasičen, preprost, za dostavo (Wolt/Bolt Food) in za social media.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Ali deluje za turistične kmetije?</div>
+      <div class="faq-a">Da — MenuBoost je idealen za turistične kmetije ki želijo opisati domače jedi tujim gostom v nemščini ali angleščini.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Kako hitro dobim opis?</div>
+      <div class="faq-a">Opis je pripravljen v manj kot 10 sekundah. Vpišite jedi in kliknite Ustvari opise.</div>
+    </div>
+  </div>
+</div>
+
+
+            <!-- Blog Cross-Links -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #1e293b; border-radius: 12px; border-left: 4px solid #D4980A; max-width: 800px; margin-left: auto; margin-right: auto;">
+              <p style="margin: 0 0 0.5rem; font-weight: 600; color: #fcd34d;">📚 Learn more</p>
+              <p style="margin: 0; font-size: 0.95rem; color: #cbd5e1;">
+                <a href="/blog/best-ai-menu-description-generator-2026.html" style="color: #fbbf24;">Best AI Menu Description Generator 2026 →</a><br>
+                <a href="/blog/qr-code-vs-physical-menu.html" style="color: #fbbf24;">QR Code Menu vs Physical Menu →</a><br>
+                <a href="/blog/how-to-translate-restaurant-menu.html" style="color: #fbbf24;">How to Translate a Restaurant Menu into 6 Languages →</a>
+              </p>
+            </div>
+
+<script>
+var LANG_LABELS={sl:'🇸🇮 SL',hr:'🇭🇷 HR',en:'🇬🇧 EN',de:'🇩🇪 DE',it:'🇮🇹 IT',sr:'🇷🇸 SR',fr:'🇫🇷 FR',es:'🇪🇸 ES',tr:'🇹🇷 TR',el:'🇬🇷 EL'};
+
+document.addEventListener('DOMContentLoaded',function(){
+  applyTranslations();
+  document.getElementById('lang-toggle').addEventListener('click',function(e){
+    e.stopPropagation();
+    document.getElementById('lang-dropdown').classList.toggle('show');
+  });
+  document.addEventListener('click',function(){
+    document.getElementById('lang-dropdown').classList.remove('show');
+  });
+  document.querySelectorAll('.lang-option').forEach(function(opt){
+    opt.addEventListener('click',function(e){
+      e.stopPropagation();
+      document.querySelectorAll('.lang-option').forEach(function(o){o.classList.remove('active');});
+      opt.classList.add('active');
+      setLang(opt.dataset.lang);
+      document.getElementById('lang-toggle').innerHTML = LANG_LABELS[opt.dataset.lang] + ' ▾';
+      document.getElementById('lang-dropdown').classList.remove('show');
+      // Sync form language pills with header language
+      var langMap={sl:'slovenian',hr:'croatian',en:'english',de:'german',it:'italian',sr:'serbian',fr:'french',es:'spanish',tr:'turkish',el:'greek'};
+      var formLang=langMap[opt.dataset.lang];
+      if(formLang){
+        document.querySelectorAll('.lang-pill').forEach(function(p){p.classList.remove('active');});
+        var pill=document.querySelector('.lang-pill[data-lang="'+formLang+'"]');
+        if(pill){pill.classList.add('active');selectedLangs=[formLang];}
+      }
+    });
+  });
+  // Start with 3 empty dish rows
+  addDish(); addDish(); addDish();
+});
+
+var CREDITS_KEY='menuboost_credits_v1';
+function getCredits(){var s=localStorage.getItem(CREDITS_KEY);if(s===null){localStorage.setItem(CREDITS_KEY,3);return 3;}return parseInt(s,10);}
+function saveCredits(n){localStorage.setItem(CREDITS_KEY,Math.max(0,n));}
+var credits=getCredits();
+var selectedStyle='poetic';
+var selectedLangs=['slovenian','croatian'];
+var langLabels={slovenian:'Slovenian',croatian:'Croatian',english:'English',german:'German',italian:'Italian',serbian:'Serbian',french:'French',spanish:'Spanish',turkish:'Turkish',greek:'Greek'};
+var langFlags={slovenian:'SLO',croatian:'HR',english:'EN',german:'DE',italian:'IT',serbian:'SR',french:'FR',spanish:'ES',turkish:'TR',greek:'EL'};
+var styleGuides={poetic:'Evocative and sensory. Use aromas, textures, emotions.',classic:'Professional, elegant, traditional.',simple:'Clear, direct, friendly.',delivery:'Practical and appetizing for Wolt/Bolt Food.',social:'Energetic, modern, with emojis.'};
+
+function checkout(){
+  fetch('api/create-checkout.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({price_id:'price_1TXqOQEd81hrOq3ej1uLy0mn'})})
+  .then(function(r){return r.json();})
+  .then(function(d){if(d.checkout_url)window.location.href=d.checkout_url;else alert(t('errorPrefix')+' '+d.error);})
+  .catch(function(e){alert(t('errorConn')+' '+e.message);});
+}
+
+var qrInstance=null;
+var lastMenuData=null;
+var dishCounter=0;
+
+function updateCreditsUI(){
+  document.getElementById('credits-num').textContent=credits;
+  ['d1','d2','d3'].forEach(function(id,i){document.getElementById(id).classList.toggle('used',i>=credits);});
+  var banner=document.getElementById('no-credits-banner'),btn=document.getElementById('gen-btn');
+  if(credits<=0){banner.style.display='block';btn.disabled=true;}else{banner.style.display='none';btn.disabled=false;}
+}
+updateCreditsUI();
+
+document.querySelectorAll('.style-pill').forEach(function(pill){
+  pill.addEventListener('click',function(){
+    document.querySelectorAll('.style-pill').forEach(function(p){p.classList.remove('active');});
+    pill.classList.add('active');selectedStyle=pill.dataset.style;
+  });
+});
+document.querySelectorAll('.lang-pill').forEach(function(pill){
+  pill.addEventListener('click',function(){
+    pill.classList.toggle('active');
+    selectedLangs=Array.from(document.querySelectorAll('.lang-pill.active')).map(function(p){return p.dataset.lang;});
+  });
+});
+
+/* DISH MANAGEMENT */
+function addDish(){
+  if(dishCounter>=10)return;
+  dishCounter++;
+  var list=document.getElementById('dish-list');
+  var row=document.createElement('div');
+  row.className='dish-row';
+  row.id='dish-'+dishCounter;
+  row.innerHTML='<div class="dish-row-header"><span class="dish-number">#'+dishCounter+'</span><button class="btn-remove-dish" onclick="removeDish('+dishCounter+')">&times;</button></div><div class="dish-fields"><div><label>'+t('dishName')+'</label><input type="text" class="dish-name" placeholder="'+t('dishPlaceholder')+'"></div><div><label>'+t('ingredients')+'</label><input type="text" class="dish-ingredients" placeholder="'+t('ingredientsPlaceholder')+'"></div></div>';
+  list.appendChild(row);
+  if(dishCounter>=10)document.getElementById('btn-add-dish').style.display='none';
+}
+
+function removeDish(id){
+  var row=document.getElementById('dish-'+id);
+  if(row){row.remove();dishCounter--;}
+  if(dishCounter<10)document.getElementById('btn-add-dish').style.display='flex';
+  // Renumber remaining dishes
+  var rows=document.querySelectorAll('.dish-row');
+  rows.forEach(function(r,i){
+    r.querySelector('.dish-number').textContent=t('dishNum')+(i+1);
+  });
+}
+
+function getDishes(){
+  var dishes=[];
+  document.querySelectorAll('.dish-row').forEach(function(row){
+    var name=row.querySelector('.dish-name').value.trim();
+    var ingredients=row.querySelector('.dish-ingredients').value.trim();
+    if(name)dishes.push({name:name,ingredients:ingredients});
+  });
+  return dishes;
+}
+
+/* GENERATE */
+async function generate(){
+  var dishes=getDishes();
+  if(dishes.length===0){alert(t('errorNoDish'));return;}
+  if(credits<=0)return;
+  if(selectedLangs.length===0){alert(t('errorNoLang'));return;}
+  var restType=document.getElementById('rest-type').value;
+  var btn=document.getElementById('gen-btn'),spinner=document.getElementById('spinner');
+  btn.disabled=true;spinner.style.display='block';
+  document.getElementById('btn-text').textContent=t('btnGenerating');
+  document.getElementById('empty-state').style.display='none';
+  var area=document.getElementById('output-area');
+  area.querySelectorAll('.dish-result').forEach(function(c){c.remove();});
+  document.getElementById('qr-section').classList.remove('show');
+
+  // Build prompt for all dishes at once
+  var dishesDesc=dishes.map(function(d,i){
+    return (i+1)+'. '+d.name+(d.ingredients?' — '+d.ingredients:'');
+  }).join('\n');
+  var langList=selectedLangs.map(function(l){return l+' (write in '+langLabels[l]+')';}).join(', ');
+
+  var prompt='Write appetizing menu descriptions for these dishes:\n'+dishesDesc;
+  prompt+='\n\nRestaurant type: '+restType+'. Style: '+(styleGuides[selectedStyle]||'Professional.');
+  prompt+=' Languages: '+langList+'.';
+  prompt+='\n\nRules: 2-4 sentences per dish per language, max 80 words, do not start with dish name.';
+  prompt+='\nReturn ONLY this JSON: {"dishes":[{"name":"dish name","translations":{"slovenian":"...","croatian":"...",etc}}]}';
+
+  try{
+    var r=await fetch('api/generate-menu.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:prompt})});
+    var rawText=await r.text();
+    var data=JSON.parse(rawText);
+    var text=(data.content||[]).map(function(b){return b.text||'';}).join('');
+    var result={dishes:[]};
+    try{
+      text=text.replace(/```json/gi,'').replace(/```/g,'').trim();
+      var start=text.indexOf('{'),end=text.lastIndexOf('}');
+      if(start!==-1&&end!==-1)result=JSON.parse(text.substring(start,end+1));
+    }catch(e){
+    }
+
+    // Display results
+    var menuData={dishes:[],restType:restType,style:selectedStyle,langs:selectedLangs};
+    (result.dishes||[]).forEach(function(dish){
+      var dishEl=createDishResult(dish.name,dish.translations||{});
+      area.appendChild(dishEl);
+      menuData.dishes.push(dish);
+    });
+
+    // If API didn't return structured dishes, create placeholder
+    if(!result.dishes||result.dishes.length===0){
+      dishes.forEach(function(d){
+        var trans={};
+        selectedLangs.forEach(function(l){trans[l]='Opis ni na voljo.';});
+        area.appendChild(createDishResult(d.name,trans));
+        menuData.dishes.push({name:d.name,translations:trans});
+      });
+    }
+
+    lastMenuData=menuData;
+    generateQR(menuData);
+    credits--;saveCredits(credits);updateCreditsUI();
+  }catch(e){
+    area.innerHTML='<div class="empty-state"><p>'+t('error')+'</p></div>';
+    console.error(e);
+  }
+  spinner.style.display='none';
+  document.getElementById('btn-text').textContent=t('btnRegenerate');
+  if(credits>0)btn.disabled=false;
+}
+
+function createDishResult(name,translations){
+  var div=document.createElement('div');
+  div.className='dish-result';
+  var html='<div class="dish-result-name">'+name+'</div><div class="dish-result-langs">';
+  selectedLangs.forEach(function(lang){
+    var isPlain=selectedStyle==='simple'||selectedStyle==='delivery';
+    html+='<div class="result-card"><div class="result-header"><div class="result-lang">'+(langFlags[lang]||lang)+'</div><div style="display:flex;align-items:center;gap:8px"><span class="result-style-badge">'+selectedStyle+'</span><button class="btn-copy" onclick="copyResult(this)">'+t('copy')+'</button></div></div>' + '<div class="result-body'+(isPlain?' plain':'')+'" data-text="'+(translations[lang]||'').replace(/"/g,'&quot;')+'">'+(translations[lang]||'...')+'</div></div>';
+  });
+  html+='</div>';
+  div.innerHTML=html;
+  return div;
+}
+
+function copyResult(btn){
+  var text=btn.closest('.result-card').querySelector('.result-body').getAttribute('data-text')||btn.closest('.result-card').querySelector('.result-body').textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    btn.textContent=t('copied');btn.classList.add('copied');
+    setTimeout(function(){btn.textContent=t('copy');btn.classList.remove('copied');},2000);
+  });
+}
+
+/* QR CODE */
+function generateQR(menuData){
+  try {
+    var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(menuData))));
+    var url=window.location.origin+'/menu.html?data='+encoded;
+    document.getElementById('qrcode').innerHTML='';
+    // Use QR Server API (more reliable than JS library)
+    var qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(url);
+    var img=document.createElement('img');
+    img.src=qrUrl;
+    img.alt='QR Code';
+    img.style='border-radius:12px';
+    img.onerror=function(){
+      // Fallback: try QRCode.js library
+      try {
+        qrInstance=new QRCode(document.getElementById('qrcode'),{
+          text:url,width:200,height:200,colorDark:'#2C1810',colorLight:'#FFFFFF',
+          correctLevel:QRCode.CorrectLevel.M
+        });
+      } catch(e2) {
+        console.error('QR fallback failed:',e2);
+        document.getElementById('qrcode').innerHTML='<p style=\'color:var(--mute);font-size:13px\'>QR code unavailable</p>';
+      }
+    };
+    document.getElementById('qrcode').appendChild(img);
+    document.getElementById('qr-section').classList.add('show');
+  } catch(e) {
+    console.error('QR generation failed:', e);
+    document.getElementById('qr-section').classList.remove('show');
+  }
+}
+
+function downloadQR(){
+  var img=document.querySelector('#qrcode img');
+  if(!img)return;
+  var link=document.createElement('a');
+  link.download='jedilnik-qr.png';
+  link.href=img.src;
+  link.target='_blank';
+  link.click();
+}
+
+function copyMenuLink(){
+  if(!lastMenuData)return;
+  var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(lastMenuData))));
+  var url=window.location.origin+'/menu.html?data='+encoded;
+  navigator.clipboard.writeText(url).then(function(){
+    alert('Povezava kopirana!');
+  });
+}
+
+function downloadPDF(){
+  var tmp=document.createElement('div');
+  tmp.style.cssText='padding:20px;font-family:DM Sans,sans-serif;max-width:700px';
+  tmp.innerHTML='<h1 style="font-family:Cormorant Garamond,serif;color:#2C1810;margin-bottom:20px">Meni</h1>';
+  var hasContent=false;
+
+  // Strategy 1: Use lastMenuData if available
+  if(lastMenuData && lastMenuData.dishes && lastMenuData.dishes.length > 0){
+    lastMenuData.dishes.forEach(function(dish){
+      tmp.innerHTML+='<div style="margin-bottom:20px;padding:12px;border:1px solid #E8DDD0;border-radius:8px"><div style="font-family:Cormorant Garamond,serif;font-size:18px;font-weight:600;color:#2C1810;margin-bottom:8px">'+dish.name+'</div>';
+      selectedLangs.forEach(function(lang){
+        var text=(dish.translations||{})[lang]||'';
+        if(text)tmp.innerHTML+='<div style="margin-bottom:6px"><span style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#9C8878">'+(langFlags[lang]||lang)+'</span><div style="font-family:Cormorant Garamond,serif;font-style:italic;line-height:1.6;font-size:14px;color:#5C3D2E">'+text+'</div></div>';
+      });
+      tmp.innerHTML+='</div>';
+    });
+    hasContent=true;
+  }
+
+  // Strategy 2: Fallback — read from DOM
+  if(!hasContent){
+    var area=document.getElementById('output-area');
+    var dishResults=area.querySelectorAll('.dish-result');
+    if(dishResults.length > 0){
+      dishResults.forEach(function(dishEl){
+        var name=dishEl.querySelector('.dish-result-name');
+        if(!name)return;
+        tmp.innerHTML+='<div style="margin-bottom:20px;padding:12px;border:1px solid #E8DDD0;border-radius:8px"><div style="font-family:Cormorant Garamond,serif;font-size:18px;font-weight:600;color:#2C1810;margin-bottom:8px">'+name.textContent+'</div>';
+        var cards=dishEl.querySelectorAll('.result-card');
+        cards.forEach(function(card){
+          var lang=card.querySelector('.result-lang');
+          var body=card.querySelector('.result-body');
+          if(lang && body && body.textContent.trim()){
+            tmp.innerHTML+='<div style="margin-bottom:6px"><span style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#9C8878">'+lang.textContent+'</span><div style="font-family:Cormorant Garamond,serif;font-style:italic;line-height:1.6;font-size:14px;color:#5C3D2E">'+body.textContent+'</div></div>';
+          }
+        });
+        tmp.innerHTML+='</div>';
+      });
+      hasContent=true;
+    }
+  }
+
+  if(!hasContent){
+    alert('Najprej ustvarite opise, nato prenesite PDF.');
+    return;
+  }
+
+  // Add QR code if available
+  var qrImg=document.querySelector('#qrcode img');
+  if(qrImg){
+    tmp.innerHTML+='<div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid #E8DDD0"><p style="font-size:12px;color:#9C8878;margin-bottom:8px">Skenirajte za digitalni jedilnik</p><img src="'+qrImg.src+'" width="120"></div>';
+  }
+
+  document.body.appendChild(tmp);
+  try{
+    html2pdf().set({margin:10,filename:'meni.pdf',image:{type:'jpeg',quality:0.98},html2canvas:{scale:2},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(tmp).save().then(function(){tmp.remove();}).catch(function(e){
+      console.error('PDF generation failed:',e);
+      tmp.remove();
+      alert('Napaka pri generiranju PDF. Poskusite znova.');
+    });
+  }catch(e){
+    console.error('html2pdf error:',e);
+    tmp.remove();
+    alert('PDF orodje ni na voljo. Poskusite v drugem brskalniku.');
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+    
+</body>
+</html>

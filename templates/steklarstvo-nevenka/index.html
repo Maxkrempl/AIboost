@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steklarstvo Nevenka — Steklarska Dela | Celje</title>
+    <meta name="description" content="Steklarstvo Nevenka — več kot 15 let izkušenj. Zasteklitev oken, vrat, tuš kabine, steklene ograje, uokvirjanje slik.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"LocalBusiness","name":"Steklarstvo Nevenka","telephone":"+38631384391","address":{"@type":"PostalAddress","streetAddress":"Mariborska cesta 61","addressLocality":"Celje","postalCode":"3000","addressCountry":"SI"}}
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: #050A0F;
+            color: #C8D8E8;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .display { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+
+        /* ============================================
+           GLASS DISPLAY CASE —整个页面是玻璃展柜
+           ============================================ */
+
+        /* === VITRINA — the glass cabinet frame === */
+        .vitrina {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+        /* Left glass wall — thick visible edge */
+        .vitrina::before,
+        .vitrina::after {
+            content: '';
+            position: fixed;
+            top: 0; bottom: 0;
+            width: 3px;
+            z-index: 999;
+        }
+        .vitrina::before {
+            left: calc(50% - 550px);
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(120,180,220,0.08) 10%,
+                rgba(120,180,220,0.15) 30%,
+                rgba(180,220,255,0.2) 50%,
+                rgba(120,180,220,0.15) 70%,
+                rgba(120,180,220,0.08) 90%,
+                transparent 100%
+            );
+            box-shadow:
+                1px 0 8px rgba(120,180,220,0.1),
+                -1px 0 4px rgba(0,0,0,0.3);
+        }
+        .vitrina::after {
+            right: calc(50% - 550px);
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(120,180,220,0.08) 10%,
+                rgba(120,180,220,0.15) 30%,
+                rgba(180,220,255,0.2) 50%,
+                rgba(120,180,220,0.15) 70%,
+                rgba(120,180,220,0.08) 90%,
+                transparent 100%
+            );
+            box-shadow:
+                -1px 0 8px rgba(120,180,220,0.1),
+                1px 0 4px rgba(0,0,0,0.3);
+        }
+
+        /* === POLICA — glass shelf between sections === */
+        .polica {
+            position: relative;
+            height: 6px;
+            margin: 1rem -1.5rem;
+            /* thick glass shelf */
+            background: linear-gradient(180deg,
+                rgba(180,220,255,0.18) 0%,
+                rgba(120,180,220,0.12) 30%,
+                rgba(80,140,180,0.08) 60%,
+                rgba(40,80,120,0.04) 100%
+            );
+            border-top: 1px solid rgba(200,230,255,0.25);
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+        }
+        /* shelf shadow = depth under the glass */
+        .polica::after {
+            content: '';
+            position: absolute;
+            top: 6px; left: 5%; right: 5%;
+            height: 30px;
+            background: linear-gradient(180deg,
+                rgba(0,0,0,0.35) 0%,
+                rgba(0,0,0,0.15) 40%,
+                transparent 100%
+            );
+        }
+        /* shelf top highlight = glass edge catching light */
+        .polica::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 5%,
+                rgba(200,230,255,0.3) 20%,
+                rgba(220,240,255,0.5) 50%,
+                rgba(200,230,255,0.3) 80%,
+                transparent 95%
+            );
+        }
+        /* prismatic shimmer on shelf */
+        .polica-prism {
+            position: absolute;
+            top: 0; left: 30%; width: 40%; height: 100%;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(255,100,100,0.08),
+                rgba(255,200,100,0.06),
+                rgba(100,255,150,0.06),
+                rgba(100,150,255,0.08),
+                transparent
+            );
+            filter: blur(2px);
+        }
+
+        /* === GRAVIRANO STEKLO — the engraved glass piece === */
+        .gravirano {
+            position: relative;
+            /* thick glass look */
+            background: linear-gradient(
+                160deg,
+                rgba(140,190,230,0.10) 0%,
+                rgba(100,160,210,0.06) 25%,
+                rgba(80,140,190,0.04) 50%,
+                rgba(100,160,210,0.07) 75%,
+                rgba(140,190,230,0.10) 100%
+            );
+            border: 1px solid rgba(160,210,250,0.15);
+            border-radius: 4px;
+            overflow: hidden;
+            /* glass thickness effect */
+            box-shadow:
+                /* outer shadow = cabinet depth */
+                0 8px 32px rgba(0,0,0,0.4),
+                0 2px 8px rgba(0,0,0,0.2),
+                /* inner highlight = glass surface */
+                inset 0 1px 0 rgba(200,230,255,0.20),
+                inset 0 -1px 0 rgba(0,0,0,0.15),
+                /* left edge light */
+                inset 1px 0 0 rgba(200,230,255,0.10),
+                /* right edge shadow */
+                inset -1px 0 0 rgba(0,0,0,0.10);
+        }
+        /* Top reflection stripe — light hitting the glass surface */
+        .gravirano::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 40%;
+            background: linear-gradient(180deg,
+                rgba(200,230,255,0.12) 0%,
+                rgba(200,230,255,0.05) 30%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+        /* Prismatic edge — light refracting at glass edge */
+        .gravirano::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px;
+            height: 4px;
+            background: linear-gradient(90deg,
+                transparent 10%,
+                rgba(255,120,120,0.15) 20%,
+                rgba(255,200,100,0.12) 30%,
+                rgba(120,255,160,0.10) 40%,
+                rgba(100,180,255,0.15) 50%,
+                rgba(180,120,255,0.12) 60%,
+                rgba(255,120,180,0.10) 70%,
+                transparent 90%
+            );
+            filter: blur(1px);
+            z-index: 3;
+        }
+
+        /* === FROST TEXTURE — visible frosted glass grain === */
+        .frost {
+            position: relative;
+        }
+        .frost::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.06'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+            pointer-events: none;
+            z-index: 1;
+            border-radius: inherit;
+            mix-blend-mode: overlay;
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 0;
+            display: flex; justify-content: center;
+            transition: all 0.5s ease;
+        }
+        nav.scrolled {
+            background: rgba(5,10,15,0.85);
+            backdrop-filter: blur(20px);
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(160,210,250,0.08);
+        }
+        .nav-inner {
+            max-width: 1100px; width: 100%;
+            padding: 0 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem; font-weight: 600;
+            color: #E0ECF5; text-decoration: none;
+            letter-spacing: 0.06em;
+        }
+        .nav-logo span { color: #7CC8F0; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            color: #8AA4B8; text-decoration: none;
+            font-size: 0.7rem; font-weight: 500;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #E0ECF5; }
+        .nav-cta {
+            padding: 0.5rem 1.3rem;
+            background: rgba(120,180,220,0.08);
+            border: 1px solid rgba(160,210,250,0.15);
+            border-radius: 3px;
+            color: #E0ECF5 !important;
+            transition: all 0.3s !important;
+        }
+        .nav-cta:hover {
+            background: rgba(90,172,212,0.15) !important;
+            border-color: rgba(120,200,240,0.3) !important;
+        }
+
+        /* === HERO === */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            padding: 6rem 0 3rem;
+        }
+        .hero-piece {
+            width: 100%;
+            padding: 4rem;
+            position: relative;
+        }
+        /* background image inside the glass */
+        .hero-bg-img {
+            position: absolute; inset: 0;
+            border-radius: 4px; overflow: hidden;
+        }
+        .hero-bg-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.25) saturate(0.5) contrast(1.1);
+        }
+        /* frosted overlay on hero image */
+        .hero-bg-img::after {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                /* top reflection */
+                linear-gradient(180deg, rgba(200,230,255,0.1) 0%, transparent 30%),
+                /* bottom fade */
+                linear-gradient(180deg, transparent 50%, rgba(5,10,15,0.7) 100%),
+                /* prismatic streak */
+                linear-gradient(90deg, transparent 20%, rgba(255,150,100,0.03) 35%, rgba(100,200,255,0.04) 50%, rgba(180,100,255,0.03) 65%, transparent 80%);
+        }
+        .hero-content { position: relative; z-index: 5; max-width: 600px; }
+        .hero-tag {
+            font-size: 0.62rem; letter-spacing: 0.4em;
+            text-transform: uppercase; color: #5AACD4;
+            margin-bottom: 1.5rem; font-weight: 500;
+            display: flex; align-items: center; gap: 0.8rem;
+            /* engraved text */
+            text-shadow: 0 1px 0 rgba(200,230,255,0.15), 0 -1px 0 rgba(0,0,0,0.5);
+        }
+        .hero-tag::before {
+            content: ''; width: 30px; height: 1px;
+            background: #5AACD4;
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300; line-height: 1.1;
+            color: #E8F0F8; margin-bottom: 1.5rem;
+            /* deep engraved text */
+            text-shadow:
+                0 1px 0 rgba(200,230,255,0.12),
+                0 2px 6px rgba(0,0,0,0.4),
+                0 -1px 0 rgba(0,0,0,0.6);
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: #7CC8F0;
+            text-shadow:
+                0 1px 0 rgba(200,230,255,0.2),
+                0 0 25px rgba(90,172,212,0.25);
+        }
+        .hero-sub {
+            font-size: 1rem; color: #8AA4B8;
+            max-width: 440px; line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-glass {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.85rem 1.8rem;
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            text-decoration: none; border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .btn-fill {
+            background: linear-gradient(160deg, #4A9CC8 0%, #3A8AB5 100%);
+            color: #fff;
+            border: 1px solid rgba(120,200,240,0.3);
+            box-shadow:
+                0 4px 15px rgba(74,156,200,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -1px 0 rgba(0,0,0,0.15);
+        }
+        .btn-fill:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 25px rgba(74,156,200,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        .btn-outline {
+            background: rgba(120,180,220,0.06);
+            color: #A8C4D8;
+            border: 1px solid rgba(160,210,250,0.15);
+        }
+        .btn-outline:hover {
+            background: rgba(120,180,220,0.12);
+            border-color: rgba(160,210,250,0.25);
+            color: #E0ECF5;
+        }
+
+        /* === STATS — glass strip === */
+        .stats {
+            padding: 2.5rem 0;
+        }
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            /* glass strip */
+            background: rgba(120,180,220,0.06);
+            border: 1px solid rgba(160,210,250,0.12);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 20px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(200,230,255,0.15),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+        }
+        .stat {
+            text-align: center; padding: 1.8rem 1rem;
+            background: rgba(5,10,15,0.5);
+            position: relative;
+        }
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 20%; right: 20%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.15), transparent);
+        }
+        /* prismatic divider */
+        .stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0; top: 15%; height: 70%; width: 1px;
+            background: linear-gradient(180deg,
+                transparent,
+                rgba(255,120,120,0.12),
+                rgba(255,200,100,0.08),
+                rgba(120,255,160,0.08),
+                rgba(120,180,255,0.12),
+                transparent
+            );
+        }
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem; font-weight: 300;
+            color: #7CC8F0; line-height: 1;
+            text-shadow: 0 0 20px rgba(90,172,212,0.2);
+        }
+        .stat-lbl {
+            font-size: 0.58rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: #4A6478;
+            margin-top: 0.4rem;
+        }
+
+        /* === SECTION === */
+        .oddelka {
+            padding: 4.5rem 0;
+        }
+        .naslov-podrocja {
+            font-size: 0.58rem; letter-spacing: 0.4em;
+            text-transform: uppercase; color: #5AACD4;
+            margin-bottom: 0.6rem;
+            display: flex; align-items: center; gap: 0.7rem;
+            text-shadow: 0 1px 0 rgba(200,230,255,0.12);
+        }
+        .naslov-podrocja::before {
+            content: ''; width: 22px; height: 1px;
+            background: #5AACD4;
+        }
+        .naslov {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 300; line-height: 1.15;
+            color: #E8F0F8; margin-bottom: 3rem;
+            text-shadow:
+                0 1px 0 rgba(200,230,255,0.08),
+                0 -1px 0 rgba(0,0,0,0.5);
+        }
+        .naslov em { color: #7CC8F0; font-style: italic; }
+
+        /* === SERVICES — grid of engraved pieces === */
+        .storitve-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(120,180,220,0.04);
+            border: 1px solid rgba(160,210,250,0.10);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow:
+                0 6px 25px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(200,230,255,0.12);
+        }
+        .storitev {
+            padding: 2rem 1.6rem;
+            background: rgba(8,14,22,0.6);
+            position: relative;
+            transition: background 0.4s;
+        }
+        /* spotlight line */
+        .storitev::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 15%; right: 15%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.12), transparent);
+        }
+        /* light cone from above */
+        .storitev::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 45%;
+            background: radial-gradient(ellipse 70% 100% at 50% 0%,
+                rgba(140,190,230,0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .storitev:hover { background: rgba(12,20,30,0.7); }
+        .storitev-ikona { font-size: 1.2rem; margin-bottom: 0.8rem; }
+        .storitev h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem; font-weight: 400;
+            color: #E0ECF5; margin-bottom: 0.4rem;
+            text-shadow: 0 1px 0 rgba(200,230,255,0.08), 0 -1px 0 rgba(0,0,0,0.5);
+        }
+        .storitev p {
+            font-size: 0.8rem; color: #4A6478; line-height: 1.6;
+        }
+
+        /* === ABOUT — engraved split === */
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: rgba(120,180,220,0.04);
+            border: 1px solid rgba(160,210,250,0.10);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow:
+                0 6px 25px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(200,230,255,0.12);
+        }
+        .about-slika {
+            position: relative; min-height: 480px; overflow: hidden;
+        }
+        .about-slika img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65) saturate(0.75);
+        }
+        .about-slika::after {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(160deg, rgba(200,230,255,0.1) 0%, transparent 25%),
+                linear-gradient(90deg, transparent 60%, rgba(5,10,15,0.4) 100%);
+            pointer-events: none;
+        }
+        .about-besedilo {
+            padding: 3rem;
+            background: rgba(8,14,22,0.5);
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative;
+        }
+        .about-besedilo::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 12%; right: 12%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.10), transparent);
+        }
+        .about-besedilo h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+            font-weight: 300; line-height: 1.2;
+            color: #E8F0F8; margin-bottom: 1.2rem;
+            text-shadow: 0 1px 0 rgba(200,230,255,0.08), 0 -1px 0 rgba(0,0,0,0.5);
+        }
+        .about-besedilo h2 em { color: #7CC8F0; font-style: italic; }
+        .about-besedilo p {
+            font-size: 0.88rem; color: #8AA4B8;
+            line-height: 1.8; margin-bottom: 0.8rem;
+        }
+        .about-kvadratki {
+            display: flex; gap: 1rem; margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(160,210,250,0.08);
+        }
+        .about-kv {
+            flex: 1; padding: 1rem;
+            background: rgba(120,180,220,0.04);
+            border: 1px solid rgba(160,210,250,0.08);
+            border-radius: 3px;
+            position: relative;
+        }
+        .about-kv::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 15%; right: 15%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.10), transparent);
+        }
+        .about-kv .st {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem; color: #7CC8F0;
+            text-shadow: 0 0 15px rgba(90,172,212,0.15);
+        }
+        .about-kv .oz {
+            font-size: 0.58rem; letter-spacing: 0.15em;
+            text-transform: uppercase; color: #4A6478;
+            margin-top: 0.2rem;
+        }
+
+        /* === GALLERY === */
+        .galerija-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1px;
+            background: rgba(120,180,220,0.04);
+            border: 1px solid rgba(160,210,250,0.10);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow:
+                0 6px 25px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(200,230,255,0.12);
+        }
+        .slika {
+            position: relative; overflow: hidden; cursor: pointer;
+        }
+        .slika img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            filter: brightness(0.7) saturate(0.8);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .slika:hover img {
+            filter: brightness(0.85) saturate(1);
+            transform: scale(1.04);
+        }
+        /* glass overlay */
+        .slika::after {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(160deg, rgba(200,230,255,0.1) 0%, transparent 20%),
+                linear-gradient(180deg, transparent 50%, rgba(5,10,15,0.5) 100%);
+            pointer-events: none;
+        }
+        /* spotlight */
+        .slika::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 8%; right: 8%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.18), transparent);
+            z-index: 2;
+        }
+        .s1 { grid-column: span 7; height: 420px; }
+        .s2 { grid-column: span 5; height: 420px; }
+        .s3 { grid-column: span 4; height: 320px; }
+        .s4 { grid-column: span 4; height: 320px; }
+        .s5 { grid-column: span 4; height: 320px; }
+
+        /* === WHY US === */
+        .zakaj-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(120,180,220,0.04);
+            border: 1px solid rgba(160,210,250,0.10);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow:
+                0 6px 25px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(200,230,255,0.12);
+        }
+        .zakaj-kartica {
+            padding: 2.5rem 1.8rem;
+            background: rgba(8,14,22,0.5);
+            position: relative;
+            transition: background 0.4s;
+        }
+        .zakaj-kartica::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 12%; right: 12%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.10), transparent);
+        }
+        .zakaj-kartica::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, #5AACD4, #7CC8F0);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .zakaj-kartica:hover { background: rgba(12,20,30,0.6); }
+        .zakaj-kartica:hover::after { transform: scaleX(1); }
+        .zakaj-st {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem; font-weight: 300;
+            color: rgba(90,172,212,0.12); line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .zakaj-kartica h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem; font-weight: 400;
+            color: #E0ECF5; margin-bottom: 0.5rem;
+            text-shadow: 0 1px 0 rgba(200,230,255,0.08);
+        }
+        .zakaj-kartica p {
+            font-size: 0.82rem; color: #4A6478; line-height: 1.7;
+        }
+
+        /* === REGIONS === */
+        .regije {
+            display: flex; gap: 0.8rem;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .regija {
+            padding: 0.7rem 1.8rem;
+            background: rgba(120,180,220,0.04);
+            border: 1px solid rgba(160,210,250,0.10);
+            border-radius: 3px;
+            font-size: 0.75rem; font-weight: 500;
+            color: #8AA4B8; letter-spacing: 0.04em;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .regija::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 20%; right: 20%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.10), transparent);
+        }
+        .regija:hover {
+            background: rgba(90,172,212,0.1);
+            border-color: rgba(120,200,240,0.25);
+            color: #E0ECF5;
+        }
+
+        /* === CONTACT === */
+        .kontakt-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: rgba(120,180,220,0.04);
+            border: 1px solid rgba(160,210,250,0.10);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow:
+                0 6px 25px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(200,230,255,0.12);
+        }
+        .kontakt-info {
+            padding: 2.5rem;
+            background: rgba(8,14,22,0.5);
+            display: flex; flex-direction: column; gap: 0.7rem;
+            position: relative;
+        }
+        .kontakt-info::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 12%; right: 12%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.10), transparent);
+        }
+        .kontakt-element {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1rem;
+            background: rgba(120,180,220,0.03);
+            border: 1px solid rgba(160,210,250,0.06);
+            border-radius: 3px;
+            text-decoration: none; color: #C8D8E8;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .kontakt-element::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 15%; right: 15%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200,230,255,0.08), transparent);
+        }
+        .kontakt-element:hover {
+            background: rgba(90,172,212,0.08);
+            border-color: rgba(120,200,240,0.2);
+        }
+        .kontakt-ikona {
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem;
+            background: rgba(120,180,220,0.06);
+            border: 1px solid rgba(160,210,250,0.08);
+            border-radius: 3px; flex-shrink: 0;
+        }
+        .kontakt-oznaka {
+            font-size: 0.55rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: #4A6478;
+            margin-bottom: 0.15rem;
+        }
+        .kontakt-vrednost {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem; color: #E0ECF5;
+            text-shadow: 0 1px 0 rgba(200,230,255,0.06);
+        }
+        .kontakt-zemljevid { position: relative; }
+        .kontakt-zemljevid iframe {
+            width: 100%; height: 100%;
+            min-height: 380px; border: 0;
+            filter: grayscale(50%) brightness(0.65);
+        }
+        .kontakt-zemljevid::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(160deg, rgba(200,230,255,0.06) 0%, transparent 15%);
+            pointer-events: none;
+        }
+
+        /* === FOOTER CTA — large engraved piece === */
+        .noga-cta {
+            padding: 5rem 0 2rem;
+            text-align: center;
+        }
+        .noga-kos {
+            display: inline-block;
+            padding: 4.5rem 3.5rem;
+            max-width: 750px;
+            position: relative;
+            /* thick engraved glass */
+            background: linear-gradient(
+                160deg,
+                rgba(140,190,230,0.08) 0%,
+                rgba(100,160,210,0.04) 40%,
+                rgba(140,190,230,0.07) 100%
+            );
+            border: 1px solid rgba(160,210,250,0.12);
+            border-radius: 4px;
+            box-shadow:
+                0 8px 35px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(200,230,255,0.18),
+                inset 0 -1px 0 rgba(0,0,0,0.12),
+                inset 1px 0 0 rgba(200,230,255,0.08),
+                inset -1px 0 0 rgba(0,0,0,0.08);
+        }
+        /* prismatic top edge */
+        .noga-kos::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; height: 4px;
+            background: linear-gradient(90deg,
+                transparent 10%,
+                rgba(255,120,120,0.12) 20%,
+                rgba(255,200,100,0.10) 30%,
+                rgba(120,255,160,0.08) 40%,
+                rgba(100,180,255,0.12) 50%,
+                rgba(180,120,255,0.10) 60%,
+                rgba(255,120,180,0.08) 70%,
+                transparent 90%
+            );
+            filter: blur(1px);
+        }
+        /* top light reflection */
+        .noga-kos::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 45%;
+            background: linear-gradient(180deg,
+                rgba(200,230,255,0.1) 0%,
+                rgba(200,230,255,0.03) 40%,
+                transparent 100%
+            );
+            border-radius: 4px;
+            pointer-events: none;
+        }
+        .noga-kos > * { position: relative; z-index: 2; }
+        .noga-kos h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300; line-height: 1.1;
+            color: #E8F0F8; margin-bottom: 2rem;
+            text-shadow: 0 1px 0 rgba(200,230,255,0.1), 0 -1px 0 rgba(0,0,0,0.5);
+        }
+        .noga-kos h2 em { color: #7CC8F0; font-style: italic; }
+
+        .noga-dno {
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(160,210,250,0.05);
+            display: flex; justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem; color: #4A6478;
+            letter-spacing: 0.04em;
+        }
+        .noga-dno a { color: #8AA4B8; text-decoration: none; }
+        .noga-dno a:hover { color: #7CC8F0; }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .storitve-grid, .zakaj-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-split, .kontakt-split { grid-template-columns: 1fr; }
+            .vitrina::before, .vitrina::after { display: none; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 0.8rem 0; }
+            .nav-links { display: none; }
+            .vitrina { padding: 0 1rem; }
+            .hero-piece { padding: 2.5rem 1.5rem; }
+            .storitve-grid, .zakaj-grid { grid-template-columns: 1fr; }
+            .s1, .s2 { grid-column: span 12; height: 280px; }
+            .s3, .s4, .s5 { grid-column: span 12; height: 220px; }
+            .stats-strip { grid-template-columns: repeat(2, 1fr); }
+            .stat:nth-child(2)::after { display: none; }
+            .about-slika { min-height: 280px; }
+            .about-besedilo { padding: 2rem; }
+            .noga-kos { padding: 3rem 1.5rem; }
+            .noga-dno { flex-direction: column; gap: 0.6rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">steklarstvo<span>.</span></a>
+            <div class="nav-links">
+                <a href="#storitve">Storitve</a>
+                <a href="#o-nas">O nas</a>
+                <a href="#galerija">Galerija</a>
+                <a href="#zakaj">Zakaj mi</a>
+                <a href="#kontakt" class="nav-cta">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="vitrina">
+
+        <!-- HERO — large engraved glass piece -->
+        <section class="hero">
+            <div class="hero-piece gravirano frost">
+                <div class="hero-bg-img">
+                    <img src="https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_5.jpg" alt="">
+                </div>
+                <div class="hero-content">
+                    <div class="hero-tag">Steklarstvo · Celje</div>
+                    <h1 class="display">Precision in <em>every pane</em></h1>
+                    <p class="hero-sub">Več kot 15 let mojstrstva v obdelavi stekla. Od zasteklitve oken do steklenih tuš kabin — profesionalna izvedba za vsak prostor.</p>
+                    <div class="hero-btns">
+                        <a href="tel:+38631384391" class="btn-glass btn-fill">📞 031 384 391</a>
+                        <a href="#storitve" class="btn-glass btn-outline">Odkrij storitve →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="polica"><div class="polica-prism"></div></div>
+
+        <!-- STATS -->
+        <div class="stats">
+            <div class="stats-strip frost">
+                <div class="stat">
+                    <div class="stat-num display">15+</div>
+                    <div class="stat-lbl">Let izkušenj</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num display">4</div>
+                    <div class="stat-lbl">Regije</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num display">100+</div>
+                    <div class="stat-lbl">Projektov</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num display">∞</div>
+                    <div class="stat-lbl">Natančnost</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="polica"><div class="polica-prism"></div></div>
+
+        <!-- SERVICES -->
+        <section class="oddelka" id="storitve">
+            <div class="naslov-podrocja">Storitve</div>
+            <h2 class="naslov display">Vse kar potrebujete za <em>vaš prostor</em></h2>
+            <div class="storitve-grid frost">
+                <div class="storitev">
+                    <div class="storitev-ikona">🪟</div>
+                    <h3 class="display">Zasteklitev</h3>
+                    <p>Oken, vrat, izložb, teras in objektov.</p>
+                </div>
+                <div class="storitev">
+                    <div class="storitev-ikona">🚿</div>
+                    <h3 class="display">Tuš kabine</h3>
+                    <p>Steklene tuš kabine in vrata po meri.</p>
+                </div>
+                <div class="storitev">
+                    <div class="storitev-ikona">🏗️</div>
+                    <h3 class="display">Steklene ograje</h3>
+                    <p>Balkonske, stopniščne in terasne ograje.</p>
+                </div>
+                <div class="storitev">
+                    <div class="storitev-ikona">🍳</div>
+                    <h3 class="display">Kuhinjske obloge</h3>
+                    <p>Steklene obloge z barvnim nanosom.</p>
+                </div>
+                <div class="storitev">
+                    <div class="storitev-ikona">🖼️</div>
+                    <h3 class="display">Uokvirjanje</h3>
+                    <p>Slik, priznanj in certifikatov.</p>
+                </div>
+                <div class="storitev">
+                    <div class="storitev-ikona">🚪</div>
+                    <h3 class="display">Drsna vrata</h3>
+                    <p>Notranja in zunanja drsna steklena vrata.</p>
+                </div>
+                <div class="storitev">
+                    <div class="storitev-ikona">🏡</div>
+                    <h3 class="display">Nadstreški</h3>
+                    <p>Stekleni nadstreški in balkoni.</p>
+                </div>
+                <div class="storitev">
+                    <div class="storitev-ikona">🌿</div>
+                    <h3 class="display">Zimski vrtovi</h3>
+                    <p>Zasteklitev teras za uživanje vse leto.</p>
+                </div>
+                <div class="storitev">
+                    <div class="storitev-ikona">✨</div>
+                    <h3 class="display">Ogledala & stopnice</h3>
+                    <p>Ogledala, steklene stopnice, posebni projekti.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="polica"><div class="polica-prism"></div></div>
+
+        <!-- ABOUT -->
+        <section class="oddelka" id="o-nas">
+            <div class="about-split frost">
+                <div class="about-slika">
+                    <img src="https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_5.jpg" alt="Steklarska dela">
+                </div>
+                <div class="about-besedilo">
+                    <div class="naslov-podrocja">O podjetju</div>
+                    <h2 class="display">Dolgoletne izkušnje s <em>predelavo stekla</em></h2>
+                    <p>Steklarstvo "Nevenka" Nevenka Lazić s.p. deluje že več kot 15 let. Ukvarjamo se s steklarskimi deli, na voljo pa smo vam tudi z izvedbo manjših pleskarskih in suhomontažnih del.</p>
+                    <p>Naša ekipa poskrbi za opremljanje različnih prostorov — stanovanja, hiše ali poslovne objekti. Strankam zagotavljamo kakovostne materiale in dobro opravljeno storitev.</p>
+                    <div class="about-kvadratki">
+                        <div class="about-kv">
+                            <div class="st display">15+</div>
+                            <div class="oz">Let izkušenj</div>
+                        </div>
+                        <div class="about-kv">
+                            <div class="st display">4</div>
+                            <div class="oz">Regije</div>
+                        </div>
+                        <div class="about-kv">
+                            <div class="st display">100%</div>
+                            <div class="oz">Kakovost</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="polica"><div class="polica-prism"></div></div>
+
+        <!-- GALLERY -->
+        <section class="oddelka" id="galerija">
+            <div class="naslov-podrocja">Galerija</div>
+            <h2 class="naslov display">Naša <em>steklarska</em> mojstrstva</h2>
+            <div class="galerija-grid frost">
+                <div class="slika s1">
+                    <img src="https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_5.jpg" alt="Delo 1" loading="lazy">
+                </div>
+                <div class="slika s2">
+                    <img src="https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_4.jpg" alt="Delo 2" loading="lazy">
+                </div>
+                <div class="slika s3">
+                    <img src="https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_2.jpg" alt="Delo 3" loading="lazy">
+                </div>
+                <div class="slika s4">
+                    <img src="https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_7.jpg" alt="Delo 4" loading="lazy">
+                </div>
+                <div class="slika s5">
+                    <img src="https://img.mojaobcina.si/img/4502/H_MAX_1280x1280/9370_1552565807_6.jpg" alt="Delo 5" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <div class="polica"><div class="polica-prism"></div></div>
+
+        <!-- WHY US -->
+        <section class="oddelka" id="zakaj">
+            <div style="text-align:center;">
+                <div class="naslov-podrocja" style="justify-content:center;">Zakaj mi</div>
+                <h2 class="naslov display" style="text-align:center;">Zakaj izbrati <em>Steklarstvo Nevenka</em></h2>
+            </div>
+            <div class="zakaj-grid frost">
+                <div class="zakaj-kartica">
+                    <div class="zakaj-st display">01</div>
+                    <h3 class="display">Hitra odzivnost</h3>
+                    <p>Na vaša vprašanja odgovorimo hitro in se prilagodimo vašemu časovnemu okviru.</p>
+                </div>
+                <div class="zakaj-kartica">
+                    <div class="zakaj-st display">02</div>
+                    <h3 class="display">Natančnost</h3>
+                    <p>Vsaka podrobnost je pomembna. Merjenje, izdelava in montaža potekata brezhibno.</p>
+                </div>
+                <div class="zakaj-kartica">
+                    <div class="zakaj-st display">03</div>
+                    <h3 class="display">Kakovostni materiali</h3>
+                    <p>Uporabljamo samo preverjene materiale za vzdržljivost in estetiko.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="polica"><div class="polica-prism"></div></div>
+
+        <!-- REGIONS -->
+        <section class="oddelka">
+            <div style="text-align:center;">
+                <div class="naslov-podrocja" style="justify-content:center;">Pokritost</div>
+                <h2 class="naslov display" style="text-align:center;">Kjer <em>delujemo</em></h2>
+            </div>
+            <div class="regije">
+                <div class="regija">📍 Savinjska</div>
+                <div class="regija">📍 Podravska</div>
+                <div class="regija">📍 Koroška</div>
+                <div class="regija">📍 Zasavska</div>
+            </div>
+        </section>
+
+        <div class="polica"><div class="polica-prism"></div></div>
+
+        <!-- CONTACT -->
+        <section class="oddelka" id="kontakt">
+            <div class="kontakt-split frost">
+                <div class="kontakt-info">
+                    <div class="naslov-podrocja">Kontakt</div>
+                    <h2 class="naslov display" style="font-size:1.8rem; margin-bottom:1.2rem;">Stopite v <em>stik</em></h2>
+                    <a href="tel:+38631384391" class="kontakt-element">
+                        <div class="kontakt-ikona">📞</div>
+                        <div>
+                            <div class="kontakt-oznaka">Telefon</div>
+                            <div class="kontakt-vrednost display">031 384 391</div>
+                        </div>
+                    </a>
+                    <a href="https://maps.google.com/?q=Mariborska+cesta+61+3000+Celje" class="kontakt-element" target="_blank">
+                        <div class="kontakt-ikona">📍</div>
+                        <div>
+                            <div class="kontakt-oznaka">Naslov</div>
+                            <div class="kontakt-vrednost display">Mariborska cesta 61, Celje</div>
+                        </div>
+                    </a>
+                    <div class="kontakt-element">
+                        <div class="kontakt-ikona">🏢</div>
+                        <div>
+                            <div class="kontakt-oznaka">Davčna / Matična</div>
+                            <div class="kontakt-vrednost display">42049300 / 1597230</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kontakt-zemljevid">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2750.5!2d15.2678!3d46.2397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDE0JzIzLjAiTiAxNcKwMTYnMDQuMSJF!5e0!3m2!1ssl!2ssi!4v1" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <div class="polica"><div class="polica-prism"></div></div>
+
+        <!-- FOOTER CTA -->
+        <div class="noga-cta">
+            <div class="noga-kos frost">
+                <h2 class="display">Potrebujete <em>steklarska</em> dela?</h2>
+                <a href="tel:+38631384391" class="btn-glass btn-fill">📞 Pokličite: 031 384 391</a>
+            </div>
+        </div>
+
+        <div class="noga-dno">
+            <span>© 2026 Steklarstvo "Nevenka" Nevenka Lazić s.p.</span>
+            <span>Mariborska cesta 61, 3000 Celje</span>
+            <a href="tel:+38631384391">031 384 391</a>
+        </div>
+
+    </div>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 80);
+        });
+    </script>
+
+</body>
+</html>

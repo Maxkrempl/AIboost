@@ -1,0 +1,16 @@
+AddHandler cgi-script .py
+Options +ExecCGI
+# API directory — PHP execution only
+Options -Indexes +FollowSymLinks
+
+# CORS headers for API calls
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "POST, OPTIONS, GET"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+# Block directory listing, allow PHP
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>

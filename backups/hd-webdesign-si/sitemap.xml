@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Main Pages -->
+  <url>
+    <loc>https://hd-webdesign.si/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hd-webdesign.si/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://hd-webdesign.si/?lang=sl"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://hd-webdesign.si/?lang=hr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hd-webdesign.si/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://hd-webdesign.si/?lang=it"/>
+  </url>
+  <url>
+    <loc>https://hd-webdesign.si/about/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hd-webdesign.si/privacy.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Apps -->
+  <url>
+    <loc>https://hd-webdesign.si/menu-boost/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hd-webdesign.si/boost-suite/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hd-webdesign.si/ad-boost/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hd-webdesign.si/translate/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hd-webdesign.si/web-design/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Index -->
+  <url>
+    <loc>https://hd-webdesign.si/blog.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Articles - EN -->
+  <url><loc>https://hd-webdesign.si/blog/10-website-mistakes.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/add-ai-chatbot-website.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/ai-tools-small-business.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/ai-web-development.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/ai-work-automation-chatbots.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/best-ai-menu-description-generator-2026.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/best-seo-audit-tools-2026.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/building-saas-slovenia.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/can-ai-optimize-your-website.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/darko-herceg-developer-slovenia.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/free-website-audit.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/geo-for-agencies.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/geo-optimization-2026.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/hd-web-design-saas-tools.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/how-to-translate-restaurant-menu.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/menu-translations-ai.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/menuviel-vs-menuboost.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/mimo-vs-big-ai.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/my-ai-agent-experience.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/old-websites-invisible.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/qr-code-vs-physical-menu.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/seo-audit-tool-agencies.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/seo-vs-geo-optimizacija.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/seoptimer-vs-boostsuite.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/structured-data-llms-txt-ai-visibility.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/web-types.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/website-cost-slovenia.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/website-vs-app.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/what-are-ai-agents.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/wix-vs-wordpress-vs-custom.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Blog Articles - HR -->
+  <url><loc>https://hd-webdesign.si/blog/10-pogresaka-na-web-stranici.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/ai-alati-za-male-poduzetnike.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/moje-iskustvo-s-ai-agentom.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/sto-su-ai-agenti.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/wix-ili-wordpress-ili-po-mjeri.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/10-napak-na-spletni-strani.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/ai-orodja-za-male-podjetnike.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/kaj-so-ai-agenti.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/kako-dodati-ai-chatbot.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/koliko-stane-spletna-stran.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/moja-izkusnja-z-ai-agentom.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/wix-ali-wordpress-ali-po-meri.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/seo-vs-geo-optimizacija.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/ai-avtomatizacija-dela.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/podatki-strukturirani-llms-txt-ai-vidljivost.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/can-ai-optimize-your-website-si.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/old-websites-invisible-sl.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/strukturirani-podaci-llms-txt-ai-vidljivost.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Blog Articles - DE -->
+  <url><loc>https://hd-webdesign.si/blog/10-fehler-auf-der-webseite.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/ki-tools-fuer-kleine-unternehmer.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/was-sind-ki-agenten.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/meine-erfahrung-mit-ki-agenten.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/wix-oder-wordpress-oder-massgeschneidert.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/was-kostet-eine-webseite-in-slowenien.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/ki-chatbot-auf-der-webseite-einrichten.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/strukturierte-daten-llms-txt-ai-sichtbarkeit.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Blog Articles - IT -->
+  <url><loc>https://hd-webdesign.si/blog/10-errori-sul-sito-web.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/strumenti-ai-per-piccole-imprese.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/cosa-sono-gli-agenti-ai.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/la-mia-esperienza-con-gli-agenti-ai.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/wix-o-wordpress-o-su-misura.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/quanto-costa-un-sito-web-in-slovenia.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/come-aggiungere-un-chatbot-ai.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/dati-strutturati-llms-txt-visibilita-ai.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Blog Articles - Multilingual -->
+  <url><loc>https://hd-webdesign.si/blog/best-ai-menu-description-generator-2026-sl.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/best-ai-menu-description-generator-2026-hr.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/best-ai-menu-description-generator-2026-de.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/best-ai-menu-description-generator-2026-it.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/how-to-translate-restaurant-menu-sl.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/how-to-translate-restaurant-menu-hr.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/how-to-translate-restaurant-menu-de.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/how-to-translate-restaurant-menu-it.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/menuviel-vs-menuboost-sl.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/menuviel-vs-menuboost-hr.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/menuviel-vs-menuboost-de.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/menuviel-vs-menuboost-it.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/qr-code-vs-physical-menu-sl.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/qr-code-vs-physical-menu-hr.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/qr-code-vs-physical-menu-de.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/qr-code-vs-physical-menu-it.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Blog - DE Subdirectory -->
+  <url><loc>https://hd-webdesign.si/blog/de/01-was-kostet-eine-webseite-in-slowenien.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/de/02-10-fehler-auf-der-webseite.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/de/03-wix-oder-wordpress-oder-massgeschneidert.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/de/04-wie-man-einen-ai-chatbot-auf-die-webseite-setzt.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/de/05-10-ai-tools-fuer-kleine-unternehmer.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/de/06-was-sind-ai-agents.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/de/07-meine-erfahrung-mit-ai-agents.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+  <!-- Blog - SL Subdirectory -->
+  <url><loc>https://hd-webdesign.si/blog/sl/10-napak-na-spletni-strani.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/sl/ai-orodja-za-male-podjetnike.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/sl/kaj-so-ai-agenti.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/sl/kako-dodati-ai-chatbot.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/sl/koliko-stane-spletna-stran.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/sl/moja-izkusnja-z-ai-agentom.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://hd-webdesign.si/blog/sl/wix-ali-wordpress-ali-po-meri.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+  <!-- Subvencije -->
+  <url><loc>https://hd-webdesign.si/subvencije/</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hd-webdesign.si/subvencije/narocilo/</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hd-webdesign.si/subvencije/blog/kako-pridobiti-subvencijo-2026.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/subvencije/blog/koliko-stane-prirava-vloge.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hd-webdesign.si/subvencije/blog/top-5-eu-razpisov-mala-podjetja.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+</urlset>

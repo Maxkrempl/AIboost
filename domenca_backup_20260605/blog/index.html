@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog by Herceg Darko — Insights on AI, SaaS, SEO, and building tools that work.">
+    <link rel="canonical" href="https://hd-webdesign.si/blog" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog" />
+    <meta property="og:description" content="Insights on AI, SaaS, SEO, and building tools that work." />
+    <meta property="og:image" content="https://hd-webdesign.si/images/og-image.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hd-webdesign.si/blog" />
+    
+    <title>Blog — Herceg Darko</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>">
+
+    <style>
+        .blog-header { background: #1a1a2e; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .blog-header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .blog-header .logo { display: block; }
+        .blog-header .logo img { height: 42px; width: auto; }
+        .blog-header nav { display: flex; align-items: center; gap: 20px; }
+        .blog-header nav a { color: #9C8878; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .blog-header nav a:hover { color: #F5E6C8; }
+        .theme-toggle { background: none; border: 1.5px solid #4A2E1A; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 16px; transition: all 0.15s; }
+        .theme-toggle:hover { border-color: #C4922A; background: rgba(196,146,42,0.1); }
+
+        /* Dark mode */
+        body.dark-mode .blog-header { background: #0f0f1a; }
+        body.dark-mode { background: #0f0f1a; color: #e0e0e0; }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #e0e0e0; }
+        body.dark-mode p, body.dark-mode li { color: #ccc; }
+        body.dark-mode .blog-post-card { background: #1a1a2e; border-color: #333; }
+        body.dark-mode .blog-post-card h2 a { color: #e0e0e0; }
+        body.dark-mode .post-tag { background: #333; color: #aaa; }
+
+        /* Hero section - ALWAYS dark mode regardless of theme */
+        .blog-header.hero-section { background: #1a1a2e !important; }
+        .blog-header.hero-section h1 { color: #e0e0e0 !important; }
+        .blog-header.hero-section .subtitle { color: #aaa !important; }
+        body.dark-mode .blog-header.hero-section { background: #0f0f1a !important; }
+
+        .read-more { color: #F59E0B !important; font-weight: 600; }
+        .read-more:hover { color: #D97706 !important; text-decoration: underline; }
+        a.read-more { color: #F59E0B !important; }
+</style>
+</head>
+<body>
+<header class="blog-header">
+    <div class="blog-header-inner">
+        <a href="/" class="logo"><img src="/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign" style="height:42px;width:auto"></a>
+        <nav>
+            <a href="/blog/">Blog</a>
+            <a href="/boost-suite/">BoostSuite</a>
+            <a href="/menu-boost/">MenuBoost</a>
+            <button class="lang-toggle" id="langToggle" aria-label="Switch language">🇬🇧 EN</button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        </nav>
+    </div>
+</header>
+
+    
+
+    <main class="container">
+        <section class="blog-header hero-section">
+            <h1 data-en="Blog" data-sl="Blog" data-de="Blog">Blog</h1>
+            <p class="subtitle" data-en="Thoughts on AI, SaaS, and building tools that solve real problems." data-sl="Razmišljanja o AI, SaaS in ustvarjanju orodij, ki rešujejo resnične probleme." data-de="Gedanken über KI, SaaS und die Entwicklung von Werkzeugen, die echte Probleme lösen.">
+                Thoughts on AI, SaaS, and building tools that solve real problems.
+            </p>
+        </section>
+
+        <section class="blog-posts">
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 18, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/what-is-mcp-model-context-protocol.html" data-en="What Is MCP (Model Context Protocol) and Why It Matters in 2026" data-sl="Cos'è l'MCP (Model Context Protocol) e perché è importante nel 2026" data-de="Was ist MCP (Model Context Protocol) und warum ist es 2026 wichtig?" data-hr="Što je MCP (Model Context Protocol) i zašto je važan u 2026.">What Is MCP (Model Context Protocol) and Why It Matters in 2026</a></h2>
+                <p class="post-excerpt" data-en="The Model Context Protocol (MCP) lets AI assistants connect to your business tools, databases, and content. Learn what MCP is, how it works, and why it matters for developers and business owners in 2026." data-sl="Il Model Context Protocol (MCP) permette agli assistenti AI di connettersi agli strumenti aziendali, ai database e ai contenuti. Scopri cos'è l'MCP, come funziona e perché è importante per sviluppatori e imprenditori nel 2026." data-de="Das Model Context Protocol (MCP) ermöglicht es KI-Assistenten, sich mit Ihren Geschäftstools, Datenbanken und Inhalten zu verbinden. Erfahren Sie, was MCP ist, wie es funktioniert und warum es für Entwickler und Unternehmer 2026 wichtig ist." data-hr="Model Context Protocol (MCP) omogućuje AI asistentima povezivanje s vašim poslovnim alatima, bazama podataka i sadržajima. Saznajte što je MCP, kako funkcionira i zašto je važan za programere i vlasnike tvrtki u 2026.">The Model Context Protocol (MCP) lets AI assistants connect to your business tools, databases, and content. Learn what MCP is, how it works, and why it matters for developers and business owners in 2026.</p>
+                <a href="/blog/what-is-mcp-model-context-protocol.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 18, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/mcp-future-2027.html" data-en="The Future of MCP: What's Coming in 2027 and Beyond" data-sl="Die Zukunft von MCP: Was 2027 und darüber hinaus kommt" data-hr="Budućnost MCP-a: Što dolazi 2027. i dalje" data-it="Il Futuro di MCP: Cosa Arriva nel 2027 e Oltre">The Future of MCP: What's Coming in 2027 and Beyond</a></h2>
+                <p class="post-excerpt" data-en="A practical look at where the Model Context Protocol is headed — stateless architecture, multi-agent workflows, enterprise readiness, and what it means for your business." data-sl="Ein praktischer Blick darauf, wohin das Model Context Protocol steuert — zustandslose Architektur, Multi-Agenten-Workflows, Enterprise-Bereitschaft und was das für Ihr Unternehmen bedeutet." data-hr="Praktičan pogled na smjer u kojem se kreće Model Context Protocol — bezstanje arhitektura, komunikacija više agenata, spremnost za poduzeća i što to znači za vaše tvrtke." data-it="Uno sguardo pratico verso dove si sta dirigendo il Model Context Protocol — architettura stateless, workflow multi-agente, preparazione aziendale e cosa significa per la tua azienda.">A practical look at where the Model Context Protocol is headed — stateless architecture, multi-agent workflows, enterprise readiness, and what it means for your business.</p>
+                <a href="/blog/mcp-future-2027.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 18, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/mcp-security-guide.html" data-en="MCP Security: What You Need to Know Before Building AI Integrations" data-sl="MCP-Sicherheit: Was Sie wissen müssen, bevor Sie KI-Integrationen aufbauen" data-hr="Sigurnost MCP-a: Što morate znati prije izgradnje AI integracija" data-it="Sicurezza MCP: Cosa Devi Sapere Prima di Costruire Integrazioni AI">MCP Security: What You Need to Know Before Building AI Integrations</a></h2>
+                <p class="post-excerpt" data-en="MCP (Model Context Protocol) security guide for business owners. Learn about confused deputy attacks, token security, SSRF, session hijacking, and how to build secure AI integrations." data-sl="MCP-Sicherheitsleitfaden (Model Context Protocol) für Unternehmer. Erfahren Sie mehr über Verwirrte-Stellvertreter-Angriffe, Token-Sicherheit, SSRF, Session-Hijacking und wie Sie sichere KI-Integrationen aufbauen." data-hr="Vodič o sigurnosti MCP (Model Context Protocol) za vlasnike tvrtki. Saznajte o napadima zbunjenog zamjenika, sigurnosti tokena, SSRF, otmjenju sesija i kako graditi sigurne AI integracije." data-it="Guida alla sicurezza MCP (Model Context Protocol) per proprietari di azienda. Scopri gli attacchi del vice confuso, la sicurezza dei token, SSRF, il session hijacking e come costruire integrazioni AI sicure.">MCP (Model Context Protocol) security guide for business owners. Learn about confused deputy attacks, token security, SSRF, session hijacking, and how to build secure AI integrations.</p>
+                <a href="/blog/mcp-security-guide.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">Guide</span>
+                </div>
+                <h2><a href="/blog/10-website-mistakes.html" data-en="10 Website Mistakes That Are Costing You Customers" data-sl="10 pogrešaka na web stranici koji vas koštaju klijenata" data-de="10 Fehler auf Ihrer Webseite, die Sie Kunden kosten" data-it="10 errori sul sito web che ti fanno perdere clienti">10 Website Mistakes That Are Costing You Customers</a></h2>
+                <p class="post-excerpt" data-en="Stop losing customers to these common website mistakes. Data-driven guide to the 10 most expensive web design errors in 2026." data-sl="Prestanite gubiti klijente zbog ovih pogrešaka na web stranici. Analiza 10 najskupljih pogrešaka u web dizajnu." data-de="Hören Sie auf, Kunden durch diese häufigen Webseitenfehler zu verlieren. Datengetriebene Analyse der 10 teuersten Fehler." data-it="Smetti di perdere clienti a causa di questi errori comuni sul sito web. Guida basata sui dati ai 10 errori più costosi.">Stop losing customers to these common website mistakes. Data-driven guide to the 10 most expensive web design errors in 2026.</p>
+                <a href="/blog/10-website-mistakes.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/add-ai-chatbot-website.html" data-en="How to Add an AI Chatbot to Your Website (Step-by-Step)">How to Add an AI Chatbot to Your Website (Step-by-Step)</a></h2>
+                <p class="post-excerpt" data-en="Complete guide to adding an AI chatbot to your website. From choosing a platform to deployment, with real examples and pricing.">Complete guide to adding an AI chatbot to your website. From choosing a platform to deployment, with real examples and pricing.</p>
+                <a href="/blog/add-ai-chatbot-website.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/ai-tools-small-business.html" data-en="10 AI Tools Every Small Business Should Use in 2026" data-de="10 KI-Tools, die jedes kleine Unternehmen 2026 nutzen sollte" data-hr="10 AI alata koje svako malo poduzeće treba koristiti" data-it="10 strumenti AI che ogni piccola impresa dovrebbe usare nel 2026">10 AI Tools Every Small Business Should Use in 2026</a></h2>
+                <p class="post-excerpt" data-en="Practical AI tools for small businesses: content creation, customer support, marketing automation, and more. Real tools, real results." data-de="Praktische KI-Tools für kleine Unternehmen: Inhaltserstellung, Kundensupport, Marketing-Automatisierung." data-hr="Praktični AI alati za mala poduzeća: stvaranje sadržaja, podrška korisnicima, marketinška automatizacija." data-it="Strumenti AI pratici per le piccole imprese: creazione contenuti, assistenza clienti, automatizzazione marketing.">Practical AI tools for small businesses: content creation, customer support, marketing automation, and more. Real tools, real results.</p>
+                <a href="/blog/ai-tools-small-business.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">Local SEO</span>
+                </div>
+                <h2><a href="/blog/google-my-business-slovenia.html" data-en="Google My Business: Why Most Slovenian Businesses Leave Money on the Table" data-sl="Google My Business: Zakaj večina slovenskih podjetij pušča denar na mizi" data-de="Google My Business: Warum viele slowenische Unternehmen Geld liegen lassen" data-hr="Google My Business: Zašto većina slovenskih tvrtki ostavlja novac" data-it="Google My Business: Perché molte aziende slovene lasciano soldi sul tavolo">Google My Business: Why Most Slovenian Businesses Leave Money on the Table</a></h2>
+                <p class="post-excerpt" data-en="Fix your Google Business Profile in 30 minutes — with real impact." data-sl="Popravite Google Business profil v 30 minutah." data-de="Reparieren Sie Ihr Google Business Profil in 30 Minuten." data-hr="Popravite Google Business profil u 30 minuta." data-it="Aggiorna il tuo Google Business Profile in 30 minuti.">Fix your Google Business Profile in 30 minutes — with real impact.</p>
+                <a href="/blog/google-my-business-slovenia.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">Restaurants</span>
+                </div>
+                <h2><a href="/blog/qr-code-vs-physical-menu.html" data-en="QR Code Menu vs Physical Menu — What Works Better for Restaurants in 2026?" data-sl="QR koda jedilnik proti fizičnemu jedilniku — kaj bolje deluje za restavracije leta 2026?" data-de="QR-Code-Speisekarte vs. klassische Speisekarte — Was funktioniert 2026 besser für Restaurants?" data-hr="QR kod jelovnik vs. tiskani jelovnik — što bolje funkcionira za restorane 2026.?" data-it="Menu con QR Code vs. Menu Cartaceo — Cosa funziona meglio per i ristoranti nel 2026?">QR Code Menu vs Physical Menu — What Works Better for Restaurants in 2026?</a></h2>
+                <p class="post-excerpt" data-en="QR code menu or paper menu? We break down the pros, cons, costs, and guest preferences. Real data from tourist restaurants in Croatia, Slovenia, and Italy." data-sl="QR koda jedilnik ali papirni jedilnik? Primerjamo prednosti, slabosti, stroške in želje gostov. Resnični podatki iz turističnih restavracij na Hrvaškem, v Sloveniji in Italiji." data-de="QR-Code-Speisekarte oder Papier-Speisekarte? Wir zeigen die Vor- und Nachteile, Kosten und Gästepräferenzen. Echte Daten von Touristenrestaurants in Kroatien, Slowenien und Italien." data-hr="QR kod jelovnik ili papirni jelovnik? Analiziramo prednosti, mane, troškove i preferencije gostiju. Stvarni podaci iz turističkih restorana u Hrvatskoj, Sloveniji i Italiji." data-it="Menu con QR Code o menu cartaceo? Analizziamo pro, contro, costi e preferenze dei clienti. Dati reali da ristoranti turistici in Croazia, Slovenia e Italia.">QR code menu or paper menu? We break down the pros, cons, costs, and guest preferences. Real data from tourist restaurants in Croatia, Slovenia, and Italy.</p>
+                <a href="/blog/qr-code-vs-physical-menu.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/structured-data-llms-txt-ai-visibility.html" data-en="Structured Data, llms.txt & FAQ: Why AI Can't Find Your Website" data-sl="Strukturierte Daten, llms.txt & FAQ: Warum AI Ihre Webseite nicht findet" data-de="Strukturirani podatki, llms.txt & FAQ: Zakaj AI ne more najti vaše spletne strani">Structured Data, llms.txt & FAQ: Why AI Can't Find Your Website</a></h2>
+                <p class="post-excerpt" data-en="Your website might be invisible to ChatGPT, Gemini, and Perplexity. Here's why structured data, llms.txt, and FAQ markup are the technical foundation of AI visibility." data-sl="Ihre Webseite ist möglicherweise unsichtbar für ChatGPT, Gemini und Perplexity. Hier erfahren Sie warum strukturierte Daten, llms.txt und FAQ-Markup die technische Grundlage der AI-Sichtbarkeit sind." data-de="Vaša spletna stran je morda nevidna za ChatGPT, Gemini in Perplexity. Zakaj so strukturirani podatki, llms.txt in FAQ oznake temelj AI vidljivosti.">Your website might be invisible to ChatGPT, Gemini, and Perplexity. Here's why structured data, llms.txt, and FAQ markup are the technical foundation of AI visibility.</p>
+                <a href="/blog/structured-data-llms-txt-ai-visibility.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/what-are-ai-agents.html" data-en="What Are AI Agents and How Can They Run Your Business?" data-it="Cosa sono gli agenti AI e come possono gestire la tua attività?">What Are AI Agents and How Can They Run Your Business?</a></h2>
+                <p class="post-excerpt" data-en="AI agents explained: what they are, what they can do today, and how businesses in Slovenia and beyond are using them." data-it="Agenti AI spiegati: cosa sono, cosa possono fare oggi, e come le aziende in Slovenia e altrove li utilizzano.">AI agents explained: what they are, what they can do today, and how businesses in Slovenia and beyond are using them.</p>
+                <a href="/blog/what-are-ai-agents.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/ai-chatbot-pricing-2026.html" data-en="How Much Does an AI Chatbot Really Cost in 2026?" data-sl="Koliko stane AI klepetalnik leta 2026?" data-de="Wie viel kostet ein AI-Chatbot 2026?" data-hr="Koliko košta AI chatbot 2026?" data-it="Quanto costa un AI chatbot nel 2026?">How Much Does an AI Chatbot Really Cost in 2026?</a></h2>
+                <p class="post-excerpt" data-en="From free to €2,000+ — real cost of AI chatbots and ROI calculator." data-sl="Od brezplačnega do €2.000+ — pravi stroški in ROI." data-de="Von kostenlos bis €2.000+ — echte Kosten und ROI." data-hr="Od besplatnog do €2.000+ — pravi troškovi i ROI." data-it="Da gratuito a €2.000+ — vero costo e ROI.">From free to €2,000+ — real cost of AI chatbots and ROI calculator.</p>
+                <a href="/blog/ai-chatbot-pricing-2026.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">July 17, 2026</span>
+                    <span class="post-tag">GEO</span>
+                </div>
+                <h2><a href="/blog/seo-vs-geo-vs-aio.html" data-en="SEO vs GEO vs AIO — What's the Difference?" data-sl="SEO vs GEO vs AIO — Kakšna je razlika?" data-de="SEO vs GEO vs AIO — Was ist der Unterschied?" data-hr="SEO vs GEO vs AIO — Koja je razlika?" data-it="SEO vs GEO vs AIO — Qual è la differenza?">SEO vs GEO vs AIO — What's the Difference?</a></h2>
+                <p class="post-excerpt" data-en="Three ways your business shows up online. Which ones do you need?" data-sl="Trije načini kako se podjetje prikaže na spletu." data-de="Drei Wege, wie Ihr Unternehmen online sichtbar wird." data-hr="Tri načina kako se podjetje pojavlja na spletu." data-it="Tre modi in cui la tua azienda appare online.">Three ways your business shows up online. Which ones do you need?</p>
+                <a href="/blog/seo-vs-geo-vs-aio.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 16, 2026</span>
+                    <span class="post-tag">SEO</span>
+                </div>
+                <h2><a href="/blog/5-seo-factors-you-cant-beat.html" data-en="5 SEO factors you can never beat (and what to do instead)" data-de="5 SEO-Faktoren die man nie schlagen kann (und was man stattdessen tun sollte)" data-hr="5 SEO čimbenika koje nikad nećete moći pobijediti (i što učiniti umjesto toga)" data-it="5 fattori SEO che non puoi mai battere (e cosa fare invece)">5 SEO factors you can never beat (and what to do instead)</a></h2>
+                <p class="post-excerpt" data-en="5 SEO factors you can't change — domain age, backlinks, brand. What to do instead? Practical tips for small businesses." data-de="5 SEO-Faktoren die man nicht ändern kann — Domänenalter, Backlinks, Marke. Was stattdessen tun? Praktische Tipps." data-hr="5 SEO čimbenika koje ne možete promijeniti — starost domene, backlinkovi, brend. Što učiniti umjesto toga? Praktični savjeti." data-it="5 fattori SEO che non puoi cambiare — età del dominio, backlink, brand. Cosa fare invece? Consigli pratici.">5 SEO factors you can't change — domain age, backlinks, brand. What to do instead? Practical tips for small businesses.</p>
+                <a href="/blog/5-seo-factors-you-cant-beat.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 16, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/new-domain-vs-old-agency.html" data-en="Can a new website beat a 30-year-old agency? An honest answer" data-sl="Lahko nova spletna stran prehiti 30-letno agencijo? Iskren odgovor" data-de="Kann eine neue Webseite eine 30-jährige Agentur schlagen? Eine ehrliche Antwort" data-hr="Može li nova web stranica pobijediti 30-godišnju agenciju? Iskren odgovor" data-it="Può un nuovo sito web battere un'agenzia vecchia di 30 anni? Una risposta onesta">Can a new website beat a 30-year-old agency? An honest answer</a></h2>
+                <p class="post-excerpt" data-en="New domain vs old — is it possible? GEO optimization, long-tail keywords, local SEO. What works in 2026?" data-sl="Nova domena proti stari — ali je mogoče? GEO optimizacija, long-tail keywords, lokalni SEO. Kaj deluje v 2026?" data-de="New domain vs old agency" data-hr="New domain vs old agency" data-it="New domain vs old agency">New domain vs old — is it possible? GEO optimization, long-tail keywords, local SEO. What works in 2026?</p>
+                <a href="/blog/new-domain-vs-old-agency.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 15, 2026</span>
+                    <span class="post-tag">Lead Gen</span>
+                </div>
+                <h2><a href="/blog/avtonomni-lead-gen-sistem.html" data-en="Avtonomni lead-gen sistem, ki dela, medtem ko spite" data-sl="Avtonomni lead-gen sistem, ki dela, medtem ko spite" data-de="Autonomes Lead-Gen-System, das arbeitet, während Sie schlafen" data-hr="Autonomni lead-gen sustav koji radi dok spavate" data-it="Sistema lead-gen autonomo che lavora mentre dormite">Avtonomni lead-gen sistem, ki dela, medtem ko spite</a></h2>
+                <p class="post-excerpt" data-en="Kako zgraditi avtomatiziran sistem za generiranje leadov, ki filtrira, auditira in kontaktira potencialne stranke — brez vašega poseganja." data-sl="Kako zgraditi avtomatiziran sistem za generiranje leadov, ki filtrira, auditira in kontaktira potencialne stranke — brez vašega poseganja." data-de="Wie man ein automatisiertes System zur Lead-Generierung aufbaut, das potenzielle Kunden filtert, prüft und kontaktiert." data-hr="Kako izgraditi automatizirani sustav za generiranje leadova koji filtrira, audita i kontaktira potencijalne klijente." data-it="Come costruire un sistema automatizzato per la generazione di lead che filtra, audita e contatta potenziali clienti.">Kako zgraditi avtomatiziran sistem za generiranje leadov, ki filtrira, auditira in kontaktira potencialne stranke — brez vašega poseganja.</p>
+                <a href="/blog/avtonomni-lead-gen-sistem.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 15, 2026</span>
+                    <span class="post-tag">Restaurants</span>
+                </div>
+                <h2><a href="/blog/dnevnik-gradnje-menuboost-tezava.html" data-en="Dnevnik gradnje: Ko MenuBoost naleti na težavo" data-sl="Dnevnik gradnje: Ko MenuBoost naleti na težavo" data-de="Baustellen-Tagebuch: Wenn MenuBoost auf ein Problem trifft" data-hr="Dnevnik gradnje: Kad MenuBoost naiđe na problem" data-it="Diario di costruzione: Quando MenuBoost incontra un problema">Dnevnik gradnje: Ko MenuBoost naleti na težavo</a></h2>
+                <p class="post-excerpt" data-en="Building in public: Kako smo rešili težavo z AI agentom, ki je 'haluciniral' podatke. Iskrena zgodba o tem, da stvari v IT-ju včasih grejo narobe." data-sl="Building in public: Kako smo rešili težavo z AI agentom, ki je 'haluciniral' podatke." data-de="Building in public: Wie wir ein Problem mit einem KI-Agenten gelöst haben, der Daten 'halluzinierte'." data-hr="Building in public: Kako smo riješili problem s AI agentom koji je 'halucinirao' podatke." data-it="Building in public: Come abbiamo risolto un problema con un agente AI che 'allucinava' dati.">Building in public: Kako smo rešili težavo z AI agentom, ki je 'haluciniral' podatke. Iskrena zgodba o tem, da stvari v IT-ju včasih grejo narobe.</p>
+                <a href="/blog/dnevnik-gradnje-menuboost-tezava.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 15, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/kako-lokaliziramo-ai.html" data-en="Kako lokaliziramo AI za slovenski trg" data-sl="Kako lokaliziramo AI za slovenski trg" data-de="KI für den slowenischen Markt lokalisieren" data-hr="Kako lokaliziramo AI za hrvatsko tržište" data-it="Come localizziamo l'AI per il mercato sloveno">Kako lokaliziramo AI za slovenski trg</a></h2>
+                <p class="post-excerpt" data-en="Razlika med generičnim in prilagojenim AI-jem. Zakaj MenuBoost ne dela napak, ki jih delajo poceni prevajalniki. Tehnični vpogled." data-sl="Razlika med generičnim in prilagojenim AI-jem. Zakaj MenuBoost ne dela napak, ki jih delajo poceni prevajalniki." data-de="Der Unterschied zwischen generischer und angepasster KI. Warum MenuBoost keine Fehler macht, die billige Übersetzer machen." data-hr="Razlika između generičnog i prilagođenog AI-ja. Zašto MenuBoost ne radi greške koje rade jeftini prevoditelji." data-it="La differenza tra AI generico e personalizzato. Perché MenuBoost non commette errori che fanno i traduttori economici.">Razlika med generičnim in prilagojenim AI-jem. Zakaj MenuBoost ne dela napak, ki jih delajo poceni prevajalniki. Tehnični vpogled.</p>
+                <a href="/blog/kako-lokaliziramo-ai.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 15, 2026</span>
+                    <span class="post-tag">GEO</span>
+                </div>
+                <h2><a href="/blog/geo-knowledge-base.html" data-en="GEO Knowledge Base — Vodnik za optimizacijo za AI iskalnike">GEO Knowledge Base — Vodnik za optimizacijo za AI iskalnike</a></h2>
+                <p class="post-excerpt" data-en="Celovit vodnik za GEO (Generative Engine Optimization). Kako vašo spletno stran narediti vidno za ChatGPT, Gemini, Perplexity in druge AI iskalnike.">Celovit vodnik za GEO (Generative Engine Optimization). Kako vašo spletno stran narediti vidno za ChatGPT, Gemini, Perplexity in druge AI iskalnike.</p>
+                <a href="/blog/geo-knowledge-base.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 14, 2026</span>
+                    <span class="post-tag">GEO</span>
+                </div>
+                <h2><a href="/blog/5-most-asked-questions-about-geo.html" data-en="5 Most Asked Questions About GEO (Generative Engine Optimization) — Answered" data-sl="5 meistgestellte Fragen zu GEO (Generative Engine Optimization) — beantwortet" data-hr="5 Najčešće Postavljanih Pitanja o GEO (Generative Engine Optimization) — Odgovoreno" data-it="5 Domande Più Frequenti su GEO — Risposte">5 Most Asked Questions About GEO (Generative Engine Optimization) — Answered</a></h2>
+                <p class="post-excerpt" data-en="What is GEO? How is it different from SEO? Will it replace SEO? How to optimize for AI search? Answers to the 5 most Googled questions about Generative Engine Optimization." data-sl="Was ist GEO? Wie unterscheidet es sich von SEO? Wird es SEO ersetzen? Wie optimiert man für KI-Suche? Antworten auf die 5 meistgegoogelten Fragen zu Generative Engine Optimization." data-hr="Što je GEO? Kako se razlikuje od SEO-a? Hoće li zamijeniti SEO? Kako optimizirati za AI pretragu? Odgovori na 5 najčešće guglanih pitanja o GEO." data-it="Cos'è il GEO? Come si differenzia dal SEO? Sostituirà il SEO? Come ottimizzare per la ricerca AI? Risposte alle 5 domande più cercate sulla Generative Engine Optimization.">What is GEO? How is it different from SEO? Will it replace SEO? How to optimize for AI search? Answers to the 5 most Googled questions about Generative Engine Optimization.</p>
+                <a href="/blog/5-most-asked-questions-about-geo.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 11, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/my-ai-agent-experience.html" data-en="My Experience with AI Agents — How Hermes Helps Me Run My Business" data-sl="Moje iskustvo s AI agentom — Kako Hermes pomaže u poslu" data-de="Meine Erfahrung mit KI-Agenten — Wie Hermes mir hilft, mein Unternehmen zu führen" data-it="La mia esperienza con gli agenti AI — Come Hermes mi aiuta a gestire il mio business">My Experience with AI Agents — How Hermes Helps Me Run My Business</a></h2>
+                <p class="post-excerpt" data-en="Darko Herceg shares his personal experience using AI agents (Hermes and Max/OpenClaw) to run HD WebDesign." data-sl="Darko Herceg dijeli svoje osobno iskustvo s AI agentima (Hermes i Max/OpenClaw) za vođenje HD WebDesign." data-de="Darko Herceg teilt seine persönliche Erfahrung mit KI-Agenten (Hermes und Max/OpenClaw) zur Führung von HD WebDesign." data-it="Darko Herceg condivide la sua esperienza personale con gli agenti AI (Hermes e Max/OpenClaw) per gestire HD WebDesign.">Darko Herceg shares his personal experience using AI agents (Hermes and Max/OpenClaw) to run HD WebDesign.</p>
+                <a href="/blog/my-ai-agent-experience.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 11, 2026</span>
+                    <span class="post-tag">Guide</span>
+                </div>
+                <h2><a href="/blog/website-cost-slovenia.html" data-en="How Much Does a Website Cost in Slovenia in 2026?" data-sl="Quanto costa un sito web in Slovenia nel 2026?" data-de="Was kostet eine Webseite in Slowenien 2026?" data-hr="Koliko košta web stranica u Sloveniji 2026.?">How Much Does a Website Cost in Slovenia in 2026?</a></h2>
+                <p class="post-excerpt" data-en="Website pricing in Slovenia explained: from €500 budget sites to €5,000+ custom builds. Real costs, hidden fees, and what to expect in 2026." data-sl="Prezzi dei siti web in Slovenia: da 500 € per siti base a 5.000 €+ per sviluppo su misura. Costi reali e aspettative." data-de="Webseitenpreise in Slowenien: von 500 € Budget bis 5.000 €+ Maßanfertigung. Echte Kosten und Erwartungen." data-hr="Cijene web stranica u Sloveniji: od 500 € osnovnih do 5.000 €+ po mjeri. Stvarni troškovi i očekivanja.">Website pricing in Slovenia explained: from €500 budget sites to €5,000+ custom builds. Real costs, hidden fees, and what to expect in 2026.</p>
+                <a href="/blog/website-cost-slovenia.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 11, 2026</span>
+                    <span class="post-tag">Guide</span>
+                </div>
+                <h2><a href="/blog/wix-vs-wordpress-vs-custom.html" data-en="Wix vs WordPress vs Custom: Which Is Right for Your Business?" data-sl="Wix oder WordPress oder maßgeschneidert: Was ist das Richtige für Ihr Unternehmen?">Wix vs WordPress vs Custom: Which Is Right for Your Business?</a></h2>
+                <p class="post-excerpt" data-en="Comparing Wix, WordPress, and custom web development for small businesses in 2026. Real costs, pros/cons, and honest recommendations." data-sl="Vergleich von Wix, WordPress und individueller Webentwicklung für kleine Unternehmen 2026.">Comparing Wix, WordPress, and custom web development for small businesses in 2026. Real costs, pros/cons, and honest recommendations.</p>
+                <a href="/blog/wix-vs-wordpress-vs-custom.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 11, 2026</span>
+                    <span class="post-tag">GEO</span>
+                </div>
+                <h2><a href="/blog/geo-for-agencies.html" data-en="GEO for Agencies: How to Sell AI Visibility Services to Your Clients">GEO for Agencies: How to Sell AI Visibility Services to Your Clients</a></h2>
+                <p class="post-excerpt" data-en="How digital agencies can use GEO as a new revenue stream. Sell AI visibility audits and Schema.org implementation to your clients.">How digital agencies can use GEO as a new revenue stream. Sell AI visibility audits and Schema.org implementation to your clients.</p>
+                <a href="/blog/geo-for-agencies.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 11, 2026</span>
+                    <span class="post-tag">GEO</span>
+                </div>
+                <h2><a href="/blog/geo-checklist-chatgpt-recommendations.html" data-en="How to Make ChatGPT Recommend Your Business: A Complete GEO Checklist">How to Make ChatGPT Recommend Your Business: A Complete GEO Checklist</a></h2>
+                <p class="post-excerpt" data-en="A 10-step GEO checklist to make ChatGPT, Gemini, and Perplexity recommend your business. Actionable steps with code examples.">A 10-step GEO checklist to make ChatGPT, Gemini, and Perplexity recommend your business. Actionable steps with code examples.</p>
+                <a href="/blog/geo-checklist-chatgpt-recommendations.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">Restaurants</span>
+                </div>
+                <h2><a href="/blog/best-ai-menu-description-generator-2026.html" data-en="Best AI Menu Description Generator 2026 — Write Restaurant Menu Descriptions That Sell" data-sl="Najboljši generator opisov jedi z AI 2026 — Napišite opise jedilnika, ki prodajajo" data-de="Bester KI-Menübeschreibungs-Generator 2026 — Restaurantmenü-Beschreibungen schreiben, die verkaufen" data-hr="Najbolji AI generator opisa jelovnika 2026. — Napišite opise jelovnika koji prodaju" data-it="Miglior Generatore AI di Descrizioni Menu 2026 — Scrivi Descrizioni per Menu Ristorante Che Vendono">Best AI Menu Description Generator 2026 — Write Restaurant Menu Descriptions That Sell</a></h2>
+                <p class="post-excerpt" data-en="Compare the best AI menu description generators of 2026. Discover tools that write mouthwatering restaurant menu descriptions in seconds. MenuBoost, Menuviel, Restsify & more reviewed." data-sl="Primerjajte najboljše generatorje opisov jedi z AI leta 2026. Odkrijte orodja, ki v nekaj sekundah napišejo mamljive opise jedi za restavracijski jedilnik. MenuBoost, Menuviel, Restsify in drugi pregledani." data-de="Vergleichen Sie die besten KI-Menübeschreibungs-Generatoren 2026. Entdecken Sie Tools, die appetitanregende Restaurantmenü-Beschreibungen in Sekunden schreiben. MenuBoost, Menuviel, Restsify u.a. im Test." data-hr="Usporedite najbolje AI generatore opisa jelovnika za 2026. Otkrijte alate koji pišu primamljive opise jelovnika u sekundama. MenuBoost, Menuviel, Restsify i drugi recenzirani." data-it="Confronta i migliori generatori AI di descrizioni menu del 2026. Scopri gli strumenti che scrivono descrizioni allettanti per il menu del ristorante in pochi secondi. MenuBoost, Menuviel, Restsify e altri recensiti.">Compare the best AI menu description generators of 2026. Discover tools that write mouthwatering restaurant menu descriptions in seconds. MenuBoost, Menuviel, Restsify & more reviewed.</p>
+                <a href="/blog/best-ai-menu-description-generator-2026.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/can-ai-optimize-your-website.html" data-en="How We Used AI to Rank #1 on Google in 2 Weeks" data-sl="Kako smo z AI dosegli #1 mesto na Googlu v 2 tednih">How We Used AI to Rank #1 on Google in 2 Weeks</a></h2>
+                <p class="post-excerpt" data-en="Our website was invisible on Google. We used AI to audit, fix, and optimize it — and hit #1 in two weeks. Here's the exact playbook." data-sl="Naša spletna stran je bila nevidna na Googlu. Z AI smo jo pregledali, popravili in optimizirali — ter dosegli #1 v dveh tednih. Tukaj je točen recept.">Our website was invisible on Google. We used AI to audit, fix, and optimize it — and hit #1 in two weeks. Here's the exact playbook.</p>
+                <a href="/blog/can-ai-optimize-your-website.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">Restaurants</span>
+                </div>
+                <h2><a href="/blog/how-to-translate-restaurant-menu.html" data-en="How to Translate a Restaurant Menu into 6 Languages — Complete Guide" data-sl="Kako prevesti restavracijski jedilnik v 6 jezikov — Celovit vodnik" data-de="So übersetzen Sie eine Speisekarte in 6 Sprachen — Komplettanleitung" data-hr="Kako prevesti jelovnik restorana na 6 jezika — Kompletni vodič" data-it="Come tradurre un menu di ristorante in 6 lingue — Guida completa">How to Translate a Restaurant Menu into 6 Languages — Complete Guide</a></h2>
+                <p class="post-excerpt" data-en="Learn how to translate a restaurant menu into 6 languages with AI. Practical guide for tourist restaurants in Croatia, Slovenia, Italy & Spain. Get a multilingual menu in minutes." data-sl="Naučite se, kako prevesti restavracijski jedilnik v 6 jezikov z AI. Praktični vodnik za turistične restavracije na Hrvaškem, v Sloveniji, Italiji in Španiji. Pridobite večjezični jedilnik v nekaj minutah." data-de="Erfahren Sie, wie Sie eine Speisekarte mit KI in 6 Sprachen übersetzen. Praktischer Leitfaden für Touristenrestaurants in Kroatien, Slowenien, Italien & Spanien. Erhalten Sie in Minuten eine mehrsprachige Speisekarte." data-hr="Naučite kako prevesti jelovnik restorana na 6 jezika pomoću umjetne inteligencije. Praktični vodič za turističke restorane u Hrvatskoj, Sloveniji, Italiji i Španjolskoj. Nabavite višejezični jelovnik za nekoliko minuta." data-it="Scopri come tradurre un menu di ristorante in 6 lingue con l'intelligenza artificiale. Guida pratica per ristoranti turistici in Croazia, Slovenia, Italia e Spagna. Ottieni un menu multilingue in pochi minuti.">Learn how to translate a restaurant menu into 6 languages with AI. Practical guide for tourist restaurants in Croatia, Slovenia, Italy & Spain. Get a multilingual menu in minutes.</p>
+                <a href="/blog/how-to-translate-restaurant-menu.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">Restaurants</span>
+                </div>
+                <h2><a href="/blog/menuviel-vs-menuboost.html" data-en="Menuviel vs MenuBoost — AI Menu Tool Comparison 2026" data-sl="Menuviel proti MenuBoost — Primerjava AI orodij za jedilnik 2026" data-de="Menuviel vs MenuBoost — Vergleich von KI-Menü-Tools 2026" data-hr="Menuviel vs MenuBoost — Usporedba AI alata za jelovnike 2026" data-it="Menuviel vs MenuBoost — Confronto tra strumenti AI per menu 2026">Menuviel vs MenuBoost — AI Menu Tool Comparison 2026</a></h2>
+                <p class="post-excerpt" data-en="Menuviel vs MenuBoost: an honest comparison of AI menu translation tools in 2026. Compare features, pricing, languages, batch generation, and allergen tracking to find the best QR menu tool for your restaurant." data-sl="Menuviel proti MenuBoost: iskrena primerjava AI orodij za prevod jedilnika leta 2026. Primerjajte funkcije, cene, jezike, paketno ustvarjanje in sledenje alergenom, da najdete najboljše orodje z QR jedilnikom za vašo restavracijo." data-de="Menuviel vs MenuBoost: Ein ehrlicher Vergleich von KI-gestützten Menü-Übersetzungstools im Jahr 2026. Vergleichen Sie Funktionen, Preise, Sprachen, Stapelgenerierung und Allergenverfolgung, um das beste QR-Menü-Tool für Ihr Restaurant zu finden." data-hr="Menuviel vs MenuBoost: iskrena usporedba AI alata za prevođenje jelovnika u 2026. Usporedite značajke, cijene, jezike, grupno generiranje i praćenje alergena kako biste pronašli najbolji QR alat za jelovnik za svoj restoran." data-it="Menuviel vs MenuBoost: un confronto onesto degli strumenti AI per la traduzione dei menu nel 2026. Confronta funzionalità, prezzi, lingue, generazione batch e tracciamento allergeni per trovare il miglior strumento QR menu per il tuo ristorante.">Menuviel vs MenuBoost: an honest comparison of AI menu translation tools in 2026. Compare features, pricing, languages, batch generation, and allergen tracking to find the best QR menu tool for your restaurant.</p>
+                <a href="/blog/menuviel-vs-menuboost.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">Guide</span>
+                </div>
+                <h2><a href="/blog/hd-web-design-saas-tools.html" data-en="What is HD Web Design? AI-Powered SaaS Tools from Slovenia">What is HD Web Design? AI-Powered SaaS Tools from Slovenia</a></h2>
+                <p class="post-excerpt" data-en="HD Web Design is a Slovenian brand building AI-powered SaaS tools. Learn about MenuBoost, BoostSuite, and how Darko Herceg is helping businesses with AI automation.">HD Web Design is a Slovenian brand building AI-powered SaaS tools. Learn about MenuBoost, BoostSuite, and how Darko Herceg is helping businesses with AI automation.</p>
+                <a href="/blog/hd-web-design-saas-tools.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">SEO</span>
+                </div>
+                <h2><a href="/blog/best-seo-audit-tools-2026.html" data-en="Best SEO Audit Tools 2026 — Free & Paid Options Compared">Best SEO Audit Tools 2026 — Free & Paid Options Compared</a></h2>
+                <p class="post-excerpt" data-en="Compare the best SEO audit tools for freelancers and agencies in 2026. Free and paid options including SEOptimer, Ubersuggest, Ahrefs, and BoostSuite.">Compare the best SEO audit tools for freelancers and agencies in 2026. Free and paid options including SEOptimer, Ubersuggest, Ahrefs, and BoostSuite.</p>
+                <a href="/blog/best-seo-audit-tools-2026.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">About</span>
+                </div>
+                <h2><a href="/blog/darko-herceg-developer-slovenia.html" data-en="Who is Darko Herceg? Slovenian SaaS Builder & AI Developer">Who is Darko Herceg? Slovenian SaaS Builder & AI Developer</a></h2>
+                <p class="post-excerpt" data-en="Darko Herceg is a Slovenian developer and SaaS founder. Founder of HD Web Design, creator of MenuBoost and BoostSuite. Learn about his journey building AI-powered tools.">Darko Herceg is a Slovenian developer and SaaS founder. Founder of HD Web Design, creator of MenuBoost and BoostSuite. Learn about his journey building AI-powered tools.</p>
+                <a href="/blog/darko-herceg-developer-slovenia.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/mimo-vs-big-ai.html" data-en="I Switched from OpenAI to MiMo — Here's What Happened">I Switched from OpenAI to MiMo — Here's What Happened</a></h2>
+                <p class="post-excerpt" data-en="Everyone talks about GPT-5 and Claude Opus. I switched to Xiaomi's MiMo V2.5 Pro and got 50 billion tokens for $67. Here's the honest breakdown.">Everyone talks about GPT-5 and Claude Opus. I switched to Xiaomi's MiMo V2.5 Pro and got 50 billion tokens for $67. Here's the honest breakdown.</p>
+                <a href="/blog/mimo-vs-big-ai.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">SEO</span>
+                </div>
+                <h2><a href="/blog/seo-audit-tool-agencies.html" data-en="Zakaj vsaka digitalna agencija potrebuje SEO audit orodje — 2026 vodnik">Zakaj vsaka digitalna agencija potrebuje SEO audit orodje — 2026 vodnik</a></h2>
+                <p class="post-excerpt" data-en="Odkrijte zakaj digitalne agencije potrebujejo SEO audit orodje za stranke. BoostSuite združuje SEO, GEO, Ad Copy in Listing Optimizer v enem.">Odkrijte zakaj digitalne agencije potrebujejo SEO audit orodje za stranke. BoostSuite združuje SEO, GEO, Ad Copy in Listing Optimizer v enem.</p>
+                <a href="/blog/seo-audit-tool-agencies.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">GEO</span>
+                </div>
+                <h2><a href="/blog/seo-vs-geo-optimizacija.html" data-en="Kaj je SEO in GEO optimizacija? Razlika 2026">Kaj je SEO in GEO optimizacija? Razlika 2026</a></h2>
+                <p class="post-excerpt" data-en="SEO in GEO optimizacija — kaj je razlika? Kako vaša stran pride na vrh Googlea IN v AI odgovore. Praktični nasveti za slovenska podjetja.">SEO in GEO optimizacija — kaj je razlika? Kako vaša stran pride na vrh Googlea IN v AI odgovore. Praktični nasveti za slovenska podjetja.</p>
+                <a href="/blog/seo-vs-geo-optimizacija.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">SEO</span>
+                </div>
+                <h2><a href="/blog/seoptimer-vs-boostsuite.html" data-en="SEOptimer vs BoostSuite 2026 — Which SEO Tool Is Better for Agencies?">SEOptimer vs BoostSuite 2026 — Which SEO Tool Is Better for Agencies?</a></h2>
+                <p class="post-excerpt" data-en="SEOptimer vs BoostSuite comparison: features, pricing, and which tool is better for freelancers and agencies in 2026.">SEOptimer vs BoostSuite comparison: features, pricing, and which tool is better for freelancers and agencies in 2026.</p>
+                <a href="/blog/seoptimer-vs-boostsuite.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 07, 2026</span>
+                    <span class="post-tag">Guide</span>
+                </div>
+                <h2><a href="/blog/free-website-audit.html" data-en="Free Website Audit — Check Your SEO Score in 10 Seconds (2026)">Free Website Audit — Check Your SEO Score in 10 Seconds (2026)</a></h2>
+                <p class="post-excerpt" data-en="Free website audit tool — get your SEO, performance, and security score instantly. No signup required. Powered by BoostSuite AI.">Free website audit tool — get your SEO, performance, and security score instantly. No signup required. Powered by BoostSuite AI.</p>
+                <a href="/blog/free-website-audit.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 06, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/ai-work-automation-chatbots.html" data-en="Automate Your Work with AI — Chatbots That Actually Work" data-sl="Avtomatizirajte delo z AI — Klepetalniki, ki res delajo">Automate Your Work with AI — Chatbots That Actually Work</a></h2>
+                <p class="post-excerpt" data-en="How AI chatbots and automation can save your business 20+ hours per week. Real examples, real results. From customer service to lead generation." data-sl="Kako vam lahko AI klepetalniki in avtomatizacija prihranijo 20+ ur na teden. Resnični primeri, resnični rezultati. Od podpore strankam do pridobivanja lead-ov.">How AI chatbots and automation can save your business 20+ hours per week. Real examples, real results. From customer service to lead generation.</p>
+                <a href="/blog/ai-work-automation-chatbots.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 05, 2026</span>
+                    <span class="post-tag">Guide</span>
+                </div>
+                <h2><a href="/blog/old-websites-invisible.html" data-en="Old Websites Are Becoming Invisible — Here's Why (and What to Do)" data-sl="Stare spletne strani postajajo nevidne — zakaj in kaj narediti">Old Websites Are Becoming Invisible — Here's Why (and What to Do)</a></h2>
+                <p class="post-excerpt" data-en="Your 2018 website is losing visitors every month. Google, ChatGPT, and Perplexity are burying outdated sites. Here's how to tell if your website is becoming invisible — and how to fix it." data-sl="Vaša spletna stran iz leta 2018 izgublja obiskovalce. Google, ChatGPT in Perplexity potiskajo zastarele strani. Kako ugotoviti, ali je vaša stran nevidna — in kako to rešiti.">Your 2018 website is losing visitors every month. Google, ChatGPT, and Perplexity are burying outdated sites. Here's how to tell if your website is becoming invisible — and how to fix it.</p>
+                <a href="/blog/old-websites-invisible.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 05, 2026</span>
+                    <span class="post-tag">AI</span>
+                </div>
+                <h2><a href="/blog/ai-web-development.html" data-en="AI v web developmentu — kako umetna inteligenca spreminja izdelavo spletnih strani">AI v web developmentu — kako umetna inteligenca spreminja izdelavo spletnih strani</a></h2>
+                <p class="post-excerpt" data-en="Kako AI spreminja izdelavo spletnih strani. Hitrejša prototipiranja, nižje cene, avtomatizacija SEO in prevajanja. Primerjava pred in po AI v web developmentu.">Kako AI spreminja izdelavo spletnih strani. Hitrejša prototipiranja, nižje cene, avtomatizacija SEO in prevajanja. Primerjava pred in po AI v web developmentu.</p>
+                <a href="/blog/ai-web-development.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 05, 2026</span>
+                    <span class="post-tag">Guide</span>
+                </div>
+                <h2><a href="/blog/web-types.html" data-en="Vrste spletnih strani — kaj je pravo za vaše podjetje?">Vrste spletnih strani — kaj je pravo za vaše podjetje?</a></h2>
+                <p class="post-excerpt" data-en="Odkrijte, katera vrsta spletne strani je prava za vaše podjetje. Vizitka, corporate, e-commerce, web app ali blog — cene, roki in primerjava za slovenska podjetja.">Odkrijte, katera vrsta spletne strani je prava za vaše podjetje. Vizitka, corporate, e-commerce, web app ali blog — cene, roki in primerjava za slovenska podjetja.</p>
+                <a href="/blog/web-types.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">June 05, 2026</span>
+                    <span class="post-tag">Guide</span>
+                </div>
+                <h2><a href="/blog/website-vs-app.html" data-en="Spletna stran ali web aplikacija — kaj potrebujete?">Spletna stran ali web aplikacija — kaj potrebujete?</a></h2>
+                <p class="post-excerpt" data-en="Razlika med spletno stranjo in web aplikacijo. Primerjava cen, rokov in funkcionalnosti za slovenska podjetja. Kdaj potrebujete kaj?">Razlika med spletno stranjo in web aplikacijo. Primerjava cen, rokov in funkcionalnosti za slovenska podjetja. Kdaj potrebujete kaj?</p>
+                <a href="/blog/website-vs-app.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">May 10, 2026</span>
+                    <span class="post-tag">Restaurants</span>
+                </div>
+                <h2><a href="/blog/menu-translations-ai.html" data-en="Why AI Menu Translations Beat Google Translate">Why AI Menu Translations Beat Google Translate</a></h2>
+                <p class="post-excerpt" data-en="Why AI-powered menu translations capture the soul of a dish while Google Translate just gets the words right.">Why AI-powered menu translations capture the soul of a dish while Google Translate just gets the words right.</p>
+                <a href="/blog/menu-translations-ai.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">May 5, 2026</span>
+                    <span class="post-tag">GEO</span>
+                </div>
+                <h2><a href="/blog/geo-optimization-2026.html" data-en="GEO: The New SEO — How AI Engines See Your Website">GEO: The New SEO — How AI Engines See Your Website</a></h2>
+                <p class="post-excerpt" data-en="Generative Engine Optimization (GEO) is the new SEO. Here's how AI search engines see your website and what to do about it.">Generative Engine Optimization (GEO) is the new SEO. Here's how AI search engines see your website and what to do about it.</p>
+                <a href="/blog/geo-optimization-2026.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+            <article class="blog-post-card">
+                <div class="post-meta">
+                    <span class="post-date">April 28, 2026</span>
+                    <span class="post-tag">SaaS</span>
+                </div>
+                <h2><a href="/blog/building-saas-slovenia.html" data-en="Building SaaS from Slovenia: What I've Learned So Far">Building SaaS from Slovenia: What I've Learned So Far</a></h2>
+                <p class="post-excerpt" data-en="Honest lessons from building SaaS products in Slovenia — the challenges, advantages, and what I wish I knew earlier.">Honest lessons from building SaaS products in Slovenia — the challenges, advantages, and what I wish I knew earlier.</p>
+                <a href="/blog/building-saas-slovenia.html" class="read-more" data-en="Read more →" data-sl="Preberi več →" data-de="Weiterlesen →" data-hr="Proč.itaj više →" data-it="Leggi di più →">Read more →</a>
+            </article>
+        </section>
+</main>
+</main>
+
+    <footer class="container">
+        <p data-en="© 2026 Herceg Darko. All rights reserved." data-sl="© 2026 Herceg Darko. Vse pravice pridržane." data-de="© 2026 Herceg Darko. Alle Rechte vorbehalten.">© 2026 Herceg Darko. All rights reserved.</p>
+        <p data-en="Slovenia · Built with 💻 and ☕️" data-sl="Slovenija · Narejeno z 💻 in ☕️" data-de="Slowenien · Gebaut mit 💻 und ☕️">Slovenia · Built with 💻 and ☕️</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    // Language switcher — cycles EN → SL → DE
+    (function() {
+        const toggle = document.getElementById('langToggle');
+        const langElements = document.querySelectorAll('[data-en][data-sl]');
+        
+        const labels = { en: '🇬🇧 EN', sl: '🇸🇮 SI', de: '🇩🇪 DE' };
+        
+        function setLang(lang) {
+            langElements.forEach(el => {
+                const val = el.getAttribute('data-' + lang);
+                if (val) el.textContent = val;
+            });
+            document.documentElement.lang = lang;
+            toggle.textContent = labels[lang] || labels.en;
+            localStorage.setItem('lang', lang);
+        }
+        
+        const urlLang = new URLSearchParams(window.location.search).get('lang');
+        const savedLang = localStorage.getItem('lang');
+        const initialLang = urlLang || savedLang || 'en';
+        setLang(initialLang);
+        
+        const langs = ['en', 'sl', 'de', 'hr', 'it'];
+        toggle.addEventListener('click', function() {
+            const current = localStorage.getItem('lang') || 'en';
+            const idx = langs.indexOf(current);
+            const next = langs[(idx + 1) % langs.length];
+            setLang(next);
+        });
+    })();
+    </script>
+<script src="/js/main.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+    </body>
+</html>

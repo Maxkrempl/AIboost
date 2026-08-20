@@ -16,17 +16,17 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darko Herceg — Developer & SaaS Builder | HD Web Design</title>
-    <meta name="description" content="Darko Herceg — Slovenian developer building AI-powered SaaS tools. MenuBoost for restaurants, BoostSuite for agencies. Custom web development and consulting.">
-    <link rel="stylesheet" href="css/style.css">
+    <title>HD Web Design — Web Lab | Izdelava spletnih strani, SEO, AI orodja</title>
+    <meta name="description" content="HD Web Design — web lab za izdelavo spletnih strani, SEO optimizacijo in AI orodja za restavracije in podjetja. Slovenija, Hrvaška, Italija.">
+    <link rel="stylesheet" href="https://hd-webdesign.si/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/images/hdwebdesign-favicon.svg">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Darko Herceg — Developer & SaaS Builder">
-    <meta property="og:description" content="Building AI-powered SaaS tools for restaurants, marketers, and businesses.">
+    <meta property="og:title" content="HD Web Design — Web Lab | Izdelava spletnih strani in SEO">
+    <meta property="og:description" content="Web lab za izdelavo spletnih strani, SEO optimizacijo in AI orodja. MenuBoost, BoostSuite, AI Authority.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hd-webdesign.si">
     <meta property="og:image" content="https://hd-webdesign.si/images/og-image.jpg">
@@ -36,59 +36,24 @@
     
     <!-- Hreflang for i18n SEO -->
     <link rel="alternate" hreflang="en" href="https://hd-webdesign.si">
-    <link rel="alternate" hreflang="sl" href="https://hd-webdesign.si">
-    <link rel="alternate" hreflang="hr" href="https://hd-webdesign.si">
-    <link rel="alternate" hreflang="de" href="https://hd-webdesign.si">
-    <link rel="alternate" hreflang="it" href="https://hd-webdesign.si">
     <link rel="alternate" hreflang="x-default" href="https://hd-webdesign.si">
     
-    <!-- Structured Data: Person -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Darko Herceg",
-        "alternateName": "HD Web Design",
-        "url": "https://hd-webdesign.si",
-        "image": "https://hd-webdesign.si/images/og-image.jpg",
-        "jobTitle": "SaaS Builder & AI Developer",
-        "description": "Slovenian developer building AI-powered SaaS tools including MenuBoost and BoostSuite.",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "SI",
-            "addressLocality": "Slovenia"
-        },
-        "nationality": {
-            "@type": "Country",
-            "name": "Slovenia"
-        },
-        "knowsAbout": ["SaaS Development", "AI Applications", "Web Development", "SEO", "Menu Translation", "Marketing Automation"],
-        "sameAs": [
-            "https://github.com/Maxkrempl",
-            "https://www.linkedin.com/in/darko-herceg-073a322b9",
-            "https://hd-webdesign.si/about"
-        ]
-    }
-    </script>
-
     <!-- Structured Data: Organization -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "HD Web Design",
+        "alternateName": "HD Web Design",
         "url": "https://hd-webdesign.si",
-        "logo": "https://hd-webdesign.si/images/og-image.jpg",
-        "description": "AI-powered SaaS tools for restaurants, marketers, and businesses. Built by Darko Herceg in Slovenia.",
-        "founder": {
-            "@type": "Person",
-            "name": "Darko Herceg",
-            "url": "https://hd-webdesign.si/about"
-        },
+        "image": "https://hd-webdesign.si/images/og-image.jpg",
+        "description": "Web lab za izdelavo spletnih strani, SEO optimizacijo, GEO optimizacijo in AI orodja za restavracije in podjetja.",
         "address": {
             "@type": "PostalAddress",
-            "addressCountry": "SI"
+            "addressCountry": "SI",
+            "addressLocality": "Slovenia"
         },
+        "knowsAbout": ["SaaS Development", "AI Applications", "Web Development", "SEO", "GEO Optimization", "AI Visibility"],
         "sameAs": [
             "https://github.com/Maxkrempl",
             "https://www.linkedin.com/in/darko-herceg-073a322b9"
@@ -96,7 +61,7 @@
     }
     </script>
 
-    <!-- Structured Data: WebSite (helps Google understand site structure) -->
+    <!-- Structured Data: WebSite -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -105,15 +70,132 @@
         "url": "https://hd-webdesign.si",
         "description": "SaaS tools and web development by Darko Herceg",
         "publisher": {
-            "@type": "Person",
-            "name": "Darko Herceg"
+            "@type": "Organization",
+            "name": "HD Web Design"
         }
     }
     </script>
+
 <style>
         .home-logo-banner { text-align: center; padding: 2rem 1rem 1rem; background: transparent; }
         .home-logo-banner img { height: 80px; width: auto; }
-        
+
+        /* === STATS BAR === */
+        .stats-bar {
+            border-top: 2px solid var(--fg);
+            border-bottom: 2px solid var(--fg);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        .stats-bar .stat { text-align: center; }
+        .stats-bar .stat-num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            display: block;
+        }
+        .stats-bar .stat-num.accent { color: var(--accent); }
+        .stats-bar .stat-num.red { color: var(--accent-2); }
+        .stats-bar .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gray);
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* === GEO INLINE === */
+        .geo-inline {
+            border: 2px solid var(--fg);
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .geo-inline-text { flex: 1; min-width: 300px; }
+        .geo-inline-text h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+        .geo-inline-text h2 em {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-2);
+        }
+        .geo-inline-text p {
+            color: var(--gray);
+            font-size: 1.05rem;
+            max-width: 480px;
+            margin-bottom: 1.5rem;
+        }
+        .geo-inline-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .geo-inline-stats .g-stat { text-align: center; }
+        .geo-inline-stats .g-num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--accent-2);
+            display: block;
+        }
+        .geo-inline-stats .g-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--gray);
+        }
+
+        /* === BLOG GRID === */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .blog-card {
+            border: 2px solid var(--fg);
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s, color 0.2s;
+            display: block;
+        }
+        .blog-card:hover { background: var(--fg); color: var(--bg); }
+        .blog-card:hover .blog-card-date { color: var(--bg); opacity: 0.6; }
+        .blog-card:hover .blog-card-desc { color: var(--bg); opacity: 0.7; }
+        .blog-card-date {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+        .blog-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .blog-card-desc { font-size: 0.9rem; color: var(--gray); }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .stats-bar { gap: 2rem; padding: 1.25rem 1rem; }
+            .stats-bar .stat-num { font-size: 1.8rem; }
+            .geo-inline { padding: 2rem 1.5rem; gap: 2rem; }
+            .geo-inline-text h2 { font-size: 1.6rem; }
+        }
 </style>
 </head>
 <body>
@@ -125,7 +207,7 @@
         <div class="cookie-content">
             <div class="cookie-text">
                 <strong data-i18n="cookie.title">🍪 We value your privacy</strong>
-                <p><span data-i18n="cookie.desc">We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</span> <a href="/privacy.html">Privacy Policy</a></p>
+                <p><span data-i18n="cookie.desc">We use cookies to enhance your browsing experience.</span> <a href="https://hd-webdesign.si/privacy.html">Privacy Policy</a></p>
             </div>
             <div class="cookie-buttons">
                 <button onclick="acceptCookies()" class="cookie-btn accept" data-i18n="cookie.accept">Accept All</button>
@@ -135,80 +217,109 @@
     </div>
 
     <header class="container">
-        <div class="logo"><img src="/images/hdwebdesign-logo-dark.svg" alt="HD WebDesign" style="height:32px;width:auto"></div>
+        <div class="logo"><img src="https://hd-webdesign.si/images/hdwebdesign-logo-dark.svg" alt="HD WebDesign" style="height:32px;width:auto"></div>
         <nav aria-label="Main navigation">
             <ul>
                 <li><a href="#home" data-i18n="nav.home">Home</a></li>
-                <li><a href="/about" data-i18n="nav.about">About</a></li>
+                <li><a href="https://hd-webdesign.si/about" data-i18n="nav.about">About</a></li>
                 <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-                <li><a href="/blog/" data-i18n="nav.blog">Blog</a></li>
+                <li><a href="https://hd-webdesign.si/blog/" data-i18n="nav.blog">Blog</a></li>
                 <li><a href="#services" data-i18n="nav.services">Services</a></li>
-                <li><a href="/subvencije/">Subvencije</a></li>
+                <li><a href="https://hd-webdesign.si/subvencije/">Subvencije</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
         </nav>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
         <button class="theme-toggle" id="langToggle" onclick="toggleLanguage()" aria-label="Toggle language" style="font-size:0.85rem;font-weight:600;">SI</button>
     </header>
+
     <!-- LARGE LOGO -->
     <div class="home-logo-banner">
-        <img src="/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign">
+        <img src="https://hd-webdesign.si/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign">
     </div>
 
-
     <main id="main-content">
-        <!-- HERO SECTION -->
+
+        <!-- HERO -->
         <section id="home" class="hero container">
-            <h1 data-i18n="hero.title">Building SaaS that solves real problems</h1>
-            <p class="subtitle" data-i18n="hero.subtitle">
-                Hi, I'm Darko — a developer and founder from Slovenia. I create AI‑powered tools that help restaurants, marketers, and businesses grow. Simple, effective, and built to scale.
+            <h1 data-i18n="hero.home.title">Your website exists.<br>But can <span class="serif" style="color:var(--accent)">AI find it?</span></h1>
+            <p class="subtitle" data-i18n="hero.home.subtitle">
+                ChatGPT, Gemini, and Perplexity recommend businesses to millions.
+                If your site isn't optimized for AI, <strong>you're invisible to your next customer.</strong>
             </p>
             <div class="hero-cta">
-                <a href="#projects" class="cta-button" data-i18n="hero.cta1">See my work</a>
-                <a href="/boost-suite/audit.html" class="cta-button secondary">🔍 Free Audit</a>
-                <a href="/web-design/" class="cta-button secondary">🌐 Izdelava strani</a>
-                <a href="#contact" class="cta-button secondary" data-i18n="hero.cta2">Get in touch</a>
+                <a href="https://hd-webdesign.si/ai-izkaznica/" class="cta-button" data-i18n="hero.home.cta1">
+                    Check your AI visibility →
+                </a>
+                <a href="#projects" class="cta-button secondary" data-i18n="hero.home.cta2">
+                    See projects
+                </a>
             </div>
         </section>
 
-        
-        <!-- ABOUT SECTION -->
-        <section id="about" class="section container">
-            <h2 class="section-title" data-i18n="about.title">About Me</h2>
-            <div class="about-content">
-                <p>
-                    <span data-i18n="about.p1">I'm a full-stack developer based in Slovenia with a passion for building products that make a difference. With years of experience in web development, I've transitioned from building websites for clients to creating SaaS products that solve real-world problems.</span>
-                </p>
-                <p>
-                    <span data-i18n="about.p2">My focus is on <strong>AI-powered solutions</strong> — tools that leverage artificial intelligence to automate tasks, generate content, and provide insights that would otherwise take hours of manual work.</span>
-                </p>
-                <div class="about-stats">
-                    <div class="stat">
-                        <span class="stat-number" data-i18n="about.stat1.num">5+</span>
-                        <span class="stat-label" data-i18n="about.stat1.label">Years Experience</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-i18n="about.stat2.num">3</span>
-                        <span class="stat-label" data-i18n="about.stat2.label">Active SaaS Products</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-i18n="about.stat3.num">6</span>
-                        <span class="stat-label" data-i18n="about.stat3.label">Languages Supported</span>
-                    </div>
+        <!-- STATS BAR -->
+        <div class="stats-bar container">
+            <div class="stat">
+                <span class="stat-num accent">730+</span>
+                <span class="stat-label" data-i18n="stats.companies">Companies in index</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num red">87%</span>
+                <span class="stat-label" data-i18n="stats.invisible">Websites invisible to AI</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">30s</span>
+                <span class="stat-label" data-i18n="stats.analysis">Free analysis</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num accent">5+</span>
+                <span class="stat-label" data-i18n="stats.experience">Years of experience</span>
+            </div>
+        </div>
+
+        <!-- MARQUEE -->
+        <div class="marquee">
+            <div class="marquee-track">
+                <span>MenuBoost</span>
+                <span>AI Authority</span>
+                <span>BoostSuite</span>
+                <span data-i18n="stats.companies">730+ Companies</span>
+                <span>GEO Optimization</span>
+                <span>MCP Server</span>
+                <span>MenuBoost</span>
+                <span>AI Authority</span>
+                <span>BoostSuite</span>
+                <span data-i18n="stats.companies">730+ Companies</span>
+                <span>GEO Optimization</span>
+                <span>MCP Server</span>
+            </div>
+        </div>
+
+        <!-- GEO CHECK -->
+        <div class="geo-inline container">
+            <div class="geo-inline-text">
+                <h2>AI <em>recommends</em> businesses.<br><span data-i18n="geo.home.title2">Is yours one of them?</span></h2>
+                <p data-i18n="geo.home.desc">Run a free GEO check and see how ChatGPT, Gemini, and Perplexity see your website. In 30 seconds.</p>
+                <div class="geo-inline-stats">
+                    <div class="g-stat"><span class="g-num">87%</span><span class="g-label" data-i18n="geo.home.invisible">invisible to AI</span></div>
+                    <div class="g-stat"><span class="g-num">30s</span><span class="g-label" data-i18n="geo.home.time">analysis time</span></div>
+                    <div class="g-stat"><span class="g-num">Free</span><span class="g-label" data-i18n="geo.home.check">1 check</span></div>
                 </div>
             </div>
-        </section>
+            <a href="https://hd-webdesign.si/boost-suite/#geo-check" class="cta-button" data-i18n="geo.home.cta">
+                Run GEO check →
+            </a>
+        </div>
 
-        <!-- PROJECTS SECTION -->
+        <!-- PROJECTS -->
         <section id="projects" class="section container">
             <h2 class="section-title" data-i18n="projects.title">My Projects</h2>
             <p class="section-subtitle" data-i18n="projects.subtitle">AI-powered tools built to solve real problems for businesses</p>
             
             <div class="projects-grid">
-                <!-- MenuBoost -->
                 <div class="project-card featured">
                     <div class="project-badge" data-i18n="projects.badge">Featured</div>
-                    <img src="images/menuboost.jpg" alt="MenuBoost - AI Menu Translation Tool" class="project-image" loading="lazy">
+                    <img src="https://hd-webdesign.si/images/menuboost.jpg" alt="MenuBoost - AI Menu Translation Tool" class="project-image" loading="lazy">
                     <h3>MenuBoost</h3>
                     <p data-i18n="projects.menuboost.desc">AI‑powered multilingual menu descriptions for restaurants. Generate compelling food descriptions in 6 languages in seconds.</p>
                     <div class="project-tags">
@@ -216,12 +327,11 @@
                         <span class="tag">Restaurants</span>
                         <span class="tag">Multilingual</span>
                     </div>
-                    <a href="/menu-boost/" class="cta-button" data-i18n="projects.learn">Learn more</a>
+                    <a href="https://hd-webdesign.si/menu-boost/" class="cta-button" data-i18n="projects.learn">Learn more</a>
                 </div>
                 
-                <!-- BoostSuite -->
                 <div class="project-card">
-                    <img src="images/boostsuite.jpg" alt="BoostSuite - Marketing Toolkit" class="project-image" loading="lazy">
+                    <img src="https://hd-webdesign.si/images/boostsuite.jpg" alt="BoostSuite - Marketing Toolkit" class="project-image" loading="lazy">
                     <h3>BoostSuite</h3>
                     <p data-i18n="projects.bootsuite.desc">4‑in‑1 AI marketing toolkit: SEO Audit, GEO Check, Ad Copy Generator, and Listing Optimizer for agencies.</p>
                     <div class="project-tags">
@@ -229,38 +339,36 @@
                         <span class="tag">Marketing</span>
                         <span class="tag">SEO</span>
                     </div>
-                    <a href="/boost-suite/" class="cta-button" data-i18n="projects.learn">Learn more</a>
+                    <a href="https://hd-webdesign.si/boost-suite/" class="cta-button" data-i18n="projects.learn">Learn more</a>
                 </div>
                 
-                <!-- AdBoost -->
                 <div class="project-card">
-                    <img src="images/adboost.jpg" alt="AdBoost - Ad Copy Generator" class="project-image" loading="lazy">
-                    <h3>AdBoost</h3>
-                    <p data-i18n="projects.adboost.desc">AI-powered ad copy generator for Google, Facebook, and Instagram. Generate converting ad copy in seconds.</p>
+                    <div style="height:200px;background:#0a0a0a;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;font-weight:500;letter-spacing:.05em">AI AUTHORITY</div>
+                    <h3>AI Authority Foundation</h3>
+                    <p data-i18n="projects.aiauthority.desc">Make your website visible to ChatGPT, Perplexity, and Gemini. GEO optimization, Schema.org markup, llms.txt — the full package for AI visibility.</p>
                     <div class="project-tags">
-                        <span class="tag">AI</span>
-                        <span class="tag">Ads</span>
-                        <span class="tag">Marketing</span>
+                        <span class="tag">GEO</span>
+                        <span class="tag">AI Visibility</span>
+                        <span class="tag">Schema.org</span>
                     </div>
-                    <a href="/ad-boost/" class="cta-button" data-i18n="projects.learn">Learn more</a>
+                    <a href="https://hd-webdesign.si/ai-authority/" class="cta-button" data-i18n="projects.learn">Learn more</a>
                 </div>
                 
-                <!-- Subvencije -->
                 <div class="project-card">
-                    <div style="height:200px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:4rem;">📋</div>
+                    <div style="height:200px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:4rem;">📋</div>
                     <h3>Subvencije</h3>
-                    <p>Priprava dokumentacije za EU in slovenske razpise. Brezplačna preveritev upravičenosti za vaše podjetje.</p>
+                    <p data-i18n="projects.subvencije.desc">Priprava dokumentacije za EU in slovenske razpise. Brezplačna preveritev upravičenosti za vaše podjetje.</p>
                     <div class="project-tags">
                         <span class="tag">EU Razpisi</span>
                         <span class="tag">Dokumentacija</span>
                         <span class="tag">Subvencije</span>
                     </div>
-                    <a href="/subvencije/" class="cta-button">Več informacij</a>
+                    <a href="https://hd-webdesign.si/subvencije/" class="cta-button" data-i18n="projects.learn">Learn more</a>
                 </div>
             </div>
         </section>
 
-        <!-- SERVICES SECTION -->
+        <!-- SERVICES -->
         <section id="services" class="section container">
             <h2 class="section-title" data-i18n="services.title">Services</h2>
             <p class="section-subtitle" data-i18n="services.subtitle">How I can help your business</p>
@@ -268,29 +376,62 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🌐</div>
-                    <h3 data-i18n="services.webdev.title">Web Development</h3>
-                    <p data-i18n="services.webdev.desc">Custom websites and web applications built with modern technologies. SEO & GEO optimized, with AI chatbots.</p>
-                    <a href="/web-design/" style="color:var(--primary-color);font-weight:600;text-decoration:none;margin-top:0.5rem;display:inline-block;">Izdelava spletnih strani →</a>
+                    <h3 data-i18n="services.webdev.title">Optimizirane spletne strani</h3>
+                    <p data-i18n="services.webdev.desc">Spletne strani z vgrajeno SEO in GEO optimizacijo. Vaša stran bo vidna tako na Google kot v AI odgovorih.</p>
+                    <a href="https://hd-webdesign.si/web-design/" class="cta-button secondary" style="margin-top:0.5rem;display:inline-block;" data-i18n="services.webdev.cta">Izdelava spletnih strani →</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🤖</div>
-                    <h3 data-i18n="services.ai.title">AI Integration</h3>
-                    <p data-i18n="services.ai.desc">Integrate AI capabilities into your existing systems.</p>
+                    <h3 data-i18n="services.geo.title">AI vidljivost (GEO)</h3>
+                    <p data-i18n="services.geo.desc">Naredimo vašo stran vidno AI modelom. Schema.org, llms.txt, strukturirana vsebina. <strong>730 podjetij</strong> že v našem indeksu.</p>
+                    <a href="https://hd-webdesign.si/ai-authority/" class="cta-button secondary" style="margin-top:0.5rem;display:inline-block;" data-i18n="services.geo.cta">AI Authority →</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">📊</div>
-                    <h3 data-i18n="services.seo.title">SEO & Marketing</h3>
-                    <p data-i18n="services.seo.desc">Data-driven SEO strategies and marketing automation.</p>
+                    <h3 data-i18n="services.audit.title">SEO & GEO audit</h3>
+                    <p data-i18n="services.audit.desc">Brezplačen audit vaše spletne strani. Povemo vam, kaj manjka za Google uvrstitev in AI priporočila.</p>
+                    <a href="https://hd-webdesign.si/boost-suite/audit.html" class="cta-button secondary" style="margin-top:0.5rem;display:inline-block;" data-i18n="services.audit.cta">Zaženi audit →</a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💡</div>
-                    <h3 data-i18n="services.saas.title">SaaS Consulting</h3>
-                    <p data-i18n="services.saas.desc">From idea to launch — guidance on building your SaaS product.</p>
+                    <div class="service-icon">🍽️</div>
+                    <h3 data-i18n="services.menu.title">AI opisi jedi</h3>
+                    <p data-i18n="services.menu.desc">MenuBoost generira privlačne opise jedi v 6 jezikih. Za restavracije, ki želijo več gostov iz tujine.</p>
+                    <a href="https://hd-webdesign.si/menu-boost/" class="cta-button secondary" style="margin-top:0.5rem;display:inline-block;" data-i18n="services.menu.cta">MenuBoost →</a>
                 </div>
             </div>
         </section>
 
-        <!-- BLOG SECTION -->
+        <!-- ABOUT -->
+        <section id="about" class="section container">
+            <h2 class="section-title" data-i18n="about.title">Kdo stoji za HD Web Design?</h2>
+            <div class="about-content">
+                <p>
+                    <span data-i18n="about.p1">Sem Darko Herceg, razvijalec in ustanovitelj iz Celja. Namesto da gradim generične spletne strani, ustvarjam orodja, ki rešujejo resnične probleme — od AI vidljivosti do avtomatizacije marketinga.</span>
+                </p>
+                <p>
+                    Moje orodje <strong>Indeks AI-vidljivosti</strong> analizira slovenska podjetja in ugotavlja, kako dobro so vidna AI modelom. Danes je v indeksu <strong>730+ podjetij</strong> — in večina jih potrebuje pomoč.
+                </p>
+                <p>
+                    Če vaše podjetje ni optimizirano za AI, vaši konkurenti so. In AI jih priporoča namesto vas.
+                </p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">730+</span>
+                        <span class="stat-label">Podjetij analiziranih</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Aktivni SaaS produkti</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Jezikov podprtih</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG -->
         <section id="blog" class="section container">
             <h2 class="section-title" data-i18n="blog.title">Blog</h2>
             <p class="section-subtitle" data-i18n="blog.subtitle">Articles about HD Web Design, our products, and AI development</p>
@@ -298,42 +439,41 @@
                 <div class="project-card">
                     <h3 data-i18n="blog.post3.title">SEO vs GEO Optimization</h3>
                     <p data-i18n="blog.post3.desc">What's the difference between SEO and GEO? How to rank on Google AND in AI answers. Practical tips.</p>
-                    <a href="/blog/seo-vs-geo-optimizacija.html" class="cta-button" data-i18n="blog.readmore">Read more</a>
+                    <a href="https://hd-webdesign.si/blog/seo-vs-geo-optimizacija.html" class="cta-button" data-i18n="blog.readmore">Read more</a>
                 </div>
                 <div class="project-card">
                     <h3 data-i18n="blog.post1.title">Who is Darko Herceg?</h3>
                     <p data-i18n="blog.post1.desc">Meet the Slovenian SaaS builder behind MenuBoost, BoostSuite, and AdBoost. Learn about the journey from web development to AI-powered products.</p>
-                    <a href="/blog/darko-herceg-developer-slovenia.html" class="cta-button" data-i18n="blog.readmore">Read more</a>
+                    <a href="https://hd-webdesign.si/blog/darko-herceg-developer-slovenia.html" class="cta-button" data-i18n="blog.readmore">Read more</a>
                 </div>
                 <div class="project-card">
                     <h3 data-i18n="blog.post4.title">SEOptimer vs BoostSuite</h3>
                     <p data-i18n="blog.post4.desc">Honest comparison of SEOptimer vs BoostSuite — features, pricing, and which tool is right for your agency.</p>
-                    <a href="/blog/seoptimer-vs-boostsuite.html" class="cta-button" data-i18n="blog.readmore">Read more</a>
+                    <a href="https://hd-webdesign.si/blog/seoptimer-vs-boostsuite.html" class="cta-button" data-i18n="blog.readmore">Read more</a>
                 </div>
             </div>
         </section>
 
-
-        <!-- MCP SERVER SECTION -->
+        <!-- MCP SERVER -->
         <section id="api" class="section container">
             <h2 class="section-title">AI Agent API (MCP Server)</h2>
-            <p class="section-subtitle">Website audit tools for AI agents — pay per call with crypto or subscribe with API key</p>
+            <p class="section-subtitle" data-i18n="mcp.subtitle">Website audit tools for AI agents — pay per call with crypto or subscribe with API key</p>
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>🔧 MCP Server</h3>
-                    <p>6 website audit tools available via MCP protocol. SEO Audit, GEO Check, Ad Copy, Listing Optimizer, Combined Audit, and Menu Translate.</p>
+                    <p data-i18n="mcp.tools">6 website audit tools available via MCP protocol. SEO Audit, GEO Check, Ad Copy, Listing Optimizer, Combined Audit, and Menu Translate.</p>
                     <div class="project-tags">
                         <span class="tag">MCP</span>
                         <span class="tag">x402</span>
                         <span class="tag">USDC</span>
                         <span class="tag">API</span>
                     </div>
-                    <a href="/boost-suite/" class="cta-button">View Docs & Pricing →</a>
+                    <a href="https://hd-webdesign.si/boost-suite/" class="cta-button" data-i18n="mcp.docs">View Docs & Pricing →</a>
                 </div>
                 <div class="project-card">
                     <h3>💰 Hybrid Payment</h3>
-                    <p><strong>AI Agents:</strong> Pay per call with USDC on Base network (0.02–0.15 USDC). Zero fees, no accounts needed.</p>
-                    <p><strong>Humans:</strong> Monthly subscription via Stripe (€19 Freelancer / €49 Agency).</p>
+                    <p data-i18n="mcp.agents"><strong>AI Agents:</strong> Pay per call with USDC on Base network (0.02–0.15 USDC). Zero fees, no accounts needed.</p>
+                    <p data-i18n="mcp.humans"><strong>Humans:</strong> Monthly subscription via Stripe (€19 Freelancer / €49 Agency).</p>
                     <div class="project-tags">
                         <span class="tag">Stripe</span>
                         <span class="tag">Crypto</span>
@@ -342,8 +482,8 @@
                 </div>
                 <div class="project-card">
                     <h3>⚡ Quick Start</h3>
-                    <p>Point your MCP client to our hosted server:<br><code>https://hd-webdesign.si/api/mcp/</code></p>
-                    <p>No installation needed. Works with Claude, ChatGPT, Cursor, and any MCP-compatible agent.</p>
+                    <p data-i18n="mcp.quickstart">Point your MCP client to our hosted server:<br><code>https://hd-webdesign.si/api/mcp/</code></p>
+                    <p data-i18n="mcp.compatible">No installation needed. Works with Claude, ChatGPT, Cursor, and any MCP-compatible agent.</p>
                     <div class="project-tags">
                         <span class="tag">Claude</span>
                         <span class="tag">ChatGPT</span>
@@ -352,7 +492,8 @@
                 </div>
             </div>
         </section>
-        <!-- CONTACT SECTION -->
+
+        <!-- CONTACT -->
         <section id="contact" class="contact container">
             <h2 class="section-title" data-i18n="contact.title">Get in touch</h2>
             <p data-i18n="contact.desc">
@@ -370,13 +511,35 @@
                 </a>
             </div>
         </section>
+
+        <!-- LATEST FROM BLOG -->
+        <section class="section container">
+            <h2 class="section-title" data-i18n="blog.latest.title">Latest from our blog</h2>
+            <div class="blog-grid">
+                <a href="https://hd-webdesign.si/blog/geo-for-agencies.html" class="blog-card">
+                    <div class="blog-card-date" data-i18n="blog.latest.agency.date">Agency Guide · June 11</div>
+                    <h3 data-i18n="blog.latest.agency.title">GEO for Agencies</h3>
+                    <p class="blog-card-desc" data-i18n="blog.latest.agency.desc">How to sell AI visibility services to your clients.</p>
+                </a>
+                <a href="https://hd-webdesign.si/blog/geo-checklist-chatgpt-recommendations.html" class="blog-card">
+                    <div class="blog-card-date" data-i18n="blog.latest.checklist.date">GEO Guide · June 11</div>
+                    <h3 data-i18n="blog.latest.checklist.title">GEO Checklist</h3>
+                    <p class="blog-card-desc" data-i18n="blog.latest.checklist.desc">10 steps to make ChatGPT recommend your business.</p>
+                </a>
+                <a href="https://hd-webdesign.si/blog/structured-data-llms-txt-ai-visibility.html" class="blog-card">
+                    <div class="blog-card-date" data-i18n="blog.latest.llmstxt.date">Technical · June 11</div>
+                    <h3 data-i18n="blog.latest.llmstxt.title">Why AI Can't Find Your Website</h3>
+                    <p class="blog-card-desc" data-i18n="blog.latest.llmstxt.desc">Structured data, llms.txt, and FAQ — the technical foundation.</p>
+                </a>
+            </div>
+        </section>
     </main>
 
-    <footer class="container">
+<footer class="container">
         <div class="footer-links">
-            <a href="/privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
-            <a href="/menu-boost/">MenuBoost</a>
-            <a href="/boost-suite/">BoostSuite</a>
+            <a href="https://hd-webdesign.si/privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="https://hd-webdesign.si/menu-boost/">MenuBoost</a>
+            <a href="https://hd-webdesign.si/boost-suite/">BoostSuite</a>
         </div>
         <p data-i18n="footer.rights">© 2026 Darko Herceg. All rights reserved.</p>
         <p data-i18n="footer.built">Slovenia · Built with 💻 and ☕️</p>
@@ -397,9 +560,9 @@
         }
     </script>
 
-    <script src="js/translations.js?v=2"></script>
-    <script src="js/main.js?v=2"></script>
+    <script src="https://hd-webdesign.si/js/translations.js?v=2"></script>
+    <script src="https://hd-webdesign.si/js/main.js?v=2"></script>
     
-<script src="/chatbot/widget.js" defer></script>
+<script src="https://hd-webdesign.si/chatbot/widget.js" defer></script>
     </body>
 </html>

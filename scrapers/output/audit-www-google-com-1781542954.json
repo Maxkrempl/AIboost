@@ -1,0 +1,66 @@
+{
+  "url": "https://www.google.com",
+  "timestamp": "2026-06-15T19:02:34.332371",
+  "schema_org": {
+    "has_json_ld": false,
+    "json_ld_types": [],
+    "has_microdata": true,
+    "microdata_types": [
+      "http://schema.org/WebPage"
+    ],
+    "raw_schemas": []
+  },
+  "robots_txt": {
+    "exists": true,
+    "url": "https://www.google.com/robots.txt",
+    "sitemaps": [
+      "https://www.google.com/sitemap.xml"
+    ],
+    "has_user_agent": true,
+    "allows_ai_crawlers": true
+  },
+  "llm_txt": {
+    "found": false,
+    "files": {}
+  },
+  "sitemap": {
+    "exists": true,
+    "urls": [
+      "https://www.google.com/sitemap.xml"
+    ],
+    "url_count": 21
+  },
+  "seo_basics": {
+    "has_title": true,
+    "title": "Google",
+    "has_meta_description": false,
+    "meta_description": "",
+    "has_og_tags": false,
+    "og_tags": {},
+    "has_canonical": false,
+    "canonical": "",
+    "has_h1": false,
+    "h1_count": 0,
+    "has_viewport_meta": false
+  },
+  "json_files": {
+    "found_files": [
+      "https://www.google.com/.well-known/assetlinks.json"
+    ],
+    "json_ld": [],
+    "manifest": null,
+    "package_json": null,
+    "api_endpoints": [],
+    "other_json": [
+      {
+        "url": "https://www.google.com/.well-known/assetlinks.json",
+        "size": 12101,
+        "type": "list",
+        "keys": null,
+        "length": 29
+      }
+    ],
+    "total_size": 12101
+  },
+  "emails": []
+}

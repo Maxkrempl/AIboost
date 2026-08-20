@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Website Audit — Check Your SEO Score in 10 Seconds (2026)</title>
+  <meta name="description" content="Free website audit tool — get your SEO, performance, and security score instantly. No signup required. Powered by BoostSuite AI.">
+  <link rel="canonical" href="https://hd-webdesign.si/blog/free-website-audit.html">
+  <meta property="og:title" content="Free Website Audit — Check Your SEO Score in 10 Seconds">
+  <meta property="og:description" content="Instant free website audit. Check SEO, performance, security, and accessibility. No registration required.">
+  <meta property="og:url" content="https://hd-webdesign.si/blog/free-website-audit.html">
+  <meta property="og:type" content="article">
+  <link rel="alternate" hreflang="en" href="https://hd-webdesign.si/blog/free-website-audit.html">
+  <link rel="alternate" hreflang="sl" href="https://hd-webdesign.si/blog/free-website-audit-sl.html">
+  <link rel="alternate" hreflang="hr" href="https://hd-webdesign.si/blog/free-website-audit-hr.html">
+  <link rel="alternate" hreflang="de" href="https://hd-webdesign.si/blog/free-website-audit-de.html">
+  <link rel="alternate" hreflang="it" href="https://hd-webdesign.si/blog/free-website-audit-it.html">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    function toggleTheme() {
+      const body = document.documentElement;
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀️';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    // Load saved theme
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <style>
+    :root {
+      --bg: #ffffff; --text: #1a1a2e; --muted: #6b7280; --border: #e5e7eb;
+      --accent: #3B82F6; --accent-dark: #1E40AF; --accent-light: #EFF6FF;
+      --success: #10B981; --warning: #F59E0B; --danger: #EF4444;
+      --surface: #F8FAFC; --code-bg: #F1F5F9;
+    }
+    [data-theme="dark"] {
+      --bg: #0F172A; --text: #E2E8F0; --muted: #94A3B8; --border: #1E293B;
+      --accent: #60A5FA; --accent-dark: #3B82F6; --accent-light: #1E293B;
+      --surface: #1E293B; --code-bg: #1E293B;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    .container { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+    /* Brand header matching hd-webdesign.si */
+    header.container { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; max-width: 100%; border-bottom: 1px solid var(--border); }
+    header .logo img { height: 32px; width: auto; }
+    header nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+    header nav a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; }
+    header nav a:hover { color: var(--accent); }
+    .theme-toggle { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; cursor: pointer; font-size: 16px; color: var(--text); }
+    .meta { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
+    h1 { font-size: 2.2em; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em; }
+    h2 { font-size: 1.5em; margin: 40px 0 16px; letter-spacing: -0.01em; }
+    h3 { font-size: 1.2em; margin: 28px 0 12px; }
+    p { margin-bottom: 16px; }
+    a { color: var(--accent); }
+    .cta-box { background: var(--accent-light); border: 2px solid var(--accent); border-radius: 12px; padding: 32px; text-align: center; margin: 40px 0; }
+    .cta-box h3 { margin: 0 0 8px; color: var(--accent); }
+    .cta-box p { margin: 0 0 16px; color: var(--muted); }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; }
+    .cta-btn:hover { background: var(--accent-dark); }
+    ul { margin: 0 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .checklist { list-style: none; margin-left: 0; }
+    .checklist li { padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .checklist li::before { content: "✓ "; color: var(--success); font-weight: bold; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--surface); font-weight: 600; font-size: 14px; }
+    code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+    blockquote { border-left: 3px solid var(--accent); padding-left: 16px; margin: 20px 0; color: var(--muted); font-style: italic; }
+    .score-example { display: flex; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+    .score-card { flex: 1; min-width: 140px; background: var(--surface); border-radius: 10px; padding: 20px; text-align: center; }
+    .score-card .number { font-size: 2em; font-weight: 700; }
+    .score-card .label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .green { color: var(--success); }
+    .yellow { color: var(--warning); }
+    .red { color: var(--danger); }
+    footer { border-top: 1px solid var(--border); padding: 24px 20px; text-align: center; color: var(--muted); font-size: 13px; }
+    @media (max-width: 600px) { h1 { font-size: 1.6em; } .container { padding: 24px 16px 60px; } }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="logo"><a href="/"><img src="/images/hdwebdesign-logo-dark.svg" alt="HD WebDesign" style="height:32px;width:auto"></a></div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/boostsuite/">BoostSuite</a></li>
+        <li><a href="/menu-boost/">MenuBoost</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌙</button>
+  </header>
+
+  <div class="container">
+    <p class="meta">Published: June 4, 2026 · 6 min read</p>
+
+    <img src="/blog/hero-free-audit.png" alt="Free Website SEO Audit — Check Your Score in 10 Seconds" style="width:100%;border-radius:12px;margin-bottom:32px;">
+
+    <h1>Free Website Audit — Check Your SEO Score in 10 Seconds</h1>
+
+    <p>Your website has problems you can't see. Broken meta tags, missing security headers, slow load times — they all cost you Google rankings and visitors. The good news? You can find every issue in 10 seconds, for free.</p>
+
+    <div class="cta-box">
+      <h3>Try It Now — It's Free</h3>
+      <p>Enter your URL. Get your score. No signup required.</p>
+      <a href="https://hd-webdesign.si/boost-suite/audit.html" class="cta-btn">Scan My Website →</a>
+    </div>
+
+    <h2>What the Audit Checks</h2>
+
+    <p>The free website audit analyzes 10 critical factors that affect your search rankings, security, and user experience:</p>
+
+    <table>
+      <thead>
+        <tr><th>Check</th><th>Why It Matters</th><th>Weight</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Title Tag</td><td>First thing Google reads. Must be 30-60 characters.</td><td>High</td></tr>
+        <tr><td>Meta Description</td><td>Affects click-through rate from search results.</td><td>High</td></tr>
+        <tr><td>H1 Tag</td><td>Exactly one per page. Tells Google what the page is about.</td><td>High</td></tr>
+        <tr><td>HTTPS</td><td>Google penalizes non-secure sites. Users see "Not Secure" warning.</td><td>Critical</td></tr>
+        <tr><td>Open Graph Tags</td><td>Controls how your page looks when shared on social media.</td><td>Medium</td></tr>
+        <tr><td>Image Alt Text</td><td>Accessibility + SEO. Google can't see images without it.</td><td>Medium</td></tr>
+        <tr><td>Page Size</td><td>Large pages load slow. Google penalizes slow sites.</td><td>Medium</td></tr>
+        <tr><td>Word Count</td><td>Thin content ranks poorly. Aim for 500+ words per page.</td><td>Medium</td></tr>
+        <tr><td>Structured Data</td><td>JSON-LD helps Google understand your business, services, location.</td><td>Medium</td></tr>
+        <tr><td>Security Headers</td><td>X-Frame-Options, CSP, HSTS — protect against attacks.</td><td>High</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Real Example — What You'll See</h2>
+
+    <p>Here's what a typical audit looks like for a small business website:</p>
+
+    <div class="score-example">
+      <div class="score-card">
+        <div class="number yellow">62</div>
+        <div class="label">Overall Score</div>
+      </div>
+      <div class="score-card">
+        <div class="number green">78</div>
+        <div class="label">SEO</div>
+      </div>
+      <div class="score-card">
+        <div class="number yellow">55</div>
+        <div class="label">Security</div>
+      </div>
+      <div class="score-card">
+        <div class="number red">41</div>
+        <div class="label">Performance</div>
+      </div>
+    </div>
+
+    <p>The audit immediately tells you what's wrong and how to fix it. No jargon, no confusing reports — just clear issues with actionable fixes.</p>
+
+    <h2>Why Most Website Audits Are Useless</h2>
+
+    <p>Most free audit tools give you a 50-page PDF full of technical jargon. You close it and never look at it again. That's not an audit — that's homework.</p>
+
+    <p>A good audit should answer three questions:</p>
+
+    <ol>
+      <li><strong>What's broken?</strong> — Specific issues, not vague scores</li>
+      <li><strong>How bad is it?</strong> — Priority ranking (critical vs nice-to-have)</li>
+      <li><strong>How do I fix it?</strong> — Plain-English instructions</li>
+    </ol>
+
+    <p>The BoostSuite free audit does exactly this. Each issue comes with a fix explanation that any website owner can follow — no developer needed.</p>
+
+    <h2>What Happens After the Free Audit</h2>
+
+    <p>The free audit covers the essentials. But if you need deeper analysis, BoostSuite offers three paid tiers:</p>
+
+    <table>
+      <thead>
+        <tr><th>Feature</th><th>Free</th><th>Freelancer (€99/mo)</th><th>Agency (€99/mo)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Basic SEO Audit</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>GEO / AI Visibility Check</td><td>—</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Ad Copy Generator</td><td>—</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Listing Optimizer</td><td>—</td><td>✓</td><td>✓</td></tr>
+        <tr><td>API Access</td><td>—</td><td>—</td><td>✓</td></tr>
+        <tr><td>White Label Reports</td><td>—</td><td>—</td><td>✓</td></tr>
+      </tbody>
+    </table>
+
+    <h2>How to Use Your Audit Results</h2>
+
+    <p>Getting the score is step one. Here's what to do next:</p>
+
+    <h3>1. Fix Critical Issues First</h3>
+    <p>Things like missing HTTPS, no H1 tag, or broken meta descriptions should be fixed today. They take 5 minutes and have the biggest impact.</p>
+
+    <h3>2. Improve Your Title and Meta Description</h3>
+    <p>These two elements control how your site appears in Google. Write them like ad copy — they're your shop window in search results.</p>
+
+    <h3>3. Add Security Headers</h3>
+    <p>Most small business sites are missing basic security headers. Adding them takes 10 minutes in your hosting control panel and protects your visitors.</p>
+
+    <h3>4. Run the Audit Again in 30 Days</h3>
+    <p>SEO is not a one-time thing. Run the audit monthly to catch new issues before they hurt your rankings.</p>
+
+    <div class="cta-box">
+      <h3>Start Your Free Audit</h3>
+      <p>10 seconds. No signup. No credit card.</p>
+      <a href="https://hd-webdesign.si/boost-suite/audit.html" class="cta-btn">Scan My Website →</a>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Is the website audit really free?</h3>
+    <p>Yes. The basic audit is completely free with no signup required. Enter your URL and get instant results.</p>
+
+    <h3>How often should I audit my website?</h3>
+    <p>Once a month is ideal. Monthly audits catch issues early — before they cost you rankings or visitors.</p>
+
+    <h3>What if my score is low?</h3>
+    <p>A low score is actually good news — it means there's room for easy improvement. The audit shows you exactly what to fix first.</p>
+
+    <h3>Does this work for any website?</h3>
+    <p>Yes. The audit works for any publicly accessible website — WordPress, Shopify, custom sites, anything.</p>
+
+    <h3>What's the difference between free and paid?</h3>
+    <p>The free audit covers SEO, performance, security basics, and accessibility. Paid plans add GEO (AI search visibility), ad copy generation, listing optimization, and API access.</p>
+
+    <p><em>Published by <a href="https://hd-webdesign.si">HD WebDesign</a>. BoostSuite is an AI-powered marketing toolkit for agencies and freelancers.</em></p>
+  </div>
+
+  <footer>
+    <p>© 2026 HD WebDesign · <a href="https://hd-webdesign.si/boostsuite/">BoostSuite</a> · <a href="https://hd-webdesign.si/menu-boost/">MenuBoost</a></p>
+  </footer>
+</body>
+</html>

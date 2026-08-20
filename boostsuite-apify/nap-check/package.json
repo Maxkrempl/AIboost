@@ -1,0 +1,11 @@
+{
+  "name": "boostsuite-nap-check",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "apify": "^2.9.0"
+  }
+}

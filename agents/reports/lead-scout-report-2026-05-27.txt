@@ -1,0 +1,56 @@
+═══════════════════════════════════════════════════════
+  MENUBOOST LEAD SCOUT REPORT
+  2026-05-27 00:09 CET (Run #83)
+═══════════════════════════════════════════════════════
+
+QUERIES RUN:
+  1. "turistična kmetija" email kontakt
+  2. "gostilna" email naslov Slovenija
+  3. "gostilna" OR "restavracija" email Maribor OR Ptuj OR Celje kontakt
+
+SEARCH RESULTS:
+  - Query 1: 10 results → 4 existing leads, 0 new
+  - Query 2: 10 results → 5 existing leads, 0 new
+  - Query 3: 10 results → 3 NEW leads found ✅
+
+NEW LEADS SAVED TO lead-gen/menuboost/leads.csv:
+  1. Gostilna Čelan
+     Email: gostilnacelan@siol.net
+     Web: http://www.gostilna-celan.si
+     Type: gostilna | Source: web_search
+     Note: Traditional since 1932, near Ptuj, up to 350 guests
+
+  2. Gostilna Puncer
+     Email: celje@gostilnapuncer.si
+     Web: https://gostilnapuncer.si
+     Type: gostilna | Source: web_search
+     Note: Celje location, delivery + dine-in
+
+  3. Gostilna in Apartmaji Šelih
+     Email: ales.selih@gmail.com
+     Web: https://selih.eu
+     Type: gostilna | Source: web_search
+     Note: Family business since 1938, Maribor, Italian + Slovenian cuisine, apartments
+
+PIPELINE RUN (lead_pipeline.py --limit 2):
+  Processed: Gostilna Puncer + Gostilna Šelih
+  ⚠️ Pipeline used fallback dishes (generic: "Dnevna juha", "Glavna jed", "Sladica")
+  ✅ FIXED: Replaced with real menu items from web scraping:
+    - Puncer: Svinjski medaljoni v gobovi omaki, Dnevna juha, Gibanica
+    - Šelih: Dunajski zrezek, Zrezek na žaru, Pica Šelih
+  
+  Translations: 3 dishes × 5 languages (EN/DE/HR/IT/SR) = proper translations
+  
+  Emails queued:
+    - outreach/queue/menuboost-20260527-001432-0.json → celje@gostilnapuncer.si
+    - outreach/queue/menuboost-20260527-001432-1.json → ales.selih@gmail.com
+
+TOTAL LEADS IN CSV: 47 (was 44)
+
+NOTES:
+  - All 3 leads from Maribor/Ptuj/Celje corridor (expanding beyond usual Ljubljana focus)
+  - Pipeline fallback translation is weak — needs improvement for non-Ljubljana restaurants
+  - Manual fix applied with real menu items from malcajt.com + TripAdvisor data
+  - Gostilna Čelan saved but NOT pipelined (limit 2) — can process next run
+
+═══════════════════════════════════════════════════════

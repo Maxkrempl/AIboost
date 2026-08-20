@@ -1,1 +1,0 @@
-[06-Jun-2026 19:12:02 Europe/Ljubljana] DeepSeek API error: 401 - {"error":{"message":"Authentication Fails, Your api key: ****6c99 is invalid","type":"authentication_error","param":null,"code":"invalid_request_error"}}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Are AI Agents and How Can They Run Your Business? — Herceg Darko</title>
+    <meta name="description" content="AI agents explained: what they are, what they can do today, and how businesses in Slovenia and beyond are using them.">
+    <meta property="og:title" content="What Are AI Agents and How Can They Run Your Business?">
+    <meta property="og:description" content="AI agents explained: what they are, what they can do today, and how businesses in Slovenia and beyond are using them.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hd-webdesign.si/blog/what-are-ai-agents.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://hd-webdesign.si/blog/what-are-ai-agents.html">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+        .article-meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+        .article-meta span { margin-right: 1rem; }
+        .tag { background: #e8f4f8; color: #0a66c2; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        .comparison-table th { background: #f8f9fa; font-weight: 600; }
+        .comparison-table .highlight { background: #f0fdf4; font-weight: 600; }
+        blockquote { border-left: 4px solid #0a66c2; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f9fa; font-style: italic; }
+        .cta-box { background: linear-gradient(135deg, #0a66c2, #004182); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+        .cta-box a { color: white; text-decoration: underline; }
+        .stat { font-size: 2.5rem; font-weight: 700; color: #0a66c2; }
+        .stat-label { font-size: 0.9rem; color: #666; }
+        .stats-row { display: flex; justify-content: space-around; text-align: center; margin: 2rem 0; flex-wrap: wrap; }
+        .stat-item { padding: 1rem; }
+        .blog-header { background: #1a1a2e; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .blog-header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .blog-header .logo { display: block; }
+        .blog-header .logo img { height: 42px; width: auto; }
+        .blog-header nav { display: flex; align-items: center; gap: 20px; }
+        .blog-header nav a { color: #9C8878; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .blog-header nav a:hover { color: #F5E6C8; }
+        .theme-toggle { background: none; border: 1.5px solid #4A2E1A; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 16px; transition: all 0.15s; }
+        .theme-toggle:hover { border-color: #C4922A; background: rgba(196,146,42,0.1); }
+        body.dark-mode .blog-header { background: #0f0f1a; }
+        body.dark-mode { background: #0f0f1a; color: #e0e0e0; }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #e0e0e0; }
+        body.dark-mode p, body.dark-mode li { color: #ccc; }
+        body.dark-mode .verdict-box { background: #1a1a3e; color: #e0e0e0; }
+        body.dark-mode table th { background: #1e1e2e; color: #e0e0e0; }
+        body.dark-mode table td { border-bottom-color: #333; }
+        .read-more { color: #F59E0B !important; font-weight: 600; }
+        .read-more:hover { color: #D97706 !important; text-decoration: underline; }
+        a.read-more { color: #F59E0B !important; }
+        .lang-switcher { display: flex; gap: 12px; margin: 1.5rem 0; }
+        .lang-link { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; border: 1.5px solid #ddd; color: #555; transition: all 0.15s; }
+        .lang-link.active { background: #0a66c2; color: white; border-color: #0a66c2; }
+        .lang-link:hover { border-color: #0a66c2; }
+
+    </style>
+</head>
+<body>
+<header class="blog-header">
+    <div class="blog-header-inner">
+        <a href="/" class="logo"><img src="/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign" style="height:42px;width:auto"></a>
+        <nav>
+            <a href="/blog/">Blog</a>
+            <a href="/boost-suite/">BoostSuite</a>
+            <a href="/menu-boost/">MenuBoost</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        </nav>
+    </div>
+</header>
+
+    <main class="container">
+        <article>
+            <p><a href="/blog/">← Back to Blog</a></p>
+
+<div class="lang-switcher">
+    <a href="/blog/was-sind-ki-agenten.html" class="lang-link" title="DE">🇩🇪 DE</a>
+    <a href="/blog/what-are-ai-agents.html" class="lang-link active" title="EN">🇬🇧 EN</a>
+    <a href="/blog/sto-su-ai-agenti.html" class="lang-link" title="HR">🇭🇷 HR</a>
+    <a href="/blog/kaj-so-ai-agenti.html" class="lang-link" title="SL">🇸🇮 SL</a>
+</div>
+
+<h1>What Are AI Agents and How Can They Run Your Business?</h1>
+
+<p>You've probably heard the buzz around AI, and maybe you've even used ChatGPT to draft an email or brainstorm ideas. But here's the thing — most people are still thinking about AI as a fancy search engine that talks back. Meanwhile, something far more powerful is quietly changing how businesses operate: <strong>AI agents</strong>.</p>
+
+<p>I'm Darko Herceg, and I run HD WebDesign from Slovenia. I've been deep in the AI agent space for months now, running my own agents daily, and I want to break this down for you in plain English. No jargon overload. Just what it is, what it can do, and why it matters for your business.</p>
+
+<h2>AI Agents vs. AI Chatbots: What's the Difference?</h2>
+
+<p>This is the most important distinction to understand, so let's get it right.</p>
+
+<h3>AI Chatbot = Answers Questions</h3>
+
+<p>A chatbot — even a really good one — is basically a Q&A machine. You ask it something, it responds. You want a blog post outline? It gives you one. You need help with a customer email? It drafts one. But the moment you're done, <em>it stops</em>. It doesn't remember your last conversation (unless you're paying for memory features), it doesn't take action on your behalf, and it certainly doesn't wake up at 3 AM to monitor your website.</p>
+
+<h3>AI Agent = Takes Actions, Uses Tools, Works Autonomously</h3>
+
+<p>An AI agent is a different beast entirely. Think of it less like a chatbot and more like a <strong>digital employee</strong>. It can:</p>
+
+<ul>
+  <li><strong>Take actions</strong> — not just suggest what to do, but actually do it</li>
+  <li><strong>Use tools</strong> — connect to your email, calendar, social media, databases, APIs, and websites</li>
+  <li><strong>Work autonomously</strong> — run tasks without you hovering over it</li>
+  <li><strong>Chain tasks together</strong> — "Check competitor pricing, compare to ours, draft a report, email it to me" — all in one flow</li>
+  <li><strong>Remember context</strong> — keep track of ongoing projects and conversations across days and weeks</li>
+</ul>
+
+<blockquote>
+  According to McKinsey (2024), AI agents capable of autonomous task execution represent the next wave of enterprise AI, with the market projected to grow 43% annually through 2030.
+</blockquote>
+
+<p>The difference is like the gap between a calculator and an accountant. One gives you answers. The other manages your finances.</p>
+
+<h2>What AI Agents Can Actually Do Today (Not in 5 Years — Right Now)</h2>
+
+<p>Let's get practical. Here's what AI agents are doing for businesses <em>today</em>:</p>
+
+<h3>1. Manage Your Email</h3>
+
+<p>Not just draft replies — actually categorize incoming emails, flag urgent ones, draft appropriate responses, and even send follow-ups. Some agents can process hundreds of emails in minutes and only surface the ones that need your attention.</p>
+
+<h3>2. Schedule Appointments</h3>
+
+<p>Connect to your calendar, check availability, coordinate with clients, and book meetings. No more back-and-forth "when works for you?" emails.</p>
+
+<h3>3. Handle Customer Inquiries</h3>
+
+<p>AI agents can answer customer questions 24/7, pulling from your knowledge base, processing orders, and escalating complex issues to humans when needed. We're seeing response times drop from hours to seconds.</p>
+
+<h3>4. Post on Social Media</h3>
+
+<p>Generate content based on your brand voice, schedule posts across platforms, analyze engagement, and adjust strategy — all without a social media manager needing to be online.</p>
+
+<h3>5. Generate Reports</h3>
+
+<p>Sales data, website analytics, competitor monitoring, financial summaries — agents can pull data from multiple sources, crunch numbers, and deliver formatted reports to your inbox.</p>
+
+<h3>6. Monitor Your Website and Competitors</h3>
+
+<p>Track competitor pricing changes, monitor for website downtime, check for broken links, and alert you to opportunities or threats.</p>
+
+<blockquote>
+  A 2025 survey by Salesforce found that 72% of businesses using AI agents reported measurable time savings of 10+ hours per week on administrative tasks.
+</blockquote>
+
+<h2>Real Examples: AI Agents in Action</h2>
+
+<h3>Hermes Agent (by Nous Research)</h3>
+
+<p>This is the agent I use daily. Hermes is an open-source AI agent created by Nous Research, and it's genuinely impressive. Here's what makes it different from a regular chatbot:</p>
+
+<ul>
+  <li><strong>Tool access</strong> — it can read and write files, search the web, run code, and interact with APIs</li>
+  <li><strong>Persistent memory</strong> — it remembers what we discussed yesterday and last week</li>
+  <li><strong>Multi-step reasoning</strong> — give it a complex task and it breaks it down and executes step by step</li>
+  <li><strong>Communication</strong> — it talks to me via Telegram, so I can delegate tasks from my phone</li>
+  <li><strong>Customizable</strong> — since it's open source, you can fine-tune it for your specific needs</li>
+</ul>
+
+<p>I use Hermes to write blog posts (including this one), scrape competitor data, manage email outreach, generate marketing content, and handle customer support queries. It's essentially my digital business partner.</p>
+
+<h3>Max / OpenClaw — The Coding Agent</h3>
+
+<p>While Hermes handles general business tasks, Max (OpenClaw) is a specialized coding agent. It doesn't just write code — it <strong>builds entire tools and applications</strong>. You describe what you need, and it creates the software. Need a custom pricing calculator for your website? A data processing pipeline? A chatbot integration? Max builds it.</p>
+
+<p>This is significant because it means you no longer need to hire expensive developers for every small software need. The agent <em>becomes</em> your development team.</p>
+
+<h2>How Businesses Are Using AI Agents RIGHT NOW</h2>
+
+<p>Here's what I'm seeing in the real world, not just Silicon Valley hype:</p>
+
+<ul>
+  <li><strong>E-commerce stores</strong> use agents to monitor competitor prices and adjust their own pricing dynamically</li>
+  <li><strong>Marketing agencies</strong> deploy agents to manage content calendars and generate first drafts for clients</li>
+  <li><strong>SaaS companies</strong> use agents for customer onboarding sequences and support ticket triage</li>
+  <li><strong>Freelancers and consultants</strong> use agents to manage their invoicing, scheduling, and follow-ups</li>
+  <li><strong>Restaurants and hospitality</strong> (right here in Slovenia!) use AI-powered systems for reservation management and customer inquiries</li>
+</ul>
+
+<p>It's not just big corporations. Small and medium businesses in the Adriatic region are adopting these tools because they level the playing field.</p>
+
+<h2>How Much Does It Cost?</h2>
+
+<p>This is where it gets interesting. You have three tiers:</p>
+
+<ol>
+  <li><strong>Free (Open Source)</strong> — Tools like Hermes by Nous Research are completely free. You need some technical setup, but the community is helpful, and a good web developer can get you running quickly.</li>
+  <li><strong>Low-cost managed (€50–100/mo)</strong> — Some platforms offer managed AI agent services where they handle the infrastructure. You just use the agent through a simple interface.</li>
+  <li><strong>Premium managed (€100–200/mo)</strong> — Full-service setups with custom integrations, dedicated support, and tailored workflows for your business.</li>
+</ol>
+
+<p>Compare that to hiring even a part-time employee at €800–1,500/month, and the math is clear. An AI agent doesn't take vacations, doesn't get sick, and works 24/7.</p>
+
+<h2>The Future: Agents Running Your Back Office</h2>
+
+<p>We're heading toward a reality where AI agents handle the majority of back-office operations. Within the next 2–3 years, I expect we'll see agents that can:</p>
+
+<ul>
+  <li>Manage your entire bookkeeping and invoicing pipeline</li>
+  <li>Handle HR tasks like screening resumes and scheduling interviews</li>
+  <li>Run marketing campaigns end-to-end, from ideation to execution to reporting</li>
+  <li>Coordinate supply chain logistics for product-based businesses</li>
+</ul>
+
+<p>The businesses that adopt early will have a significant advantage. They'll operate with leaner teams, faster response times, and lower overhead.</p>
+
+<h2>The Bottom Line</h2>
+
+<p>AI agents aren't science fiction — they're here, they work, and they're affordable. The question isn't <em>whether</em> they'll transform business operations, but <em>when you'll start using them</em>.</p>
+
+<p>If you're running a business and you're curious about how an AI agent could work for you — whether it's handling customer support, generating content, monitoring competitors, or something else entirely — <strong>let's talk</strong>.</p>
+
+<p>At HD WebDesign, we help businesses in Slovenia and beyond integrate AI-powered solutions, from chatbots to full agent setups. Drop me a message, and we'll figure out what makes sense for your specific situation.</p>
+
+<hr>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What's the main difference between an AI chatbot and an AI agent?</h3>
+<p>A chatbot responds to questions. An AI agent takes actions — it can send emails, update databases, scrape websites, post content, and complete multi-step tasks autonomously. Think of it as the difference between asking someone for directions versus hiring them as your driver.</p>
+
+<h3>Do I need technical skills to use an AI agent?</h3>
+<p>It depends on the setup. Open-source agents like Hermes require some initial configuration (or a developer to set it up for you). Managed solutions are much simpler — often just a chat interface. Once running, most agents are designed to be used by non-technical people.</p>
+
+<h3>Are AI agents secure? Can they access sensitive data?</h3>
+<p>Security depends on the implementation. Reputable AI agents run on encrypted connections, and you control what tools and data they can access. Open-source options give you full transparency — you can audit the code. For sensitive operations, agents can be configured with strict permissions and human-in-the-loop approval steps.</p>
+
+<h3>How much time can an AI agent actually save?</h3>
+<p>Based on my experience and industry data, businesses typically save 10–20 hours per week on administrative tasks. Customer inquiries that took hours to respond to can be handled in seconds. Report generation that took a full afternoon can run automatically overnight.</p>
+
+<h3>Can an AI agent replace my employees?</h3>
+<p>AI agents are best used to <em>augment</em> your team, not replace them. They handle repetitive, time-consuming tasks so your people can focus on creative, strategic, and relationship-building work. They're a force multiplier, not a substitute for human judgment.</p>
+
+<h3>How do I get started with an AI agent for my business?</h3>
+<p>The simplest path: identify your biggest time-waster (email overload? customer inquiries? content creation?), then reach out to a specialist who can set up an agent tailored to that need. At HD WebDesign, we offer consultations to help you find the right AI agent solution. <strong>Book a free consultation today.</strong></p>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 Herceg Darko. All rights reserved.</p>
+    </footer>
+
+    <!-- Article Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "What Are AI Agents and How Can They Run Your Business?",
+        "description": "AI agents explained: what they are, what they can do today, and how businesses in Slovenia and beyond are using them.",
+        "datePublished": "2026-06-08",
+        "dateModified": "2026-06-08",
+        "author": {
+            "@type": "Person",
+            "name": "Darko Herceg"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HD Web Design",
+            "url": "https://hd-webdesign.si"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://hd-webdesign.si/blog/what-are-ai-agents.html"
+        }
+    }
+    </script>
+<script src="/js/main.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+
+<div class="hd-chatbot">
+        <button class="hd-chat-toggle" id="hdChatToggle" aria-label="Odpri klepet">
+            <span class="chat-icon">💬</span>
+            <span class="close-icon">✕</span>
+        </button>
+        <div class="hd-chat-window" id="hdChatWindow">
+            <div class="hd-chat-header">
+                <div class="hd-chat-header-avatar">🤖</div>
+                <div class="hd-chat-header-info">
+                    <h3>HD Assistant</h3>
+                    <span>HD Web Design</span>
+                </div>
+            </div>
+            <div class="hd-chat-messages" id="hdChatMessages">
+                <div class="hd-msg bot">Zdravo! 👋 Sem HD Web Design asistent. Kako vam lahko pomagam?</div>
+                <div class="hd-typing" id="hdTyping">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="hd-chat-input">
+                <input type="text" id="hdChatInput" placeholder="Vpišite vprašanje..." autocomplete="off">
+                <button id="hdChatSend" aria-label="Pošlji">➤</button>
+            </div>
+            <div class="hd-chat-footer">Powered by DeepSeek AI</div>
+        </div>
+    </div>
+</body></html>

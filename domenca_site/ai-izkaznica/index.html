@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Izkaznica — Preverite, kako vas vidi AI</title>
+<meta name="description" content="Vnesite domeno in v 5 sekundah izvejte, kako vaše podjetje ocenjujejo ChatGPT, Perplexity in Gemini. Brezplačno.">
+<meta property="og:title" content="AI Izkaznica — Kako vas vidi AI?">
+<meta property="og:description" content="Vnesite domeno in takoj prejmite oceno AI vidnosti.">
+<link rel="icon" href="/images/hdwebdesign-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--void:#f2f3f5;--surface:#fff;--surface-2:#eceef1;--line:#dcdfe4;--ink:#12141a;--muted:#565f6e;--muted-dim:#9aa1ac;--signal:#0d8f80;--signal-soft:#0d8f8014;--signal-line:#0d8f8055;--alert:#b3550c;--alert-soft:#b3550c14;--grade-a:#15803d;--grade-f:#dc2626;--font-display:'Fraunces',Georgia,serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'IBM Plex Mono',monospace;--radius-card:20px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--void);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--signal);text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 28px;background:rgba(242,243,245,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--ink);letter-spacing:-.02em;text-decoration:none}
+.logo-mark{width:30px;height:30px;background:var(--ink);color:var(--void);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.7rem;font-weight:500;letter-spacing:.04em}
+.navlinks{display:flex;gap:24px;margin-right:24px}
+.navlinks a{font-size:.82rem;color:var(--muted);font-weight:450;transition:color .2s}
+.navlinks a:hover,.navlinks a.active{color:var(--ink)}
+.lang-switcher{display:flex;gap:4px}
+.lang-btn{background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;font-size:.7rem;font-family:var(--font-mono);color:var(--muted);cursor:pointer;transition:all .2s}
+.lang-btn:hover{border-color:var(--signal);color:var(--signal)}
+.lang-btn.active{background:var(--signal);border-color:var(--signal);color:#fff}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 28px 60px;max-width:1200px;margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;width:100%}
+.hero-left{display:flex;flex-direction:column;gap:24px}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,4rem);font-weight:500;line-height:1.1;letter-spacing:-.03em;color:var(--ink)}
+.hero-title em{font-style:italic;color:var(--signal)}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:36ch}
+.input-group{display:flex;gap:8px;max-width:420px}
+.input-group input{flex:1;padding:14px 20px;border:1px solid var(--line);border-radius:10px;font-family:var(--font-mono);font-size:.85rem;background:var(--surface);color:var(--ink);transition:border-color .2s}
+.input-group input:focus{outline:none;border-color:var(--signal)}
+.input-group input::placeholder{color:var(--muted-dim)}
+.btn-scan{padding:14px 28px;background:var(--signal);color:#fff;border:none;border-radius:10px;font-family:var(--font-body);font-weight:500;font-size:.85rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-scan:hover{background:#0a7a6d}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{font-family:var(--font-mono);font-size:.68rem;padding:5px 12px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:var(--surface)}
+.card-wrapper{display:flex;justify-content:center;align-items:center;perspective:1200px;width:100%;min-height:400px}
+.ai-card{width:100%;max-width:420px;aspect-ratio:1.55/1;border-radius:var(--radius-card);padding:0;position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .06s ease-out,box-shadow .4s cubic-bezier(.22,1,.36,1);box-shadow:0 20px 60px -12px rgba(0,0,0,.07),0 0 0 1px rgba(255,255,255,.03);background:linear-gradient(145deg,#1a1c26,#0d0e14)}
+.card-watermark{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.04;background-image:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.3) 20px,rgba(255,255,255,.3) 21px),repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,.3) 20px,rgba(255,255,255,.3) 21px);background-size:40px 40px}
+.card-security-pattern{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.03;background-image:radial-gradient(circle at 20% 50%,rgba(255,255,255,.1) 0%,transparent 1px),radial-gradient(circle at 80% 50%,rgba(255,255,255,.1) 0%,transparent 1px);background-size:4px 4px}
+.card-hologram{position:absolute;top:15%;right:10%;width:28%;height:55%;z-index:3;pointer-events:none;border-radius:.6rem;background:linear-gradient(135deg,rgba(59,130,246,.15) 0%,rgba(139,92,246,.1) 20%,rgba(59,130,246,.2) 40%,rgba(236,72,153,.08) 60%,rgba(59,130,246,.15) 80%,rgba(139,92,246,.1) 100%);box-shadow:inset 0 0 30px rgba(59,130,246,.05);border:1px solid rgba(255,255,255,.04);overflow:hidden}
+.card-hologram::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(60deg,transparent,transparent 5px,rgba(255,255,255,.03) 5px,rgba(255,255,255,.03) 6px);animation:hologramShimmer 4s linear infinite}
+.card-hologram::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.05) 30%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.05) 70%,transparent 100%);animation:hologramSweep 3s ease-in-out infinite}
+@keyframes hologramShimmer{0%{transform:translateX(-100%) rotate(60deg)}100%{transform:translateX(100%) rotate(60deg)}}
+@keyframes hologramSweep{0%{transform:translateX(-100%)}50%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+.card-uv-glow{position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:var(--radius-card);background:radial-gradient(circle at 30% 40%,rgba(59,130,246,.04) 0%,transparent 60%);transition:opacity .6s}
+.ai-card:hover .card-uv-glow{opacity:.5;background:radial-gradient(circle at 30% 40%,rgba(59,130,246,.08) 0%,transparent 60%)}
+.card-micro-print{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);z-index:4;font-family:var(--font-mono);font-size:.3rem;letter-spacing:.15em;color:rgba(255,255,255,.08);text-transform:uppercase;white-space:nowrap;pointer-events:none;font-weight:300}
+.card-content{position:relative;z-index:5;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;height:100%}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start}
+.card-brand{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;color:rgba(255,255,255,.5);text-transform:uppercase;font-weight:400}
+.card-grade{font-size:4rem;font-weight:500;line-height:1;text-shadow:0 2px 20px rgba(59,130,246,.1)}
+.grade-a{color:#34d399}.grade-b{color:#22d3ee}.grade-c{color:#fbbf24}.grade-d{color:#fb923c}.grade-f{color:#dc2626}
+.card-middle{flex:1;display:flex;flex-direction:column;justify-content:center;padding:.5rem 0}
+.card-company{font-size:1.3rem;font-weight:500;color:#f5f5f5;letter-spacing:-.01em}
+.card-company-sub{font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-top:.1rem}
+.card-score{font-family:var(--font-mono);font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.2rem}
+.card-footer{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(255,255,255,.04);padding-top:.7rem}
+.card-footer-left,.card-footer-right{display:flex;flex-direction:column}
+.card-footer-label{font-family:var(--font-mono);font-size:.45rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.3)}
+.card-footer-value{font-family:var(--font-mono);font-size:.7rem;color:rgba(255,255,255,.6);font-weight:400}
+.ai-card::after{content:"";position:absolute;inset:0;border-radius:var(--radius-card);pointer-events:none;z-index:6;border:1px solid rgba(255,255,255,.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.02)}
+.loading{display:none;text-align:center;padding:32px}
+.loading.active{display:block}
+.loader{width:32px;height:32px;border:3px solid var(--line);border-top-color:var(--signal);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.result{display:none;margin-top:40px}
+.result.active{display:block}
+.result-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card);overflow:hidden;padding:28px}
+.rc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.rc-domain{font-family:var(--font-mono);font-size:.82rem;color:var(--muted)}
+.rc-badge{font-family:var(--font-mono);font-size:.72rem;padding:4px 12px;border-radius:6px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.rc-grade{display:flex;align-items:center;gap:20px;margin-bottom:20px}
+.grade-ring{position:relative;width:90px;height:90px;flex-shrink:0}
+.grade-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.grade-ring .bg{fill:none;stroke:var(--line);stroke-width:8}
+.grade-ring .progress{fill:none;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1.2s ease}
+.grade-ring .letter{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:600}
+.grade-info h2{font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:var(--ink)}
+.grade-info p{font-size:.88rem;color:var(--muted);margin-top:2px}
+.rc-divider{height:1px;background:var(--line);margin:16px 0}
+.checks{display:flex;flex-direction:column;gap:10px}
+.chk{display:flex;align-items:center;gap:10px;font-size:.82rem;padding:10px 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.chk .icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0}
+.chk .icon.pass{background:#e8f6ee;color:#15803d}
+.chk .icon.fail{background:#fdeaea;color:#dc2626}
+.chk .label{color:var(--ink);font-weight:450}
+.chk .val{margin-left:auto;font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
+.actions{display:flex;gap:8px;margin-top:16px}
+.act{flex:1;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font-family:var(--font-body);font-size:.82rem;font-weight:450;cursor:pointer;transition:all .2s;text-align:center}
+.act:hover{border-color:var(--signal);color:var(--signal)}
+.act.primary{background:var(--signal);border-color:var(--signal);color:#fff}
+.act.primary:hover{background:#0a7a6d}
+.add-section{margin-top:12px}
+.section-inner{max-width:1000px;margin:0 auto;padding:80px 28px}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:500;color:var(--ink);letter-spacing:-.02em}
+.section-title em{font-style:italic;color:var(--signal)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
+.step{border-left:2px solid var(--line);padding-left:24px}
+.step-number{font-family:var(--font-mono);font-size:2.2rem;font-weight:500;color:var(--line);margin-bottom:4px}
+.step h3{font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--ink)}
+.step p{font-size:.88rem;color:var(--muted)}
+.grade-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px}
+.grade-item{text-align:center;padding:24px 16px;border:1px solid var(--line);border-radius:var(--radius-card);background:var(--surface);transition:all .2s}
+.grade-item:hover{transform:translateY(-3px);border-color:var(--signal)}
+.grade-letter{font-family:var(--font-display);font-size:2rem;font-weight:600}
+.grade-label{font-size:.85rem;font-weight:450;color:var(--ink);margin-top:4px}
+.grade-desc{font-size:.78rem;color:var(--muted);margin-top:2px}
+.pricing-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;margin-top:40px}
+.pricing-card{border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;background:var(--surface);transition:all .2s}
+.pricing-card:hover{transform:translateY(-3px);border-color:var(--signal)}
+.pricing-card.accent{border-color:var(--signal-line);background:var(--signal-soft)}
+.pricing-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--ink)}
+.price{font-family:var(--font-display);font-size:2.4rem;font-weight:500;color:var(--ink);margin:8px 0}
+.price small{font-size:.85rem;color:var(--muted);font-weight:400}
+.feature-list{list-style:none;margin-top:16px}
+.feature-list li{padding:6px 0;color:var(--muted);font-size:.85rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.feature-list li::before{content:"✓";color:var(--signal);font-weight:600}
+.btn-outline{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--ink);font-family:var(--font-body);font-size:.85rem;font-weight:450;cursor:pointer;transition:all .2s;margin-top:16px}
+.btn-outline:hover{border-color:var(--signal);color:var(--signal)}
+.btn-primary{width:100%;padding:12px;border:none;border-radius:10px;background:var(--signal);color:#fff;font-family:var(--font-body);font-size:.85rem;font-weight:450;cursor:pointer;transition:all .2s;margin-top:16px}
+.btn-primary:hover{background:#0a7a6d}
+.cta-section{text-align:center;padding:80px 28px}
+.cta-title{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:500;color:var(--ink);letter-spacing:-.02em;margin-bottom:24px}
+.cta-title em{font-style:italic;color:var(--signal)}
+.btn-large{display:inline-block;padding:16px 48px;background:var(--signal);color:#fff;border:none;border-radius:10px;font-family:var(--font-body);font-size:1rem;font-weight:500;cursor:pointer;transition:all .2s}
+.btn-large:hover{background:#0a7a6d}
+footer{border-top:1px solid var(--line);padding:48px 28px 32px;background:var(--surface)}
+.footer-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px}
+.footer-brand p{font-size:.82rem;color:var(--muted);margin-top:8px;max-width:280px}
+.footer-cols{display:flex;gap:48px}
+.footer-col h4{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;color:var(--muted-dim);margin-bottom:12px}
+.footer-col a{display:block;font-size:.82rem;color:var(--muted);margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:var(--signal)}
+.footer-bottom{max-width:1000px;margin:32px auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.68rem;color:var(--muted-dim);letter-spacing:.04em;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.card-wrapper{min-height:300px}.steps{grid-template-columns:1fr}.grade-grid{grid-template-columns:repeat(3,1fr)}.pricing-grid{grid-template-columns:1fr}.footer-cols{flex-direction:column;gap:24px}}
+@media(max-width:600px){.hero{padding:100px 16px 40px;min-height:auto}.section-inner{padding:48px 16px}.grade-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}.card-hologram{width:20%;height:45%;top:20%;right:8%}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo"><div class="logo-mark">HD</div>WebDesign</a>
+<div style="display:flex;align-items:center;">
+<div class="navlinks"><a href="/">Domov</a><a href="/blog/">Blog</a><a href="/indeks-ai-vidljivosti/">AI Indeks</a><a href="/ai-izkaznica/" class="active">Izkaznica</a></div>
+<div class="lang-switcher"><button class="lang-btn" data-lang="sl">SL</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="de">DE</button><button class="lang-btn" data-lang="hr">HR</button><button class="lang-btn" data-lang="it">IT</button></div>
+</div>
+</nav>
+
+<div class="hero">
+<div class="hero-grid">
+<div class="hero-left">
+<h1 class="hero-title" data-i18n="heroTitle">Kako te vidijo<br><em>AI asistenti?</em></h1>
+<p class="hero-sub" data-i18n="heroSub">Vnesi domeno in v 5 sekundah izveš, kako tvoje podjetje ocenjujejo ChatGPT, Perplexity in Gemini.</p>
+<div class="input-group"><input type="text" id="domain" placeholder="tvoja-domena.si" autofocus><button class="btn-scan" id="auditBtn" onclick="runAudit()" data-i18n="scanBtn">Skeniraj</button></div>
+<div class="hero-badges"><span class="badge" data-i18n="heroBadge1">AI analiza v realnem času</span><span class="badge" data-i18n="heroBadge2">ocena A–F</span></div>
+</div>
+<div class="card-wrapper" id="cardContainer">
+<div class="ai-card" id="aiCard">
+<div class="card-watermark"></div>
+<div class="card-security-pattern"></div>
+<div class="card-uv-glow"></div>
+<div class="card-hologram"></div>
+<div class="card-micro-print">••• AI VISIBILITY INDEX ••• VERIFIED ••• 2026 •••</div>
+<div class="card-content">
+<div class="card-top">
+<span class="card-brand">AI Izkaznica</span>
+<span class="card-grade grade-a" id="gradeDisplay">A</span>
+</div>
+<div class="card-middle">
+<div class="card-company" id="cardCompanyText">hd-webdesign.si</div>
+<div class="card-company-sub">AI Visibility Index</div>
+<div class="card-score" id="cardScoreText">Vidnost · 94 / 100</div>
+</div>
+<div class="card-footer">
+<div class="card-footer-left">
+<span class="card-footer-label">Izdano</span>
+<span class="card-footer-value" id="cardDateText">31. julij 2026</span>
+</div>
+<div class="card-footer-right">
+<span class="card-footer-label">Št. certifikata</span>
+<span class="card-footer-value">AI‑2026‑007</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="loading" id="loading"><div class="loader"></div><p data-i18n="loading">Pregledujem AI-vidljivost…</p></div>
+
+<div class="section-inner">
+<div class="result" id="result">
+<div class="result-card">
+<div class="rc-top"><div class="rc-domain" id="cDomain"></div><div class="rc-badge" id="cBadge"></div></div>
+<div class="rc-grade">
+<div class="grade-ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"></circle><circle class="progress" id="ringProgress" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle></svg><div class="letter" id="cLetter"></div></div>
+<div class="grade-info"><h2 id="cLabel"></h2><p id="cSub"></p></div>
+</div>
+<div class="rc-divider"></div>
+<div class="checks" id="cChecks"></div>
+<div class="rc-footer" style="display:flex;justify-content:space-between;margin-top:16px;font-family:var(--font-mono);font-size:.72rem;color:var(--muted)">
+<span>AI Report Card · 2026</span>
+<span style="cursor:pointer" onclick="document.getElementById('upgrade').scrollIntoView({behavior:'smooth'})">↓ Celovita analiza</span>
+</div>
+</div>
+<div class="actions"><button class="act primary" onclick="downloadCard()" data-i18n="download">📷 Prenesi</button><button class="act" onclick="shareCard()" data-i18n="share">🔗 Deli</button></div>
+<div class="add-section"><button class="act" onclick="addToIndex()" id="addIdxBtn" style="width:100%;background:var(--signal-soft);border-color:var(--signal-line);color:var(--signal);display:none" data-i18n="addIndex">📊 Dodaj na javni indeks</button></div>
+<div id="upgrade" style="background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:28px">
+<div style="padding:20px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center">
+<div><h3 style="font-family:var(--font-display);font-size:1rem;font-weight:500" data-i18n="upgradeTitle">Polno PDF poročilo</h3><p style="font-size:.82rem;color:var(--muted);margin:0" data-i18n="upgradeSub">Celovita analiza za konkreten načrt izboljšave</p></div>
+<div style="font-family:var(--font-display);font-size:1.4rem;font-weight:500;color:var(--signal)">€20</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:20px 28px">
+<div style="background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px"><h4 style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px">🃏 <span data-i18n="compareFree">Brezplačna izkaznica</span></h4><ul style="list-style:none"><li style="font-size:.78rem;color:var(--muted);padding:4px 0" data-i18n="cmpFree1">7 osnovnih testov</li><li style="font-size:.78rem;color:var(--muted);padding:4px 0" data-i18n="cmpFree2">Ocena A–F</li><li style="font-size:.78rem;color:var(--muted);padding:4px 0" data-i18n="cmpFree3">Deljenje kot slika</li></ul></div>
+<div style="background:var(--surface-2);border:1px solid var(--signal-line);border-radius:12px;padding:16px"><h4 style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--signal);margin-bottom:12px">📄 <span data-i18n="comparePaid">PDF poročilo (€20)</span></h4><ul style="list-style:none"><li style="font-size:.78rem;color:var(--muted);padding:4px 0" data-i18n="cmpPaid1">Vse iz brezplačne izkaznice</li><li style="font-size:.78rem;color:var(--ink);padding:4px 0;font-weight:500" data-i18n="cmpPaid2">Tehnična analiza</li><li style="font-size:.78rem;color:var(--ink);padding:4px 0;font-weight:500" data-i18n="cmpPaid3">SEO analiza</li><li style="font-size:.78rem;color:var(--ink);padding:4px 0;font-weight:500" data-i18n="cmpPaid4">Kontakti + social</li><li style="font-size:.78rem;color:var(--ink);padding:4px 0;font-weight:500" data-i18n="cmpPaid5">Priložnosti</li><li style="font-size:.78rem;color:var(--ink);padding:4px 0;font-weight:500" data-i18n="cmpPaid6">Načrt izboljšav</li></ul></div>
+</div>
+<div style="padding:0 28px 24px"><button class="btn-primary" onclick="getFullReport()" style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:0">📄 <span data-i18n="ctaUpgrade">Naroči full PDF poročilo — €20</span></button><div style="text-align:center;margin-top:10px;font-size:.75rem;color:var(--muted)" data-i18n="ctaSub">Plačilo prek Stripe · Dostava takoj na email</div></div>
+</div>
+</div>
+</div>
+
+<section class="reveal"><div class="section-inner"><h2 class="section-title"><span data-i18n="stepsTitle">Kako</span> <em>deluje</em></h2><div class="steps"><div class="step"><div class="step-number">01</div><h3 data-i18n="step1Title">Vnesi domeno</h3><p data-i18n="step1Sub">Samo URL tvojega podjetja.</p></div><div class="step"><div class="step-number">02</div><h3 data-i18n="step2Title">AI analiza</h3><p data-i18n="step2Sub">Preverimo ChatGPT, Perplexity in Gemini.</p></div><div class="step"><div class="step-number">03</div><h3 data-i18n="step3Title">Prejmi izkaznico</h3><p data-i18n="step3Sub">Ocena A–F in podroben pregled.</p></div></div></div></section>
+
+<section class="reveal"><div class="section-inner"><h2 class="section-title"><span data-i18n="gradesTitle">Razred</span> <em>ocen</em></h2><div class="grade-grid"><div class="grade-item"><div class="grade-letter" style="color:#15803d">A</div><div class="grade-label" data-i18n="gradeA">Odlično</div><div class="grade-desc" data-i18n="gradeAdesc">AI vas močno priporoča</div></div><div class="grade-item"><div class="grade-letter" style="color:var(--signal)">B</div><div class="grade-label" data-i18n="gradeB">Zelo dobro</div><div class="grade-desc" data-i18n="gradeBdesc">Visoka vidnost in zaupanje</div></div><div class="grade-item"><div class="grade-letter" style="color:#a8720c">C</div><div class="grade-label" data-i18n="gradeC">Dobro</div><div class="grade-desc" data-i18n="gradeCdesc">Zmerna AI prisotnost</div></div><div class="grade-item"><div class="grade-letter" style="color:var(--alert)">D</div><div class="grade-label" data-i18n="gradeD">Zadovoljivo</div><div class="grade-desc" data-i18n="gradeDdesc">Omejena AI vidnost</div></div><div class="grade-item"><div class="grade-letter" style="color:#dc2626">F</div><div class="grade-label" data-i18n="gradeF">Neviden</div><div class="grade-desc" data-i18n="gradeFdesc">AI vas ne pozna</div></div></div></div></section>
+
+<section class="reveal"><div class="section-inner"><h2 class="section-title"><span data-i18n="pricingTitle">Izberi svoje</span> <em>poročilo</em></h2><div class="pricing-grid"><div class="pricing-card"><h3 data-i18n="pricingFree">Brezplačna Izkaznica</h3><div class="price">€0</div><ul class="feature-list"><li>7 osnovnih AI preverb</li><li>Ocena A–F</li><li>Deljenje na družbenih omrežjih</li></ul><button class="btn-outline" onclick="document.getElementById('domain').focus()" data-i18n="pricingCtaFree">Pridobi brezplačno</button></div><div class="pricing-card accent"><h3 data-i18n="pricingPaid">Celotno PDF poročilo</h3><div class="price">€20 <small data-i18n="pricingOnce">enkratno</small></div><ul class="feature-list"><li>Vse iz brezplačne izkaznice</li><li>Tehnična analiza (CMS, SSL, GA)</li><li>SEO analiza (naslovi, H1, slike)</li><li>Kontakti in družbena omrežja</li><li>Priložnosti in priporočila</li><li>Konkreten načrt izboljšav</li></ul><button class="btn-primary" onclick="getFullReport()" data-i18n="pricingCtaPaid">Kupite prek Stripe</button><p style="font-size:.75rem;color:var(--muted);margin-top:1rem;text-align:center" data-i18n="pricingSub">Takojšnja dostava na e-pošto</p></div></div></div></section>
+
+<section class="cta-section reveal"><div class="section-inner"><h2 class="cta-title" data-i18n="ctaTitle">Pripravljeni izvedeti, kaj o vas misli <em>AI?</em></h2><button class="btn-large" onclick="document.getElementById('domain').focus()" data-i18n="ctaBtn">Skeniraj svojo domeno →</button></div></section>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand"><a href="/" class="logo"><div class="logo-mark">HD</div>WebDesign</a><p>AI-vidljivost slovenskih podjetij spremljamo mesečno.</p></div>
+<div class="footer-cols">
+<div class="footer-col"><h4>INDEKS</h4><a href="/indeks-ai-vidljivosti/">Vsi sektorji</a><a href="/indeks-ai-vidljivosti/#methodology">Metodologija</a></div>
+<div class="footer-col"><h4>BOOSTSUITE</h4><a href="/boost-suite/">GEOBoost</a><a href="/boost-suite/">SEOBooster</a></div>
+<div class="footer-col"><h4>POVEZAVE</h4><a href="/blog/">Blog</a><a href="/ai-izkaznica/">Izkaznica</a><a href="mailto:hercegdarko@hd-webdesign.si">Kontakt</a></div>
+</div>
+</div>
+<div class="footer-bottom"><span>© 2026 HD WebDesign · Celje, Slovenija</span><span>PODATKI POSODOBLJENI MESEČNO</span></div>
+</footer>
+
+<script>
+const I18N={
+sl:{heroTitle:'Kako te vidijo<br><em>AI asistenti?</em>',heroSub:'Vnesi domeno in v 5 sekundah izveš, kako tvoje podjetje ocenjujejo ChatGPT, Perplexity in Gemini.',heroBadge1:'AI analiza v realnem času',heroBadge2:'ocena A–F',scanBtn:'Skeniraj',loading:'Pregledujem AI-vidljivost…',download:'📷 Prenesi',share:'🔗 Deli',addIndex:'📊 Dodaj na javni indeks',stepsTitle:'Kako',gradesTitle:'Razred',pricingTitle:'Izberi svoje',step1Title:'Vnesi domeno',step1Sub:'Samo URL tvojega podjetja.',step2Title:'AI analiza',step2Sub:'Preverimo ChatGPT, Perplexity in Gemini.',step3Title:'Prejmi izkaznico',step3Sub:'Ocena A–F in podroben pregled.',gradeA:'Odlično',gradeAdesc:'AI vas močno priporoča',gradeB:'Zelo dobro',gradeBdesc:'Visoka vidnost in zaupanje',gradeC:'Dobro',gradeCdesc:'Zmerna AI prisotnost',gradeD:'Zadovoljivo',gradeDdesc:'Omejena AI vidnost',gradeF:'Neviden',gradeFdesc:'AI vas ne pozna',pricingFree:'Brezplačna Izkaznica',pricingPaid:'Celotno PDF poročilo',pricingOnce:'enkratno',pricingCtaFree:'Pridobi brezplačno',pricingCtaPaid:'Kupite prek Stripe',pricingSub:'Takojšnja dostava na e-pošto',ctaTitle:'Pripravljeni izvedeti, kaj o vas misli <em>AI?</em>',ctaBtn:'Skeniraj svojo domeno →',upgradeTitle:'Polno PDF poročilo',upgradeSub:'Celovita analiza za konkreten načrt izboljšave',compareFree:'Brezplačna izkaznica',comparePaid:'PDF poročilo (€20)',cmpFree1:'7 osnovnih testov',cmpFree2:'Ocena A–F',cmpFree3:'Deljenje kot slika',cmpPaid1:'Vse iz brezplačne izkaznice',cmpPaid2:'Tehnična analiza',cmpPaid3:'SEO analiza',cmpPaid4:'Kontakti + social',cmpPaid5:'Priložnosti',cmpPaid6:'Načrt izboljšav',ctaUpgrade:'Naroči full PDF poročilo — €20',ctaSub:'Plačilo prek Stripe · Dostava takoj na email',checks:{main:'Stran dostopna',llms:'llms.txt datoteka',schema:'Schema.org markup',meta:'Meta description',og:'Open Graph tagi',sitemap:'Sitemap.xml',robots:'Robots.txt'},labels:{A:{text:'Odlično!',sub:'Vaše podjetje je vidno za AI modele.'},B:{text:'Dobro',sub:'Skoraj pripravljeno za AI priporočila.'},C:{text:'Povprečno',sub:'Nekaj manjka — AI modeli vas ne priporočajo.'},D:{text:'Slabo',sub:'Vaše podjetje je komaj vidno za AI.'},F:{text:'Nevidno',sub:'AI modeli ne vidijo vašega podjetja.'}}},
+en:{heroTitle:'How do <em>AI assistants</em><br>see you?',heroSub:'Enter your domain and in 5 seconds find out how ChatGPT, Perplexity and Gemini rate your business.',heroBadge1:'Real-time AI analysis',heroBadge2:'grade A–F',scanBtn:'Scan',loading:'Scanning AI visibility…',download:'📷 Download',share:'🔗 Share',addIndex:'📊 Add to public index',stepsTitle:'How it works',gradesTitle:'Grade',pricingTitle:'Choose your',step1Title:'Enter domain',step1Sub:'Just your company URL.',step2Title:'AI analysis',step2Sub:'We check ChatGPT, Perplexity and Gemini.',step3Title:'Get your card',step3Sub:'Grade A–F and detailed review.',gradeA:'Excellent',gradeAdesc:'AI strongly recommends you',gradeB:'Very good',gradeBdesc:'High visibility and trust',gradeC:'Good',gradeCdesc:'Moderate AI presence',gradeD:'Fair',gradeDdesc:'Limited AI visibility',gradeF:'Invisible',gradeFdesc:'AI doesn\'t know you',pricingFree:'Free Report Card',pricingPaid:'Full PDF Report',pricingOnce:'one-time',pricingCtaFree:'Get for free',pricingCtaPaid:'Buy via Stripe',pricingSub:'Instant delivery to email',ctaTitle:'Ready to find out what <em>AI</em> thinks of you?',ctaBtn:'Scan your domain →',upgradeTitle:'Full PDF Report',upgradeSub:'Complete analysis with an actionable improvement plan',compareFree:'Free Card',comparePaid:'PDF Report (€20)',cmpFree1:'7 basic checks',cmpFree2:'Grade A–F',cmpFree3:'Shareable image',cmpPaid1:'Everything from the free card',cmpPaid2:'Technical analysis',cmpPaid3:'SEO analysis',cmpPaid4:'Contact info + social',cmpPaid5:'Opportunities',cmpPaid6:'Improvement plan',ctaUpgrade:'Get Full PDF Report — €20',ctaSub:'Paid via Stripe · Instant delivery to email',checks:{main:'Website accessible',llms:'llms.txt file',schema:'Schema.org markup',meta:'Meta description',og:'Open Graph tags',sitemap:'Sitemap.xml',robots:'Robots.txt'},labels:{A:{text:'Excellent!',sub:'Your business is visible to AI models.'},B:{text:'Good',sub:'Almost ready for AI recommendations.'},C:{text:'Average',sub:'Something is missing — AI won\'t recommend you.'},D:{text:'Poor',sub:'Your business is barely visible to AI.'},F:{text:'Invisible',sub:'AI models can\'t see your business at all.'}}},
+de:{heroTitle:'Wie sehen Sie <em>KI-Assistenten</em>?',heroSub:'Geben Sie Ihre Domain ein und erfahren Sie in 5 Sekunden, wie ChatGPT, Perplexity und Gemini Ihr Unternehmen bewerten.',heroBadge1:'KI-Analyse in Echtzeit',heroBadge2:'Note A–F',scanBtn:'Scannen',loading:'KI-Sichtbarkeit wird geprüft…',download:'📷 Herunterladen',share:'🔗 Teilen',addIndex:'📊 Zum Index hinzufügen',stepsTitle:'So funktioniert es',gradesTitle:'Noten',pricingTitle:'Wählen Sie Ihr',step1Title:'Domain eingeben',step1Sub:'Nur die URL Ihres Unternehmens.',step2Title:'KI-Analyse',step2Sub:'Wir prüfen ChatGPT, Perplexity und Gemini.',step3Title:'Zeugnis erhalten',step3Sub:'Note A–F und detaillierte Bewertung.',gradeA:'Ausgezeichnet',gradeAdesc:'KI empfiehlt Sie stark',gradeB:'Sehr gut',gradeBdesc:'Hohe Sichtbarkeit und Vertrauen',gradeC:'Gut',gradeCdesc:'Mäßige KI-Präsenz',gradeD:'Befriedigend',gradeDdesc:'Begrenzte KI-Sichtbarkeit',gradeF:'Unsichtbar',gradeFdesc:'KI kennt Sie nicht',pricingFree:'Kostenloses Zeugnis',pricingPaid:'Vollständiger PDF-Bericht',pricingOnce:'einmalig',pricingCtaFree:'Kostenlos erhalten',pricingCtaPaid:'Per Stripe kaufen',pricingSub:'Sofortige Lieferung per E-Mail',ctaTitle:'Bereit herauszufinden, was <em>KI</em> von Ihnen hält?',ctaBtn:'Domain scannen →',upgradeTitle:'Vollständiger PDF-Bericht',upgradeSub:'Komplette Analyse mit konkretem Verbesserungsplan',compareFree:'Kostenlose Karte',comparePaid:'PDF-Bericht (€20)',cmpFree1:'7 Prüfungen',cmpFree2:'Note A–F',cmpFree3:'Teilbares Bild',cmpPaid1:'Alles aus der kostenlosen Karte',cmpPaid2:'Technische Analyse',cmpPaid3:'SEO-Analyse',cmpPaid4:'Kontaktinfos',cmpPaid5:'Möglichkeiten',cmpPaid6:'Verbesserungsplan',ctaUpgrade:'PDF-Bericht kaufen — €20',ctaSub:'Bezahlung via Stripe · Sofortige Lieferung',checks:{main:'Webseite erreichbar',llms:'llms.txt-Datei',schema:'Schema.org-Markup',meta:'Meta-Beschreibung',og:'Open-Graph-Tags',sitemap:'Sitemap.xml',robots:'Robots.txt'},labels:{A:{text:'Ausgezeichnet!',sub:'Ihr Unternehmen ist für KI sichtbar.'},B:{text:'Gut',sub:'Fast bereit für KI-Empfehlungen.'},C:{text:'Durchschnittlich',sub:'Etwas fehlt.'},D:{text:'Schlecht',sub:'Kaum für KI sichtbar.'},F:{text:'Unsichtbar',sub:'KI-Modelle sehen Ihr Unternehmen nicht.'}}},
+hr:{heroTitle:'Kako vas vide <em>AI asistenti</em>?',heroSub:'Unesite domenu i u 5 sekundi saznajte kako ChatGPT, Perplexity i Gemini ocjenjuju vaše poduzeće.',heroBadge1:'AI analiza u stvarnom vremenu',heroBadge2:'ocjena A–F',scanBtn:'Skeniraj',loading:'Provjeravam AI vidljivost…',download:'📷 Preuzmi',share:'🔗 Podijeli',addIndex:'📊 Dodaj na indeks',stepsTitle:'Kako funkcionira',gradesTitle:'Razred',pricingTitle:'Odaberite svoje',step1Title:'Unesite domenu',step1Sub:'Samo URL vašeg poduzeća.',step2Title:'AI analiza',step2Sub:'Provjeravamo ChatGPT, Perplexity i Gemini.',step3Title:'Primite iskaznicu',step3Sub:'Ocjena A–F i detaljan pregled.',gradeA:'Odlično',gradeAdesc:'AI vas jako preporučuje',gradeB:'Vrlo dobro',gradeBdesc:'Visoka vidljivost i povjerenje',gradeC:'Dobro',gradeCdesc:'Umjerena AI prisutnost',gradeD:'Zadovoljavajuće',gradeDdesc:'Ograničena AI vidljivost',gradeF:'Nevidljivo',gradeFdesc:'AI ne poznaje vaše poduzeće',pricingFree:'Besplatna iskaznica',pricingPaid:'Potpuno PDF izvješće',pricingOnce:'jednokratno',pricingCtaFree:'Besplatno',pricingCtaPaid:'Kupi putem Stripea',pricingSub:'Dostava odmah na email',ctaTitle:'Jeste li spremni saznati što <em>AI</em> misli o vama?',ctaBtn:'Skenirajte svoju domenu →',upgradeTitle:'Potpuno PDF izvješće',upgradeSub:'Potpuna analiza s planom poboljšanja',compareFree:'Besplatna iskaznica',comparePaid:'PDF izvješće (€20)',cmpFree1:'7 provjera',cmpFree2:'Ocjena A–F',cmpFree3:'Djeljiva slika',cmpPaid1:'Sve iz besplatne',cmpPaid2:'Tehnička analiza',cmpPaid3:'SEO analiza',cmpPaid4:'Kontakti',cmpPaid5:'Mogućnosti',cmpPaid6:'Plan poboljšanja',ctaUpgrade:'Naruči PDF izvješće — €20',ctaSub:'Plaćanje Stripe · Dostava odmah',checks:{main:'Stranica pristupačna',llms:'llms.txt datoteka',schema:'Schema.org',meta:'Meta description',og:'Open Graph',sitemap:'Sitemap.xml',robots:'Robots.txt'},labels:{A:{text:'Odlično!',sub:'Vidljivo za AI modele.'},B:{text:'Dobro',sub:'Skoro spremno.'},C:{text:'Prosječno',sub:'Nešto nedostaje.'},D:{text:'Loše',sub:'Jedva vidljivo.'},F:{text:'Nevidljivo',sub:'AI ne vidi vaše poduzeće.'}}},
+it:{heroTitle:'Come vi vedono gli <em>assistenti AI</em>?',heroSub:'Inserite un dominio e in 5 secondi scoprite come ChatGPT, Perplexity e Gemini valutano la vostra attività.',heroBadge1:'Analisi AI in tempo reale',heroBadge2:'voto A–F',scanBtn:'Scansiona',loading:'Analisi della visibilità AI…',download:'📷 Scarica',share:'🔗 Condividi',addIndex:'📊 Aggiungi indice',stepsTitle:'Come funziona',gradesTitle:'Classe',pricingTitle:'Scegli la tua',step1Title:'Inserisci dominio',step1Sub:'Solo l\'URL della vostra attività.',step2Title:'Analisi AI',step2Sub:'Controlliamo ChatGPT, Perplexity e Gemini.',step3Title:'Ricevi la scheda',step3Sub:'Voto A–F e revisione dettagliata.',gradeA:'Eccellente',gradeAdesc:'L\'AI vi raccomanda fortemente',gradeB:'Molto buono',gradeBdesc:'Alta visibilità e fiducia',gradeC:'Buono',gradeCdesc:'Presenza AI moderata',gradeD:'Sufficiente',gradeDdesc:'Visibilità AI limitata',gradeF:'Invisibile',gradeFdesc:'L\'AI non conosce la vostra attività',pricingFree:'Scheda gratuita',pricingPaid:'Report PDF completo',pricingOnce:'una tantum',pricingCtaFree:'Ottieni gratis',pricingCtaPaid:'Acquista via Stripe',pricingSub:'Consegna immediata via email',ctaTitle:'Pronti a scoprire cosa pensa l\'<em>AI</em> di voi?',ctaBtn:'Scansiona il tuo dominio →',upgradeTitle:'Report PDF completo',upgradeSub:'Analisi completa con piano d\'azione',compareFree:'Scheda gratuita',comparePaid:'Report PDF (€20)',cmpFree1:'7 controlli',cmpFree2:'Voto A–F',cmpFree3:'Immagine condivisibile',cmpPaid1:'Tutto dalla gratuita',cmpPaid2:'Analisi tecnica',cmpPaid3:'Analisi SEO',cmpPaid4:'Contatti',cmpPaid5:'Opportunità',cmpPaid6:'Piano miglioramento',ctaUpgrade:'Ordina Report PDF — €20',ctaSub:'Pagamento Stripe · Consegna immediata',checks:{main:'Sito accessibile',llms:'File llms.txt',schema:'Schema.org',meta:'Meta description',og:'Open Graph',sitemap:'Sitemap.xml',robots:'Robots.txt'},labels:{A:{text:'Eccellente!',sub:'Visibile ai modelli AI.'},B:{text:'Buono',sub:'Quasi pronto.'},C:{text:'Media',sub:'Manca qualcosa.'},D:{text:'Scarso',sub:'Appena visibile.'},F:{text:'Invisibile',sub:'AI non vede la vostra azienda.'}}}
+};
+
+let lang=localStorage.getItem('ai-izkaznica-lang')||'sl';
+function t(k){const p=k.split('.');let v=I18N[lang]||I18N.sl;for(const x of p)v=v?.[x];return v||k}
+function applyLang(){document.querySelectorAll('[data-i18n]').forEach(el=>{const txt=t(el.getAttribute('data-i18n'));if(txt){if(el.tagName==='H1'||el.tagName==='P'||el.tagName==='H2')el.innerHTML=txt;else el.textContent=txt}});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang))}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;localStorage.setItem('ai-izkaznica-lang',lang);applyLang()}));
+applyLang();
+
+const C={A:'#34d399',B:'#22d3ee',C:'#fbbf24',D:'#fb923c',F:'#dc2626'};
+let R=null;
+async function runAudit(){
+const d=document.getElementById('domain').value.trim().replace(/^https?:\/\//,'').replace(/\/.*$/,'');
+if(!d)return;
+document.getElementById('loading').classList.add('active');
+document.getElementById('result').classList.remove('active');
+try{
+const r=await fetch('/ai-izkaznica/api/audit.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({domain:d})});
+const j=await r.json();
+R=j;show(j);saveToServer(j);
+}catch(e){document.getElementById('loading').classList.remove('active');alert('Napaka: '+e.message)}
+}
+function show(r){
+document.getElementById('loading').classList.remove('active');
+document.getElementById('result').classList.add('active');
+const g=r.grade||'F',sc=r.score||0;
+document.getElementById('cDomain').textContent=r.domain;
+const badge=document.getElementById('cBadge');
+badge.textContent=g;badge.style.background=C[g]+'18';badge.style.color=C[g];
+document.getElementById('cLetter').textContent=g;document.getElementById('cLetter').style.color=C[g];
+const lb=I18N[lang]?.labels?.[g]||I18N.sl.labels[g];
+document.getElementById('cLabel').textContent=lb.text;
+document.getElementById('cSub').textContent=lb.sub;
+const pct=sc/100*326.7;
+setTimeout(()=>{document.getElementById('ringProgress').style.strokeDashoffset=326.7-pct;document.getElementById('ringProgress').style.stroke=C[g]},100);
+const ch=document.getElementById('cChecks');ch.innerHTML='';
+const checks=r.checks||{};
+const kl=['main','llms','schema','meta','og','sitemap','robots'];
+kl.forEach(k=>{const ok=checks[k];const lbl=t('checks.'+k);const d=document.createElement('div');d.className='chk';d.innerHTML=`<div class="icon ${ok?'pass':'fail'}">${ok?'✓':'✗'}</div><span class="label">${lbl}</span><span class="val">${ok?t('labels.'+g+'.text')||'✓':'✗'}</span>`;ch.appendChild(d)});
+document.getElementById('cardCompanyText').textContent=r.domain;
+document.getElementById('cardScoreText').textContent='Vidnost · '+sc+' / 100';
+document.getElementById('cardGrade').textContent=g;
+document.getElementById('cardGrade').className='card-grade grade-'+g.toLowerCase();
+document.getElementById('cardDateText').textContent=new Date().toLocaleDateString('sl-SI',{day:'numeric',month:'long',year:'numeric'});
+document.getElementById('addIdxBtn').style.display='block';
+}
+async function saveToServer(r){try{await fetch('/ai-izkaznica/api/audit.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(r)})}catch(e){}}
+async function addToIndex(){if(!R||!confirm('Dodati '+R.domain+' na javni indeks?'))return;try{await fetch('/indeks-ai-vidljivosti/api/index.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({domain:R.domain,score:R.score,grade:R.grade})});document.getElementById('addIdxBtn').textContent='✓ Dodano!';document.getElementById('addIdxBtn').disabled=true}catch(e){alert('Napaka')}}
+function downloadCard(){if(!R)return;const c=document.createElement('canvas');c.width=1080;c.height=1080;const x=c.getContext('2d');x.fillStyle='#09090b';x.fillRect(0,0,1080,1080);x.fillStyle='#f5f5f5';x.font='bold 180px serif';x.textAlign='center';x.fillText(R.grade||'F',540,420);x.font='24px sans-serif';x.fillStyle='#a1a1aa';x.fillText(R.domain,540,520);x.font='bold 48px sans-serif';x.fillStyle=C[R.grade]||'#fff';x.fillText((R.score||0)+' / 100',540,600);const link=document.createElement('a');link.download='ai-izkaznica-'+(R.domain||'card')+'.png';link.href=c.toDataURL('image/png');link.click()}
+function shareCard(){if(!R)return;const t='Moja AI ocena: '+R.grade+' ('+R.score+'/100) — '+R.domain;if(navigator.share){navigator.share({title:'AI Izkaznica',text:t,url:window.location.href})}else{navigator.clipboard.writeText(t);alert('Kopirano!')}}
+async function getFullReport(){if(!R)return;try{const r=await fetch('/ai-izkaznica/api/checkout.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({domain:R.domain,email:'user@example.com'})});const j=await r.json();if(j.checkout_url)window.location.href=j.checkout_url;else alert('Napaka: '+JSON.stringify(j))}catch(e){alert('Napaka: '+e.message)}}
+
+const card=document.getElementById('aiCard');
+const cc=document.getElementById('cardContainer');
+cc.addEventListener('mousemove',e=>{const rect=cc.getBoundingClientRect();const x=(e.clientX-rect.left)/rect.width-.5;const y=(e.clientY-rect.top)/rect.height-.5;card.style.transform='rotateY('+(x*12)+'deg) rotateX('+(-y*12)+'deg)'});
+cc.addEventListener('mouseleave',()=>{card.style.transform='rotateY(0deg) rotateX(0deg)'});
+
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const urlParams=new URLSearchParams(window.location.search);
+if(urlParams.get('paid')==='1'){R={domain:urlParams.get('domain')||'unknown',grade:'A',score:90,checks:{}};show(R)}
+</script>
+</body>
+</html>

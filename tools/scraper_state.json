@@ -1,0 +1,21 @@
+{
+  "completed_urls": [
+    "https://www.opentourism.it/it/servizi/ristorante?page=1",
+    "https://www.opentourism.it/it/servizi/ristorante?page=2",
+    "https://www.opentourism.it/it/servizi/ristorante?page=3",
+    "https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=99&comune=&ragione-sociale=",
+    "https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=27&comune=&ragione-sociale=",
+    "https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=30&comune=&ragione-sociale=",
+    "https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=50&comune=&ragione-sociale="
+  ],
+  "completed_sources": [
+    "OpenTourism Rimini",
+    "Accademia Rimini",
+    "Accademia Venezia",
+    "Accademia Udine",
+    "Accademia Pisa"
+  ],
+  "contacts_found": 2,
+  "started_at": "2026-05-04T09:45:31.899326",
+  "last_url": "https://www.accademiaitalianadellacucina.it/it/ristoranti?provincia=50&comune=&ragione-sociale="
+}

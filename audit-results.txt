@@ -1,0 +1,23 @@
+Website Audit Results
+==================================================
+
+MenuBoost (https://menuboostai.netlify.app):
+  - No obvious CTA button found
+  - No pricing page link found
+  - No Gumroad payment link found
+
+BoostSuite (https://boostsuite.netlify.app):
+  - No pricing page link found
+
+AdBoost (https://adboost-mvp.netlify.app):
+  - No obvious CTA button found
+  - No pricing page link found
+  - No Gumroad payment link found
+
+ListTranslate (https://listtranslate.netlify.app):
+  - No pricing page link found
+
+HD WebDesign (https://hd-webdesign.si):
+  - Broken links: ['https://www.linkedin.com/in/darko-herceg-073a322b9 → 405']
+  - No pricing page link found
+  - No Gumroad payment link found

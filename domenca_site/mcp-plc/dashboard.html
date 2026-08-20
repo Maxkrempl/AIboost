@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP PLC Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0c0e12;
+            --surface: #13161c;
+            --surface2: #1a1e26;
+            --border: #252a34;
+            --border-bright: #3a4150;
+            --text: #c8cdd6;
+            --text-bright: #eef0f4;
+            --text-dim: #6b7280;
+            --green: #22c55e;
+            --green-dim: #166534;
+            --amber: #f59e0b;
+            --amber-dim: #92400e;
+            --red: #ef4444;
+            --red-dim: #991b1b;
+            --cyan: #06b6d4;
+            --mono: 'IBM Plex Mono', monospace;
+            --sans: 'DM Sans', sans-serif;
+            --heading: 'Space Grotesk', sans-serif;
+        }
+        body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; }
+        body::after {
+            content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 52px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .header-left { display: flex; align-items: center; gap: 1.5rem; }
+        .brand {
+            font-family: var(--mono); font-weight: 600; font-size: 0.8rem;
+            color: var(--green); letter-spacing: 0.05em;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .brand .dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 8px var(--green); }
+        .conn-badge {
+            font-family: var(--mono); font-size: 0.65rem;
+            padding: 0.2rem 0.7rem; border-radius: 3px;
+            text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .conn-online { background: rgba(34,197,94,0.12); color: var(--green); border: 1px solid rgba(34,197,94,0.25); }
+        .conn-offline { background: rgba(239,68,68,0.12); color: var(--red); border: 1px solid rgba(239,68,68,0.25); }
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+        .header-time { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); }
+        .btn-sm {
+            font-family: var(--mono); font-size: 0.65rem; font-weight: 600;
+            padding: 0.3rem 0.8rem; border-radius: 3px; border: 1px solid var(--border);
+            background: transparent; color: var(--text); cursor: pointer;
+            text-transform: uppercase; letter-spacing: 0.06em; transition: all 0.15s;
+        }
+        .btn-sm:hover { border-color: var(--green); color: var(--green); }
+        .btn-sm.green { background: var(--green); color: var(--bg); border-color: var(--green); }
+        .btn-sm.green:hover { background: #16a34a; }
+
+        /* ─── CONNECT BAR ─── */
+        .connect-bar {
+            background: var(--surface2);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 2rem;
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .connect-bar label {
+            font-family: var(--mono); font-size: 0.65rem; color: var(--text-dim);
+            text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .connect-bar input, .connect-bar select {
+            font-family: var(--mono); font-size: 0.75rem;
+            background: var(--bg); color: var(--text-bright);
+            border: 1px solid var(--border); border-radius: 3px;
+            padding: 0.35rem 0.6rem; outline: none;
+        }
+        .connect-bar input:focus, .connect-bar select:focus { border-color: var(--green); }
+        .connect-bar input { width: 140px; }
+
+        /* ─── DASHBOARD GRID ─── */
+        .dash {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 1px;
+            background: var(--border);
+            min-height: calc(100vh - 100px);
+        }
+        .panel {
+            background: var(--surface);
+            padding: 1.2rem;
+            display: flex; flex-direction: column;
+        }
+        .panel-head {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .panel-title {
+            font-family: var(--mono); font-size: 0.65rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim);
+        }
+        .panel-badge {
+            font-family: var(--mono); font-size: 0.55rem;
+            padding: 0.15rem 0.4rem; border-radius: 2px;
+        }
+
+        /* ─── GAUGES ─── */
+        .gauges { grid-column: span 2; }
+        .gauge-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+            flex: 1;
+        }
+        .gauge {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.2rem;
+            display: flex; flex-direction: column; align-items: center;
+            position: relative;
+        }
+        .gauge-label {
+            font-family: var(--mono); font-size: 0.6rem;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--text-dim); margin-bottom: 0.8rem;
+        }
+        .gauge-ring {
+            position: relative; width: 100px; height: 100px;
+        }
+        .gauge-ring svg { transform: rotate(-90deg); }
+        .gauge-ring circle {
+            fill: none; stroke-width: 6; stroke-linecap: round;
+        }
+        .gauge-ring .bg { stroke: var(--border); }
+        .gauge-ring .fg { transition: stroke-dashoffset 0.8s ease; }
+        .gauge-value {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .gauge-num {
+            font-family: var(--mono); font-size: 1.3rem; font-weight: 700;
+            color: var(--text-bright);
+        }
+        .gauge-unit {
+            font-family: var(--mono); font-size: 0.6rem; color: var(--text-dim);
+        }
+        .gauge-range {
+            font-family: var(--mono); font-size: 0.55rem; color: var(--text-dim);
+            margin-top: 0.6rem;
+        }
+
+        /* ─── ALARMS ─── */
+        .alarms-panel { grid-row: span 2; }
+        .alarm-list { flex: 1; overflow-y: auto; }
+        .alarm-item {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .alarm-item:last-child { border-bottom: none; }
+        .alarm-dot {
+            width: 8px; height: 8px; border-radius: 50%; margin-top: 0.3rem; flex-shrink: 0;
+        }
+        .alarm-dot.critical { background: var(--red); box-shadow: 0 0 8px var(--red); animation: blink 1s infinite; }
+        .alarm-dot.warning { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+        .alarm-dot.ok { background: var(--green); }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .alarm-text { flex: 1; }
+        .alarm-code {
+            font-family: var(--mono); font-size: 0.7rem; font-weight: 600; color: var(--text-bright);
+        }
+        .alarm-desc { font-size: 0.7rem; color: var(--text-dim); margin-top: 0.1rem; }
+        .alarm-time {
+            font-family: var(--mono); font-size: 0.6rem; color: var(--text-dim); flex-shrink: 0;
+        }
+        .alarm-empty {
+            text-align: center; padding: 2rem; color: var(--text-dim);
+            font-family: var(--mono); font-size: 0.75rem;
+        }
+
+        /* ─── STATUS PANEL ─── */
+        .status-panel { grid-column: span 2; }
+        .status-row {
+            display: flex; align-items: center; gap: 0.8rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            font-family: var(--mono); font-size: 0.78rem;
+        }
+        .status-row:last-child { border-bottom: none; }
+        .status-key { color: var(--text-dim); min-width: 120px; }
+        .status-val { color: var(--text-bright); font-weight: 500; }
+        .status-val.green { color: var(--green); }
+        .status-val.amber { color: var(--amber); }
+        .status-val.red { color: var(--red); }
+
+        /* ─── TREND CHART ─── */
+        .trend-panel { grid-column: span 2; }
+        .trend-canvas-wrap {
+            flex: 1; min-height: 200px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.5rem;
+            position: relative;
+        }
+        .trend-canvas-wrap canvas { width: 100%; height: 100%; }
+        .trend-legend {
+            display: flex; gap: 1rem; margin-top: 0.6rem;
+        }
+        .trend-legend-item {
+            display: flex; align-items: center; gap: 0.4rem;
+            font-family: var(--mono); font-size: 0.6rem; color: var(--text-dim);
+        }
+        .trend-legend-dot { width: 8px; height: 3px; border-radius: 1px; }
+
+        /* ─── SETPOINTS ─── */
+        .setpoints-panel {}
+        .sp-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .sp-item:last-child { border-bottom: none; }
+        .sp-label {
+            font-family: var(--mono); font-size: 0.75rem; color: var(--text-dim);
+        }
+        .sp-controls { display: flex; align-items: center; gap: 0.4rem; }
+        .sp-btn {
+            width: 24px; height: 24px;
+            background: var(--surface2); border: 1px solid var(--border);
+            border-radius: 3px; color: var(--text); cursor: pointer;
+            font-family: var(--mono); font-size: 0.8rem; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.1s;
+        }
+        .sp-btn:hover { border-color: var(--green); color: var(--green); }
+        .sp-btn:active { background: var(--green); color: var(--bg); }
+        .sp-val {
+            font-family: var(--mono); font-size: 0.9rem; font-weight: 600;
+            color: var(--text-bright); min-width: 50px; text-align: center;
+        }
+
+        /* ─── LOG PANEL ─── */
+        .log-panel { grid-column: span 3; }
+        .log-scroll {
+            flex: 1; max-height: 120px; overflow-y: auto;
+            font-family: var(--mono); font-size: 0.68rem; line-height: 1.7;
+        }
+        .log-line { display: flex; gap: 0.8rem; }
+        .log-time { color: var(--text-dim); min-width: 70px; }
+        .log-msg { color: var(--text); }
+        .log-msg.info { color: var(--cyan); }
+        .log-msg.warn { color: var(--amber); }
+        .log-msg.err { color: var(--red); }
+        .log-msg.ok { color: var(--green); }
+
+        @media (max-width: 900px) {
+            .dash { grid-template-columns: 1fr; }
+            .gauges, .alarms-panel, .status-panel, .trend-panel, .log-panel { grid-column: span 1; grid-row: span 1; }
+            .gauge-grid { grid-template-columns: repeat(2, 1fr); }
+            .connect-bar { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-left">
+        <div class="brand"><div class="dot"></div> MCP PLC</div>
+        <div class="conn-badge conn-offline" id="connBadge">● OFFLINE</div>
+    </div>
+    <div class="header-right">
+        <div class="header-time" id="headerTime">--:--:--</div>
+        <a href="/mcp-plc/" class="btn-sm">← Landing</a>
+        <button class="btn-sm green" id="btnConnect" onclick="toggleConnect()">Connect</button>
+    </div>
+</div>
+
+<!-- CONNECT BAR -->
+<div class="connect-bar">
+    <label>Adapter</label>
+    <select id="selAdapter">
+        <option value="modbus">Modbus TCP</option>
+        <option value="s7">Siemens S7</option>
+    </select>
+    <label>Host</label>
+    <input type="text" id="inpHost" value="192.168.1.100" placeholder="192.168.1.100">
+    <label>Port</label>
+    <input type="number" id="inpPort" value="502" style="width:70px">
+    <label>Slot</label>
+    <input type="number" id="inpSlot" value="1" style="width:50px">
+</div>
+
+<!-- DASHBOARD -->
+<div class="dash">
+
+    <!-- GAUGES -->
+    <div class="panel gauges">
+        <div class="panel-head">
+            <span class="panel-title">Sensors</span>
+            <span class="panel-badge conn-online" id="pollBadge">LIVE</span>
+        </div>
+        <div class="gauge-grid">
+            <div class="gauge">
+                <div class="gauge-label">Temperature</div>
+                <div class="gauge-ring">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg" cx="50" cy="50" r="42"/>
+                        <circle class="fg" id="gTemp" cx="50" cy="50" r="42"
+                            stroke="var(--green)" stroke-dasharray="264" stroke-dashoffset="264"/>
+                    </svg>
+                    <div class="gauge-value">
+                        <div class="gauge-num" id="vTemp">--</div>
+                        <div class="gauge-unit">°C</div>
+                    </div>
+                </div>
+                <div class="gauge-range">0 — 100 °C</div>
+            </div>
+            <div class="gauge">
+                <div class="gauge-label">Pressure</div>
+                <div class="gauge-ring">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg" cx="50" cy="50" r="42"/>
+                        <circle class="fg" id="gPress" cx="50" cy="50" r="42"
+                            stroke="var(--cyan)" stroke-dasharray="264" stroke-dashoffset="264"/>
+                    </svg>
+                    <div class="gauge-value">
+                        <div class="gauge-num" id="vPress">--</div>
+                        <div class="gauge-unit">bar</div>
+                    </div>
+                </div>
+                <div class="gauge-range">0 — 10 bar</div>
+            </div>
+            <div class="gauge">
+                <div class="gauge-label">Motor Speed</div>
+                <div class="gauge-ring">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg" cx="50" cy="50" r="42"/>
+                        <circle class="fg" id="gMotor" cx="50" cy="50" r="42"
+                            stroke="var(--amber)" stroke-dasharray="264" stroke-dashoffset="264"/>
+                    </svg>
+                    <div class="gauge-value">
+                        <div class="gauge-num" id="vMotor">--</div>
+                        <div class="gauge-unit">RPM</div>
+                    </div>
+                </div>
+                <div class="gauge-range">0 — 3000 RPM</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALARMS -->
+    <div class="panel alarms-panel">
+        <div class="panel-head">
+            <span class="panel-title">Alarms</span>
+            <span class="panel-badge" id="alarmCount" style="background:rgba(34,197,94,0.12);color:var(--green);">0</span>
+        </div>
+        <div class="alarm-list" id="alarmList">
+            <div class="alarm-empty">No active alarms</div>
+        </div>
+    </div>
+
+    <!-- STATUS -->
+    <div class="panel status-panel">
+        <div class="panel-head">
+            <span class="panel-title">System Status</span>
+        </div>
+        <div id="statusRows">
+            <div class="status-row"><span class="status-key">Status</span><span class="status-val" id="sStatus">—</span></div>
+            <div class="status-row"><span class="status-key">Production</span><span class="status-val" id="sProd">—</span></div>
+            <div class="status-row"><span class="status-key">Adapter</span><span class="status-val" id="sAdapter">—</span></div>
+            <div class="status-row"><span class="status-key">Uptime</span><span class="status-val" id="sUptime">—</span></div>
+            <div class="status-row"><span class="status-key">Green Light</span><span class="status-val" id="sGreen">—</span></div>
+            <div class="status-row"><span class="status-key">Yellow Light</span><span class="status-val" id="sYellow">—</span></div>
+            <div class="status-row"><span class="status-key">Red Light</span><span class="status-val" id="sRed">—</span></div>
+        </div>
+    </div>
+
+    <!-- SETPOINTS -->
+    <div class="panel setpoints-panel">
+        <div class="panel-head">
+            <span class="panel-title">Setpoints</span>
+        </div>
+        <div class="sp-item">
+            <span class="sp-label">Temperature</span>
+            <div class="sp-controls">
+                <button class="sp-btn" onclick="adjSP('temp',-0.5)">−</button>
+                <span class="sp-val" id="spTemp">25.0</span>
+                <button class="sp-btn" onclick="adjSP('temp',0.5)">+</button>
+            </div>
+        </div>
+        <div class="sp-item">
+            <span class="sp-label">Pressure</span>
+            <div class="sp-controls">
+                <button class="sp-btn" onclick="adjSP('press',-0.5)">−</button>
+                <span class="sp-val" id="spPress">6.0</span>
+                <button class="sp-btn" onclick="adjSP('press',0.5)">+</button>
+            </div>
+        </div>
+        <div class="sp-item">
+            <span class="sp-label">Speed</span>
+            <div class="sp-controls">
+                <button class="sp-btn" onclick="adjSP('speed',-50)">−</button>
+                <span class="sp-val" id="spSpeed">1500</span>
+                <button class="sp-btn" onclick="adjSP('speed',50)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TREND -->
+    <div class="panel trend-panel">
+        <div class="panel-head">
+            <span class="panel-title">Trend — Last 60s</span>
+        </div>
+        <div class="trend-canvas-wrap">
+            <canvas id="trendCanvas"></canvas>
+        </div>
+        <div class="trend-legend">
+            <div class="trend-legend-item"><div class="trend-legend-dot" style="background:var(--green)"></div>Temp °C</div>
+            <div class="trend-legend-item"><div class="trend-legend-dot" style="background:var(--cyan)"></div>Press bar</div>
+            <div class="trend-legend-item"><div class="trend-legend-dot" style="background:var(--amber)"></div>Motor RPM/100</div>
+        </div>
+    </div>
+
+    <!-- LOG -->
+    <div class="panel log-panel">
+        <div class="panel-head">
+            <span class="panel-title">Event Log</span>
+        </div>
+        <div class="log-scroll" id="logScroll"></div>
+    </div>
+
+</div>
+
+<script>
+// ─── SIMULATION STATE ───
+let connected = false;
+let simTime = 0;
+let temp = 22.5, press = 6.0, motor = 1500, prod = 0;
+let spTemp = 25, spPress = 6, spSpeed = 1500;
+let trendTemp = [], trendPress = [], trendMotor = [];
+const MAX_TREND = 60;
+let uptime = 0;
+
+// ─── CLOCK ───
+function updateClock() {
+    const now = new Date();
+    document.getElementById('headerTime').textContent = now.toLocaleTimeString('en-GB');
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ─── CONNECT ───
+function toggleConnect() {
+    connected = !connected;
+    const badge = document.getElementById('connBadge');
+    const btn = document.getElementById('btnConnect');
+    if (connected) {
+        badge.className = 'conn-badge conn-online';
+        badge.textContent = '● ONLINE';
+        btn.textContent = 'Disconnect';
+        btn.className = 'btn-sm';
+        log('ok', 'Connected to PLC');
+        uptime = 0;
+    } else {
+        badge.className = 'conn-badge conn-offline';
+        badge.textContent = '● OFFLINE';
+        btn.textContent = 'Connect';
+        btn.className = 'btn-sm green';
+        log('info', 'Disconnected');
+    }
+}
+
+// ─── SIMULATION ───
+function simulate() {
+    if (!connected) return;
+    simTime += 0.5;
+    uptime++;
+    const t = simTime;
+
+    temp += ((22 + 8 * Math.sin(t * 0.02)) - temp) * 0.05 + (Math.random() - 0.5) * 0.2;
+    temp = Math.max(0, Math.min(100, temp));
+    press += ((6 + 2 * Math.sin(t * 0.03)) - press) * 0.08 + (Math.random() - 0.5) * 0.1;
+    press = Math.max(0, Math.min(10, press));
+    motor += ((1500 + 200 * Math.sin(t * 0.015)) - motor) * 0.03 + (Math.random() - 0.5) * 10;
+    motor = Math.max(0, Math.min(3000, motor));
+    if (Math.random() < 0.03) prod++;
+
+    // Trend
+    trendTemp.push(temp);
+    trendPress.push(press);
+    trendMotor.push(motor / 100);
+    if (trendTemp.length > MAX_TREND) { trendTemp.shift(); trendPress.shift(); trendMotor.shift(); }
+}
+
+// ─── GAUGE UPDATE ───
+function setGauge(id, value, max, color) {
+    const pct = Math.min(value / max, 1);
+    const circ = 264;
+    const offset = circ - (circ * pct);
+    const el = document.getElementById(id);
+    el.style.strokeDashoffset = offset;
+    // Color shift on high values
+    if (pct > 0.85) el.style.stroke = 'var(--red)';
+    else if (pct > 0.7) el.style.stroke = 'var(--amber)';
+    else el.style.stroke = color;
+}
+
+function updateUI() {
+    document.getElementById('vTemp').textContent = temp.toFixed(1);
+    document.getElementById('vPress').textContent = press.toFixed(1);
+    document.getElementById('vMotor').textContent = Math.round(motor);
+
+    setGauge('gTemp', temp, 100, 'var(--green)');
+    setGauge('gPress', press, 10, 'var(--cyan)');
+    setGauge('gMotor', motor, 3000, 'var(--amber)');
+
+    // Status
+    const alarmTemp = temp > 80, alarmPress = press < 3, alarmMotor = motor > 2800;
+    const hasAlarm = alarmTemp || alarmPress || alarmMotor;
+    document.getElementById('sStatus').textContent = hasAlarm ? '⚠ FAULT' : '● RUNNING';
+    document.getElementById('sStatus').className = 'status-val ' + (hasAlarm ? 'red' : 'green');
+    document.getElementById('sProd').textContent = prod + ' units';
+    document.getElementById('sAdapter').textContent = document.getElementById('selAdapter').value.toUpperCase();
+    const mins = Math.floor(uptime / 60);
+    const secs = uptime % 60;
+    document.getElementById('sUptime').textContent = `${mins}m ${secs}s`;
+
+    // Output lights
+    document.getElementById('sGreen').textContent = (!hasAlarm) ? '● ON' : '○ OFF';
+    document.getElementById('sGreen').className = 'status-val ' + (!hasAlarm ? 'green' : '');
+    document.getElementById('sYellow').textContent = alarmMotor ? '● ON' : '○ OFF';
+    document.getElementById('sYellow').className = 'status-val ' + (alarmMotor ? 'amber' : '');
+    document.getElementById('sRed').textContent = (alarmTemp || alarmPress) ? '● ON' : '○ OFF';
+    document.getElementById('sRed').className = 'status-val ' + (alarmTemp || alarmPress ? 'red' : '');
+
+    // Alarms
+    updateAlarms(alarmTemp, alarmPress, alarmMotor);
+
+    // Setpoints
+    document.getElementById('spTemp').textContent = spTemp.toFixed(1);
+    document.getElementById('spPress').textContent = spPress.toFixed(1);
+    document.getElementById('spSpeed').textContent = spSpeed;
+
+    // Trend
+    drawTrend();
+}
+
+function updateAlarms(t, p, m) {
+    const list = document.getElementById('alarmList');
+    const count = document.getElementById('alarmCount');
+    const alarms = [];
+    if (t) alarms.push({ code: 'TEMP_HIGH', desc: `Temperature ${temp.toFixed(1)}°C > 80°C`, priority: 'critical' });
+    if (p) alarms.push({ code: 'PRESS_LOW', desc: `Pressure ${press.toFixed(1)} bar < 3 bar`, priority: 'critical' });
+    if (m) alarms.push({ code: 'MOTOR_FAULT', desc: `Speed ${Math.round(motor)} RPM > 2800`, priority: 'warning' });
+
+    count.textContent = alarms.length;
+    count.style.background = alarms.length > 0 ? 'rgba(239,68,68,0.15)' : 'rgba(34,197,94,0.12)';
+    count.style.color = alarms.length > 0 ? 'var(--red)' : 'var(--green)';
+
+    if (alarms.length === 0) {
+        list.innerHTML = '<div class="alarm-empty">✅ No active alarms</div>';
+        return;
+    }
+    list.innerHTML = alarms.map(a => `
+        <div class="alarm-item">
+            <div class="alarm-dot ${a.priority}"></div>
+            <div class="alarm-text">
+                <div class="alarm-code">${a.code}</div>
+                <div class="alarm-desc">${a.desc}</div>
+            </div>
+            <div class="alarm-time">${new Date().toLocaleTimeString('en-GB')}</div>
+        </div>
+    `).join('');
+}
+
+// ─── TREND CHART ───
+function drawTrend() {
+    const canvas = document.getElementById('trendCanvas');
+    const ctx = canvas.getContext('2d');
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width - 16;
+    canvas.height = rect.height - 16;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (trendTemp.length < 2) return;
+
+    function drawLine(data, max, color) {
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
+        for (let i = 0; i < data.length; i++) {
+            const x = (i / (MAX_TREND - 1)) * canvas.width;
+            const y = canvas.height - (data[i] / max) * canvas.height;
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+    }
+
+    // Grid lines
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 5; i++) {
+        const y = (i / 4) * canvas.height;
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+    }
+
+    drawLine(trendTemp, 100, '#22c55e');
+    drawLine(trendPress, 10, '#06b6d4');
+    drawLine(trendMotor, 30, '#f59e0b');
+}
+
+// ─── SETPOINTS ───
+function adjSP(param, delta) {
+    if (param === 'temp') { spTemp = Math.max(0, Math.min(50, spTemp + delta)); log('info', `Setpoint temp → ${spTemp.toFixed(1)}°C`); }
+    if (param === 'press') { spPress = Math.max(0, Math.min(10, spPress + delta)); log('info', `Setpoint press → ${spPress.toFixed(1)} bar`); }
+    if (param === 'speed') { spSpeed = Math.max(0, Math.min(3000, spSpeed + delta)); log('info', `Setpoint speed → ${spSpeed} RPM`); }
+}
+
+// ─── LOG ───
+function log(type, msg) {
+    const el = document.getElementById('logScroll');
+    const time = new Date().toLocaleTimeString('en-GB');
+    el.innerHTML += `<div class="log-line"><span class="log-time">${time}</span><span class="log-msg ${type}">${msg}</span></div>`;
+    el.scrollTop = el.scrollHeight;
+    // Keep max 50 lines
+    while (el.children.length > 50) el.removeChild(el.firstChild);
+}
+
+// ─── MAIN LOOP ───
+setInterval(() => { simulate(); updateUI(); }, 1000);
+log('info', 'Dashboard ready — click Connect to start');
+</script>
+<script src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DJER0DNGTF');</script>
+</body>
+</html>

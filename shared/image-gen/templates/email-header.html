@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 600px; height: 200px; overflow: hidden; font-family: 'Segoe UI', system-ui, sans-serif; }
+.container {
+  width: 600px; height: 200px;
+  background: linear-gradient(135deg, #1a0a00 0%, #2d1400 100%);
+  position: relative; display: flex; align-items: center; padding: 0 40px;
+}
+.gold-line {
+  position: absolute; left: 40px; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, transparent, #d97706, #f59e0b, #d97706, transparent);
+}
+.text-side { position: relative; z-index: 2; }
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(217,119,6,0.1); border: 1px solid rgba(217,119,6,0.3);
+  color: #fbbf24; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 16px; margin-bottom: 12px;
+}
+h1 { color: #fff; font-size: 28px; font-weight: 800; line-height: 1.1; margin-bottom: 8px; }
+h1 .gold { color: #fbbf24; }
+.subtitle { color: rgba(255,255,255,0.5); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="gold-line"></div>
+  <div class="text-side">
+    <div class="badge">{{FEATURES}}</div>
+    <h1>{{TITLE}}</h1>
+    <p class="subtitle">{{SUBTITLE}}</p>
+  </div>
+</div>
+</body>
+</html>

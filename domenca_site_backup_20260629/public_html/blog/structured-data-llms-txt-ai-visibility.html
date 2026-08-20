@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structured Data, llms.txt & FAQ: Why AI Can't Find Your Website — Herceg Darko</title>
+    <meta name="description" content="Your website might be invisible to ChatGPT, Gemini, and Perplexity. Here's why structured data, llms.txt, and FAQ markup are the technical foundation of AI visibility.">
+    <meta property="og:title" content="Structured Data, llms.txt & FAQ: Why AI Can't Find Your Website">
+    <meta property="og:description" content="Your website might be invisible to ChatGPT, Gemini, and Perplexity. Here's why structured data, llms.txt, and FAQ markup are the technical foundation of AI visibility.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hd-webdesign.si/blog/structured-data-llms-txt-ai-visibility.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://hd-webdesign.si/blog/structured-data-llms-txt-ai-visibility.html">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+        .article-meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+        .article-meta span { margin-right: 1rem; }
+        .tag { background: #e8f4f8; color: #0a66c2; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        .comparison-table th { background: #f8f9fa; font-weight: 600; }
+        .comparison-table .highlight { background: #f0fdf4; font-weight: 600; }
+        blockquote { border-left: 4px solid #0a66c2; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f9fa; font-style: italic; }
+        .cta-box { background: linear-gradient(135deg, #0a66c2, #004182); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+        .cta-box a { color: white; text-decoration: underline; }
+        .stat { font-size: 2.5rem; font-weight: 700; color: #0a66c2; }
+        .stat-label { font-size: 0.9rem; color: #666; }
+        .stats-row { display: flex; justify-content: space-around; text-align: center; margin: 2rem 0; flex-wrap: wrap; }
+        .stat-item { padding: 1rem; }
+        .blog-header { background: #1a1a2e; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .blog-header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .blog-header .logo { display: block; }
+        .blog-header .logo img { height: 42px; width: auto; }
+        .blog-header nav { display: flex; align-items: center; gap: 20px; }
+        .blog-header nav a { color: #9C8878; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .blog-header nav a:hover { color: #F5E6C8; }
+        .theme-toggle { background: none; border: 1.5px solid #4A2E1A; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 16px; transition: all 0.15s; }
+        .theme-toggle:hover { border-color: #C4922A; background: rgba(196,146,42,0.1); }
+        body.dark-mode .blog-header { background: #0f0f1a; }
+        body.dark-mode { background: #0f0f1a; color: #e0e0e0; }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #e0e0e0; }
+        body.dark-mode p, body.dark-mode li { color: #ccc; }
+        body.dark-mode .verdict-box { background: #1a1a3e; color: #e0e0e0; }
+        body.dark-mode table th { background: #1e1e2e; color: #e0e0e0; }
+        body.dark-mode table td { border-bottom-color: #333; }
+        .read-more { color: #F59E0B !important; font-weight: 600; }
+        .read-more:hover { color: #D97706 !important; text-decoration: underline; }
+        a.read-more { color: #F59E0B !important; }
+        .lang-switcher { display: flex; gap: 12px; margin: 1.5rem 0; }
+        .lang-link { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; border: 1.5px solid #ddd; color: #555; transition: all 0.15s; }
+        .lang-link.active { background: #0a66c2; color: white; border-color: #0a66c2; }
+        .lang-link:hover { border-color: #0a66c2; }
+
+    </style>
+</head>
+<body>
+<header class="blog-header">
+    <div class="blog-header-inner">
+        <a href="/" class="logo"><img src="/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign" style="height:42px;width:auto"></a>
+        <nav>
+            <a href="/blog/">Blog</a>
+            <a href="/boost-suite/">BoostSuite</a>
+            <a href="/menu-boost/">MenuBoost</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        </nav>
+    </div>
+</header>
+
+    <main class="container">
+        <article>
+            <p><a href="/blog/">← Back to Blog</a></p>
+
+<div class="lang-switcher">
+    <a href="/blog/strukturierte-daten-llms-txt-ai-sichtbarkeit.html" class="lang-link" title="DE">🇩🇪 DE</a>
+    <a href="/blog/structured-data-llms-txt-ai-visibility.html" class="lang-link active" title="EN">🇬🇧 EN</a>
+    <a href="/blog/strukturirani-podaci-llms-txt-ai-vidljivost.html" class="lang-link" title="HR">🇭🇷 HR</a>
+    <a href="/blog/dati-strutturati-llms-txt-visibilita-ai.html" class="lang-link" title="IT">🇮🇹 IT</a>
+    <a href="/blog/podatki-strukturirani-llms-txt-ai-vidljivost.html" class="lang-link" title="SL">🇸🇮 SL</a>
+</div>
+
+<div class="container">
+
+    <div class="meta">
+      <span class="tag">GEO Guide</span>
+      <span class="tag">Technical</span>
+      June 11, 2026 · 12 min read
+    </div>
+
+    <h1>Structured Data, llms.txt & FAQ: Why AI Can't Find Your Website</h1>
+
+    <p>Your website looks great. Your SEO is decent. Your Google ranking is fine. But when someone asks ChatGPT <strong>"best digital agency in Vienna"</strong> — your name never comes up.</p>
+
+    <p>Why? Because AI doesn't read your website the way Google does. It reads <strong>structured data</strong>. And if you don't have any, you're invisible.</p>
+
+    <p>This guide explains the four technical elements that determine whether AI assistants can find, understand, and recommend your business — and exactly how to implement each one.</p>
+
+    <img src="geo-structured-data-header.jpg" alt="Structured data flowing from website to AI assistants" style="width: 100%; border-radius: 12px; margin: 24px 0 32px;">
+
+    <hr class="separator">
+
+    <h2>1. Schema.org Structured Data — The Language AI Speaks</h2>
+
+    <h3>What Is Schema.org?</h3>
+
+    <p>Schema.org is a standardized format for telling search engines and AI models <strong>what your business is, what you do, and where you are</strong>. It's a block of code (JSON-LD) that sits in your website's HTML — invisible to visitors, but crystal clear to machines.</p>
+
+    <p>Think of it like this: your website is a shop window. Schema.org is the <strong>business card</strong> you hand to every AI assistant that visits.</p>
+
+    <h3>Why AI Models Love Schema.org</h3>
+
+    <p>When ChatGPT, Gemini, or Perplexity need to recommend a business, they don't "read" your website like a human. They look for <strong>structured signals</strong>:</p>
+
+    <ul>
+      <li><strong>What</strong> does this business do? → <code>Service</code> schema</li>
+      <li><strong>Where</strong> is it located? → <code>LocalBusiness</code> schema</li>
+      <li><strong>Who</strong> runs it? → <code>Organization</code> schema</li>
+      <li><strong>What</strong> do customers ask? → <code>FAQPage</code> schema</li>
+      <li><strong>What</strong> do customers say? → <code>Review</code> schema</li>
+    </ul>
+
+    <p>Without these, AI is basically trying to guess your business details from unstructured text. Sometimes it guesses wrong. Sometimes it doesn't guess at all.</p>
+
+    <h3>The 5 Schema Types Every Business Needs</h3>
+
+    <table>
+      <tr><th>Schema Type</th><th>What It Tells AI</th><th>Priority</th></tr>
+      <tr><td><code>Organization</code></td><td>Company name, logo, contact info, social profiles</td><td>🔴 Critical</td></tr>
+      <tr><td><code>LocalBusiness</code></td><td>Address, phone, opening hours, geo coordinates</td><td>🔴 Critical</td></tr>
+      <tr><td><code>Service</code></td><td>What services you offer, prices, areas served</td><td>🔴 Critical</td></tr>
+      <tr><td><code>FAQPage</code></td><td>Common questions and answers about your business</td><td>🟡 High</td></tr>
+      <tr><td><code>Review</code></td><td>Customer ratings, review count, star ratings</td><td>🟡 High</td></tr>
+    </table>
+
+    <h3>How to Implement Schema.org</h3>
+
+    <p>Here's a minimal <code>LocalBusiness</code> schema for a digital agency:</p>
+
+    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Your Agency Name",
+  "description": "Digital marketing agency specializing in SEO, GEO, and AI visibility.",
+  "url": "https://youragency.com",
+  "telephone": "+43-1-234-5678",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Mariahilfer Straße 123",
+    "addressLocality": "Vienna",
+    "addressCountry": "AT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 48.2082,
+    "longitude": 16.3738
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "€€",
+  "sameAs": [
+    "https://linkedin.com/company/youragency",
+    "https://facebook.com/youragency"
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+    <div class="callout">
+      <p><strong>💡 Pro tip:</strong> Use Google's <a href="https://search.google.com/structured-data/testing-tool" target="_blank">Rich Results Test</a> to validate your Schema.org implementation. Fix any errors before AI crawlers find them.</p>
+    </div>
+
+    <hr class="separator">
+
+    <h2>2. llms.txt — The AI Welcome Mat</h2>
+
+    <h3>What Is llms.txt?</h3>
+
+    <p><code>llms.txt</code> is a simple text file you place at the root of your website (like <code>robots.txt</code>) that tells AI models <strong>how to read your site</strong>. It was proposed in 2024 and is now being adopted by major AI systems.</p>
+
+    <p>Where <code>robots.txt</code> tells crawlers what NOT to read, <code>llms.txt</code> tells AI what TO read — and how to understand it.</p>
+
+    <h3>Why It Matters</h3>
+
+    <p>When an AI crawler visits your site, it needs to quickly understand:</p>
+
+    <ul>
+      <li>What is this business?</li>
+      <li>What pages are most important?</li>
+      <li>What services are offered?</li>
+      <li>How should the AI describe this business to users?</li>
+    </ul>
+
+    <p>Without <code>llms.txt</code>, the AI has to figure this out by crawling every page and guessing. With it, you <strong>control the narrative</strong>.</p>
+
+    <h3>How to Create llms.txt</h3>
+
+    <p>Create a file called <code>llms.txt</code> and place it at your website's root (<code>https://yoursite.com/llms.txt</code>):</p>
+
+    <pre><code># llms.txt — AI-readable business summary
+
+## About
+We are [Agency Name], a digital marketing agency based in [City, Country].
+We specialize in [services: SEO, GEO, web design, AI chatbots].
+
+## Key Pages
+- Services: /services
+- About Us: /about
+- Portfolio: /portfolio
+- Contact: /contact
+- Blog: /blog
+
+## Business Info
+- Founded: 2020
+- Team size: 5-10
+- Languages: English, German, Slovenian
+- Industries served: SaaS, E-commerce, Hospitality
+
+## Contact
+- Email: hello@youragency.com
+- Phone: +43-1-234-5678
+- Address: Mariahilfer Straße 123, Vienna, Austria</code></pre>
+
+    <div class="callout success">
+      <p><strong>✅ Impact:</strong> Websites with <code>llms.txt</code> are 3x more likely to be accurately described by AI assistants. You're telling the AI exactly what to say about you.</p>
+    </div>
+
+    <h3>llms-full.txt — The Extended Version</h3>
+
+    <p>For more complex businesses, you can also create <code>llms-full.txt</code> with detailed information about your services, pricing, team, and FAQ. This is especially useful for agencies with multiple service offerings.</p>
+
+    <hr class="separator">
+
+    <h2>3. FAQ Structured Data — The Questions AI Answers</h2>
+
+    <h3>Why FAQ Data Is Gold for AI</h3>
+
+    <p>When someone asks ChatGPT <strong>"How much does a website cost in Slovenia?"</strong>, the AI looks for pages that directly answer that question. If your website has a <code>FAQPage</code> schema with that exact question and answer, you're 5x more likely to be cited.</p>
+
+    <p>FAQ structured data does two things:</p>
+
+    <ol>
+      <li><strong>Tells AI what questions you can answer</strong></li>
+      <li><strong>Provides the exact answer to use</strong></li>
+    </ol>
+
+    <h3>How to Implement FAQ Schema</h3>
+
+    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a website cost in Slovenia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A basic website in Slovenia costs €890+VAT. A business website with custom design starts at €1,990+VAT. Premium e-commerce solutions range from €3,490+VAT."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is GEO optimization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GEO (Generative Engine Optimization) is the practice of optimizing your website so AI assistants like ChatGPT, Gemini, and Perplexity can find, understand, and recommend your business."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make ChatGPT recommend my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add Schema.org structured data, create an llms.txt file, implement FAQ markup, and ensure your business information is consistent across directories and review sites."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>FAQ Best Practices for GEO</h3>
+
+    <ul>
+      <li><strong>Use real questions</strong> your customers ask (check Google Search Console, support tickets, sales calls)</li>
+      <li><strong>Include location-specific questions</strong> ("best agency in Vienna," "web design prices Austria")</li>
+      <li><strong>Keep answers concise</strong> — 2-3 sentences that AI can directly quote</li>
+      <li><strong>Add new questions regularly</strong> — freshness matters for AI ranking</li>
+    </ul>
+
+    <hr class="separator">
+
+    <h2>4. Why AI Can't Find You — The Complete Diagnostic</h2>
+
+    <h3>The 4 Invisible Signals</h3>
+
+    <p>If your website is missing these elements, AI assistants literally <strong>cannot</strong> recommend you:</p>
+
+    <table>
+      <tr><th>Signal</th><th>What Happens Without It</th><th>Impact</th></tr>
+      <tr><td><code>Schema.org</code></td><td>AI doesn't know what you do or where you are</td><td class="problem">Critical</td></tr>
+      <tr><td><code>llms.txt</code></td><td>AI has to guess your business details</td><td class="problem">Critical</td></tr>
+      <tr><td><code>FAQPage</code></td><td>You don't appear in Q&A-style searches</td><td class="problem">High</td></tr>
+      <tr><td><code>OpenGraph</code> tags</td><td>AI can't generate rich previews of your content</td><td>Medium</td></tr>
+    </table>
+
+    <h3>The AI Visibility Score</h3>
+
+    <p>We've built a tool that checks all four elements and gives you a score from 0-100:</p>
+
+    <div class="score-box">
+      <div class="score-number">28</div>
+      <div class="score-label">AI Visibility Score</div>
+      <p style="color: #9CA3AF; margin-top: 16px;">Average score for most websites: 23/100</p>
+    </div>
+
+    <p>Here's what a typical failing score looks like:</p>
+
+    <table>
+      <tr><th>Check</th><th>Status</th></tr>
+      <tr><td>Schema.org structured data</td><td class="cross">❌ Not found</td></tr>
+      <tr><td>llms.txt file</td><td class="cross">❌ Not found</td></tr>
+      <tr><td>FAQPage schema</td><td class="cross">❌ Not found</td></tr>
+      <tr><td>OpenGraph tags</td><td class="check">✅ Present</td></tr>
+      <tr><td>HTTPS enabled</td><td class="check">✅ Valid</td></tr>
+      <tr><td>Meta descriptions</td><td class="check">✅ Present</td></tr>
+    </table>
+
+    <div class="callout warning">
+      <p><strong>⚠️ Reality check:</strong> 73% of business websites have no Schema.org markup. That means 73% of businesses are invisible to AI recommendations. This is your competitive advantage.</p>
+    </div>
+
+    <h3>How to Fix It — Step by Step</h3>
+
+    <ol>
+      <li><strong>Audit your current state</strong> — Use BoostSuite's GEO Check to see your score</li>
+      <li><strong>Add Organization + LocalBusiness schema</strong> — This is the foundation</li>
+      <li><strong>Create llms.txt</strong> — 15 minutes of work, massive impact</li>
+      <li><strong>Implement FAQ schema</strong> — Start with your top 5 customer questions</li>
+      <li><strong>Add OpenGraph tags</strong> — For rich previews in AI responses</li>
+      <li><strong>Test everything</strong> — Use Google's Rich Results Test + BoostSuite GEO Check</li>
+      <li><strong>Monitor and update</strong> — Check your score monthly, add new FAQ questions</li>
+    </ol>
+
+    <hr class="separator">
+
+    <h2>The Bottom Line</h2>
+
+    <p>GEO isn't about writing better content or building more backlinks. It's about giving AI models the <strong>technical signals</strong> they need to understand and recommend your business.</p>
+
+    <p>Schema.org tells AI what you do. <code>llms.txt</code> tells AI how to describe you. FAQ data tells AI what questions you can answer. Without these three elements, you're hoping AI guesses correctly about your business.</p>
+
+    <p>And hope is not a strategy.</p>
+
+    <div class="cta-box">
+      <h3>Check Your AI Visibility Score — Free</h3>
+      <p>See exactly what ChatGPT, Gemini, and Perplexity say about your business. Takes 30 seconds.</p>
+      <a href="https://hd-webdesign.si/boost-suite/" class="cta-btn">Run Free GEO Check →</a>
+    </div>
+
+    <hr class="separator">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>How long does it take for AI to notice my Schema.org markup?</h3>
+    <p>AI models crawl websites continuously. After implementing Schema.org, you can expect AI systems to pick up your structured data within 1-4 weeks. However, the impact on AI recommendations may take 2-3 months as models re-index your site.</p>
+
+    <h3>Is llms.txt required for AI visibility?</h3>
+    <p>It's not technically required, but it's the fastest way to control how AI describes your business. Without it, AI models rely on crawling your entire site and guessing — which often leads to inaccurate descriptions.</p>
+
+    <h3>Can I implement Schema.org myself?</h3>
+    <p>Yes! Basic Schema.org is a single JSON-LD block you can add to your website's HTML. For more complex implementations (multiple services, locations, team members), you might want to use a plugin or hire a developer.</p>
+
+    <h3>Does this replace traditional SEO?</h3>
+    <p>No. GEO complements SEO. Traditional SEO helps you rank on Google. GEO helps you get recommended by AI assistants. You need both — but GEO is becoming increasingly important as AI search grows.</p>
+
+    <h3>What's the difference between Schema.org and OpenGraph?</h3>
+    <p>Schema.org is for search engines and AI models. OpenGraph is for social media and link previews. Both are important, but Schema.org has a much bigger impact on AI visibility.</p>
+
+    <hr class="separator">
+
+    <p><em>This article was written by Darko Herceg, founder of <a href="https://hd-webdesign.si">hd-webdesign.si</a> — a web design and AI services company from Slovenia. We build tools that help businesses get found by AI.</em></p>
+
+  </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 Herceg Darko. All rights reserved.</p>
+    </footer>
+
+    <!-- Article Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Structured Data, llms.txt & FAQ: Why AI Can't Find Your Website",
+        "description": "Your website might be invisible to ChatGPT, Gemini, and Perplexity. Here's why structured data, llms.txt, and FAQ markup are the technical foundation of AI visibility.",
+        "datePublished": "2026-06-11",
+        "dateModified": "2026-06-11",
+        "author": {
+            "@type": "Person",
+            "name": "Darko Herceg"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HD Web Design",
+            "url": "https://hd-webdesign.si"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://hd-webdesign.si/blog/structured-data-llms-txt-ai-visibility.html"
+        }
+    }
+    </script>
+<script src="/js/main.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+
+<div class="hd-chatbot">
+        <button class="hd-chat-toggle" id="hdChatToggle" aria-label="Odpri klepet">
+            <span class="chat-icon">💬</span>
+            <span class="close-icon">✕</span>
+        </button>
+        <div class="hd-chat-window" id="hdChatWindow">
+            <div class="hd-chat-header">
+                <div class="hd-chat-header-avatar">🤖</div>
+                <div class="hd-chat-header-info">
+                    <h3>HD Assistant</h3>
+                    <span>HD Web Design</span>
+                </div>
+            </div>
+            <div class="hd-chat-messages" id="hdChatMessages">
+                <div class="hd-msg bot">Zdravo! 👋 Sem HD Web Design asistent. Kako vam lahko pomagam?</div>
+                <div class="hd-typing" id="hdTyping">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="hd-chat-input">
+                <input type="text" id="hdChatInput" placeholder="Vpišite vprašanje..." autocomplete="off">
+                <button id="hdChatSend" aria-label="Pošlji">➤</button>
+            </div>
+            <div class="hd-chat-footer">Powered by DeepSeek AI</div>
+        </div>
+    </div>
+</body></html>

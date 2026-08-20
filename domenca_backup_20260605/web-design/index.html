@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izdelava spletnih strani — SEO & GEO optimizirane | HD Web Design</title>
+    <meta name="description" content="Izdelava sodobnih spletnih strani z vgrajeno SEO in GEO optimizacijo za AI modele. Brezplačna analiza. Hitra dostava. Chatboti po meri.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/images/hdwebdesign-favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Izdelava spletnih strani — SEO & GEO optimizirane | HD Web Design">
+    <meta property="og:description" content="Sodobne spletne strani z vgrajeno optimizacijo za iskalnike in AI modele. Brezplačna analiza.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hd-webdesign.si/web-design/">
+    <meta property="og:image" content="https://hd-webdesign.si/images/og-image.jpg">
+
+    <link rel="canonical" href="https://hd-webdesign.si/web-design/">
+
+    <!-- Structured Data: Service -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "HD Web Design — Izdelava spletnih strani",
+        "url": "https://hd-webdesign.si/web-design/",
+        "description": "Izdelava sodobnih spletnih strani z vgrajeno SEO in GEO optimizacijo za AI modele.",
+        "provider": {
+            "@type": "Person",
+            "name": "Darko Herceg",
+            "url": "https://hd-webdesign.si"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Slovenia"
+        },
+        "serviceType": ["Web Design", "SEO Optimization", "GEO Optimization", "AI Chatbot Integration"],
+        "priceRange": "€€"
+    }
+    </script>
+
+    <style>
+        /* Web Design Page Specific */
+        .hero-wd {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+        }
+        .hero-wd h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-wd .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .hero-wd .badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--primary-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .feature-card {
+            background: var(--light-bg);
+            border: 1px solid rgba(100, 116, 139, 0.15);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.1);
+            border-color: var(--primary-color);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .step {
+            padding: 1.5rem;
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+        .step h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Pricing */
+        .pricing-section {
+            padding: 4rem 0;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .pricing-card {
+            background: var(--light-bg);
+            border: 1px solid rgba(100, 116, 139, 0.15);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.1);
+        }
+        .pricing-card.popular {
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+        }
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .pricing-price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 1rem 0;
+        }
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray);
+        }
+        .pricing-period {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        .pricing-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            font-size: 0.95rem;
+        }
+        .pricing-features li i {
+            color: var(--primary-color);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        .pricing-features li.highlight {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .pricing-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .pricing-btn.primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+        }
+        .pricing-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+        .pricing-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        .pricing-btn.secondary:hover {
+            background: rgba(99, 102, 241, 0.08);
+        }
+
+        /* Audit CTA */
+        .audit-cta {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        .audit-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .audit-cta p {
+            color: #94a3b8;
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 750px;
+            margin: 3rem auto 0;
+        }
+        .faq-item {
+            border-bottom: 1px solid rgba(100, 116, 139, 0.15);
+            padding: 1.5rem 0;
+        }
+        .faq-item h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer-wd {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(100, 116, 139, 0.15);
+            margin-top: 4rem;
+        }
+        .footer-wd a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-wd h1 { font-size: 2rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .audit-cta { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <div class="logo"><a href="/"><img src="/images/hdwebdesign-logo-dark.svg" alt="HD WebDesign" style="height:32px;width:auto"></a></div>
+        <nav>
+            <ul>
+                <li><a href="/">Domov</a></li>
+                <li><a href="/about">O meni</a></li>
+                <li><a href="/boost-suite/">BoostSuite</a></li>
+                <li><a href="/web-design/" style="color:var(--primary-color)">Izdelava strani</a></li>
+                <li><a href="/blog/">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero-wd container">
+            <div class="badge">🚀 Nova storitev</div>
+            <h1>Spletne strani, ki jih AI priporoča</h1>
+            <p class="subtitle">
+                Izdelava sodobnih spletnih strani z vgrajeno optimizacijo za iskalnike in AI modele. 
+                Vaša stran ni samo lepa — je tudi pametna.
+            </p>
+            <div class="hero-cta">
+                <a href="#pricing" class="cta-button">Ogled cenika</a>
+                <a href="/boost-suite/audit.html" class="cta-button secondary">🔍 Brezplačna SEO + GEO analiza</a>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="section container">
+            <h2 class="section-title">Zakaj SEO + GEO optimizirana stran?</h2>
+            <p class="section-subtitle">Vaša stran mora biti vidna tako na Googlu kot v AI modelih</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>SEO optimizacija</h3>
+                    <p>Meta oznake, struktura, hitrost nalaganja, Core Web Vitals — vse pripravljeno za Google.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>GEO — AI vidljivost</h3>
+                    <p>Optimizacija za ChatGPT, Gemini, Perplexity. Vaše podjetje naj bo priporočeno z AI modeli.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>AI Chatbot</h3>
+                    <p>Pametni asistent na strani — odgovarja na vprašanja, zbira stranke, dela 24/7.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Hitrost</h3>
+                    <p>Optimizirana koda, komprimirane slike, lazy loading — stran naloži v manj kot 2 sekundah.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive dizajn</h3>
+                    <p>Popolnoma prilagojeno za mobilne telefone, tablice in namizne računalnike.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Schema markup</h3>
+                    <p>Structured data za rich snippets v Googlu in boljše razumevanje s strani AI modelov.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="section container">
+            <h2 class="section-title">Kako poteka?</h2>
+            <p class="section-subtitle">Od prvega pogovora do spletne strani v 5-7 delovnih dneh</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Brezplačna analiza</h3>
+                    <p>Naredimo SEO in GEO analizo vaše trenutne spletne strani ali konkurence.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Dizajn in vsebina</h3>
+                    <p>Pripravimo unikaten dizajn, strukturo strani in optimizirano vsebino.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Izdelava</h3>
+                    <p>Programiramo stran z vgrajeno SEO in GEO optimizacijo.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Objava + chatbot</h3>
+                    <p>Objavimo stran, namestimo chatbot in aktiviramo sledenje.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUDIT CTA -->
+        <section class="container">
+            <div class="audit-cta">
+                <h2>🔍 Brezplačna SEO + GEO analiza</h2>
+                <p>
+                    Preden začnemo, brezplačno preverimo vidljivost vaše strani na Googlu in v AI modelih. 
+                    Pokažemo vam točno kje ste šibki in kaj lahko izboljšamo.
+                </p>
+                <a href="/boost-suite/audit.html" class="cta-button">Začni brezplačno analizo →</a>
+            </div>
+        </section>
+
+        <!-- PRICING -->
+        <section class="pricing-section container" id="pricing">
+            <h2 class="section-title">Cenik</h2>
+            <p class="section-subtitle">Transparentne cene. Vse vključeno. Brez skritih stroškov.</p>
+            <div class="pricing-grid">
+                <!-- START -->
+                <div class="pricing-card">
+                    <h3>Začetni paket</h3>
+                    <p class="pricing-period">Za spletne vizitke in manjše strani</p>
+                    <div class="pricing-price">€890 <span>+ DDV</span></div>
+                    <ul class="pricing-features">
+                        <li class="highlight"><i class="fas fa-check"></i> Brezplačna SEO + GEO analiza</li>
+                        <li><i class="fas fa-check"></i> WordPress stran do 3 podstran</li>
+                        <li><i class="fas fa-check"></i> Responsive dizajn</li>
+                        <li><i class="fas fa-check"></i> SEO osnova (meta, headingi, alt tagi)</li>
+                        <li><i class="fas fa-check"></i> GEO optimizacija (AI vidljivost)</li>
+                        <li><i class="fas fa-check"></i> Osnoven chatbot (FAQ)</li>
+                        <li><i class="fas fa-check"></i> Kontakt + galerija + zemljevid</li>
+                        <li><i class="fas fa-check"></i> 1 leto gostovanja vključeno</li>
+                    </ul>
+                    <a href="#kontakt" class="pricing-btn secondary">Začni</a>
+                </div>
+
+                <!-- BUSINESS -->
+                <div class="pricing-card popular">
+                    <div class="pricing-badge">Najbolj priljubljen</div>
+                    <h3>Poslovni paket</h3>
+                    <p class="pricing-period">Za podjetja, ki želijo rasti</p>
+                    <div class="pricing-price">€1.990 <span>+ DDV</span></div>
+                    <ul class="pricing-features">
+                        <li class="highlight"><i class="fas fa-check"></i> Vse iz začetnega paketa</li>
+                        <li><i class="fas fa-check"></i> Do 10 podstran</li>
+                        <li><i class="fas fa-check"></i> Unikaten dizajn</li>
+                        <li><i class="fas fa-check"></i> Blog pripravljen za SEO + GEO</li>
+                        <li><i class="fas fa-check"></i> Schema markup (rich snippets)</li>
+                        <li><i class="fas fa-check"></i> FAQ sekcija (AI modeli to radi)</li>
+                        <li><i class="fas fa-check"></i> AI chatbot z odgovori po meri</li>
+                        <li><i class="fas fa-check"></i> Lead gen (zbira email/telefon)</li>
+                        <li><i class="fas fa-check"></i> Spremljanje obiska</li>
+                        <li><i class="fas fa-check"></i> 3 meseci BoostSuite FREE</li>
+                    </ul>
+                    <a href="#kontakt" class="pricing-btn primary">Izberi paket</a>
+                </div>
+
+                <!-- PREMIUM -->
+                <div class="pricing-card">
+                    <h3>Premium paket</h3>
+                    <p class="pricing-period">Za najzahtevnejše projekte</p>
+                    <div class="pricing-price">€3.490 <span>+ DDV</span></div>
+                    <ul class="pricing-features">
+                        <li class="highlight"><i class="fas fa-check"></i> Vse iz poslovnega paketa</li>
+                        <li><i class="fas fa-check"></i> Neomejene podstrani</li>
+                        <li><i class="fas fa-check"></i> Programiranje po meri</li>
+                        <li><i class="fas fa-check"></i> Napredni GEO (entity optimization)</li>
+                        <li><i class="fas fa-check"></i> Večjezičnost + hreflang</li>
+                        <li><i class="fas fa-check"></i> Napredni AI chatbot (DeepSeek)</li>
+                        <li><i class="fas fa-check"></i> Rezervacije / naročila prek chata</li>
+                        <li><i class="fas fa-check"></i> Pisanje SEO + GEO vsebine</li>
+                        <li><i class="fas fa-check"></i> 6 mesecev BoostSuite FREE</li>
+                        <li><i class="fas fa-check"></i> 1 leto vzdrževanja vključeno</li>
+                    </ul>
+                    <a href="#kontakt" class="pricing-btn secondary">Kontaktiraj nas</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section container">
+            <h2 class="section-title">Pogosta vprašanja</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Kaj je GEO optimizacija?</h3>
+                    <p>GEO (Generative Engine Optimization) je optimizacija spletne strani za AI modele kot so ChatGPT, Gemini in Perplexity. Vaša stran mora biti strukturirana tako, da jo AI modeli razumejo in priporočajo uporabnikom.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Koliko časa traja izdelava?</h3>
+                    <p>Začetni paket: 3-5 delovnih dni. Poslovni: 5-7 delovnih dni. Premium: 7-14 delovnih dni. Odvisno od kompleksnosti projekta.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Kaj dobim z brezplačno analizo?</h3>
+                    <p>Podrobno SEO in GEO poročilo: kako vas Google in AI modeli vidijo, kje so težave in kaj lahko izboljšate. Brez obveznosti.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Ali lahko vzdržujem stran sam?</h3>
+                    <p>Seveda. Vse strani so zgrajene v WordPressu ali čisti kodi — odvisno od paketa. Ponujamo tudi vzdrževanje za €50/mesec.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Kaj je AI chatbot in zakaj ga potrebujem?</h3>
+                    <p>AI chatbot je pametni asistent na vaši strani, ki odgovarja na vprašanja obiskovalcev, zbira kontakte in pomaga pri navigaciji. Dela 24/7 brez vašega posredovanja.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section container" id="kontakt">
+            <h2 class="section-title">Začnimo projekt</h2>
+            <p class="section-subtitle">Pošljite povpraševanje in v 24 urah dobite brezplačno analizo</p>
+            <div style="max-width:500px;margin:0 auto;text-align:center;">
+                <a href="mailto:hercegdarko@hd-webdesign.si?subject=Povpraševanje — Izdelava spletne strani" class="cta-button" style="font-size:1.1rem;padding:1rem 2.5rem;">
+                    📧 Pošlji povpraševanje
+                </a>
+                <p style="color:var(--gray);margin-top:1rem;font-size:0.9rem;">
+                    ali pišite na <a href="mailto:hercegdarko@hd-webdesign.si" style="color:var(--primary-color)">hercegdarko@hd-webdesign.si</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-wd">
+        <p>© 2026 HD Web Design — Izdelava spletnih strani | <a href="/">Domov</a> · <a href="/privacy.html">Zasebnost</a></p>
+    </footer>
+</body>
+</html>

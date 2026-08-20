@@ -1,0 +1,19 @@
+startCommand:
+  type: url
+  url: https://hd-webdesign.si/mcp
+  headers:
+    Authorization: "Bearer {apiKey}"
+
+configSchema:
+  type: object
+  properties:
+    apiKey:
+      type: string
+      description: "BoostSuite API key for authenticated access"
+    outputFormat:
+      type: string
+      enum: ["json", "markdown", "summary"]
+      description: "Output format for audit results"
+      default: "json"
+  required:
+    - apiKey

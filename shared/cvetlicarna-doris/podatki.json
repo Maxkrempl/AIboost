@@ -1,0 +1,95 @@
+{
+  "ime": "Cvetličarna Doris",
+  "kategorija": "Cvetličarne",
+  "naslov": "Ulica Dušana Kvedra 43, 3230 Šentjur",
+  "mesto": "Šentjur",
+  "pošta": "3230",
+  "država": "Slovenija",
+  "telefon": "031 512 776",
+  "email": "cvetlicarna.doris@gmail.com",
+  "facebook": "https://www.facebook.com/profile.php?id=100086915877666",
+  "gps": {"lat": 46.220012, "lng": 15.39631},
+  "ocena": 5.0,
+  "st_ocen": 3,
+  "portal_url": "https://www.moja-dejavnost.si/dobra-cvetlicarna-na-savinjskem/cvetlicarna-doris",
+  "lastna_spletna_stran": null,
+  "logo": "logo.png",
+  "storitve": [
+    "Rezano cvetje (vse sort in barv)",
+    "Žalni aranžmaji",
+    "Žalni venci",
+    "Poročni šopki",
+    "Poročno cvetje",
+    "Balkonsko cvetje",
+    "Namizno cvetje",
+    "Ikebane",
+    "Svečano cvetje",
+    "Dostava cvetja (Šentjur, Celje, Savinjska)"
+  ],
+  "opis": "Želite nekoga obdarovati ali pa sebi podariti šopek ali čudovito cvetje? V dobri in prijetni CVETLIČARNI DORIS v Šentjurju na Savinjskem vas pričakuje raznovrstno rezano cvetje vseh sort in barv ter drugo cvetje in rože, s katerim si obarvate življenje. Obiščite nas in strokovno vam bomo svetovali izbiro cvetja in rož za vaše potrebe in specifične priložnosti - obarvajte si življenje s cvetjem! Cvetlični aranžmaji Savinjska - naša cvetličarna na Savinjskem ponuja sveže in lepe cvetlične aranžmaje za vse priložnosti. Z veseljem ustvarjamo čudovite šopke, poročne dekoracije, žalne aranžmaje ter cvetlične dekoracije za poslovne dogodke. Uporabljamo sveže cvetje, skrbno izbrano za vsak aranžma. Naša ekipa strokovnjakov vam nudi prijazno in strokovno svetovanje ter prilagajanje vašim željam. Smo ugodna in dobra cvetličarna na Savinjskem, ki vam poleg kakovostne ponudbe nudi tudi ugodne cene cvetja in rož.",
+  "delovni_cas": {
+    "pon_pet": "08:00 - 17:00",
+    "sobota": "08:00 - 12:00",
+    "nedelje_prazniki": "zaprto",
+    "opombe": "Portal pravi 8-17h/8-12h, opis na strani pravi 8-18h/8-13h"
+  },
+  "ocene": [
+    {
+      "ocena": 5,
+      "naslov": "Zelo lep šopek po mojih željah",
+      "besedilo": "V Cvetličarni Doris sem naročila poročni šopek in že ob prvem pogovoru so razumele, kakšen stil želim. Pokazale so različne možnosti cvetja in barv, nato pa pripravile šopek, ki se je res lepo ujemal z obleko in celotno poroko. Upoštevale so vse moje želje.",
+      "avtor": "MV"
+    },
+    {
+      "ocena": 5,
+      "naslov": "Šopek",
+      "besedilo": "kupil lep šopek za hčerko bila je zelo vesela hvala prijazni prodajalki cvetličarki ki mi je svetovala zelo lepo",
+      "avtor": null
+    }
+  ],
+  "slike": {
+    "zalni_aranzmaji": [
+      "zalni_aranzmaj_1.jpg",
+      "zalni_aranzmaj_2.jpg",
+      "najboljsa_cvetlicarna.jpg",
+      "zalni_venci_aranzmaji.jpg",
+      "izdelava_zalnih_vencev.jpg",
+      "zalni_aranzmaj_venci.jpg",
+      "zalno_cvetje.jpg",
+      "zalni_venci.jpg",
+      "zalni_aranzmaj_nov_1.webp",
+      "zalni_aranzmaj_nov_2.webp",
+      "zalni_aranzmaj_nov_3.webp"
+    ],
+    "porocni": [
+      "cvetlicarna_savinjska.jpg",
+      "cvetlicarna_savinjska_2.jpg",
+      "porocno_cvetje.png",
+      "porocni_sopki_1.webp",
+      "porocni_sopki_2.webp",
+      "porocno_cvetje_savinjska.webp"
+    ],
+    "rezano_svecano": [
+      "cvetlicarna_celje_1.png",
+      "cvetlicarna_celje_2.png",
+      "rezano_cvetje_1.webp",
+      "svecano_cvetje_1.webp",
+      "rezano_cvetje_2.webp",
+      "svecano_cvetje_2.webp",
+      "svecano_cvetje_3.webp",
+      "svecano_cvetje_4.webp"
+    ],
+    "balkonsko": [
+      "balkonsko_cvetje_1.webp",
+      "balkonsko_cvetje_2.webp",
+      "balkonsko_cvetje_3.webp"
+    ],
+    "dostava": [
+      "dostava_cvetja_1.webp",
+      "dostava_cvetja_2.webp",
+      "dostava_cvetja_3.webp",
+      "dostava_cvetja_4.webp"
+    ],
+    "logo": "logo.png"
+  }
+}

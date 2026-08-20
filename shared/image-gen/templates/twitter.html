@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1200px; height: 675px; overflow: hidden; font-family: 'Segoe UI', system-ui, sans-serif; }
+.container {
+  width: 1200px; height: 675px;
+  background: linear-gradient(135deg, #0c0a1a 0%, #1a1040 100%);
+  position: relative; display: flex; align-items: center; padding: 0 80px;
+}
+.mesh1 { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%); top: -200px; left: -100px; }
+.mesh2 { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); bottom: -150px; right: 100px; }
+.grid {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(rgba(139,92,246,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.text-side { position: relative; z-index: 2; max-width: 550px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3);
+  color: #22d3ee; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 24px;
+}
+h1 { color: #fff; font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+h1 .gradient {
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4, #ec4899);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.subtitle { color: rgba(255,255,255,0.55); font-size: 17px; line-height: 1.6; margin-bottom: 28px; }
+.features { display: flex; gap: 10px; flex-wrap: wrap; }
+.feature {
+  background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2);
+  color: rgba(255,255,255,0.8); font-size: 13px; padding: 8px 16px; border-radius: 8px;
+}
+.visual { position: absolute; right: 60px; top: 50%; transform: translateY(-50%); width: 440px; height: 400px; z-index: 2; }
+.code-block {
+  position: absolute; top: 0; right: 0;
+  background: rgba(15,15,35,0.9); border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 12px; padding: 16px 20px; width: 360px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+.code-header { display: flex; gap: 4px; margin-bottom: 12px; }
+.code-dot { width: 7px; height: 7px; border-radius: 50%; }
+.code-line { font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.6; }
+.cl-kw { color: #c084fc; } .cl-fn { color: #22d3ee; } .cl-str { color: #4ade80; } .cl-cm { color: rgba(255,255,255,0.25); }
+.bubble {
+  position: absolute; border-radius: 10px;
+  background: rgba(15,15,35,0.8); border: 1px solid rgba(139,92,246,0.3);
+  padding: 6px 12px; font-size: 11px; color: rgba(255,255,255,0.7);
+  display: flex; align-items: center; gap: 6px;
+}
+.b1 { top: 10px; right: 200px; } .b2 { top: 160px; right: 380px; } .b3 { bottom: 160px; right: 20px; }
+.bub-dot { width: 5px; height: 5px; border-radius: 50%; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="mesh1"></div><div class="mesh2"></div><div class="grid"></div>
+  <div class="text-side">
+    <div class="badge">{{FEATURES}}</div>
+    <h1>{{TITLE}}</h1>
+    <p class="subtitle">{{SUBTITLE}}</p>
+    <div class="features">
+      <div class="feature">🚀 Fast</div>
+      <div class="feature">🔒 Secure</div>
+      <div class="feature">💰 x402</div>
+    </div>
+  </div>
+  <div class="visual">
+    <div class="bubble b1"><div class="bub-dot" style="background:#8b5cf6"></div>React</div>
+    <div class="bubble b2"><div class="bub-dot" style="background:#06b6d4"></div>Python</div>
+    <div class="bubble b3"><div class="bub-dot" style="background:#ec4899"></div>MCP</div>
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dot" style="background:#ef4444"></div>
+        <div class="code-dot" style="background:#eab308"></div>
+        <div class="code-dot" style="background:#22c55e"></div>
+      </div>
+      <div class="code-line"><span class="cl-cm">// {{STATS}}</span></div>
+      <div class="code-line"><span class="cl-kw">from</span> <span class="cl-fn">fastmcp</span> <span class="cl-kw">import</span> FastMCP</div>
+      <div class="code-line"><span class="cl-fn">mcp</span> = FastMCP(<span class="cl-str">"boostsuite"</span>)</div>
+      <div class="code-line">&nbsp;</div>
+      <div class="code-line"><span class="cl-kw">@mcp.tool</span>()</div>
+      <div class="code-line"><span class="cl-kw">def</span> <span class="cl-fn">seo_audit</span>(url: str):</div>
+      <div class="code-line">&nbsp;&nbsp;<span class="cl-kw">return</span> analyze(url)</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

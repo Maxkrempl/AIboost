@@ -1,0 +1,294 @@
+<?php
+$dbFile = __DIR__ . '/api/data.json';
+$total = 0;
+$sectors = [];
+$gradeA = 0; $invisible = 0; $noLlms = 0;
+if (file_exists($dbFile)) {
+    $data = json_decode(file_get_contents($dbFile), true);
+    if (is_array($data)) {
+        $total = count($data);
+        foreach ($data as $e) {
+            $s = $e['sector'] ?? 'Ostalo';
+            if (!isset($sectors[$s])) $sectors[$s] = 0;
+            $sectors[$s]++;
+            if (($e['score'] ?? 0) >= 70) $gradeA++;
+            if (($e['score'] ?? 0) < 30) $invisible++;
+            if (empty($e['checks']['llms']['pass'])) $noLlms++;
+        }
+    }
+}
+$sectorCount = count($sectors);
+$pctInvisible = $total > 0 ? round($invisible / $total * 100) : 0;
+$pctNoLlms = $total > 0 ? round($noLlms / $total * 100) : 0;
+$pctGradeA = $total > 0 ? round($gradeA / $total * 100) : 0;
+$dateModified = date('d. m. Y');
+?>
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indeks AI-vidljivosti Slovenije — Kako AI vidi slovenska podjetja?</title>
+<meta name="description" content="Javna lestvica <?= $total ?> slovenskih podjetij po AI-vidljivosti. Preverite, ali vas AI modeli sploh vidijo.">
+<meta property="og:title" content="Indeks AI-vidljivosti Slovenije 2026">
+<meta property="og:description" content="Javna lestvica slovenskih podjetij po AI-vidljivosti. <?= $total ?> podjetij, <?= $sectorCount ?> sektorjev.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hd-webdesign.si/indeks-ai-vidljivosti/">
+<link rel="canonical" href="https://hd-webdesign.si/indeks-ai-vidljivosti/">
+<link rel="icon" type="image/svg+xml" href="/indeks-ai-vidljivosti/favicon.svg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dataset","name":"Indeks AI-vidljivosti Slovenije","description":"Javna lestvica <?= $total ?> slovenskih podjetij po AI-vidljivosti.","url":"https://hd-webdesign.si/indeks-ai-vidljivosti/","creator":{"@type":"Organization","name":"HD Web Design","url":"https://hd-webdesign.si"},"dateModified":"<?= date('Y-m-d') ?>","keywords":["AI visibility","Slovenia","llms.txt","Schema.org","GEO","SEO"]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DJER0DNGTF');</script>
+<style>
+:root{--void:#f2f3f5;--surface:#fff;--surface-2:#eceef1;--line:#dcdfe4;--ink:#12141a;--muted:#565f6e;--muted-dim:#9aa1ac;--signal:#0d8f80;--signal-soft:#0d8f8014;--signal-line:#0d8f8055;--alert:#b3550c;--alert-soft:#b3550c14;--grade-a:#15803d;--grade-f:#dc2626;--font-display:'Fraunces',serif;--font-body:'Inter',sans-serif;--font-mono:'IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--void);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,.035) 1px,transparent 0);background-size:22px 22px;pointer-events:none;z-index:0}
+nav{display:flex;align-items:center;justify-content:space-between;padding:28px 56px;position:relative;z-index:2;border-bottom:1px solid var(--line);background:var(--surface)}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--font-mono);font-weight:600;font-size:15px;letter-spacing:.02em;text-decoration:none;color:var(--ink)}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--signal),#0a6459);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:600;font-size:12px;color:#fff}
+.navlinks{display:flex;gap:36px;font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+.navlinks a{color:var(--muted);text-decoration:none;transition:color .2s}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a.active{color:var(--signal)}
+.lang-switcher{display:flex;gap:6px;margin-left:24px}
+.lang-btn{background:none;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-family:var(--font-mono);font-size:11px;color:var(--muted);cursor:pointer;transition:all .15s}
+.lang-btn:hover,.lang-btn.active{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+header.hero{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:88px 32px 64px}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--signal);display:inline-flex;align-items:center;gap:8px;background:var(--signal-soft);border:1px solid var(--signal-line);padding:7px 14px 7px 10px;border-radius:999px;margin-bottom:34px}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 3px var(--signal-soft)}
+h1{font-family:var(--font-display);font-weight:500;font-size:clamp(44px,6.4vw,84px);line-height:1.02;letter-spacing:-.01em;max-width:780px;color:var(--ink)}
+h1 em{font-style:italic;font-weight:400;color:var(--signal)}
+.sub{margin-top:26px;max-width:560px;color:var(--muted);font-size:17px;line-height:1.6}
+.sub strong{color:var(--ink);font-weight:600}
+.search-row{display:flex;gap:12px;margin-top:40px;max-width:720px;flex-wrap:wrap}
+.search-input{flex:1;min-width:240px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;color:var(--ink);font-family:var(--font-mono);font-size:14px;outline:none;transition:border-color .15s}
+.search-input:focus{border-color:var(--signal)}
+.search-input::placeholder{color:var(--muted-dim)}
+select.fake{background:var(--surface);border:1px solid var(--line);color:var(--muted);font-family:var(--font-mono);font-size:13px;padding:14px 16px;border-radius:10px;cursor:pointer;outline:none}
+.search-btn{background:var(--signal);color:#fff;border:none;font-family:var(--font-mono);font-size:13px;padding:14px 20px;border-radius:10px;font-weight:600;cursor:pointer;transition:opacity .15s}
+.search-btn:hover{opacity:.9}
+.scan-wrap{margin-top:72px;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden;box-shadow:0 30px 60px -35px rgba(20,25,35,.18)}
+.scan-chrome{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.scan-url{margin-left:10px;font-family:var(--font-mono);font-size:12px;color:var(--muted-dim);flex:1;display:flex;justify-content:space-between;align-items:center}
+.scan-url .label{color:var(--muted);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em}
+.scan-body{position:relative;padding:34px 40px 40px;min-height:260px}
+.scan-line-el{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--signal),transparent);box-shadow:0 0 20px 4px var(--signal-soft);top:0;animation:sweep 4.5s ease-in-out infinite;z-index:3}
+@keyframes sweep{0%{top:6%}50%{top:92%}100%{top:6%}}
+@media(prefers-reduced-motion:reduce){.scan-line-el{animation:none;top:50%}}
+.content-row{display:flex;align-items:center;gap:16px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.content-row:last-child{border-bottom:none}
+.bar{height:11px;border-radius:3px;background:var(--line);transition:background .5s,opacity .5s}
+.tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;padding:3px 8px;border-radius:5px;white-space:nowrap;min-width:76px;text-align:center;transition:all .5s;color:var(--muted-dim);background:transparent;border:1px solid var(--line)}
+.content-row.on .bar{background:var(--signal);opacity:1}
+.content-row.on .tag{color:#fff;background:var(--signal);border-color:var(--signal)}
+.content-row.off .bar{background:var(--line);opacity:.7}
+.content-row.off .tag{color:var(--alert);background:var(--alert-soft);border-color:#b3550c33}
+.ticker{margin-top:28px;display:flex;flex-wrap:wrap;font-family:var(--font-mono);font-size:13px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ticker-item{padding:16px 26px;border-right:1px solid var(--line);display:flex;align-items:baseline;gap:8px;color:var(--muted)}
+.ticker-item:last-child{border-right:none}
+.ticker-item b{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:17px;color:var(--ink)}
+.ticker-item.red b{color:var(--grade-f)}
+.ticker-item.amber b{color:var(--alert)}
+.ticker-item.green b{color:var(--grade-a)}
+.index-section{max-width:1180px;margin:0 auto;padding:24px 32px 100px;position:relative;z-index:1}
+.index-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px;border-bottom:1px solid var(--line);padding-bottom:22px}
+.index-head h2{font-family:var(--font-display);font-weight:500;font-size:28px;letter-spacing:-.005em}
+.index-head h2 em{font-style:italic;color:var(--signal);font-weight:400}
+.index-count{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+.index-count b{color:var(--ink)}
+table.idx{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.idx thead th{text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--muted-dim);font-weight:500;padding:14px 20px;background:var(--surface-2);border-bottom:1px solid var(--line);cursor:pointer;user-select:none;white-space:nowrap}
+table.idx thead th:hover{color:var(--signal)}
+table.idx thead th.num,table.idx tbody td.num{text-align:center;width:52px}
+table.idx thead th.score,table.idx tbody td.score{text-align:right}
+table.idx thead th.grade,table.idx tbody td.grade{text-align:center;width:80px}
+table.idx tbody tr{border-bottom:1px solid var(--line);transition:background .15s}
+table.idx tbody tr:last-child{border-bottom:none}
+table.idx tbody tr:hover{background:var(--surface-2);cursor:pointer}
+table.idx tbody td{padding:15px 20px;font-size:14px}
+td.num{font-family:var(--font-mono);color:var(--muted-dim);font-size:12.5px;text-align:center}
+td.company{font-weight:500;color:var(--ink)}
+td.company .domain{display:block;font-family:var(--font-mono);font-size:11.5px;color:var(--muted-dim);margin-top:2px;font-weight:400}
+td.sector{font-family:var(--font-mono);font-size:12.5px;color:var(--muted)}
+td.score{font-family:var(--font-mono);font-weight:600;color:var(--ink)}
+.grade-pill{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;font-family:var(--font-display);font-weight:600;font-size:15px;font-style:italic}
+.grade-pill.A{background:#e8f6ee;color:var(--grade-a)}
+.grade-pill.B{background:#e6f6f4;color:var(--signal)}
+.grade-pill.C{background:#fdf3e3;color:#a8720c}
+.grade-pill.D{background:#fdeee3;color:var(--alert)}
+.grade-pill.F{background:#fdeaea;color:var(--grade-f)}
+.detail-row{display:none}
+.detail-row.open{display:table-row}
+.detail-cell{padding:16px 20px;background:var(--surface-2)}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.check{font-family:var(--font-mono);font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid var(--line)}
+.check.pass{background:#e8f6ee;color:var(--grade-a);border-color:#15803d33}
+.check.fail{background:#fdeaea;color:var(--grade-f);border-color:#dc262633}
+.idx-foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px;font-family:var(--font-mono);font-size:12.5px;color:var(--muted);flex-wrap:wrap;gap:12px}
+.page-btns{display:flex;gap:8px}
+.page-btns button{background:var(--surface);border:1px solid var(--line);color:var(--muted);font-family:var(--font-mono);font-size:12.5px;padding:8px 14px;border-radius:8px;cursor:pointer;transition:all .15s}
+.page-btns button:hover{border-color:var(--ink);color:var(--ink)}
+.page-btns button.primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.sectors-section{margin-top:64px}
+.sectors-section h3{font-family:var(--font-display);font-weight:500;font-size:22px;margin-bottom:20px}
+.sectors-section h3 em{font-style:italic;color:var(--signal);font-weight:400}
+.sector-row{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.sector-row:last-child{border-bottom:none}
+.sector-label{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);min-width:200px}
+.sector-bar{flex:1;display:flex;height:22px;border-radius:4px;overflow:hidden;background:var(--line)}
+.sector-bar div{display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;color:#fff;font-weight:600;min-width:20px}
+.sector-meta{font-family:var(--font-mono);font-size:11.5px;color:var(--muted-dim);min-width:80px;text-align:right}
+footer{border-top:1px solid var(--line);background:var(--surface);position:relative;z-index:1}
+.footer-inner{max-width:1180px;margin:0 auto;padding:48px 32px;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.footer-brand .logo{margin-bottom:14px}
+.footer-brand p{font-size:13.5px;color:var(--muted);max-width:320px;line-height:1.6}
+.footer-cols{display:flex;gap:56px;flex-wrap:wrap}
+.footer-col h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--muted-dim);margin-bottom:14px;font-weight:500}
+.footer-col a{display:block;font-size:13.5px;color:var(--muted);text-decoration:none;margin-bottom:10px}
+.footer-col a:hover{color:var(--ink)}
+.footer-bottom{border-top:1px solid var(--line);padding:20px 32px;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11.5px;color:var(--muted-dim);flex-wrap:wrap;gap:10px}
+@media(max-width:768px){nav{padding:16px 20px;flex-wrap:wrap;gap:12px}.navlinks{gap:16px;font-size:12px}header.hero{padding:48px 20px 40px}.search-row{flex-direction:column}.scan-body{padding:24px 20px}.index-section{padding:16px 20px 60px}table.idx{font-size:13px}table.idx thead th,table.idx tbody td{padding:10px 12px}.ticker-item{padding:12px 16px;font-size:12px}.sector-label{min-width:120px;font-size:11px}.footer-inner{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo"><div class="logo-mark">HD</div>WebDesign</a>
+    <div style="display:flex;align-items:center;">
+        <div class="navlinks">
+            <a href="/">Domov</a>
+            <a href="/blog/">Blog</a>
+            <a href="/indeks-ai-vidljivosti/" class="active">AI Indeks</a>
+            <a href="/ai-izkaznica/">Izkaznica</a>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('sl')">SL</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('de')">DE</button>
+            <button class="lang-btn" onclick="setLang('hr')">HR</button>
+            <button class="lang-btn" onclick="setLang('it')">IT</button>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="eyebrow" id="heroEyebrow">POSODOBLJENO <?= $dateModified ?> · <?= $total ?> PODJETIJ</div>
+    <h1>AI vas bere.<br><em>Ali vas vidi?</em></h1>
+    <p class="sub">ChatGPT, Perplexity in Gemini vsak dan odgovarjajo namesto Googla — a le podjetjem, ki jih razumejo. <strong><?= $pctInvisible ?>% slovenskih podjetij je zanje popolnoma nevidnih.</strong> Preverite, kje ste vi.</p>
+
+    <div class="search-row">
+        <input class="search-input" id="search" placeholder="Iskanje podjetja ali domene…">
+        <select class="fake" id="sectorFilter"><option value="">Vsi sektorji</option></select>
+        <select class="fake" id="gradeFilter">
+            <option value="">Vse ocene</option>
+            <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="F">F</option>
+        </select>
+        <button class="search-btn" onclick="renderTable()">Preveri</button>
+    </div>
+
+    <div class="scan-wrap">
+        <div class="scan-chrome">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="scan-url"><span>vase-podjetje.si</span><span class="label">KAKO VAS VIDI AI →</span></div>
+        </div>
+        <div class="scan-body">
+            <div class="scan-line-el"></div>
+            <div class="content-row on"><div class="bar" style="width:34%"></div><div class="tag">VIDNO</div></div>
+            <div class="content-row off"><div class="bar" style="width:58%"></div><div class="tag">NEVIDNO</div></div>
+            <div class="content-row on"><div class="bar" style="width:44%"></div><div class="tag">VIDNO</div></div>
+            <div class="content-row off"><div class="bar" style="width:26%"></div><div class="tag">NEVIDNO</div></div>
+            <div class="content-row on"><div class="bar" style="width:51%"></div><div class="tag">VIDNO</div></div>
+            <div class="content-row off"><div class="bar" style="width:38%"></div><div class="tag">NEVIDNO</div></div>
+        </div>
+    </div>
+
+    <div class="ticker" id="tickerStats">
+        <div class="ticker-item red"><b><?= $pctInvisible ?>%</b> nevidnih za AI</div>
+        <div class="ticker-item amber"><b><?= $pctNoLlms ?>%</b> brez llms.txt</div>
+        <div class="ticker-item"><b><?= $sectorCount ?></b> sektorjev</div>
+        <div class="ticker-item green"><b><?= $pctGradeA ?>%</b> z oceno A</div>
+    </div>
+</header>
+
+<section class="index-section">
+    <div class="index-head">
+        <h2>Celoten <em>indeks</em></h2>
+        <div class="index-count" id="indexCount">Prikazano <b>1–<?= min(20, $total) ?></b> od <b><?= $total ?></b> podjetij</div>
+    </div>
+
+    <table class="idx">
+        <thead><tr>
+            <th class="num" data-col="rank">#</th>
+            <th data-col="podjetje">Podjetje</th>
+            <th data-col="sektor">Sektor</th>
+            <th class="score" data-col="score">Ocena</th>
+            <th class="grade" data-col="razred">Grade</th>
+        </tr></thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <div class="idx-foot">
+        <span id="sortInfo">Sortirano po oceni · padajoče</span>
+        <div class="page-btns" id="pagination"></div>
+    </div>
+
+    <div class="sectors-section">
+        <h3>Povprečje po <em>sektorjih</em></h3>
+        <div id="sectorBars"></div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="/" class="logo"><div class="logo-mark">HD</div>WebDesign</a>
+            <p>AI-vidljivost slovenskih podjetij spremljamo mesečno — kako vas vidijo ChatGPT, Perplexity in Gemini, in kaj lahko storite, da vas ne prezrejo.</p>
+        </div>
+        <div class="footer-cols">
+            <div class="footer-col"><h4>INDEKS</h4><a href="/indeks-ai-vidljivosti/">Vsi sektorji</a><a href="/indeks-ai-vidljivosti/#methodology">Metodologija</a><a href="/ai-izkaznica/">Prijavi podjetje</a></div>
+            <div class="footer-col"><h4>BOOSTSUITE</h4><a href="/boost-suite/">GEOBoost</a><a href="/boost-suite/">SEOBooster</a><a href="/boost-suite/">EtsyBooster</a></div>
+            <div class="footer-col"><h4>POVEZAVE</h4><a href="/blog/">Blog</a><a href="/ai-izkaznica/">Izkaznica</a><a href="mailto:hercegdarko@hd-webdesign.si">Kontakt</a></div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 HD WebDesign · Celje, Slovenija</span>
+        <span>PODATKI POSODOBLJENI MESEČNO</span>
+    </div>
+</footer>
+
+<script>
+const I={sl:{search:"Iskanje podjetja ali domene…",allSectors:"Vsi sektorji",allGrades:"Vse ocene"},en:{search:"Search company or domain…",allSectors:"All sectors",allGrades:"All grades"},de:{search:"Firma oder Domain suchen…",allSectors:"Alle Sektoren",allGrades:"Alle Noten"},hr:{search:"Traži tvrtku ili domenu…",allSectors:"Svi sektori",allGrades:"Sve ocjene"},it:{search:"Cerca azienda o dominio…",allSectors:"Tutti i settori",allGrades:"Tutti i voti"}};
+let lang='sl';function t(k){return(I[lang]||I.sl)[k]||k}
+function setLang(l){lang=l;document.documentElement.lang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===l));document.getElementById('search').placeholder=t('search');renderAll()}
+
+let DATA=[];let sortCol='score',sortDir=-1;let currentPage=1;const perPage=20;
+function loadData(){fetch('/indeks-ai-vidljivosti/api/index.php').then(r=>r.json()).then(api=>{if(api.entries&&api.entries.length>0){DATA=api.entries.filter(e=>e.visible!==false).map(e=>({rank:0,sektor:e.sector||'',podjetje:e.podjetje||e.domain,domena:e.domain,score:e.score||0,razred:e.grade||'F',llms_txt:!!(e.checks&&e.checks.llms&&e.checks.llms.pass),schema_org:!!(e.checks&&e.checks.schema&&e.checks.schema.pass),meta_description:!!(e.checks&&e.checks.meta&&e.checks.meta.pass),og_tags:!!(e.checks&&e.checks.og&&e.checks.og.pass),sitemap:!!(e.checks&&e.checks.sitemap&&e.checks.sitemap.pass),robots_txt:!!(e.checks&&e.checks.robots&&e.checks.robots.pass)}))}finishLoad()}).catch(()=>finishLoad())}
+function finishLoad(){DATA.sort((a,b)=>b.score-a.score);DATA.forEach((d,i)=>d.rank=i+1);populateSectors();renderAll()}
+function populateSectors(){const s=[...new Set(DATA.map(d=>d.sektor))].filter(Boolean).sort();const sel=document.getElementById('sectorFilter');const cur=sel.value;sel.innerHTML=`<option value="">${t('allSectors')}</option>`+s.map(x=>`<option value="${x}" ${x===cur?'selected':''}>${x}</option>`).join('')}
+function getFiltered(){const q=document.getElementById('search').value.toLowerCase();const sec=document.getElementById('sectorFilter').value;const grd=document.getElementById('gradeFilter').value;return DATA.filter(d=>{if(q&&!d.podjetje.toLowerCase().includes(q)&&!d.domena.toLowerCase().includes(q))return false;if(sec&&d.sektor!==sec)return false;if(grd&&d.razred!==grd)return false;return true})}
+function renderAll(){currentPage=1;renderTable();renderSectors()}
+function renderTable(){const f=getFiltered();const tp=Math.ceil(f.length/perPage);if(currentPage>tp)currentPage=tp||1;const s=(currentPage-1)*perPage;const p=f.slice(s,s+perPage);
+document.getElementById('tableBody').innerHTML=p.map(d=>`<tr class="data-row" onclick="toggleDetail(this)"><td class="num">${d.rank}</td><td class="company">${d.podjetje}<span class="domain">${d.domena}</span></td><td class="sector">${d.sektor}</td><td class="score">${d.score}</td><td class="grade"><span class="grade-pill ${d.razred}">${d.razred}</span></td></tr><tr class="detail-row"><td class="detail-cell" colspan="5"><div class="checks"><span class="check ${d.llms_txt?'pass':'fail'}">llms.txt ${d.llms_txt?'✓':'✗'}</span><span class="check ${d.schema_org?'pass':'fail'}">Schema.org ${d.schema_org?'✓':'✗'}</span><span class="check ${d.meta_description?'pass':'fail'}">Meta ${d.meta_description?'✓':'✗'}</span><span class="check ${d.og_tags?'pass':'fail'}">OG ${d.og_tags?'✓':'✗'}</span><span class="check ${d.sitemap?'pass':'fail'}">Sitemap ${d.sitemap?'✓':'✗'}</span><span class="check ${d.robots_txt?'pass':'fail'}">Robots ${d.robots_txt?'✓':'✗'}</span></div></td></tr>`).join('');
+const e=Math.min(s+p.length,f.length);document.getElementById('indexCount').innerHTML=`Prikazano <b>${s+1}–${e}</b> od <b>${f.length}</b> podjetij`;
+let ph='';if(tp>1){if(currentPage>1)ph+=`<button onclick="goPage(${currentPage-1})">← Prejšnja</button>`;for(let i=1;i<=tp;i++){if(i===1||i===tp||Math.abs(i-currentPage)<=2)ph+=`<button class="${i===currentPage?'primary':''}" onclick="goPage(${i})">${i}</button>`;else if(Math.abs(i-currentPage)===3)ph+=`<button disabled>…</button>`}if(currentPage<tp)ph+=`<button onclick="goPage(${currentPage+1})">Naslednja →</button>`}
+document.getElementById('pagination').innerHTML=ph}
+function goPage(p){currentPage=p;renderTable();window.scrollTo({top:document.querySelector('.index-section').offsetTop-20,behavior:'smooth'})}
+function toggleDetail(tr){const n=tr.nextElementSibling;if(n&&n.classList.contains('detail-row'))n.classList.toggle('open')}
+const GC={A:'var(--grade-a)',B:'var(--signal)',C:'#a8720c',D:'var(--alert)',F:'var(--grade-f)'};
+function renderSectors(){const s={};DATA.forEach(d=>{if(!s[d.sektor])s[d.sektor]={total:0,sum:0,grades:{}};s[d.sektor].total++;s[d.sektor].sum+=d.score;s[d.sektor].grades[d.razred]=(s[d.sektor].grades[d.razred]||0)+1});const sorted=Object.entries(s).sort((a,b)=>(b[1].sum/b[1].total)-(a[1].sum/a[1].total));
+document.getElementById('sectorBars').innerHTML=sorted.map(([n,d])=>{const avg=Math.round(d.sum/d.total);const bars=['A','B','C','D','F'].map(g=>{const c=d.grades[g]||0;const p=c/d.total*100;return p>0?`<div style="width:${p}%;background:${GC[g]}">${c}</div>`:''}).join('');return`<div class="sector-row"><div class="sector-label">${n}</div><div class="sector-bar">${bars}</div><div class="sector-meta">${d.total} · ${avg}/100</div></div>`}).join('')}
+document.querySelectorAll('th[data-col]').forEach(th=>{th.addEventListener('click',()=>{const c=th.dataset.col;if(sortCol===c)sortDir*=-1;else{sortCol=c;sortDir=c==='podjetje'||c==='sektor'?1:-1}DATA.sort((a,b)=>{let va=a[c],vb=b[c];if(typeof va==='string')return va.localeCompare(vb)*sortDir;return((va||0)-(vb||0))*sortDir});DATA.forEach((d,i)=>d.rank=i+1);currentPage=1;renderTable()})});
+document.getElementById('search').addEventListener('input',()=>{currentPage=1;renderTable()});
+document.getElementById('sectorFilter').addEventListener('change',()=>{currentPage=1;renderTable()});
+document.getElementById('gradeFilter').addEventListener('change',()=>{currentPage=1;renderTable()});
+loadData();
+</script>
+</body>
+</html>

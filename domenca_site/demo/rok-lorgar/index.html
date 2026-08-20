@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rok Lorgar — Frizerski Studio | Celje & Rogaška Slatina</title>
+    <meta name="description" content="Rok Lorgar — izkušen frizer z 15+ leti tradicije. Profesionalne frizerske storitve za moške, ženske in otroke v Rogaški Slatini in Celju.">
+    <meta name="keywords" content="frizer, frizerstvo, Rogaška Slatina, Celje, striženje, barvanje, Rok Lorgar">
+    <meta property="og:title" content="Rok Lorgar — Frizerski Studio">
+    <meta property="og:description" content="Profesionalne frizerske storitve za moške, ženske in otroke. 15+ let izkušenj.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sl_SI">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "name": "Rok Lorgar Frizerstvo",
+        "description": "Profesionalne frizerske storitve za moške, ženske in otroke",
+        "url": "https://hd-webdesign.si/demo/rok-lorgar/",
+        "telephone": "+38640605012",
+        "email": "rok.lorgar@gmail.com",
+        "address": [
+            {"@type": "PostalAddress", "streetAddress": "Celjska cesta 3250", "addressLocality": "Rogaška Slatina", "addressCountry": "SI"},
+            {"@type": "PostalAddress", "streetAddress": "Gosposka ulica 30", "addressLocality": "Celje", "addressCountry": "SI"}
+        ],
+        "openingHoursSpecification": [
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "20:00"},
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "13:00"}
+        ],
+        "priceRange": "€",
+        "sameAs": ["https://www.facebook.com/p/Hairdresser-Rok-Lorgar-100069806696437"]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #F3EEE7;
+            --fg: #1C1A18;
+            --accent: #B45309;
+            --muted: #8C8073;
+            --line: #D6CFC4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: 'Syne', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 10px; height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease, background 0.2s ease, border 0.2s;
+            mix-blend-mode: multiply;
+        }
+        .cursor.grow {
+            transform: scale(4);
+            background: transparent;
+            border: 1px solid var(--accent);
+        }
+
+        .serif { font-family: 'Playfair Display', serif; font-style: italic; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Navigation */
+        header {
+            padding: 2rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            position: absolute; top: 0; left: 0; width: 100%;
+            z-index: 100;
+            mix-blend-mode: difference;
+            color: #F3EEE7;
+        }
+        .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: #F3EEE7; letter-spacing: 0.1em; text-transform: uppercase; }
+        nav a { text-decoration: none; color: #F3EEE7; margin-left: 2rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+        nav a:hover { color: var(--accent); }
+        .book-btn {
+            border: 1px solid #F3EEE7; padding: 0.6rem 1.2rem; text-decoration: none; color: #F3EEE7;
+            font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+            transition: background 0.3s;
+        }
+        .book-btn:hover { background: #F3EEE7; color: var(--fg); }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 2rem 4rem;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        .hero-bg::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        }
+        .hero-content { position: relative; z-index: 2; color: #F3EEE7; max-width: 800px; }
+        .hero-tag { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; color: var(--accent); font-weight: 600; }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        .hero h1 span { font-style: italic; }
+        .hero p { font-size: 1.2rem; max-width: 500px; line-height: 1.5; font-weight: 300; opacity: 0.9; margin-bottom: 2rem; }
+        .hero-cta {
+            display: inline-block; background: var(--accent); color: #F3EEE7;
+            padding: 1rem 2rem; text-decoration: none; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em; transition: background 0.3s;
+        }
+        .hero-cta:hover { background: #F3EEE7; color: var(--fg); }
+
+        /* Marquee */
+        .marquee {
+            background: var(--fg); color: var(--bg);
+            overflow: hidden; white-space: nowrap;
+            padding: 1.5rem 0;
+        }
+        .marquee-track {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+        .marquee-track span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; margin: 0 2rem;
+            font-style: italic;
+        }
+        .marquee-track span.bold { font-family: 'Syne', sans-serif; font-style: normal; font-weight: 800; text-transform: uppercase; font-size: 1.5rem; color: var(--accent); }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Intro */
+        .intro { padding: 10rem 2rem; text-align: center; }
+        .intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .intro h2 span { color: var(--accent); font-style: italic; }
+
+        /* Services (Dark Section) */
+        .services { padding: 8rem 2rem; background: var(--fg); color: var(--bg); }
+        .services-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
+        .services-grid h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; font-style: italic; }
+        .service-list { list-style: none; }
+        .service-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 0; border-bottom: 1px solid #333;
+        }
+        .service-item span:first-child { font-size: 1.2rem; font-weight: 600; }
+        .service-item span:last-child { font-family: 'Playfair Display', serif; color: var(--accent); font-size: 1.4rem; }
+        .service-item:hover span:first-child { padding-left: 1rem; transition: padding 0.2s; color: var(--accent); }
+        .service-sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+
+        /* About */
+        .about { padding: 10rem 2rem; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+        .about-image {
+            width: 100%; aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--line) 0%, rgba(180,83,9,0.15) 100%);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 6rem;
+        }
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 400; line-height: 1.1; margin-bottom: 2rem;
+        }
+        .about-text h2 span { color: var(--accent); font-style: italic; }
+        .about-text p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .about-stat .number { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--accent); }
+        .about-stat .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.3rem; }
+
+        /* Gallery */
+        .gallery { padding: 4rem 2rem 10rem; }
+        .gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; border-bottom: 1px solid var(--line); padding-bottom: 2rem; }
+        .gallery-header h3 { font-size: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+        .gallery-header p { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--muted); }
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+        .gallery-item { position: relative; overflow: hidden; transition: transform 0.4s ease; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; filter: sepia(10%); }
+        .gallery-item:hover img { transform: scale(1.05); filter: sepia(0%); }
+        .g-1 { grid-column: span 5; height: 600px; }
+        .g-2 { grid-column: span 7; height: 600px; }
+        .g-3 { grid-column: span 4; height: 450px; margin-top: -10rem; }
+        .g-4 { grid-column: span 4; height: 450px; }
+        .g-5 { grid-column: span 4; height: 450px; margin-top: -10rem; }
+
+        /* Reviews */
+        .reviews { padding: 8rem 2rem; background: var(--accent); color: var(--bg); }
+        .reviews-header { text-align: center; margin-bottom: 4rem; }
+        .reviews-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; font-style: italic; }
+        .reviews-header p { font-size: 1rem; opacity: 0.8; margin-top: 0.5rem; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .review-card { background: rgba(0,0,0,0.15); border-radius: 4px; padding: 2.5rem; }
+        .review-stars { color: #F3EEE7; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+        .review-card p { font-family: 'Playfair Display', serif; font-size: 1.1rem; line-height: 1.6; font-style: italic; margin-bottom: 1.5rem; }
+        .review-author { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* Team */
+        .team { padding: 8rem 2rem; }
+        .team-header { text-align: center; margin-bottom: 4rem; }
+        .team-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; font-style: italic; }
+        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; margin: 0 auto; }
+        .team-card { display: flex; gap: 1.5rem; align-items: center; padding: 2rem; background: rgba(0,0,0,0.03); border-radius: 4px; }
+        .team-avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--line); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+        .team-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.3rem; }
+        .team-info p { font-size: 0.85rem; color: var(--muted); }
+
+        /* Locations */
+        .locations { padding: 8rem 2rem; background: var(--fg); color: var(--bg); }
+        .locations-header { text-align: center; margin-bottom: 4rem; }
+        .locations-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; font-style: italic; }
+        .locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .location-card { background: rgba(255,255,255,0.05); border-radius: 4px; padding: 3rem; }
+        .location-card h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 1.5rem; }
+        .location-detail { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+        .location-detail-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.2rem; }
+        .location-detail p { font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.8); }
+        .location-detail a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .location-detail a:hover { color: var(--accent); }
+
+        /* Contact */
+        .contact { padding: 8rem 2rem; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+        .contact-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; font-style: italic; margin-bottom: 1.5rem; }
+        .contact-text > p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+        .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-link { display: flex; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--fg); transition: color 0.3s; }
+        .contact-link:hover { color: var(--accent); }
+        .contact-link-icon { font-size: 1.2rem; }
+        .contact-link-text { font-size: 1rem; font-weight: 600; }
+        .contact-link-sub { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+
+        .contact-form { background: rgba(0,0,0,0.03); padding: 3rem; border-radius: 4px; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 1rem 1.2rem;
+            border: 1px solid var(--line); border-radius: 4px;
+            font-size: 0.95rem; font-family: 'Syne', sans-serif;
+            background: var(--bg); color: var(--fg);
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-submit {
+            width: 100%; padding: 1rem;
+            background: var(--fg); color: var(--bg);
+            border: none; border-radius: 4px;
+            font-size: 0.85rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            font-family: 'Syne', sans-serif;
+        }
+        .form-submit:hover { background: var(--accent); }
+
+        /* Footer */
+        footer { padding: 6rem 2rem 2rem; text-align: center; }
+        .footer-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 400; line-height: 1; margin-bottom: 2rem; }
+        .footer-cta a { display: inline-block; background: var(--accent); color: var(--bg); padding: 1rem 2rem; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: background 0.3s; }
+        .footer-cta a:hover { background: var(--fg); }
+        .footer-meta { margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; flex-wrap: wrap; gap: 1rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { padding: 1.5rem; }
+            nav { display: none; }
+            .g-1, .g-2, .g-3, .g-4, .g-5 { grid-column: span 12; height: 350px; margin-top: 0; }
+            .services-grid, .about-grid, .locations-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .reviews-grid, .team-grid { grid-template-columns: 1fr; }
+            .about-visual { order: -1; }
+            .footer-meta { justify-content: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Navigation -->
+    <header>
+        <a href="#" class="logo">Rok Lorgar</a>
+        <nav>
+            <a href="#storitve">Storitve</a>
+            <a href="#delo">Galerija</a>
+            <a href="#mnenja">Mnenja</a>
+            <a href="#lokaciji">Lokaciji</a>
+        </nav>
+        <a href="#kontakt" class="book-btn">Rezerviraj Termin</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-tag">Frizerski Studio · Celje & Rogaška Slatina</div>
+            <h1>Umetnost <span>oblikovanja</span> las.</h1>
+            <p>Kjer se moda sreča z mojstrstvom. Rok Lorgar ustvarja brezčasne in personalizirane pričeske za posameznika. 15+ let izkušenj, dve lokaciji, ena strast.</p>
+            <a href="tel:+38640605012" class="hero-cta">📞 Pokliči: 040 605 012</a>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span class="bold">Striženje</span>
+            <span>Style & Finish</span>
+            <span class="bold">Barvanje</span>
+            <span>Svetlenje</span>
+            <span class="bold">Balayage</span>
+            <span>Nega las</span>
+            <span class="bold">Poročne pričeske</span>
+            <span>Otroško frizerstvo</span>
+            <!-- Duplicate -->
+            <span class="bold">Striženje</span>
+            <span>Style & Finish</span>
+            <span class="bold">Barvanje</span>
+            <span>Svetlenje</span>
+            <span class="bold">Balayage</span>
+            <span>Nega las</span>
+            <span class="bold">Poročne pričeske</span>
+            <span>Otroško frizerstvo</span>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <section class="intro container">
+        <h2>Verjamemo, da so lasje <span>edinstven del tvoje identitete</span>. Naš pristop je zasnovan na podrobnostih, tehniki in osebnem stiku.</h2>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="storitve">
+        <div class="container">
+            <div class="services-grid">
+                <h2>Cenik &<br>Storitve</h2>
+                <ul class="service-list">
+                    <li class="service-item">
+                        <div>
+                            <span>Moško striženje & Style</span>
+                            <div class="service-sub">Rezanje, oblikovanje, styling</div>
+                        </div>
+                        <span>35€</span>
+                    </li>
+                    <li class="service-item">
+                        <div>
+                            <span>Žensko striženje & Style</span>
+                            <div class="service-sub">Rezanje, sušenje, oblikovanje</div>
+                        </div>
+                        <span>50€</span>
+                    </li>
+                    <li class="service-item">
+                        <div>
+                            <span>Barvanje las (dolgi)</span>
+                            <div class="service-sub"> profesionalno barvanje z vrhunskimi proizvodi</div>
+                        </div>
+                        <span>od 80€</span>
+                    </li>
+                    <li class="service-item">
+                        <div>
+                            <span>Balayage / Svetlenje</span>
+                            <div class="service-sub">Naravno svetlenje, dimension coloring</div>
+                        </div>
+                        <span>od 110€</span>
+                    </li>
+                    <li class="service-item">
+                        <div>
+                            <span>Poročna pričeska</span>
+                            <div class="service-sub">Svečane pričeske za posebne priložnosti</div>
+                        </div>
+                        <span>120€</span>
+                    </li>
+                    <li class="service-item">
+                        <div>
+                            <span>Nega in obnova las</span>
+                            <div class="service-sub">Globinska nega, keratinsko zdravljenje</div>
+                        </div>
+                        <span>od 25€</span>
+                    </li>
+                    <li class="service-item">
+                        <div>
+                            <span>Otroško frizerstvo</span>
+                            <div class="service-sub">Prijazno in varno za najmlajše</div>
+                        </div>
+                        <span>20€</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="o-nas">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">💈</div>
+                <div class="about-text">
+                    <h2>Izkušen frizer s <span>strastjo</span> do dela</h2>
+                    <p>Rok Lorgar je izkušen frizer s tradicijo in strastjo za frizerstvo. Z več kot 15 leti izkušenj ponuja vrhunske storitve v svojih salonih v Rogaški Slatini in Celju.</p>
+                    <p>FRIZERSTVO, ROK LORGAR, S.P. je bilo ustanovljeno leta 2011. Naš salon je opremljen z najsodobnejšimi orodji, naš tim pa je usposobljen za najnovejše tehnike in trendove.</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="number">15+</div>
+                            <div class="label">Let izkušenj</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="number">2</div>
+                            <div class="label">Lokaciji</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="number">1000+</div>
+                            <div class="label">Strank</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery container" id="delo">
+        <div class="gallery-header">
+            <h3>Galerija Del</h3>
+            <p>Zadnje kreacije</p>
+        </div>
+        <div class="grid">
+            <div class="gallery-item g-1">
+                <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1000&auto=format&fit=crop" alt="Hair Style 1">
+            </div>
+            <div class="gallery-item g-2">
+                <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1200&auto=format&fit=crop" alt="Hair Style 2">
+            </div>
+            <div class="gallery-item g-3">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop" alt="Hair Style 3">
+            </div>
+            <div class="gallery-item g-4">
+                <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=80&w=800&auto=format&fit=crop" alt="Hair Style 4">
+            </div>
+            <div class="gallery-item g-5">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=800&auto=format&fit=crop" alt="Hair Style 5">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews" id="mnenja">
+        <div class="container">
+            <div class="reviews-header">
+                <h2>Mnenja Strank</h2>
+                <p>Izkušnje naših strank govorijo namesto nas</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Rok je resnično mojster svojega dela. Vsakič odidem navdušen nad novo pričesko. Profesionalen pristop in odlična atmosfera!"</p>
+                    <div class="review-author">— Peter M., Celje</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Končno sem našla frizerja, ki me res posluša. Barvanje je popolno, lasje so zdravi in sijoči. Toplo priporočam!"</p>
+                    <div class="review-author">— Ana K., Rogaška Slatina</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Moji otroci se radi frizirajo pri Roku. Je prijazen, potrpežljiv in vedno naredi odlično delo. Naš družinski frizer!"</p>
+                    <div class="review-author">— Mateja L., Celje</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <div class="container">
+            <div class="team-header">
+                <h2>Naš Tim</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">💈</div>
+                    <div class="team-info">
+                        <h3>Rok Lorgar</h3>
+                        <p>Ustanovitelj & Glavni frizer · 15+ let izkušenj</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">💇♀️</div>
+                    <div class="team-info">
+                        <h3>Dea Zager</h3>
+                        <p>Stilska svetovalka & Frizerka</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="locations" id="lokaciji">
+        <div class="container">
+            <div class="locations-header">
+                <h2>Naši Saloni</h2>
+            </div>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3>🏠 Rogaška Slatina</h3>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">📍</div>
+                        <p>Celjska cesta 3250<br>3250 Rogaška Slatina</p>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">📞</div>
+                        <p><a href="tel:+38640605012">+386 40 605 012</a></p>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">🕐</div>
+                        <p>Pon–Pet: 8:00–20:00<br>Sob: 8:00–13:00<br>Ned: Zaprto</p>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <h3>🏢 Celje</h3>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">📍</div>
+                        <p>Gosposka ulica 30<br>3000 Celje</p>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">📞</div>
+                        <p><a href="tel:+38640605012">+386 40 605 012</a></p>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">🕐</div>
+                        <p>Pon–Pet: 8:00–20:00<br>Sob: 8:00–13:00<br>Ned: Zaprto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="kontakt">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-text">
+                    <h2>Pridite na obisk</h2>
+                    <p>Za rezervacijo termina ali vprašanja nas kontaktirajte. Z veseljem vam bomo pomagali.</p>
+                    <div class="contact-links">
+                        <a href="tel:+38640605012" class="contact-link">
+                            <div class="contact-link-icon">📞</div>
+                            <div>
+                                <div class="contact-link-text">+386 40 605 012</div>
+                                <div class="contact-link-sub">Pokličite nas</div>
+                            </div>
+                        </a>
+                        <a href="mailto:rok.lorgar@gmail.com" class="contact-link">
+                            <div class="contact-link-icon">✉️</div>
+                            <div>
+                                <div class="contact-link-text">rok.lorgar@gmail.com</div>
+                                <div class="contact-link-sub">Pišite nam</div>
+                            </div>
+                        </a>
+                        <a href="https://www.facebook.com/p/Hairdresser-Rok-Lorgar-100069806696437" target="_blank" class="contact-link">
+                            <div class="contact-link-icon">📱</div>
+                            <div>
+                                <div class="contact-link-text">Facebook</div>
+                                <div class="contact-link-sub">Sledite nam</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Ime in Priimek</label>
+                            <input type="text" id="name" name="name" required placeholder="Vaše ime">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="vas@email.si">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+386 ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Lokacija</label>
+                            <select id="location" name="location">
+                                <option value="rogaska">Rogaška Slatina</option>
+                                <option value="celje">Celje</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Sporočilo</label>
+                            <textarea id="message" name="message" required placeholder="Vaše sporočilo..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Pošlji Sporočilo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-cta">
+                <h2>Pridi oblikovat<br><span class="serif">svojo zgodbo.</span></h2>
+                <a href="tel:+38640605012">Rezerviraj Termin</a>
+            </div>
+            <div class="footer-meta">
+                <span>© 2026 Rok Lorgar Studio</span>
+                <span>SI53477197 | Mat. št. 3973905000</span>
+                <span>Spletno mesto: HD WebDesign</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        document.querySelectorAll('a, .gallery-item, .service-item, .review-card, .team-card, .location-card').forEach(item => {
+            item.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+            item.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+        });
+    </script>
+</body>
+</html>

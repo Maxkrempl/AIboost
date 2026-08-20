@@ -1,0 +1,27 @@
+📊 MenuBoost Daily Analytics — 2026-06-24 08:01
+==================================================
+
+💰 GUMROAD SALES
+  Total sales: 0
+  Total revenue: $0.00
+  MenuBoost — AI Menu Descriptions for Restaurants: 0 sales (€19 a month)
+
+📧 OUTREACH
+  MenuBoost: 528 emails sent (from 9 files)
+  BoostSuite: 160 emails sent (from 4 files)
+  Other: 15 emails sent (from 1 files)
+
+  Last 24h: 0 sent
+  Last 7d: 0 sent
+
+📩 REPLIES
+  Total: 46
+  ⚪ bounce: 40
+  🔴 negative: 1
+  🟢 positive: 5
+
+📋 LEAD PIPELINE
+  MenuBoost: 1770 leads (from 44 files)
+  BoostSuite: 291 leads (from 23 files)
+
+🚫 SUPPRESSION LIST: 61 entries

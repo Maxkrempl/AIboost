@@ -1,0 +1,78 @@
+{
+  "title": "BoostSuite Schema Generator",
+  "description": "Generate JSON-LD structured data schema markup for your business. Supports Organization, LocalBusiness, FAQPage, Product, and Service types.",
+  "type": "object",
+  "schemaVersion": 1,
+  "editorSchemaVersion": 1,
+  "fields": [
+    {
+      "key": "type",
+      "type": "string",
+      "title": "Schema Type",
+      "description": "The type of schema to generate",
+      "editor": {
+        "type": "select",
+        "options": [
+          { "label": "Organization", "value": "Organization" },
+          { "label": "Local Business", "value": "LocalBusiness" },
+          { "label": "FAQ Page", "value": "FAQPage" },
+          { "label": "Product", "value": "Product" },
+          { "label": "Service", "value": "Service" }
+        ]
+      },
+      "prefill": "Organization"
+    },
+    {
+      "key": "name",
+      "type": "string",
+      "title": "Business Name",
+      "description": "The name of your business or organization",
+      "editor": { "type": "textfield" },
+      "prefill": "My Business"
+    },
+    {
+      "key": "url",
+      "type": "string",
+      "title": "Website URL",
+      "description": "Your website URL",
+      "editor": { "type": "textfield" },
+      "prefill": "https://example.com"
+    },
+    {
+      "key": "description",
+      "type": "string",
+      "title": "Description",
+      "description": "Brief description of your business",
+      "editor": { "type": "textarea" }
+    },
+    {
+      "key": "phone",
+      "type": "string",
+      "title": "Phone Number",
+      "description": "Contact phone number (e.g., +386 40 123 456)",
+      "editor": { "type": "textfield" }
+    },
+    {
+      "key": "email",
+      "type": "string",
+      "title": "Email",
+      "description": "Contact email address",
+      "editor": { "type": "textfield" }
+    },
+    {
+      "key": "address",
+      "type": "string",
+      "title": "Street Address",
+      "description": "Street address (e.g., Main Street 123)",
+      "editor": { "type": "textfield" }
+    },
+    {
+      "key": "logo",
+      "type": "string",
+      "title": "Logo URL",
+      "description": "URL to your logo image",
+      "editor": { "type": "textfield" }
+    }
+  ],
+  "groups": []
+}

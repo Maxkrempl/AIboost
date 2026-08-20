@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Hotel Vila Katrca",
+    "rating": "3,8",
+    "price": "167€",
+    "category": "Hotel Vila Katrca",
+    "lat": "46.044994",
+    "lon": "14.486361"
+  },
+  {
+    "name": "Guest House Goršič",
+    "rating": "4,4",
+    "price": "88€",
+    "category": "Hotel s 3 zvezdicami",
+    "lat": "45.952468",
+    "lon": "14.655733"
+  },
+  {
+    "name": "Hotel Jezero",
+    "rating": "4,4",
+    "price": "176€",
+    "category": "Hotel Jezero",
+    "lat": "46.2772925",
+    "lon": "13.8869402"
+  },
+  {
+    "name": "Four Points by Sheraton Ljubljana Mons",
+    "rating": "4,5",
+    "price": "116€",
+    "category": "Hotel s 4 zvezdicami",
+    "lat": "46.0520301",
+    "lon": "14.4529018"
+  },
+  {
+    "name": "Bohinj ECO Hotel & Wellness",
+    "rating": "4,4",
+    "price": "175€",
+    "category": "Hotel s 4 zvezdicami",
+    "lat": "46.27252",
+    "lon": "13.956788"
+  },
+  {
+    "name": "Hotel Lonca",
+    "rating": "4,9",
+    "price": "123€",
+    "category": "Hotel Lonca",
+    "lat": "46.1677722",
+    "lon": "14.3086339"
+  },
+  {
+    "name": "B&B HOTEL Ljubljana Park",
+    "rating": "4,3",
+    "price": "134€",
+    "category": "Hotel s 3 zvezdicami",
+    "lat": "46.0535598",
+    "lon": "14.5148265"
+  },
+  {
+    "name": "HOTEL GROSUPLJE d.o.o.",
+    "rating": "4,3",
+    "price": "103€",
+    "category": "Hotel",
+    "lat": "45.9678342",
+    "lon": "14.6567984"
+  },
+  {
+    "name": "Bed & Breakfast Pr'Sknet",
+    "rating": "4,6",
+    "price": "71€",
+    "category": "Hotel s 4 zvezdicami",
+    "lat": "46.2150443",
+    "lon": "14.436328"
+  },
+  {
+    "name": "Hotel Mantova",
+    "rating": "4,4",
+    "price": "128€",
+    "category": "Hotel Mantova",
+    "lat": "45.9662179",
+    "lon": "14.2977753"
+  },
+  {
+    "name": "Hostel Cukrarna Kranj",
+    "rating": "4,5",
+    "price": "52€",
+    "category": "Hostel Cukrarna Kranj",
+    "lat": "46.2400186",
+    "lon": "14.3564892"
+  },
+  {
+    "name": "Kendov Dvorec Relais & Châteaux",
+    "rating": "4,8",
+    "price": "170€",
+    "category": "Hotel s 5 zvezdicami",
+    "lat": "46.0331758",
+    "lon": "14.0251881"
+  }
+]

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dnevnik gradnje: Ko MenuBoost naleti na težavo | HD Web Design</title>
+    <meta name="description" content="Building in public: Kako smo rešili težavo z AI agentom, ki je 'haluciniral' podatke.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/images/hdwebdesign-favicon.svg">
+    <meta property="og:title" content="Dnevnik gradnje: Ko MenuBoost naleti na težavo">
+    <meta property="og:description" content="Building in public: Kako smo rešili težavo z AI agentom.">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://hd-webdesign.si/blog/dnevnik-gradnje-menuboost-tezava-sl.html">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Dnevnik gradnje: Ko projekt MenuBoost naleti na težavo (in kako smo jo rešili z agenti)",
+        "description": "Building in public: Kako smo rešili težavo z AI agentom, ki je haluciniral podatke.",
+        "author": {"@type": "Organization", "name": "HD Web Design"},
+        "publisher": {"@type": "Organization", "name": "HD Web Design", "url": "https://hd-webdesign.si"},
+        "datePublished": "2026-06-15",
+        "mainEntityOfPage": "https://hd-webdesign.si/blog/dnevnik-gradnje-menuboost-tezava.html"
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #0a0a0a; line-height: 1.7; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(100,116,139,0.15); padding: 0 clamp(1.5rem,4vw,4rem); display: flex; justify-content: space-between; align-items: center; height: 60px; }
+        .logo { font-size: 1.1rem; font-weight: 700; color: #0a0a0a; text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: inherit; text-decoration: none; font-weight: 500; font-size: 0.85rem; }
+        article { max-width: 720px; margin: 0 auto; padding: clamp(6rem,12vh,10rem) clamp(1.5rem,4vw,4rem) clamp(4rem,8vh,6rem); }
+        .tag { display: inline-block; background: #0a0a0a; color: #fff; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+        h1 { font-size: clamp(2rem,5vw,3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.85rem; margin-bottom: 3rem; }
+        h2 { font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; letter-spacing: -0.02em; }
+        h3 { font-size: 1.15rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #333; }
+        ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+        li { margin-bottom: 0.5rem; }
+        strong { font-weight: 600; color: #0a0a0a; }
+        code { background: #f5f5f5; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; }
+        pre { background: #1a1a2e; color: #e0e0e0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; font-size: 0.85rem; line-height: 1.5; }
+        pre code { background: none; padding: 0; color: inherit; }
+        blockquote { border-left: 3px solid #0a0a0a; padding-left: 1.25rem; margin: 1.5rem 0; color: #555; font-style: italic; }
+        .timeline { margin: 2rem 0; padding-left: 2rem; border-left: 2px solid #eee; }
+        .timeline-item { margin-bottom: 2rem; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -2.35rem; top: 0.5rem; width: 10px; height: 10px; background: #0a0a0a; border-radius: 50%; }
+        .timeline-item.problem::before { background: #dc3545; }
+        .timeline-item.solution::before { background: #28a745; }
+        .timeline-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 0.25rem; }
+        .cta-box { background: #f8f8f8; border-radius: 12px; padding: 2rem; margin: 2.5rem 0; text-align: center; }
+        .cta-button { display: inline-block; background: #0a0a0a; color: #fff; padding: 0.75rem 1.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 1rem; }
+        footer { padding: 3rem clamp(1.5rem,4vw,4rem); border-top: 1px solid #eee; text-align: center; font-size: 0.8rem; color: #888; }
+        footer a { color: inherit; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">HD Web Design</a>
+        <ul class="nav-links">
+            <li><a href="/web-design/">Storitve</a></li>
+            <li><a href="/projekti/">Projekti</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/boost-suite/">BoostSuite</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <span class="tag">Building in Public</span>
+        <h1>Dnevnik gradnje: Ko projekt MenuBoost naleti na težavo (in kako smo jo rešili z agenti)</h1>
+        <div class="meta">15. junij 2026 · HD Web Design</div>
+    <div style="margin: 0 auto 2rem; max-width: 720px;"><img src="/images/screenshot-ai-authority.png" alt="dnevnik-gradnje-menuboost-tezava" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"></div>
+
+
+        <p>Vsi objavljamo uspehe. Malokdo pokaže, kdaj stvari gredo narobe. Danes vam pokažemo eno takšnih situacij — in kako smo jo rešili.</p>
+
+        <blockquote>
+            "V IT-ju ni vse vedno perfektno. Pomembno je, kako rešite problem, ko se pojavi."
+        </blockquote>
+
+        <h2>Kaj se je zgodilo</h2>
+
+        <p>MenuBoost generira opise jedi z AI-jem. Uporabljamo LLM (Large Language Model) za pretvorbo kratkih opisov jedi v privlačne, večjezične opise.</p>
+
+        <p>Nekega dne je uporabnik prijavil: <em>"Vaš AI je napisal, da ima naš jagenjček okus po čokoladi."</em></p>
+
+        <p>To ni bila šala. AI je res napisal: <em>"Jagenjčkova rebra z bogato čokoladno omako..."</em></p>
+
+        <div class="timeline">
+            <div class="timeline-item problem">
+                <div class="timeline-label">Problem</div>
+                <p style="margin:0"><strong>Hallucination</strong> — AI je izmisnil sestavino (čokolada), ki ni del jedi. To se zgodi, ko model "domišlja" namesto da bi sledil navodilom.</p>
+            </div>
+            <div class="timeline-item problem">
+                <div class="timeline-label">Vzrok</div>
+                <p style="margin:0">Prompt ni bil dovolj specifičen. AI je dobil samo "opiši jed" namesto "opiši jed z obstoječimi sestavinami."</p>
+            </div>
+            <div class="timeline-item solution">
+                <div class="timeline-label">Rešitev</div>
+                <p style="margin:0">Dodali smo <strong>validacijski korak</strong> — AI po generiranju preveri, ali so vse sestavine resnične.</p>
+            </div>
+        </div>
+
+        <h2>Rešitev: Memory.md za AI agente</h2>
+
+        <p> Namesto da bi spreminjali prompt, smo dodali <strong>spomin</strong>. Vsak AI agent ima datoteko <code>memory.md</code>, kjer si zapisuje:</p>
+
+        <pre><code>## Napake, ki sem jih naredil
+- 2026-05-12: Napisal "čokoladna omaka" za jagenjčka — NAPAKA
+- 2026-05-15: Pozabil omeniti, da je jed brez glutena — NAPAKA
+
+## Pravila, ki sem se jih naučil
+- Vedno preveri seznam sestavin pred opisom
+- Ne dodajaj sestavin, ki niso na jedilniku
+- Če nisi prepričan, napiši "po tradicionalnem receptu"</code></pre>
+
+        <p>Ta pristop deluje, ker:</p>
+        <ul>
+            <li>AI se <strong>uči iz napak</strong> (ne ponavlja jih)</li>
+            <li>Ima <strong>kontekst</strong> o tem, kaj je šlo narobe</li>
+            <li>Lahko ga <strong>ročno preverite</strong> (transparentnost)</li>
+        </ul>
+
+        <h2>Druga težava: Agent, ki je "pozabil" pošiljati</h2>
+
+        <p>Še en primer. Naš lead-gen agent je bil nastavljen, da pošilja 25 emailov na dan ob 7:00. Nekega jutra — nič. Agent je tiho sedel in nič naredil.</p>
+
+        <h3>Kaj se je zgodilo?</h3>
+        <p>Agent je imel <strong>ročni</strong> način namesto <strong>avtomatskega</strong>. Namesto da bi šel v "sleep mode" in se zbudil ob 7:00, je čakal na naš ukaz.</p>
+
+        <h3>Rešitev</h3>
+        <pre><code># Prej (napaka)
+agent.run("pošlji emaile")  # Samo enkrat
+
+# Potem (pravilno)
+cron.schedule("0 7 * * *", agent.run, "pošlji emaile")  # vsak dan ob 7:00</code></pre>
+
+        <p>Ena vrstica kode. En teden zamujenih leadov.</p>
+
+        <h2>Kaj smo se naučili</h2>
+
+        <ol>
+            <li><strong>AI ni perfekten</strong> — in to je v redu. Pomembno je, da imate sistem za odkrivanje in popravljanje napak.</li>
+            <li><strong>Memory.md je ključen</strong> — brez spomina AI ponavlja iste napake.</li>
+            <li><strong>Testirajte ročno</strong> — avtomatizacija je super, ampak prvi teden vse preverite sami.</li>
+            <li><strong>Bodite iskreni</strong> — stranke cenijo transparentnost bolj kot popolnost.</li>
+        </ol>
+
+        <h2>Zakaj to delim</h2>
+
+        <p> Ker vsi govorijo o tem, kako AI "spremenja svet." Malokdo pa pokaže, da AI včasih potrebuje pomoč — in da to ni problem. To je del procesa.</p>
+
+        <p>Če iščete partnerja, ki razume, da stvari v IT-ju včasih grejo narobe, in ve, kako jih popraviti — to smo mi.</p>
+
+        <div class="cta-box">
+            <h3>Želite zgraditi AI orodje za vaše podjetje?</h3>
+            <p>Zgradimo ga pošteno — z testiranjem, spominom in transparentnostjo.</p>
+            <a href="/about/" class="cta-button">Kontaktirajte nas</a>
+        </div>
+
+        <h3>Sorodni članki</h3>
+        <ul>
+            <li><a href="/blog/what-are-ai-agents.html">Kaj so AI agenti?</a></li>
+            <li><a href="/blog/my-ai-agent-experience.html">Moja izkušnja z AI agentom</a></li>
+            <li><a href="/blog/ai-work-automation-chatbots.html">AI avtomatizacija dela</a></li>
+        </ul>
+    </article>
+
+    <footer>
+        <span>© 2026 HD Web Design · <a href="/">Domov</a> · <a href="/blog.html">Blog</a></span>
+    </footer>
+</body>
+</html>

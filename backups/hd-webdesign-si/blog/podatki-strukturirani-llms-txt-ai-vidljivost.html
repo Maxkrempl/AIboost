@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strukturirani podatki, llms.txt & FAQ: Zakaj AI ne more najti vaše spletne strani — Herceg Darko</title>
+    <meta name="description" content="Vaša spletna stran je morda nevidna za ChatGPT, Gemini in Perplexity. Zakaj so strukturirani podatki, llms.txt in FAQ oznake temelj AI vidljivosti.">
+    <meta property="og:title" content="Strukturirani podatki, llms.txt & FAQ: Zakaj AI ne more najti vaše spletne strani">
+    <meta property="og:description" content="Vaša spletna stran je morda nevidna za ChatGPT, Gemini in Perplexity. Zakaj so strukturirani podatki, llms.txt in FAQ oznake temelj AI vidljivosti.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hd-webdesign.si/blog/podatki-strukturirani-llms-txt-ai-vidljivost.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://hd-webdesign.si/blog/podatki-strukturirani-llms-txt-ai-vidljivost.html">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+        .article-meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+        .article-meta span { margin-right: 1rem; }
+        .tag { background: #e8f4f8; color: #0a66c2; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        .comparison-table th { background: #f8f9fa; font-weight: 600; }
+        .comparison-table .highlight { background: #f0fdf4; font-weight: 600; }
+        blockquote { border-left: 4px solid #0a66c2; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f9fa; font-style: italic; }
+        .cta-box { background: linear-gradient(135deg, #0a66c2, #004182); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+        .cta-box a { color: white; text-decoration: underline; }
+        .stat { font-size: 2.5rem; font-weight: 700; color: #0a66c2; }
+        .stat-label { font-size: 0.9rem; color: #666; }
+        .stats-row { display: flex; justify-content: space-around; text-align: center; margin: 2rem 0; flex-wrap: wrap; }
+        .stat-item { padding: 1rem; }
+        .blog-header { background: #1a1a2e; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .blog-header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .blog-header .logo { display: block; }
+        .blog-header .logo img { height: 42px; width: auto; }
+        .blog-header nav { display: flex; align-items: center; gap: 20px; }
+        .blog-header nav a { color: #9C8878; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .blog-header nav a:hover { color: #F5E6C8; }
+        .theme-toggle { background: none; border: 1.5px solid #4A2E1A; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 16px; transition: all 0.15s; }
+        .theme-toggle:hover { border-color: #C4922A; background: rgba(196,146,42,0.1); }
+        body.dark-mode .blog-header { background: #0f0f1a; }
+        body.dark-mode { background: #0f0f1a; color: #e0e0e0; }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #e0e0e0; }
+        body.dark-mode p, body.dark-mode li { color: #ccc; }
+        body.dark-mode .verdict-box { background: #1a1a3e; color: #e0e0e0; }
+        body.dark-mode table th { background: #1e1e2e; color: #e0e0e0; }
+        body.dark-mode table td { border-bottom-color: #333; }
+        .read-more { color: #F59E0B !important; font-weight: 600; }
+        .read-more:hover { color: #D97706 !important; text-decoration: underline; }
+        a.read-more { color: #F59E0B !important; }
+        .lang-switcher { display: flex; gap: 12px; margin: 1.5rem 0; }
+        .lang-link { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; border: 1.5px solid #ddd; color: #555; transition: all 0.15s; }
+        .lang-link.active { background: #0a66c2; color: white; border-color: #0a66c2; }
+        .lang-link:hover { border-color: #0a66c2; }
+
+    </style>
+</head>
+<body>
+<header class="blog-header">
+    <div class="blog-header-inner">
+        <a href="/" class="logo"><img src="/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign" style="height:42px;width:auto"></a>
+        <nav>
+            <a href="/blog/">Blog</a>
+            <a href="/boost-suite/">BoostSuite</a>
+            <a href="/menu-boost/">MenuBoost</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        </nav>
+    </div>
+</header>
+
+    <main class="container">
+        <article>
+            <p><a href="/blog/">← Nazaj na blog</a></p>
+
+<div class="lang-switcher">
+    <a href="/blog/strukturierte-daten-llms-txt-ai-sichtbarkeit.html" class="lang-link" title="DE">🇩🇪 DE</a>
+    <a href="/blog/structured-data-llms-txt-ai-visibility.html" class="lang-link" title="EN">🇬🇧 EN</a>
+    <a href="/blog/strukturirani-podaci-llms-txt-ai-vidljivost.html" class="lang-link" title="HR">🇭🇷 HR</a>
+    <a href="/blog/dati-strutturati-llms-txt-visibilita-ai.html" class="lang-link" title="IT">🇮🇹 IT</a>
+    <a href="/blog/podatki-strukturirani-llms-txt-ai-vidljivost.html" class="lang-link active" title="SL">🇸🇮 SL</a>
+</div>
+
+<div class="container">
+
+    <div class="meta">
+      <span class="tag">GEO vodnik</span>
+      <span class="tag">Tehnično</span>
+      11. junij 2026 · 12 min branja
+    </div>
+
+    <h1>Strukturirani podatki, llms.txt & FAQ: Zakaj AI ne najde vašega spletnega mesta</h1>
+
+    <p>Vaše spletno mesto izgleda odlično. Vaš SEO je soliden. Vaša uvrstitev v Googlu je v redu. Toda kadar nekdo vpraša ChatGPT <strong>»najboljša digitalna agencija na Dunaju«</strong> — vaše ime se nikoli ne pojavi.</p>
+
+    <p>Zakaj? Ker AI ne bere vašega spletnega mesta enako kot Google. Bere <strong>strukturirane podatke</strong>. In če jih nimate, ste nevidni.</p>
+
+    <p>Ta vodnik pojasnjuje štiri tehnične elemente, ki določajo, ali vas AI asistenti lahko najdejo, razumejo in priporočijo — in natančno, kako vsakega izmed njih implementirati.</p>
+
+    <img src="geo-structured-data-header.jpg" alt="Structured data flowing from website to AI assistants" style="width: 100%; border-radius: 12px; margin: 24px 0 32px;">
+
+    <hr class="separator">
+
+    <h2>1. Schema.org strukturirani podatki — Jezik, ki ga AI govori</h2>
+
+    <h3>Kaj je Schema.org?</h3>
+
+    <p>Schema.org je standardizirani format za obveščanje iskalnikov in AI modelov <strong>kaj je vaše podjetje, kaj počnete in kje ste</strong>. To je blok kode (JSON-LD), ki se nahaja v HTML vašega spletnega mesta — neviden obiskovalcem, a kristalno jasen za stroje.</p>
+
+    <p>Razmišljajte tako: vaše spletno mesto je izložba. Schema.org je <strong>poslovna vizitka</strong>, ki jo podate vsakemu AI asistentu, ki vas obišče.</p>
+
+    <h3>Zakaj AI modeli obožujejo Schema.org</h3>
+
+    <p>Kadar ChatGPT, Gemini ali Perplexity potrebujejo priporočilo za podjetje, ne "berejo" vašega spletnega mesta kot človek. Iščejo <strong>strukturirane signale</strong>:</p>
+
+    <ul>
+      <li><strong>Kaj</strong> počne to podjetje? → <code>Service</code> shema</li>
+      <li><strong>Kje</strong> se nahaja? → <code>LocalBusiness</code> shema</li>
+      <li><strong>Kdo</strong> ga vodi? → <code>Organization</code> shema</li>
+      <li><strong>Kaj</strong> vprašajo stranke? → <code>FAQPage</code> shema</li>
+      <li><strong>Kaj</strong> pravijo stranke? → <code>Review</code> shema</li>
+    </ul>
+
+    <p>Brez tega AI v bistvu poskuša ugibati podrobnosti o vašem podjetju iz nestrukturiranega besedila. Včasih se zmoti. Včasih sploh ne ugiba.</p>
+
+    <h3>5 vrst shem, ki jih potrebuje vsako podjetje</h3>
+
+    <table>
+      <tr><th>Vrsta sheme</th><th>Kaj pove AI</th><th>Prioriteta</th></tr>
+      <tr><td><code>Organization</code></td><td>Ime podjetja, logotip, kontaktni podatki, profili družbenih medijev</td><td>🔴 Kritično</td></tr>
+      <tr><td><code>LocalBusiness</code></td><td>Naslov, telefon, delovni čas, geo koordinate</td><td>🔴 Kritično</td></tr>
+      <tr><td><code>Service</code></td><td>Katere storitve ponujate, cene, območja storitev</td><td>🔴 Kritično</td></tr>
+      <tr><td><code>FAQPage</code></td><td>Pogosta vprašanja in odgovori o vašem podjetju</td><td>🟡 Visoka</td></tr>
+      <tr><td><code>Review</code></td><td>Ocene strank, število ocen, zvezdice</td><td>🟡 Visoka</td></tr>
+    </table>
+
+    <h3>Kako implementirati Schema.org</h3>
+
+    <p>Tukaj je minimalna <code>LocalBusiness</code> shema za digitalno agencijo:</p>
+
+    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Your Agency Name",
+  "description": "Digital marketing agency specializing in SEO, GEO, and AI visibility.",
+  "url": "https://youragency.com",
+  "telephone": "+43-1-234-5678",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Mariahilfer Straße 123",
+    "addressLocality": "Vienna",
+    "addressCountry": "AT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 48.2082,
+    "longitude": 16.3738
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "€€",
+  "sameAs": [
+    "https://linkedin.com/company/youragency",
+    "https://facebook.com/youragency"
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+    <div class="callout">
+      <p><strong>💡 Nasvet strokovnjaka:</strong> Uporabite Googlov <a href="https://search.google.com/structured-data/testing-tool" target="_blank">Rich Results Test</a> za preverjanje vaše implementacije Schema.org. Odpravite vse napake, preden jih najdejo AI pajki.</p>
+    </div>
+
+    <hr class="separator">
+
+    <h2>2. llms.txt — Dobrodošlica za AI</h2>
+
+    <h3>Kaj je llms.txt?</h3>
+
+    <p><code>llms.txt</code> je preprosta besedilna datoteka, ki jo postavite na koren vašega spletnega mesta (kot <code>robots.txt</code>), ki AI modelom pove <strong>kako naj berejo vaše spletno mesto</strong>. Bil je predlagan leta 2024 in ga zdaj uvajajo glavni AI sistemi.</p>
+
+    <p>Kjer <code>robots.txt</code> pajkom pove, kaj NE naj berejo, <code>llms.txt</code> AI pove, kaj NAJ bere — in kako to razumeti.</p>
+
+    <h3>Zakaj je to pomembno</h3>
+
+    <p>Kadar AI pajek obišče vaše spletno mesto, mora hitro razumeti:</p>
+
+    <ul>
+      <li>Kaj je to podjetje?</li>
+      <li>Katere strani so najpomembnejše?</li>
+      <li>Katere storitve se ponujajo?</li>
+      <li>Kako naj AI opiše to podjetje uporabnikom?</li>
+    </ul>
+
+    <p>Brez <code>llms.txt</code> mora AI to ugotoviti z obiskom vsake strani in ugibanjem. Z njim pa <strong>nadzirate narativ</strong>.</p>
+
+    <h3>Kako ustvariti llms.txt</h3>
+
+    <p>Ustvarite datoteko z imenom <code>llms.txt</code> in jo postavite na koren vašega spletnega mesta (<code>https://yoursite.com/llms.txt</code>):</p>
+
+    <pre><code># llms.txt — AI-readable business summary
+
+## About
+We are [Agency Name], a digital marketing agency based in [City, Country].
+We specialize in [services: SEO, GEO, web design, AI chatbots].
+
+## Key Pages
+- Services: /services
+- About Us: /about
+- Portfolio: /portfolio
+- Contact: /contact
+- Blog: /blog
+
+## Business Info
+- Founded: 2020
+- Team size: 5-10
+- Languages: English, German, Slovenian
+- Industries served: SaaS, E-commerce, Hospitality
+
+## Contact
+- Email: hello@youragency.com
+- Phone: +43-1-234-5678
+- Address: Mariahilfer Straße 123, Vienna, Austria</code></pre>
+
+    <div class="callout success">
+      <p><strong>✅ Vpliv:</strong> Spletna mesta z <code>llms.txt</code> so 3x bolj verjetno, da jih AI asistenti natančno opišejo. AI točno poveste, kaj naj reče o vas.</p>
+    </div>
+
+    <h3>llms-full.txt — Razširjena verzija</h3>
+
+    <p>Za bolj kompleksna podjetja lahko ustvarite tudi <code>llms-full.txt</code> z podrobnimi informacijami o vaših storitvah, cenah, ekipi in FAQ. To je še posebej uporabno za agencije z več storitvami.</p>
+
+    <hr class="separator">
+
+    <h2>3. FAQ strukturirani podatki — Vprašanja, ki jih AI odgovarja</h2>
+
+    <h3>Zakaj so FAQ podatki zlato za AI</h3>
+
+    <p>Kadar nekdo vpraša ChatGPT <strong>»Koliko stane spletno mesto v Sloveniji?«</strong>, AI išče strani, ki neposredno odgovorijo na to vprašanje. Če ima vaše spletno mesto <code>FAQPage</code> shemo z natanko tem vprašanjem in odgovorom, ste 5x bolj verjetno citirani.</p>
+
+    <p>FAQ strukturirani podatki naredita dve stvari:</p>
+
+    <ol>
+      <li><strong>AI pove, na katera vprašanja lahko odgovorite</strong></li>
+      <li><strong>Poda natančen odgovor za uporabo</strong></li>
+    </ol>
+
+    <h3>Kako implementirati FAQ shemo</h3>
+
+    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a website cost in Slovenia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A basic website in Slovenia costs €890+VAT. A business website with custom design starts at €1,990+VAT. Premium e-commerce solutions range from €3,490+VAT."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is GEO optimization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GEO (Generative Engine Optimization) is the practice of optimizing your website so AI assistants like ChatGPT, Gemini, and Perplexity can find, understand, and recommend your business."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make ChatGPT recommend my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add Schema.org structured data, create an llms.txt file, implement FAQ markup, and ensure your business information is consistent across directories and review sites."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>Najboljše prakse za FAQ v okviru GEO</h3>
+
+    <ul>
+      <li><strong>Uporabljajte resnična vprašanja</strong>, ki jih postavljajo vaše stranke (preverite Google Search Console, podporne zahtevke, prodajne klice)</li>
+      <li><strong>Vključite vprašanja, specifična za lokacijo</strong> (»najboljša agencija na Dunaju«, »cene spletnih strani Avstrija«)</li>
+      <li><strong>Odgovore naj bodo jedrnati</strong> — 2-3 stavki, ki jih AI lahko neposredno citira</li>
+      <li><strong>Redno dodajajte nova vprašanja</strong> — svežina je pomembna za AI uvrstitev</li>
+    </ul>
+
+    <hr class="separator">
+
+    <h2>4. Zakaj AI ne najde vas — Popolna diagnostika</h2>
+
+    <h3>4 nevidni signali</h3>
+
+    <p>Če na vašem spletnem mestu manjkajo ti elementi, vas AI asistenti dobesedno <strong>ne morejo</strong> priporočiti:</p>
+
+    <table>
+      <tr><th>Signal</th><th>Kaj se zgodi brez njega</th><th>Vpliv</th></tr>
+      <tr><td><code>Schema.org</code></td><td>AI ne ve, kaj počnete ali kje ste</td><td class="problem">Kritično</td></tr>
+      <tr><td><code>llms.txt</code></td><td>AI mora ugibati podrobnosti o vašem podjetju</td><td class="problem">Kritično</td></tr>
+      <tr><td><code>FAQPage</code></td><td>Ne pojavite se v iskanjih sloga vprašanja-odgovor</td><td class="problem">Visoko</td></tr>
+      <tr><td><code>OpenGraph</code> značke</td><td>AI ne more ustvariti bogatih predogledov vaše vsebine</td><td>Srednje</td></tr>
+    </table>
+
+    <h3>Ocena AI vidljivosti</h3>
+
+    <p>Zgradili smo orodje, ki preverja vse štiri elemente in vam da oceno od 0 do 100:</p>
+
+    <div class="score-box">
+      <div class="score-number">28</div>
+      <div class="score-label">Ocena AI vidljivosti</div>
+      <p style="color: #9CA3AF; margin-top: 16px;">Povprečna ocena za večino spletnih mest: 23/100</p>
+    </div>
+
+    <p>Tukaj je primer tipične neuspešne ocene:</p>
+
+    <table>
+      <tr><th>Preverjanje</th><th>Status</th></tr>
+      <tr><td>Schema.org strukturirani podatki</td><td class="cross">❌ Ni najden</td></tr>
+      <tr><td>llms.txt datoteka</td><td class="cross">❌ Ni najdena</td></tr>
+      <tr><td>FAQPage shema</td><td class="cross">❌ Ni najdena</td></tr>
+      <tr><td>OpenGraph značke</td><td class="check">✅ Prisotne</td></tr>
+      <tr><td>HTTPS omogočen</td><td class="check">✅ Veljaven</td></tr>
+      <tr><td>Meta opisi</td><td class="check">✅ Prisotni</td></tr>
+    </table>
+
+    <div class="callout warning">
+      <p><strong>⚠️ Resničnostna preizkušnja:</strong> 73 % poslovnih spletnih mest nima Schema.org označevanja. To pomeni, da je 73 % podjetij nevidnih za AI priporočila. To je vaša konkurenčna prednost.</p>
+    </div>
+
+    <h3>Kako to odpraviti — Korak za korakom</h3>
+
+    <ol>
+      <li><strong>Auditing vašega trenutnega stanja</strong> — Uporabite BoostSuite's GEO Check za ogled vaše ocene</li>
+      <li><strong>Dodajte Organization + LocalBusiness shemo</strong> — To je temelj</li>
+      <li><strong>Ustvarite llms.txt</strong> — 15 minut dela, masiven vpliv</li>
+      <li><strong>Implementirajte FAQ shemo</strong> — Začnite s svojimi 5 najpomembnejšimi vprašanji strank</li>
+      <li><strong>Dodajte OpenGraph značke</strong> — Za bogate predogledne v AI odgovorih</li>
+      <li><strong>Vse preizkusite</strong> — Uporabite Google's Rich Results Test + BoostSuite GEO Check</li>
+      <li><strong>Spremljajte in posodabljajte</strong> — Preverjajte oceno mesečno, dodajajte nova FAQ vprašanja</li>
+    </ol>
+
+    <hr class="separator">
+
+    <h2>Ključna ugotovitev</h2>
+
+    <p>GEO ni o pisanju boljše vsebine ali gradnji več povratnih povezav. Gre za to, da AI modelom zagotovite <strong>tehnične signale</strong>, ki jih potrebujejo za razumevanje in priporočilo vašega podjetja.</p>
+
+    <p>Schema.org AI pove, kaj počnete. <code>llms.txt</code> AI pove, kako vas opiše. FAQ podatki AI povejo, na katera vprašanja lahko odgovorite. Brez teh treh elementov upate, da bo AI pravilno uganil o vašem podjetju.</p>
+
+    <p>In upanje ni strategija.</p>
+
+    <div class="cta-box">
+      <h3>Preverite svojo oceno AI vidljivosti — Brezplačno</h3>
+      <p>Natančno vidite, kaj ChatGPT, Gemini in Perplexity pravijo o vašem podjetju. Traja 30 sekund.</p>
+      <a href="https://hd-webdesign.si/boost-suite/" class="cta-btn">Zaženite brezplačni GEO Check →</a>
+    </div>
+
+    <hr class="separator">
+
+    <h2>Pogosto zastavljena vprašanja</h3>
+
+    <h3>Koliko časa traja, da AI opazi moje Schema.org označevanje?</h3>
+    <p>AI modeli nenehno pregledujejo spletna mesta. Po implementaciji Schema.org lahko pričakujete, da bodo AI sistemi vaše strukturirane podatke prepoznali v 1-4 tednih. Vendar pa lahko vpliv na AI priporočila traja 2-3 mesece, saj modeli ponovno indeksirajo vaše spletno mesto.</p>
+
+    <h3>Ali je llms.txt obvezen za AI vidljivost?</h3>
+    <p>Tehnično ni obvezen, vendar je to najhitrejši način za nadzor nad tem, kako AI opiše vaše podjetje. Brez njega se AI modeli zanašajo na pregled celotnega spletnega mesta in ugibanje — kar pogosto vodi do netočnih opisov.</p>
+
+    <h3>Ali lahko Schema.org implementiram sam?</h3>
+    <p>Seveda! Osnovni Schema.org je en blok JSON-LD, ki ga lahko dodate v HTML svojega spletnega mesta. Za bolj kompleksne implementacije (več storitev, lokacij, članov ekipe) boste morda želeli uporabiti vtičnik ali najeti razvijalca.</p>
+
+    <h3>Ali to nadomesti tradicionalni SEO?</h3>
+    <p>Ne. GEO dopolnjuje SEO. Tradicionalni SEO vam pomaga, da se uvrstite v Google. GEO vam pomaga, da vas priporočijo AI asistenti. Oboje potrebujete — vendar GEO postaja vse pomembnejši, ko AI iskanje raste.</p>
+
+    <h3>Kakšna je razlika med Schema.org in OpenGraph?</h3>
+    <p>Schema.org je za iskalnike in AI modele. OpenGraph je za družbene medije in predogledne povezave. Oboje je pomembno, vendar ima Schema.org veliko večji vpliv na AI vidljivost.</p>
+
+    <hr class="separator">
+
+    <p><em>Ti članek je napisal Darko Herceg, ustanovitelj <a href="https://hd-webdesign.si">hd-webdesign.si</a> — podjetje za oblikovanje spletnih strani in AI storitve iz Slovenije. Gradimo orodja, ki podjetjem pomagajo, da jih najde AI.</em></p>
+
+  </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 Herceg Darko. Vse pravice pridržane.</p>
+    </footer>
+
+    <!-- Article Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Strukturirani podatki, llms.txt & FAQ: Zakaj AI ne more najti vaše spletne strani",
+        "description": "Vaša spletna stran je morda nevidna za ChatGPT, Gemini in Perplexity. Zakaj so strukturirani podatki, llms.txt in FAQ oznake temelj AI vidljivosti.",
+        "datePublished": "2026-06-11",
+        "dateModified": "2026-06-11",
+        "author": {
+            "@type": "Person",
+            "name": "Darko Herceg"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HD Web Design",
+            "url": "https://hd-webdesign.si"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://hd-webdesign.si/blog/podatki-strukturirani-llms-txt-ai-vidljivost.html"
+        }
+    }
+    </script>
+<script src="/js/main.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+
+<div class="hd-chatbot">
+        <button class="hd-chat-toggle" id="hdChatToggle" aria-label="Odpri klepet">
+            <span class="chat-icon">💬</span>
+            <span class="close-icon">✕</span>
+        </button>
+        <div class="hd-chat-window" id="hdChatWindow">
+            <div class="hd-chat-header">
+                <div class="hd-chat-header-avatar">🤖</div>
+                <div class="hd-chat-header-info">
+                    <h3>HD Assistant</h3>
+                    <span>HD Web Design</span>
+                </div>
+            </div>
+            <div class="hd-chat-messages" id="hdChatMessages">
+                <div class="hd-msg bot">Zdravo! 👋 Sem HD Web Design asistent. Kako vam lahko pomagam?</div>
+                <div class="hd-typing" id="hdTyping">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="hd-chat-input">
+                <input type="text" id="hdChatInput" placeholder="Vpišite vprašanje..." autocomplete="off">
+                <button id="hdChatSend" aria-label="Pošlji">➤</button>
+            </div>
+            <div class="hd-chat-footer">Powered by DeepSeek AI</div>
+        </div>
+    </div>
+</body></html>

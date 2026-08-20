@@ -1,0 +1,163 @@
+{
+  "url": "https://wordpress.org",
+  "timestamp": "2026-06-15T19:02:53.003025",
+  "schema_org": {
+    "has_json_ld": true,
+    "json_ld_types": [
+      "WebPage",
+      "WebSite",
+      "Organization"
+    ],
+    "has_microdata": false,
+    "microdata_types": [],
+    "raw_schemas": [
+      {
+        "@type": "Organization",
+        "@id": "https://wordpress.org/#organization",
+        "url": "https://wordpress.org/",
+        "name": "WordPress",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://wordpress.org/#logo",
+          "url": "https://s.w.org/style/images/about/WordPress-logotype-wmark.png"
+        },
+        "sameAs": [
+          "https://www.facebook.com/WordPress/",
+          "https://twitter.com/WordPress",
+          "https://en.wikipedia.org/wiki/WordPress"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://wordpress.org/#website",
+        "url": "https://wordpress.org/",
+        "name": "WordPress.org",
+        "publisher": {
+          "@id": "https://wordpress.org/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://wordpress.org/",
+        "url": "https://wordpress.org/",
+        "inLanguage": "en",
+        "name": "Blog Tool, Publishing Platform, and CMS - WordPress.org",
+        "description": "Open source software which you can use to easily create a beautiful website, blog, or app.",
+        "isPartOf": {
+          "@id": "https://wordpress.org/#website"
+        }
+      }
+    ]
+  },
+  "robots_txt": {
+    "exists": true,
+    "url": "https://wordpress.org/robots.txt",
+    "sitemaps": [
+      "https://wordpress.org/sitemap.xml",
+      "https://wordpress.org/news-sitemap.xml",
+      "https://wordpress.org/themes/sitemap.xml",
+      "https://wordpress.org/plugins/sitemap.xml",
+      "https://wordpress.org/news/sitemap.xml",
+      "https://wordpress.org/showcase/sitemap.xml",
+      "https://wordpress.org/documentation/sitemap.xml",
+      "https://wordpress.org/patterns/sitemap.xml",
+      "https://wordpress.org/photos/sitemap.xml"
+    ],
+    "has_user_agent": true,
+    "allows_ai_crawlers": false
+  },
+  "llm_txt": {
+    "found": true,
+    "files": {
+      "llms.txt": {
+        "url": "https://wordpress.org/llms.txt",
+        "length": 5763,
+        "preview": "# WordPress\n\n> WordPress is the free, open-source content management system (CMS) that powers more than 43% of all websites on the internet. Released under the GPLv2 license and maintained by a global community of contributors, WordPress is used to build everything from personal blogs to enterprise platforms, online stores, and headless front-ends for AI and agentic applications.\n\nWordPress is software you own. It runs on your own hosting, stores content in your own database, and is fully extens"
+      }
+    }
+  },
+  "sitemap": {
+    "exists": true,
+    "urls": [
+      "https://wordpress.org/sitemap.xml"
+    ],
+    "url_count": 3
+  },
+  "seo_basics": {
+    "has_title": true,
+    "title": "Blog Tool, Publishing Platform, and CMS &#8211; WordPress.org",
+    "has_meta_description": true,
+    "meta_description": "Open source software which you can use to easily create a beautiful website, blog, or app.",
+    "has_og_tags": true,
+    "og_tags": {
+      "type": "website",
+      "title": "Blog Tool, Publishing Platform, and CMS - WordPress.org",
+      "description": "Open source software which you can use to easily create a beautiful website, blog, or app.",
+      "url": "https://wordpress.org/",
+      "site_name": "WordPress.org",
+      "image": "https://wordpress.org/files/2024/04/wordpress-homepage-ogimage-202404.png",
+      "locale": "en_US"
+    },
+    "has_canonical": true,
+    "canonical": "https://wordpress.org/",
+    "has_h1": true,
+    "h1_count": 1,
+    "has_viewport_meta": true
+  },
+  "json_files": {
+    "found_files": [
+      "https://wordpress.org/wp-json/"
+    ],
+    "json_ld": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://wordpress.org/#organization",
+            "url": "https://wordpress.org/",
+            "name": "WordPress",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://wordpress.org/#logo",
+              "url": "https://s.w.org/style/images/about/WordPress-logotype-wmark.png"
+            },
+            "sameAs": [
+              "https://www.facebook.com/WordPress/",
+              "https://twitter.com/WordPress",
+              "https://en.wikipedia.org/wiki/WordPress"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://wordpress.org/#website",
+            "url": "https://wordpress.org/",
+            "name": "WordPress.org",
+            "publisher": {
+              "@id": "https://wordpress.org/#organization"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://wordpress.org/",
+            "url": "https://wordpress.org/",
+            "inLanguage": "en",
+            "name": "Blog Tool, Publishing Platform, and CMS - WordPress.org",
+            "description": "Open source software which you can use to easily create a beautiful website, blog, or app.",
+            "isPartOf": {
+              "@id": "https://wordpress.org/#website"
+            }
+          }
+        ]
+      }
+    ],
+    "manifest": null,
+    "package_json": null,
+    "api_endpoints": [
+      "wp-json"
+    ],
+    "other_json": [],
+    "total_size": 487007
+  },
+  "emails": []
+}

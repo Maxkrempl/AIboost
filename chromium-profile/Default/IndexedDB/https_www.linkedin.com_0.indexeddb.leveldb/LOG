@@ -1,0 +1,9 @@
+2026/05/15-21:04:39.126 c279e Reusing MANIFEST /home/darko/.openclaw/workspace/chromium-profile/Default/IndexedDB/https_www.linkedin.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/05/15-21:04:39.293 c279e Recovering log #11
+2026/05/15-21:04:39.541 c279e Reusing old log /home/darko/.openclaw/workspace/chromium-profile/Default/IndexedDB/https_www.linkedin.com_0.indexeddb.leveldb/000011.log 
+2026/05/15-21:07:34.222 c279e Compacting 2@0 + 0@1 files
+2026/05/15-21:07:34.444 c279e Generated table #13@0: 7 keys, 331 bytes
+2026/05/15-21:07:34.596 c279e Compacted 2@0 + 0@1 files => 331 bytes
+2026/05/15-21:07:34.667 c279e compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/05/15-21:07:34.926 c279e Delete type=2 #7
+2026/05/15-21:07:35.036 c279e Delete type=2 #10

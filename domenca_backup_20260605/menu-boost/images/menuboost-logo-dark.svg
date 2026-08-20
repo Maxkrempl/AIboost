@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+ <defs>
+ <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+ <stop offset="0%" style="stop-color:#F5C842;stop-opacity:1" />
+ <stop offset="100%" style="stop-color:#E8A020;stop-opacity:1" />
+ </linearGradient>
+ <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+ <stop offset="0%" style="stop-color:#2ECC71;stop-opacity:1" />
+ <stop offset="100%" style="stop-color:#1A9E55;stop-opacity:1" />
+ </linearGradient>
+ <filter id="glow">
+ <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+ <feMerge>
+ <feMergeNode in="coloredBlur"/>
+ <feMergeNode in="SourceGraphic"/>
+ </feMerge>
+ </filter>
+ </defs>
+ <g transform="translate(8, 10)">
+ <rect x="4" y="48" width="54" height="5" rx="2.5" fill="url(#goldGrad)"/>
+ <path d="M6 48 Q31 8 56 48 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+ <path d="M12 48 Q31 18 50 48" fill="none" stroke="#F5C842" stroke-width="0.8" opacity="0.4"/>
+ <path d="M27 36 L33 24 L31 32 L37 30 L29 44 L32 34 Z" fill="url(#greenGrad)" filter="url(#glow)"/>
+ <circle cx="31" cy="11" r="4" fill="url(#goldGrad)"/>
+ <circle cx="31" cy="11" r="2" fill="#1a1a1a"/>
+ </g>
+ <g transform="translate(82, 0)">
+ <text x="0" y="50" font-family="'Georgia','Times New Roman',serif" font-size="38" font-weight="700" letter-spacing="-0.5" fill="#F0EAD6">Menu</text>
+ <text x="96" y="50" font-family="'Georgia','Times New Roman',serif" font-size="38" font-weight="700" letter-spacing="-0.5" fill="url(#goldGrad)">Boost</text>
+ <text x="1" y="68" font-family="'Georgia','Times New Roman',serif" font-size="11" font-style="italic" letter-spacing="2.5" fill="#2ECC71" opacity="0.9">AI · MENU · DESCRIPTIONS</text>
+ <rect x="0" y="56" width="230" height="1" fill="url(#goldGrad)" opacity="0.3" rx="0.5"/>
+ </g>
+</svg>

@@ -1,0 +1,128 @@
+{
+  "url": "https://hd-webdesign.si",
+  "timestamp": "2026-06-15T18:51:19.606506",
+  "schema_org": {
+    "has_json_ld": true,
+    "json_ld_types": [
+      "Organization",
+      "Person",
+      "WebSite"
+    ],
+    "has_microdata": false,
+    "microdata_types": [],
+    "raw_schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Darko Herceg",
+        "alternateName": "HD Web Design",
+        "url": "https://hd-webdesign.si",
+        "image": "https://hd-webdesign.si/images/og-image.jpg",
+        "jobTitle": "SaaS Builder & AI Developer",
+        "description": "Slovenian developer building AI-powered SaaS tools including MenuBoost and BoostSuite.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "SI",
+          "addressLocality": "Slovenia"
+        },
+        "nationality": {
+          "@type": "Country",
+          "name": "Slovenia"
+        },
+        "knowsAbout": [
+          "SaaS Development",
+          "AI Applications",
+          "Web Development",
+          "SEO",
+          "Menu Translation",
+          "Marketing Automation"
+        ],
+        "sameAs": [
+          "https://github.com/Maxkrempl",
+          "https://www.linkedin.com/in/darko-herceg-073a322b9",
+          "https://hd-webdesign.si/about"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "HD Web Design",
+        "url": "https://hd-webdesign.si",
+        "logo": "https://hd-webdesign.si/images/og-image.jpg",
+        "description": "AI-powered SaaS tools for restaurants, marketers, and businesses. Built by Darko Herceg in Slovenia.",
+        "founder": {
+          "@type": "Person",
+          "name": "Darko Herceg",
+          "url": "https://hd-webdesign.si/about"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "SI"
+        },
+        "sameAs": [
+          "https://github.com/Maxkrempl",
+          "https://www.linkedin.com/in/darko-herceg-073a322b9"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "HD Web Design",
+        "url": "https://hd-webdesign.si",
+        "description": "SaaS tools and web development by Darko Herceg",
+        "publisher": {
+          "@type": "Person",
+          "name": "Darko Herceg"
+        }
+      }
+    ]
+  },
+  "robots_txt": {
+    "exists": true,
+    "url": "https://hd-webdesign.si/robots.txt",
+    "sitemaps": [
+      "https://hd-webdesign.si/sitemap.xml"
+    ],
+    "has_user_agent": true,
+    "allows_ai_crawlers": true
+  },
+  "llm_txt": {
+    "found": true,
+    "files": {
+      "llms.txt": {
+        "url": "https://hd-webdesign.si/llms.txt",
+        "length": 2185,
+        "preview": "# HD Web Design — AI Assistant Guide\n\n> HD WebDesign is a web development studio and SaaS company based in Ljubljana, Slovenia. Founded by Darko Herceg, it builds AI-powered tools for businesses — including restaurant menu optimization (MenuBoost), website analytics suites (BoostSuite), and GEO (Generative Engine Optimization) services.\n\n## About\n- **Owner:** Darko Herceg\n- **Location:** Ljubljana, Slovenia\n- **Specialization:** AI-powered SaaS products, web development, GEO optimization\n- **Lan"
+      }
+    }
+  },
+  "sitemap": {
+    "exists": true,
+    "urls": [
+      "https://hd-webdesign.si/sitemap.xml"
+    ],
+    "url_count": 109
+  },
+  "seo_basics": {
+    "has_title": true,
+    "title": "Darko Herceg — Developer & SaaS Builder | HD Web Design",
+    "has_meta_description": true,
+    "meta_description": "Darko Herceg — Slovenian developer building AI-powered SaaS tools. MenuBoost for restaurants, BoostSuite for agencies. Custom web development and consulting.",
+    "has_og_tags": true,
+    "og_tags": {
+      "title": "Darko Herceg — Developer & SaaS Builder",
+      "description": "Building AI-powered SaaS tools for restaurants, marketers, and businesses.",
+      "type": "website",
+      "url": "https://hd-webdesign.si",
+      "image": "https://hd-webdesign.si/images/og-image.jpg"
+    },
+    "has_canonical": true,
+    "canonical": "https://hd-webdesign.si",
+    "has_h1": true,
+    "h1_count": 1,
+    "has_viewport_meta": true
+  },
+  "emails": [
+    "hercegdarko@hd-webdesign.si"
+  ]
+}

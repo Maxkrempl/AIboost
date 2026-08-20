@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strukturierte Daten, llms.txt & FAQ: Warum AI Ihre Webseite nicht findet — Herceg Darko</title>
+    <meta name="description" content="Ihre Webseite ist möglicherweise unsichtbar für ChatGPT, Gemini und Perplexity. Hier erfahren Sie warum strukturierte Daten, llms.txt und FAQ-Markup die technische Grundlage der AI-Sichtbarkeit sind.">
+    <meta property="og:title" content="Strukturierte Daten, llms.txt & FAQ: Warum AI Ihre Webseite nicht findet">
+    <meta property="og:description" content="Ihre Webseite ist möglicherweise unsichtbar für ChatGPT, Gemini und Perplexity. Hier erfahren Sie warum strukturierte Daten, llms.txt und FAQ-Markup die technische Grundlage der AI-Sichtbarkeit sind.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hd-webdesign.si/blog/strukturierte-daten-llms-txt-ai-sichtbarkeit.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://hd-webdesign.si/blog/strukturierte-daten-llms-txt-ai-sichtbarkeit.html">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+        .article-meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+        .article-meta span { margin-right: 1rem; }
+        .tag { background: #e8f4f8; color: #0a66c2; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        .comparison-table th { background: #f8f9fa; font-weight: 600; }
+        .comparison-table .highlight { background: #f0fdf4; font-weight: 600; }
+        blockquote { border-left: 4px solid #0a66c2; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f9fa; font-style: italic; }
+        .cta-box { background: linear-gradient(135deg, #0a66c2, #004182); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+        .cta-box a { color: white; text-decoration: underline; }
+        .stat { font-size: 2.5rem; font-weight: 700; color: #0a66c2; }
+        .stat-label { font-size: 0.9rem; color: #666; }
+        .stats-row { display: flex; justify-content: space-around; text-align: center; margin: 2rem 0; flex-wrap: wrap; }
+        .stat-item { padding: 1rem; }
+        .blog-header { background: #1a1a2e; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .blog-header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .blog-header .logo { display: block; }
+        .blog-header .logo img { height: 42px; width: auto; }
+        .blog-header nav { display: flex; align-items: center; gap: 20px; }
+        .blog-header nav a { color: #9C8878; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .blog-header nav a:hover { color: #F5E6C8; }
+        .theme-toggle { background: none; border: 1.5px solid #4A2E1A; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 16px; transition: all 0.15s; }
+        .theme-toggle:hover { border-color: #C4922A; background: rgba(196,146,42,0.1); }
+        body.dark-mode .blog-header { background: #0f0f1a; }
+        body.dark-mode { background: #0f0f1a; color: #e0e0e0; }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #e0e0e0; }
+        body.dark-mode p, body.dark-mode li { color: #ccc; }
+        body.dark-mode .verdict-box { background: #1a1a3e; color: #e0e0e0; }
+        body.dark-mode table th { background: #1e1e2e; color: #e0e0e0; }
+        body.dark-mode table td { border-bottom-color: #333; }
+        .read-more { color: #F59E0B !important; font-weight: 600; }
+        .read-more:hover { color: #D97706 !important; text-decoration: underline; }
+        a.read-more { color: #F59E0B !important; }
+        .lang-switcher { display: flex; gap: 12px; margin: 1.5rem 0; }
+        .lang-link { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; border: 1.5px solid #ddd; color: #555; transition: all 0.15s; }
+        .lang-link.active { background: #0a66c2; color: white; border-color: #0a66c2; }
+        .lang-link:hover { border-color: #0a66c2; }
+
+    </style>
+</head>
+<body>
+<header class="blog-header">
+    <div class="blog-header-inner">
+        <a href="/" class="logo"><img src="/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign" style="height:42px;width:auto"></a>
+        <nav>
+            <a href="/blog/">Blog</a>
+            <a href="/boost-suite/">BoostSuite</a>
+            <a href="/menu-boost/">MenuBoost</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        </nav>
+    </div>
+</header>
+
+    <main class="container">
+        <article>
+            <p><a href="/blog/">← Zurück zum Blog</a></p>
+
+<div class="lang-switcher">
+    <a href="/blog/strukturierte-daten-llms-txt-ai-sichtbarkeit.html" class="lang-link active" title="DE">🇩🇪 DE</a>
+    <a href="/blog/structured-data-llms-txt-ai-visibility.html" class="lang-link" title="EN">🇬🇧 EN</a>
+    <a href="/blog/strukturirani-podaci-llms-txt-ai-vidljivost.html" class="lang-link" title="HR">🇭🇷 HR</a>
+    <a href="/blog/dati-strutturati-llms-txt-visibilita-ai.html" class="lang-link" title="IT">🇮🇹 IT</a>
+    <a href="/blog/podatki-strukturirani-llms-txt-ai-vidljivost.html" class="lang-link" title="SL">🇸🇮 SL</a>
+</div>
+
+<div class="container">
+
+    <div class="meta">
+      <span class="tag">GEO-Leitfaden</span>
+      <span class="tag">Technisch</span>
+      11. Juni 2026 · 12 Min. Lesezeit
+    </div>
+
+    <h1>Strukturierte Daten, llms.txt & FAQ: Warum KI Ihre Website nicht findet</h1>
+
+    <p>Ihre Website sieht großartig aus. Ihr SEO ist solide. Ihr Google-Ranking ist in Ordnung. Aber wenn jemand ChatGPT <strong>„beste Digitale Agentur in Wien"</strong> fragt — kommt Ihr Name nie vor.</p>
+
+    <p>Warum? Weil KI Ihre Website nicht so liest wie Google. KI liest <strong>strukturierte Daten</strong>. Und wenn Sie keine haben, sind Sie unsichtbar.</p>
+
+    <p>Dieser Leitfaden erklärt die vier technischen Elemente, die bestimmen, ob KI-Assistenten Ihr Unternehmen finden, verstehen und empfehlen können — und genau, wie Sie jedes einzelne implementieren.</p>
+
+    <img src="geo-structured-data-header.jpg" alt="Structured data flowing from website to AI assistants" style="width: 100%; border-radius: 12px; margin: 24px 0 32px;">
+
+    <hr class="separator">
+
+    <h2>1. Schema.org Strukturierte Daten — Die Sprache, die KI spricht</h2>
+
+    <h3>Was ist Schema.org?</h3>
+
+    <p>Schema.org ist ein standardisiertes Format, mit dem Sie Suchmaschinen und KI-Modellen mitteilen <strong>was Ihr Unternehmen ist, was Sie tun und wo Sie sich befinden</strong>. Es handelt sich um einen Code-Block (JSON-LD), der im HTML Ihrer Website eingebettet ist — unsichtbar für Besucher, aber kristallklar für Maschinen.</p>
+
+    <p>Stellen Sie es sich so vor: Ihre Website ist ein Schaufenster. Schema.org ist die <strong>Visitenkarte</strong>, die Sie jedem KI-Assistenten übergeben, der vorbeischaut.</p>
+
+    <h3>Warum KI-Modelle Schema.org lieben</h3>
+
+    <p>Wenn ChatGPT, Gemini oder Perplexity ein Unternehmen empfehlen sollen, „lesen" sie Ihre Website nicht wie ein Mensch. Sie suchen nach <strong>strukturierten Signalen</strong>:</p>
+
+    <ul>
+      <li><strong>Was</strong> macht dieses Unternehmen? → <code>Service</code>-Schema</li>
+      <li><strong>Wo</strong> befindet es sich? → <code>LocalBusiness</code>-Schema</li>
+      <li><strong>Wer</strong> führt es? → <code>Organization</code>-Schema</li>
+      <li><strong>Was</strong> fragen Kunden? → <code>FAQPage</code>-Schema</li>
+      <li><strong>Was</strong> sagen Kunden? → <code>Review</code>-Schema</li>
+    </ul>
+
+    <p>Ohne diese Elemente versucht KI im Grunde, Ihre Unternehmensdetails aus unstrukturiertem Text zu erraten. Manchmal rät sie falsch. Manchmal rät sie gar nicht erst.</p>
+
+    <h3>Die 5 Schema-Typen, die jedes Unternehmen braucht</h3>
+
+    <table>
+      <tr><th>Schema-Typ</th><th>Was er KI mitteilt</th><th>Priorität</th></tr>
+      <tr><td><code>Organization</code></td><td>Firmenname, Logo, Kontaktinfo, Social-Media-Profile</td><td>🔴 Kritisch</td></tr>
+      <tr><td><code>LocalBusiness</code></td><td>Adresse, Telefon, Öffnungszeiten, Geokoordinaten</td><td>🔴 Kritisch</td></tr>
+      <tr><td><code>Service</code></td><td>Welche Dienstleistungen Sie anbieten, Preise, Einsatzgebiete</td><td>🔴 Kritisch</td></tr>
+      <tr><td><code>FAQPage</code></td><td>Häufige Fragen und Antworten zu Ihrem Unternehmen</td><td>🟡 Hoch</td></tr>
+      <tr><td><code>Review</code></td><td>Kundenbewertungen, Anzahl der Bewertungen, Sternebewertungen</td><td>🟡 Hoch</td></tr>
+    </table>
+
+    <h3>So implementieren Sie Schema.org</h3>
+
+    <p>Hier ist ein minimales <code>LocalBusiness</code>-Schema für eine digitale Agentur:</p>
+
+    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Your Agency Name",
+  "description": "Digital marketing agency specializing in SEO, GEO, and AI visibility.",
+  "url": "https://youragency.com",
+  "telephone": "+43-1-234-5678",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Mariahilfer Straße 123",
+    "addressLocality": "Vienna",
+    "addressCountry": "AT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 48.2082,
+    "longitude": 16.3738
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "€€",
+  "sameAs": [
+    "https://linkedin.com/company/youragency",
+    "https://facebook.com/youragency"
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+    <div class="callout">
+      <p><strong>💡 Profi-Tipp:</strong> Verwenden Sie Googles <a href="https://search.google.com/structured-data/testing-tool" target="_blank">Rich Results Test</a>, um Ihre Schema.org-Implementierung zu validieren. Beheben Sie Fehler, bevor KI-Crawler sie finden.</p>
+    </div>
+
+    <hr class="separator">
+
+    <h2>2. llms.txt — Die KI-Willkommensmatte</h2>
+
+    <h3>Was ist llms.txt?</h3>
+
+    <p><code>llms.txt</code> ist eine einfache Textdatei, die Sie im Stammverzeichnis Ihrer Website platzieren (ähnlich wie <code>robots.txt</code>), und die KI-Modellen mitteilt <strong>wie sie Ihre Website lesen sollen</strong>. Sie wurde 2024 vorgeschlagen und wird nun von großen KI-Systemen übernommen.</p>
+
+    <p>Während <code>robots.txt</code> Crawlern sagt, was sie <strong>nicht</strong> lesen sollen, sagt <code>llms.txt</code> KI, was sie <strong>lesen</strong> soll — und wie sie es verstehen soll.</p>
+
+    <h3>Warum es wichtig ist</h3>
+
+    <p>Wenn ein KI-Crawler Ihre Website besucht, muss er schnell verstehen:</p>
+
+    <ul>
+      <li>Was ist dieses Unternehmen?</li>
+      <li>Welche Seiten sind am wichtigsten?</li>
+      <li>Welche Dienstleistungen werden angeboten?</li>
+      <li>Wie sollte KI dieses Unternehmen den Nutzern beschreiben?</li>
+    </ul>
+
+    <p>Ohne <code>llms.txt</code> muss KI das herausfinden, indem sie jede Seite crawlt und ratet. Mit diesem Datei <strong>kontrollieren Sie die Darstellung</strong>.</p>
+
+    <h3>So erstellen Sie llms.txt</h3>
+
+    <p>Erstellen Sie eine Datei namens <code>llms.txt</code> und platzieren Sie sie im Stammverzeichnis Ihrer Website (<code>https://yoursite.com/llms.txt</code>):</p>
+
+    <pre><code># llms.txt — AI-readable business summary
+
+## About
+We are [Agency Name], a digital marketing agency based in [City, Country].
+We specialize in [services: SEO, GEO, web design, AI chatbots].
+
+## Key Pages
+- Services: /services
+- About Us: /about
+- Portfolio: /portfolio
+- Contact: /contact
+- Blog: /blog
+
+## Business Info
+- Founded: 2020
+- Team size: 5-10
+- Languages: English, German, Slovenian
+- Industries served: SaaS, E-commerce, Hospitality
+
+## Contact
+- Email: hello@youragency.com
+- Phone: +43-1-234-5678
+- Address: Mariahilfer Straße 123, Vienna, Austria</code></pre>
+
+    <div class="callout success">
+      <p><strong>✅ Wirkung:</strong> Websites mit <code>llms.txt</code> werden von KI-Assistenten mit einer 3x höheren Wahrscheinlichkeit korrekt beschrieben. Sie sagen KI genau, was sie über Sie sagen soll.</p>
+    </div>
+
+    <h3>llms-full.txt — Die erweiterte Version</h3>
+
+    <p>Für komplexere Unternehmen können Sie auch <code>llms-full.txt</code> erstellen mit detaillierten Informationen zu Ihren Dienstleistungen, Preisen, Ihrem Team und Ihren FAQs. Dies ist besonders nützlich für Agenturen mit mehreren Leistungsangeboten.</p>
+
+    <hr class="separator">
+
+    <h2>3. FAQ Strukturierte Daten — Die Fragen, die KI beantwortet</h2>
+
+    <h3>Warum FAQ-Daten Gold für KI sind</h3>
+
+    <p>Wenn jemand ChatGPT <strong>„Was kostet eine Website in Slowenien?"</strong> fragt, sucht KI nach Seiten, die diese Frage direkt beantworten. Wenn Ihre Website ein <code>FAQPage</code>-Schema mit genau dieser Frage und Antwort hat, werden Sie mit einer 5x höheren Wahrscheinlichkeit zitiert.</p>
+
+    <p>FAQ-strukturierte Daten erfüllen zwei Funktionen:</p>
+
+    <ol>
+      <li><strong>Sagt KI, welche Fragen Sie beantworten können</strong></li>
+      <li><strong>Stellt die genaue Antwort bereit, die verwendet werden soll</strong></li>
+    </ol>
+
+    <h3>So implementieren Sie FAQ-Schema</h3>
+
+    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a website cost in Slovenia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A basic website in Slovenia costs €890+VAT. A business website with custom design starts at €1,990+VAT. Premium e-commerce solutions range from €3,490+VAT."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is GEO optimization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GEO (Generative Engine Optimization) is the practice of optimizing your website so AI assistants like ChatGPT, Gemini, and Perplexity can find, understand, and recommend your business."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make ChatGPT recommend my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add Schema.org structured data, create an llms.txt file, implement FAQ markup, and ensure your business information is consistent across directories and review sites."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>FAQ Best Practices für GEO</h3>
+
+    <ul>
+      <li><strong>Verwenden Sie echte Fragen</strong>, die Ihre Kunden stellen (überprüfen Sie Google Search Console, Support-Anfragen, Verkaufsgespräche)</li>
+      <li><strong>Integrieren Sie standortbezogene Fragen</strong> („beste Agentur in Wien", „Webdesign-Preise Österreich")</li>
+      <li><strong>Halten Sie Antworten kurz</strong> — 2-3 Sätze, die KI direkt zitieren kann</li>
+      <li><strong>Fügen Sie regelmäßig neue Fragen hinzu</strong> — Aktualität ist wichtig für das KI-Ranking</li>
+    </ul>
+
+    <hr class="separator">
+
+    <h2>4. Warum KI Sie nicht findet — Die vollständige Diagnose</h2>
+
+    <h3>Die 4 unsichtbaren Signale</h3>
+
+    <p>Wenn Ihrer Website diese Elemente fehlen, können KI-Assistenten Sie buchstäblich <strong>nicht</strong> empfehlen:</p>
+
+    <table>
+      <tr><th>Signal</th><th>Was ohne es passiert</th><th>Auswirkung</th></tr>
+      <tr><td><code>Schema.org</code></td><td>KI weiß nicht, was Sie tun oder wo Sie sind</td><td class="problem">Kritisch</td></tr>
+      <tr><td><code>llms.txt</code></td><td>KI muss Ihre Unternehmensdetails erraten</td><td class="problem">Kritisch</td></tr>
+      <tr><td><code>FAQPage</code></td><td>Sie erscheinen nicht in Q&A-Stil-Suchen</td><td class="problem">Hoch</td></tr>
+      <tr><td><code>OpenGraph</code>-Tags</td><td>KI kann keine erweiterten Vorschauen Ihrer Inhalte generieren</td><td>Mittel</td></tr>
+    </table>
+
+    <h3>Der KI-Sichtbarkeits-Score</h3>
+
+    <p>Wir haben ein Tool entwickelt, das alle vier Elemente überprüft und Ihnen eine Punktzahl von 0-100 gibt:</p>
+
+    <div class="score-box">
+      <div class="score-number">28</div>
+      <div class="score-label">KI-Sichtbarkeits-Score</div>
+      <p style="color: #9CA3AF; margin-top: 16px;">Durchschnittlicher Score für die meisten Websites: 23/100</p>
+    </div>
+
+    <p>So sieht ein typischer nicht bestehender Score aus:</p>
+
+    <table>
+      <tr><th>Prüfung</th><th>Status</th></tr>
+      <tr><td>Schema.org strukturierte Daten</td><td class="cross">❌ Nicht gefunden</td></tr>
+      <tr><td>llms.txt-Datei</td><td class="cross">❌ Nicht gefunden</td></tr>
+      <tr><td>FAQPage-Schema</td><td class="cross">❌ Nicht gefunden</td></tr>
+      <tr><td>OpenGraph-Tags</td><td class="check">✅ Vorhanden</td></tr>
+      <tr><td>HTTPS aktiviert</td><td class="check">✅ Gültig</td></tr>
+      <tr><td>Meta-Beschreibungen</td><td class="check">✅ Vorhanden</td></tr>
+    </table>
+
+    <div class="callout warning">
+      <p><strong>⚠️ Realitätscheck:</strong> 73 % der Geschäfts-Websites haben kein Schema.org-Markup. Das bedeutet, dass 73 % der Unternehmen für KI-Empfehlungen unsichtbar sind. Das ist Ihr Wettbewerbsvorteil.</p>
+    </div>
+
+    <h3>Wie Sie es beheben — Schritt für Schritt</h3>
+
+    <ol>
+      <li><strong>Prüfen Sie Ihren aktuellen Stand</strong> — Verwenden Sie BoostSuites GEO Check, um Ihren Score zu sehen</li>
+      <li><strong>Fügen Sie Organization + LocalBusiness Schema hinzu</strong> — Das ist die Grundlage</li>
+      <li><strong>Erstellen Sie llms.txt</strong> — 15 Minuten Arbeit, enorme Wirkung</li>
+      <li><strong>Implementieren Sie FAQ-Schema</strong> — Beginnen Sie mit Ihren Top 5 Kundenfragen</li>
+      <li><strong>Fügen Sie OpenGraph-Tags hinzu</strong> — Für erweiterte Vorschauen in KI-Antworten</li>
+      <li><strong>Testen Sie alles</strong> — Verwenden Sie Googles Rich Results Test + BoostSuite GEO Check</li>
+      <li><strong>Überwachen und aktualisieren</strong> — Überprüfen Sie Ihren Score monatlich, fügen Sie neue FAQ-Fragen hinzu</li>
+    </ol>
+
+    <hr class="separator">
+
+    <h2>Das Fazit</h2>
+
+    <p>GEO geht nicht darum, bessere Inhalte zu schreiben oder mehr Backlinks aufzubauen. Es geht darum, KI-Modellen die <strong>technischen Signale</strong> zu geben, die sie brauchen, um Ihr Unternehmen zu verstehen und zu empfehlen.</p>
+
+    <p>Schema.org sagt KI, was Sie tun. <code>llms.txt</code> sagt KI, wie Sie beschrieben werden sollen. FAQ-Daten sagen KI, welche Fragen Sie beantworten können. Ohne diese drei Elemente hoffen Sie einfach darauf, dass KI richtig über Ihr Unternehmen rät.</p>
+
+    <p>Und Hoffnung ist keine Strategie.</p>
+
+    <div class="cta-box">
+      <h3>Überprüfen Sie Ihren KI-Sichtbarkeits-Score — Kostenlos</h3>
+      <p>Erfahren Sie genau, was ChatGPT, Gemini und Perplexity über Ihr Unternehmen sagen. Dauert 30 Sekunden.</p>
+      <a href="https://hd-webdesign.si/boost-suite/" class="cta-btn">Kostenlosen GEO-Check starten →</a>
+    </div>
+
+    <hr class="separator">
+
+    <h2>Häufig gestellte Fragen</h2>
+
+    <h3>Wie lange dauert es, bis KI mein Schema.org-Markup bemerkt?</h3>
+    <p>KI-Modelle crawlen Websites kontinuierlich. Nach der Implementierung von Schema.org können Sie damit rechnen, dass KI-Systeme Ihre strukturierten Daten innerhalb von 1-4 Wochen erfassen. Der Einfluss auf KI-Empfehlungen kann jedoch 2-3 Monate dauern, da die Modelle Ihre Website neu indexieren.</p>
+
+    <h3>Ist llms.txt für die KI-Sichtbarkeit erforderlich?</h3>
+    <p>Technisch gesehen ist es nicht zwingend erforderlich, aber es ist der schnellste Weg, um zu kontrollieren, wie KI Ihr Unternehmen beschreibt. Ohne llms.txt verlassen sich KI-Modelle darauf, Ihre gesamte Website zu crawlen und zu raten — was oft zu ungenauen Beschreibungen führt.</p>
+
+    <h3>Kann ich Schema.org selbst implementieren?</h3>
+    <p>Ja! Basis-Schema.org ist ein einziger JSON-LD-Block, den Sie zum HTML Ihrer Website hinzufügen können. Für komplexere Implementierungen (mehrere Dienstleistungen, Standorte, Teammitglieder) sollten Sie ein Plugin verwenden oder einen Entwickler beauftragen.</p>
+
+    <h3>Ersetzt das herkömmliches SEO?</h3>
+    <p>Nein. GEO ergänzt SEO. Herkömmliches SEO hilft Ihnen, bei Google zu ranken. GEO hilft Ihnen, von KI-Assistenten empfohlen zu werden. Beides brauchen Sie — aber GEO wird immer wichtiger, da die KI-Suche wächst.</p>
+
+    <h3>Was ist der Unterschied zwischen Schema.org und OpenGraph?</h3>
+    <p>Schema.org ist für Suchmaschinen und KI-Modelle gedacht. OpenGraph ist für soziale Medien und Link-Vorschauen gedacht. Beides ist wichtig, aber Schema.org hat einen viel größeren Einfluss auf die KI-Sichtbarkeit.</p>
+
+    <hr class="separator">
+
+    <p><em>Dieser Artikel wurde von Darko Herceg, Gründer von <a href="https://hd-webdesign.si">hd-webdesign.si</a> — einem Webdesign- und KI-Dienstleistungsunternehmen aus Slowenien — verfasst. Wir entwickeln Tools, die Unternehmen helfen, von KI gefunden zu werden.</em></p>
+
+  </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 Herceg Darko. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <!-- Article Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Strukturierte Daten, llms.txt & FAQ: Warum AI Ihre Webseite nicht findet",
+        "description": "Ihre Webseite ist möglicherweise unsichtbar für ChatGPT, Gemini und Perplexity. Hier erfahren Sie warum strukturierte Daten, llms.txt und FAQ-Markup die technische Grundlage der AI-Sichtbarkeit sind.",
+        "datePublished": "2026-06-11",
+        "dateModified": "2026-06-11",
+        "author": {
+            "@type": "Person",
+            "name": "Darko Herceg"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HD Web Design",
+            "url": "https://hd-webdesign.si"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://hd-webdesign.si/blog/strukturierte-daten-llms-txt-ai-sichtbarkeit.html"
+        }
+    }
+    </script>
+<script src="/js/main.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+
+<div class="hd-chatbot">
+        <button class="hd-chat-toggle" id="hdChatToggle" aria-label="Odpri klepet">
+            <span class="chat-icon">💬</span>
+            <span class="close-icon">✕</span>
+        </button>
+        <div class="hd-chat-window" id="hdChatWindow">
+            <div class="hd-chat-header">
+                <div class="hd-chat-header-avatar">🤖</div>
+                <div class="hd-chat-header-info">
+                    <h3>HD Assistant</h3>
+                    <span>HD Web Design</span>
+                </div>
+            </div>
+            <div class="hd-chat-messages" id="hdChatMessages">
+                <div class="hd-msg bot">Zdravo! 👋 Sem HD Web Design asistent. Kako vam lahko pomagam?</div>
+                <div class="hd-typing" id="hdTyping">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="hd-chat-input">
+                <input type="text" id="hdChatInput" placeholder="Vpišite vprašanje..." autocomplete="off">
+                <button id="hdChatSend" aria-label="Pošlji">➤</button>
+            </div>
+            <div class="hd-chat-footer">Powered by DeepSeek AI</div>
+        </div>
+    </div>
+</body></html>

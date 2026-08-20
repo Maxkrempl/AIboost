@@ -1,0 +1,48 @@
+{
+  "type": "blog",
+  "topic": {
+    "title": "Kako hoteli privabijo več tujih gostov z boljšim menijem",
+    "title_en": "How hotels attract more foreign guests with better menus",
+    "keywords": [
+      "hotel meni",
+      "tuji gosti hotel",
+      "hotel menu translation"
+    ],
+    "target": "hotels"
+  },
+  "generated_at": "2026-05-25T09:01:18.060576",
+  "status": "draft",
+  "structure": {
+    "title": "Kako hoteli privabijo več tujih gostov z boljšim menijem",
+    "meta_description": "Odkrijte kako hoteli privabijo več tujih gostov z boljšim menijem. MenuBoost vam pomaga prevesti jedilnik v 10 sekundah.",
+    "sections": [
+      {
+        "heading": "Uvod",
+        "content": "[Draft needed]"
+      },
+      {
+        "heading": "Problem",
+        "content": "[Draft needed]"
+      },
+      {
+        "heading": "Rešitev",
+        "content": "[Draft needed]"
+      },
+      {
+        "heading": "Kako deluje",
+        "content": "[Draft needed]"
+      },
+      {
+        "heading": "Zaključek",
+        "content": "[Draft needed]"
+      }
+    ],
+    "cta": "Preizkusite MenuBoost brezplačno na menuboost.com",
+    "keywords": [
+      "hotel meni",
+      "tuji gosti hotel",
+      "hotel menu translation"
+    ],
+    "target_audience": "hotels"
+  }
+}

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optika Rožič — Celje | Očala, sončna očala, pregled vida</title>
+    <meta name="description" content="Optika Rožič s.p. v Celju. Pregled vida, korekcijska očala, sončna očala priznanih znamk — Carrera, Oakley, Adidas, Ray-Ban. Gledališka ulica 2.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="tailwind.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --bone: #EDE8E0;
+            --ink: #1B1917;
+            --warm: #C8B89A;
+            --gold: #B8965A;
+            --cream: #F5F1EB;
+            --stone: #8A8279;
+            --glass: rgba(255,255,255,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bone);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Noise texture overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Custom cursor */
+        .cursor { position: fixed; width: 12px; height: 12px; border: 1.5px solid var(--ink); border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, border-color 0.2s; mix-blend-mode: difference; }
+        .cursor.active { width: 48px; height: 48px; border-color: var(--gold); }
+
+        /* Grain overlay for sections */
+        .grain {
+            position: relative;
+        }
+        .grain::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Horizontal line accent */
+        .line-accent {
+            width: 48px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        /* Brand text treatment */
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .brand-name:hover {
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+
+        /* Image hover effect */
+        .img-reveal { overflow: hidden; }
+        .img-reveal img {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-reveal:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Glass morphism card */
+        .glass-card {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+        }
+
+        /* Product card */
+        .product-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-12px);
+        }
+        .product-card:hover .product-img img {
+            transform: scale(1.08) rotate(-1deg);
+        }
+        .product-img { overflow: hidden; }
+        .product-img img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Contact card */
+        .contact-card {
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
+        }
+        .contact-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Mobile nav */
+        .mobile-nav {
+            clip-path: circle(0% at calc(100% - 40px) 40px);
+            transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-nav.open {
+            clip-path: circle(150% at calc(100% - 40px) 40px);
+        }
+
+        /* Scroll line */
+        .scroll-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--gold);
+            z-index: 100;
+            transform-origin: left;
+        }
+
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Eyebrow */
+        .eyebrow {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* Number counter */
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--ink);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll progress -->
+    <div class="scroll-line" id="scrollLine"></div>
+
+    <!-- Custom cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50" id="header">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-5 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="images/logo.jpg" alt="Optika Rožič" class="h-9 w-9 rounded-full object-cover ring-1 ring-black/5 group-hover:ring-[var(--gold)] transition-all">
+                <span class="font-display text-lg font-semibold tracking-tight">Optika Rožič</span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-10">
+                <a href="#trgovina" class="text-[0.8rem] font-medium tracking-wide uppercase hover:text-[var(--gold)] transition-colors">Trgovina</a>
+                <a href="#znamke" class="text-[0.8rem] font-medium tracking-wide uppercase hover:text-[var(--gold)] transition-colors">Znamke</a>
+                <a href="#storitve" class="text-[0.8rem] font-medium tracking-wide uppercase hover:text-[var(--gold)] transition-colors">Storitve</a>
+                <a href="#galerija" class="text-[0.8rem] font-medium tracking-wide uppercase hover:text-[var(--gold)] transition-colors">Galerija</a>
+                <a href="#kontakt" class="text-[0.8rem] font-medium tracking-wide uppercase hover:text-[var(--gold)] transition-colors">Kontakt</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <a href="tel:041601266" class="hidden lg:inline-flex items-center gap-2 border border-[var(--ink)] rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider hover:bg-[var(--ink)] hover:text-[var(--bone)] transition-all">
+                    041 601 266
+                </a>
+                <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2">
+                    <span class="w-6 h-[1.5px] bg-[var(--ink)] transition-all origin-center" id="bar1"></span>
+                    <span class="w-4 h-[1.5px] bg-[var(--ink)] transition-all origin-center" id="bar2"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div id="mobileNav" class="mobile-nav fixed inset-0 bg-[var(--ink)] z-[60] flex flex-col items-center justify-center gap-10">
+        <button id="closeMenu" class="absolute top-5 right-6 text-[var(--bone)] opacity-60 hover:opacity-100 transition-opacity">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <a href="#trgovina" class="mobile-link font-display text-[var(--bone)] text-4xl md:text-5xl italic hover:text-[var(--gold)] transition-colors">Trgovina</a>
+        <a href="#znamke" class="mobile-link font-display text-[var(--bone)] text-4xl md:text-5xl italic hover:text-[var(--gold)] transition-colors">Znamke</a>
+        <a href="#storitve" class="mobile-link font-display text-[var(--bone)] text-4xl md:text-5xl italic hover:text-[var(--gold)] transition-colors">Storitve</a>
+        <a href="#galerija" class="mobile-link font-display text-[var(--bone)] text-4xl md:text-5xl italic hover:text-[var(--gold)] transition-colors">Galerija</a>
+        <a href="#kontakt" class="mobile-link font-display text-[var(--bone)] text-4xl md:text-5xl italic hover:text-[var(--gold)] transition-colors">Kontakt</a>
+        <a href="tel:041601266" class="mobile-link mt-6 border border-[var(--gold)] text-[var(--gold)] px-8 py-3 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-[var(--gold)] hover:text-[var(--ink)] transition-all">Pokliči</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="min-h-screen flex items-center relative overflow-hidden">
+        <!-- Background image -->
+        <div class="absolute inset-0">
+            <img src="images/photo-2.jpg" alt="" class="w-full h-full object-cover opacity-[0.07]">
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-32 pb-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+
+                <!-- Left: Big title -->
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="line-accent"></div>
+                        <span class="eyebrow">Optika · Celje · Od 2005</span>
+                    </div>
+
+                    <h1 class="font-display text-[14vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.88] font-bold mb-8 hero-title">
+                        Jasen vid.<br>
+                        <span class="italic font-normal text-[var(--gold)]">Lepši svet.</span>
+                    </h1>
+
+                    <p class="text-[var(--stone)] text-lg md:text-xl max-w-md leading-relaxed mb-10 hero-sub">
+                        Pregled vida, korekcijska očala in sončna očala priznanih svetovnih znamk — vse na enem mestu.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 hero-cta">
+                        <a href="#trgovina" class="inline-flex items-center gap-3 bg-[var(--ink)] text-[var(--bone)] px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-[var(--gold)] hover:text-[var(--ink)] transition-all group">
+                            Ogledi ponudbo
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#kontakt" class="inline-flex items-center gap-3 border border-[var(--ink)]/20 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all">
+                            Naroči se
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Image + stats -->
+                <div class="lg:col-span-5 relative">
+                    <div class="img-reveal rounded-3xl aspect-[3/4] relative">
+                        <img src="images/photo-1.jpg" alt="Optika Rožič notranjost" class="w-full h-full object-cover rounded-3xl">
+                        <!-- Floating tag -->
+                        <div class="absolute -bottom-6 -left-6 bg-[var(--ink)] text-[var(--bone)] px-6 py-4 rounded-2xl">
+                            <div class="stat-number text-[var(--gold)]">3</div>
+                            <div class="text-xs uppercase tracking-widest opacity-60 mt-1">Lokacije</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-40">
+            <span class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold">Scroll</span>
+            <div class="w-[1px] h-8 bg-[var(--ink)] origin-top animate-[scroll_2s_ease-in-out_infinite]"></div>
+        </div>
+    </section>
+
+    <!-- TRGOVINA -->
+    <section id="trgovina" class="py-28 md:py-40 px-6 md:px-10 relative">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+                <div class="lg:col-span-5">
+                    <span class="eyebrow block mb-4">01 — Trgovina</span>
+                    <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95]">
+                        Izberite<br>
+                        <span class="italic font-normal text-[var(--gold)]">svoj stil.</span>
+                    </h2>
+                </div>
+                <div class="lg:col-span-5 lg:col-start-7 flex items-end">
+                    <p class="text-[var(--stone)] text-lg leading-relaxed">
+                        Pestra ponudba korekcijskih in sončnih očal priznanih blagovnih znamk. Redno dodajamo nove modele — za vsakogar se najde nekaj.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="product-card glass-card rounded-3xl overflow-hidden">
+                    <div class="product-img aspect-[4/5] relative">
+                        <img src="images/photo-4.jpg" alt="Sončna očala" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="inline-block bg-[var(--gold)] text-[var(--ink)] text-[0.6rem] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3">Novo</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold mb-2">Sončna očala</h3>
+                        <p class="text-[var(--stone)] text-sm leading-relaxed mb-5">Carrera, Oakley, Adidas — široka izbira modelov za poletje in vsakdan.</p>
+                        <a href="#kontakt" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--ink)] hover:text-[var(--gold)] transition-colors group">
+                            Preveri ponudbo
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card glass-card rounded-3xl overflow-hidden">
+                    <div class="product-img aspect-[4/5] relative">
+                        <img src="images/photo-5.jpg" alt="Korekcijska očala" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="inline-block bg-[var(--ink)] text-[var(--bone)] text-[0.6rem] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3">Priljubljeno</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold mb-2">Korekcijska očala</h3>
+                        <p class="text-[var(--stone)] text-sm leading-relaxed mb-5">Moderne oblike, kakovostni materiali. Okvirji za vsak okus in priložnost.</p>
+                        <a href="#kontakt" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--ink)] hover:text-[var(--gold)] transition-colors group">
+                            Preveri ponudbo
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card glass-card rounded-3xl overflow-hidden">
+                    <div class="product-img aspect-[4/5] relative">
+                        <img src="images/photo-6.jpg" alt="Kontaktne leče" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="inline-block bg-white/80 text-[var(--ink)] text-[0.6rem] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3">Kontaktne</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold mb-2">Kontaktne leče</h3>
+                        <p class="text-[var(--stone)] text-sm leading-relaxed mb-5">Dnevne, tedenske in mesečne leče. Svetovanje in redna oskrba.</p>
+                        <a href="#kontakt" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--ink)] hover:text-[var(--gold)] transition-colors group">
+                            Preveri ponudbo
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZNAMKE -->
+    <section id="znamke" class="py-28 md:py-40 px-6 md:px-10 bg-[var(--ink)] text-[var(--bone)] relative grain overflow-hidden">
+        <div class="max-w-[1400px] mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <span class="eyebrow block mb-4" style="color: var(--gold);">02 — Znamke</span>
+                <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95]">
+                    Svetovno znane<br>
+                    <span class="italic font-normal" style="color: var(--gold);">znamke.</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
+                <div class="group bg-white/5 rounded-2xl p-8 text-center border border-white/5 hover:border-[var(--gold)]/30 transition-all cursor-pointer">
+                    <div class="h-16 flex items-center justify-center mb-3">
+                        <span class="font-display text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:text-[var(--gold)] transition-all">Carrera</span>
+                    </div>
+                    <p class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] opacity-0 group-hover:opacity-100 transition-opacity">Športna eleganca</p>
+                </div>
+
+                <div class="group bg-white/5 rounded-2xl p-8 text-center border border-white/5 hover:border-[var(--gold)]/30 transition-all cursor-pointer">
+                    <div class="h-16 flex items-center justify-center mb-3">
+                        <span class="font-display text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:text-[var(--gold)] transition-all">Oakley</span>
+                    </div>
+                    <p class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] opacity-0 group-hover:opacity-100 transition-opacity">Šport & tehnologija</p>
+                </div>
+
+                <div class="group bg-white/5 rounded-2xl p-8 text-center border border-white/5 hover:border-[var(--gold)]/30 transition-all cursor-pointer">
+                    <div class="h-16 flex items-center justify-center mb-3">
+                        <span class="font-display text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:text-[var(--gold)] transition-all">Adidas</span>
+                    </div>
+                    <p class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] opacity-0 group-hover:opacity-100 transition-opacity">Urbani stil</p>
+                </div>
+
+                <div class="group bg-white/5 rounded-2xl p-8 text-center border border-white/5 hover:border-[var(--gold)]/30 transition-all cursor-pointer">
+                    <div class="h-16 flex items-center justify-center mb-3">
+                        <span class="font-display text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:text-[var(--gold)] transition-all">Ray-Ban</span>
+                    </div>
+                    <p class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] opacity-0 group-hover:opacity-100 transition-opacity">Klasika</p>
+                </div>
+
+                <div class="group bg-white/5 rounded-2xl p-8 text-center border border-white/5 hover:border-[var(--gold)]/30 transition-all cursor-pointer">
+                    <div class="h-16 flex items-center justify-center mb-3">
+                        <span class="font-display text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:text-[var(--gold)] transition-all">Boss</span>
+                    </div>
+                    <p class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] opacity-0 group-hover:opacity-100 transition-opacity">Luksuz</p>
+                </div>
+
+                <div class="group bg-white/5 rounded-2xl p-8 text-center border border-white/5 hover:border-[var(--gold)]/30 transition-all cursor-pointer">
+                    <div class="h-16 flex items-center justify-center mb-3">
+                        <span class="font-display text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:text-[var(--gold)] transition-all">Tommy</span>
+                    </div>
+                    <p class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] opacity-0 group-hover:opacity-100 transition-opacity">Ameriški šik</p>
+                </div>
+            </div>
+
+            <!-- Stats row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-16">
+                <div class="text-center">
+                    <div class="stat-number" style="color: var(--gold);">15+</div>
+                    <div class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] mt-2">Let izkušenj</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number" style="color: var(--gold);">3</div>
+                    <div class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] mt-2">Lokacije</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number" style="color: var(--gold);">6+</div>
+                    <div class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] mt-2">Znamk</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number" style="color: var(--gold);">1000+</div>
+                    <div class="text-[0.65rem] uppercase tracking-widest text-[var(--stone)] mt-2">Zadovoljnih strank</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORITVE -->
+    <section id="storitve" class="py-28 md:py-40 px-6 md:px-10 relative">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+                <div class="lg:col-span-5">
+                    <span class="eyebrow block mb-4">03 — Storitve</span>
+                    <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95]">
+                        Kaj vam lahko<br>
+                        <span class="italic font-normal text-[var(--gold)]">ponudimo?</span>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="glass-card rounded-3xl p-8 md:p-10 group">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--gold)]/10 flex items-center justify-center mb-8 group-hover:bg-[var(--gold)]/20 transition-colors">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Pregled vida</h3>
+                    <p class="text-[var(--stone)] text-sm leading-relaxed">Temeljit pregled vida z najsodobnejšo opremo. Merjenje dioptrije za natančno izdelavo očal ali predpis kontaktnih leč.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card rounded-3xl p-8 md:p-10 group">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--gold)]/10 flex items-center justify-center mb-8 group-hover:bg-[var(--gold)]/20 transition-colors">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="2" y="7" width="20" height="10" rx="5"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Vozniško dovoljenje</h3>
+                    <p class="text-[var(--stone)] text-sm leading-relaxed">Pregled za podaljšanje vozniškega dovoljenja. Hiter in profesionalen postopek brez čakanja.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card rounded-3xl p-8 md:p-10 group">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--gold)]/10 flex items-center justify-center mb-8 group-hover:bg-[var(--gold)]/20 transition-colors">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Naročilnica</h3>
+                    <p class="text-[var(--stone)] text-sm leading-relaxed">Uveljavite naročilnico za korekcijska očala ali leče. Popust, ki vam ga prizna zavarovalnica.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card rounded-3xl p-8 md:p-10 group">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--gold)]/10 flex items-center justify-center mb-8 group-hover:bg-[var(--gold)]/20 transition-colors">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Kontaktne leče</h3>
+                    <p class="text-[var(--stone)] text-sm leading-relaxed">Izbira in naročilo kontaktnih leč. Svetovanje glede pravilne nege in nošenja.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card rounded-3xl p-8 md:p-10 group">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--gold)]/10 flex items-center justify-center mb-8 group-hover:bg-[var(--gold)]/20 transition-colors">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Popravila</h3>
+                    <p class="text-[var(--stone)] text-sm leading-relaxed">Profesionalna popravila in nastavitve očal. Zamenjava leč, vijakov in drugih delov.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card rounded-3xl p-8 md:p-10 group">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--gold)]/10 flex items-center justify-center mb-8 group-hover:bg-[var(--gold)]/20 transition-colors">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="5" r="3"/><path d="M12 8v4l3 3"/><path d="M5 12a7 7 0 0114 0"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Sončna očala</h3>
+                    <p class="text-[var(--stone)] text-sm leading-relaxed">Modna in zaščitna sončna očala priznanih znamk. Redno dodajamo nove modele v ponudbo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIJA -->
+    <section id="galerija" class="py-28 md:py-40 px-6 md:px-10 bg-[var(--cream)]">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-20">
+                <span class="eyebrow block mb-4">04 — Galerija</span>
+                <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95]">
+                    Naša <span class="italic font-normal text-[var(--gold)]">optika.</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[240px]">
+                <div class="img-reveal rounded-2xl col-span-2 row-span-2">
+                    <img src="images/photo-1.jpg" alt="Optika Rožič" class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <div class="img-reveal rounded-2xl">
+                    <img src="images/photo-4.jpg" alt="Očala" class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <div class="img-reveal rounded-2xl">
+                    <img src="images/photo-5.jpg" alt="Storitve" class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <div class="img-reveal rounded-2xl">
+                    <img src="images/photo-6.jpg" alt="Notranjost" class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <div class="img-reveal rounded-2xl">
+                    <img src="images/photo-7.jpg" alt="Ponudba" class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <div class="img-reveal rounded-2xl col-span-2">
+                    <img src="images/photo-8.jpg" alt="Optika Rožič Celje" class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <div class="img-reveal rounded-2xl">
+                    <img src="images/photo-9.jpg" alt="Očala" class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <div class="img-reveal rounded-2xl">
+                    <img src="images/photo-10.jpg" alt="Optika" class="w-full h-full object-cover rounded-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="py-28 md:py-40 px-6 md:px-10 relative">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-20">
+                <span class="eyebrow block mb-4">05 — Kontakt</span>
+                <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95]">
+                    Obiščite nas ali<br>
+                    <span class="italic font-normal text-[var(--gold)]">pokličite.</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <a href="tel:041601266" class="contact-card glass-card rounded-3xl p-10 text-center group">
+                    <div class="w-14 h-14 rounded-full bg-[var(--gold)]/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-[var(--gold)]/20 transition-colors">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-2">Telefon</h3>
+                    <p class="text-[var(--gold)] font-semibold text-lg">041 601 266</p>
+                </a>
+
+                <div class="contact-card glass-card rounded-3xl p-10 text-center">
+                    <div class="w-14 h-14 rounded-full bg-[var(--gold)]/10 flex items-center justify-center mx-auto mb-6">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-2">Naslov</h3>
+                    <p class="text-[var(--stone)]">Gledališka ulica 2<br>3000 Celje</p>
+                </div>
+
+                <div class="contact-card glass-card rounded-3xl p-10 text-center">
+                    <div class="w-14 h-14 rounded-full bg-[var(--gold)]/10 flex items-center justify-center mx-auto mb-6">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-2">Urniki</h3>
+                    <div class="text-[var(--stone)] text-sm space-y-1.5">
+                        <p>Pon–Pet: <strong class="text-[var(--ink)]">8:00 – 18:00</strong></p>
+                        <p>Sobota: <strong class="text-[var(--ink)]">9:00 – 12:00</strong></p>
+                        <p>Nedelja: <strong class="text-[var(--ink)]">Zaprto</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="rounded-3xl overflow-hidden h-[400px] border border-black/5 relative">
+                <iframe
+                    src="https://maps.google.com/maps?q=Gledali%C5%A1ka+ulica+2,+3000+Celje,+Slovenia&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="mt-10 flex justify-center">
+                <a href="https://www.facebook.com/Optika-Ro%C5%BEi%C4%8D-704234883070707/" target="_blank" class="inline-flex items-center gap-2 border border-[var(--ink)]/10 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook stran
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--ink)] text-[var(--bone)] py-16 px-6 md:px-10">
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3">
+                <img src="images/logo.jpg" alt="Optika Rožič" class="h-8 w-8 rounded-full object-cover opacity-60">
+                <span class="font-display text-lg">Optika Rožič s.p.</span>
+            </div>
+            <div class="text-sm text-[var(--stone)] text-center md:text-right">
+                <p>Gledališka ulica 2, 3000 Celje</p>
+                <p class="mt-1">Davčna: 91366852 · Matična: 1627724</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox fixed inset-0 bg-black/95 z-[70] flex items-center justify-center p-6" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[85vh] rounded-2xl object-contain">
+    </div>
+
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button, .product-card, .img-reveal, .brand-name').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+        });
+
+        // Scroll progress
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement;
+            const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+            document.getElementById('scrollLine').style.width = pct + '%';
+        });
+
+        // Header shrink on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('bg-[var(--bone)]/80', window.scrollY > 50);
+            header.classList.toggle('backdrop-blur-lg', window.scrollY > 50);
+            header.classList.toggle('border-b', window.scrollY > 50);
+            header.classList.toggle('border-black/5', window.scrollY > 50);
+        });
+
+        // Mobile nav
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('mobileNav').classList.add('open');
+        });
+        document.getElementById('closeMenu').addEventListener('click', () => {
+            document.getElementById('mobileNav').classList.remove('open');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileNav').classList.remove('open');
+            });
+        });
+
+        // GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero
+        gsap.from('.hero-title', { y: 80, opacity: 0, duration: 1.4, ease: 'power3.out', delay: 0.1 });
+        gsap.from('.hero-sub', { y: 50, opacity: 0, duration: 1.2, ease: 'power3.out', delay: 0.4 });
+        gsap.from('.hero-cta', { y: 40, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.6 });
+
+        // Product cards
+        ScrollTrigger.create({
+            trigger: '#trgovina',
+            start: 'top 75%',
+            onEnter: () => document.querySelectorAll('#trgovina .product-card').forEach((el, i) => {
+                el.style.transition = `all 0.8s cubic-bezier(0.16,1,0.3,1) ${i * 0.15}s`;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            })
+        });
+        document.querySelectorAll('#trgovina .product-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+        });
+
+        // Brand cards — use ScrollTrigger callback to add class
+        ScrollTrigger.create({
+            trigger: '#znamke',
+            start: 'top 75%',
+            onEnter: () => document.querySelectorAll('#znamke .group').forEach((el, i) => {
+                el.style.transition = `all 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s`;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            })
+        });
+        // Set initial state for brand cards
+        document.querySelectorAll('#znamke .group').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+        });
+
+        // Service cards
+        ScrollTrigger.create({
+            trigger: '#storitve',
+            start: 'top 75%',
+            onEnter: () => document.querySelectorAll('#storitve .glass-card').forEach((el, i) => {
+                el.style.transition = `all 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.1}s`;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            })
+        });
+        document.querySelectorAll('#storitve .glass-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+        });
+
+        // Gallery
+        ScrollTrigger.create({
+            trigger: '#galerija',
+            start: 'top 75%',
+            onEnter: () => document.querySelectorAll('#galerija .img-reveal').forEach((el, i) => {
+                el.style.transition = `all 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.06}s`;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            })
+        });
+        document.querySelectorAll('#galerija .img-reveal').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+        });
+
+        // Contact
+        ScrollTrigger.create({
+            trigger: '#kontakt',
+            start: 'top 75%',
+            onEnter: () => document.querySelectorAll('.contact-card').forEach((el, i) => {
+                el.style.transition = `all 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.12}s`;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            })
+        });
+        document.querySelectorAll('.contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+        });
+
+        // Lightbox
+        document.querySelectorAll('.img-reveal img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.getElementById('lightboxImg').src = img.src;
+                document.getElementById('lightbox').classList.add('active');
+            });
+        });
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

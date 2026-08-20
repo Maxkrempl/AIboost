@@ -1,0 +1,5 @@
+primary_model: "xiaomi/mimo-v2-flash" 
+fallbacks:
+  - "openrouter/google/gemma-4-26b-a4b-it:free"
+  - "openrouter/google/gemma-4-31b-it:free"
+  - "openrouter/deepseek/deepseek-v3.2"

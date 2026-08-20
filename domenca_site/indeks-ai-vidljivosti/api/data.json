@@ -1,0 +1,3572 @@
+[
+  {
+    "id": "e28cbf0b313a",
+    "domain": "nkbm.si",
+    "podjetje": "Nova KBM",
+    "score": 100,
+    "grade": "A",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "2a78623c0de5",
+    "domain": "salonit.si",
+    "podjetje": "Salonit Anhovo",
+    "score": 100,
+    "grade": "A",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "9980ebcc3abd",
+    "domain": "kemiplas.si",
+    "podjetje": "Kemiplas",
+    "score": 100,
+    "grade": "A",
+    "sector": "Farmacija in kemija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "4e33c24ef4d5",
+    "domain": "bernardin.si",
+    "podjetje": "Hoteli Bernardin",
+    "score": 100,
+    "grade": "A",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0fdff0ab5dfc",
+    "domain": "tpv.si",
+    "podjetje": "TPV",
+    "score": 100,
+    "grade": "A",
+    "sector": "Avtomobilska in mobilnost",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "41630a04c3b2",
+    "domain": "lasko.eu",
+    "podjetje": "Pivovarna Laško",
+    "score": 100,
+    "grade": "A",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "a72cc103f7fc",
+    "domain": "trgovinejager.com",
+    "podjetje": "Jager",
+    "score": 100,
+    "grade": "A",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "34be61ccc4b5",
+    "domain": "sparkasse.si",
+    "podjetje": "Sparkasse",
+    "score": 75,
+    "grade": "A",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c20f62f2b069",
+    "domain": "modra.si",
+    "podjetje": "Modra zavarovalnica",
+    "score": 75,
+    "grade": "A",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "427abfb954af",
+    "domain": "telemach.si",
+    "podjetje": "Telemach",
+    "score": 75,
+    "grade": "A",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "869c64776c6b",
+    "domain": "a1.si",
+    "podjetje": "A1 Slovenija",
+    "score": 75,
+    "grade": "A",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "3b12f0da59e0",
+    "domain": "t-2.si",
+    "podjetje": "T-2",
+    "score": 75,
+    "grade": "A",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "e259c2d05e35",
+    "domain": "celtra.com",
+    "podjetje": "Celtra",
+    "score": 75,
+    "grade": "A",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "012ab123afd5",
+    "domain": "krka.si",
+    "podjetje": "Krka",
+    "score": 75,
+    "grade": "A",
+    "sector": "Farmacija in kemija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "87d6211f4fd0",
+    "domain": "jub.si",
+    "podjetje": "JUB",
+    "score": 75,
+    "grade": "A",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "e03d6bd4ff9e",
+    "domain": "terme-catez.si",
+    "podjetje": "Terme Čatež",
+    "score": 75,
+    "grade": "A",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "543140430ea6",
+    "domain": "hit.si",
+    "podjetje": "HIT Nova Gorica",
+    "score": 75,
+    "grade": "A",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "4c98ee391233",
+    "domain": "generali.si",
+    "podjetje": "Generali",
+    "score": 75,
+    "grade": "A",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "cc5a71554b65",
+    "domain": "cinkarna.si",
+    "podjetje": "Cinkarna Celje",
+    "score": 70,
+    "grade": "A",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0521538d677c",
+    "domain": "phv.si",
+    "podjetje": "Hranilnica Vipava",
+    "score": 70,
+    "grade": "A",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "04fd09ef22f3",
+    "domain": "www.intesasanpaolobank.si",
+    "podjetje": "Banka Intesa Sanpaolo",
+    "score": 70,
+    "grade": "A",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "d7edeaadd9a6",
+    "domain": "www.l-m.si",
+    "podjetje": "Ljubljanske mlekarne",
+    "score": 70,
+    "grade": "A",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "765fc6f19aee",
+    "domain": "triglav.si",
+    "podjetje": "Zavarovalnica Triglav",
+    "score": 65,
+    "grade": "B",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "30dafd7b83e7",
+    "domain": "sava.si",
+    "podjetje": "Zavarovalnica Sava",
+    "score": 65,
+    "grade": "B",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c63f2ee85353",
+    "domain": "eurospin.si",
+    "podjetje": "Eurospin",
+    "score": 65,
+    "grade": "B",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "483cb40bfdf7",
+    "domain": "inea.si",
+    "podjetje": "Inea",
+    "score": 65,
+    "grade": "B",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "2eaf3e4b3e06",
+    "domain": "perftech.si",
+    "podjetje": "Perftech",
+    "score": 65,
+    "grade": "B",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "232159d513b3",
+    "domain": "eles.si",
+    "podjetje": "ELES",
+    "score": 65,
+    "grade": "B",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "f82d8197c207",
+    "domain": "src.si",
+    "podjetje": "SRC",
+    "score": 65,
+    "grade": "B",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "4eadabdff7ab",
+    "domain": "gorenje.com",
+    "podjetje": "Gorenje",
+    "score": 65,
+    "grade": "B",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "901f576c7c2f",
+    "domain": "mlinotest.si",
+    "podjetje": "Mlinotest",
+    "score": 65,
+    "grade": "B",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "df9167f5b9fb",
+    "domain": "fructal.si",
+    "podjetje": "Fructal",
+    "score": 65,
+    "grade": "B",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c74cf463053a",
+    "domain": "grandkoper.com",
+    "podjetje": "Grand Koper",
+    "score": 65,
+    "grade": "B",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0c3b6627aad7",
+    "domain": "revoz.si",
+    "podjetje": "Revoz",
+    "score": 65,
+    "grade": "B",
+    "sector": "Avtomobilska in mobilnost",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "a269a821bcb7",
+    "domain": "hotelmilka.si",
+    "podjetje": "Hotel Milka",
+    "score": 65,
+    "grade": "B",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "465a7969b3f3",
+    "domain": "mlekarna-celeia.si",
+    "podjetje": "Mlekarna Celeia",
+    "score": 65,
+    "grade": "B",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "982975e4d7d1",
+    "domain": "vecer.si",
+    "podjetje": "Večer",
+    "score": 65,
+    "grade": "B",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "e1b3fb296b8d",
+    "domain": "mladina.si",
+    "podjetje": "Mladina",
+    "score": 65,
+    "grade": "B",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "be5052df408f",
+    "domain": "finance.si",
+    "podjetje": "Finance",
+    "score": 65,
+    "grade": "B",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "e1cd0d3df875",
+    "domain": "nkmaribor.com",
+    "podjetje": "NK Maribor",
+    "score": 65,
+    "grade": "B",
+    "sector": "Šport",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "47c1443f2f70",
+    "domain": "www.kd-group.com",
+    "podjetje": "KD Skupina",
+    "score": 65,
+    "grade": "B",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "653c3df177e9",
+    "domain": "belinka.com",
+    "podjetje": "Belinka",
+    "score": 60,
+    "grade": "B",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "4a43a568c824",
+    "domain": "sava-hotels-resorts.com",
+    "podjetje": "Sava Turizem",
+    "score": 60,
+    "grade": "B",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "04182af3efb2",
+    "domain": "luka-kp.si",
+    "podjetje": "Luka Koper",
+    "score": 60,
+    "grade": "B",
+    "sector": "Promet in logistika",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0634f4d9e18c",
+    "domain": "www.hse.si",
+    "podjetje": "HSE",
+    "score": 60,
+    "grade": "B",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "d2c204a88591",
+    "domain": "iskratel.com",
+    "podjetje": "Iskratel",
+    "score": 60,
+    "grade": "B",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0870bde29149",
+    "domain": "24ur.com",
+    "podjetje": "24ur.com / POP TV",
+    "score": 55,
+    "grade": "B",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "bcd8f5186a39",
+    "domain": "dm.si",
+    "podjetje": "dm Slovenija",
+    "score": 50,
+    "grade": "B",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "e56bb02da897",
+    "domain": "hervis.si",
+    "podjetje": "Hervis",
+    "score": 50,
+    "grade": "B",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "62b2e58f1e09",
+    "domain": "bitstamp.net",
+    "podjetje": "Bitstamp",
+    "score": 50,
+    "grade": "B",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0e21d8da301d",
+    "domain": "helios.si",
+    "podjetje": "Helios",
+    "score": 50,
+    "grade": "B",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c39a6411fe4b",
+    "domain": "panvita.si",
+    "podjetje": "Panvita",
+    "score": 50,
+    "grade": "B",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "700e224f42b6",
+    "domain": "posta.si",
+    "podjetje": "Pošta Slovenije",
+    "score": 50,
+    "grade": "B",
+    "sector": "Promet in logistika",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "74d08ef63695",
+    "domain": "nkolimpija.si",
+    "podjetje": "NK Olimpija",
+    "score": 50,
+    "grade": "B",
+    "sector": "Šport",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": true
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "7d75d5c1416f",
+    "domain": "perutnina.com",
+    "podjetje": "Perutnina Ptuj",
+    "score": 50,
+    "grade": "B",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "8737f8d02db9",
+    "domain": "union-hotels.com",
+    "podjetje": "Hotel Union",
+    "score": 50,
+    "grade": "B",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "07a5479a0e13",
+    "domain": "triglav.eu",
+    "podjetje": "Triglav Nepremičnine",
+    "score": 50,
+    "grade": "B",
+    "sector": "Gradnja in nepremičnine",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "33997955a2b7",
+    "domain": "www.hidria.com",
+    "podjetje": "Hidria",
+    "score": 50,
+    "grade": "B",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0ac082611b0e",
+    "domain": "dhs.si",
+    "podjetje": "Delavska hranilnica",
+    "score": 45,
+    "grade": "C",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "1a872557b5d8",
+    "domain": "ilirika.si",
+    "podjetje": "Ilirika",
+    "score": 45,
+    "grade": "C",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "e41e4963855d",
+    "domain": "mercator.si",
+    "podjetje": "Mercator",
+    "score": 45,
+    "grade": "C",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "4b8cc02416b1",
+    "domain": "kolektor.si",
+    "podjetje": "Kolektor",
+    "score": 45,
+    "grade": "C",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0de49aabb522",
+    "domain": "sportradar.com",
+    "podjetje": "Sportradar",
+    "score": 45,
+    "grade": "C",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "df7405a67e1b",
+    "domain": "gen-energija.si",
+    "podjetje": "Gen energija",
+    "score": 45,
+    "grade": "C",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "2f67da949b9a",
+    "domain": "petrol.si",
+    "podjetje": "Petrol",
+    "score": 45,
+    "grade": "C",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "4e2fbee61807",
+    "domain": "acroni.si",
+    "podjetje": "SIJ Acroni",
+    "score": 45,
+    "grade": "C",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "739aa93e5919",
+    "domain": "sij.si",
+    "podjetje": "SIJ Slovenian Steel",
+    "score": 45,
+    "grade": "C",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "8f809ada0233",
+    "domain": "zito.si",
+    "podjetje": "Žito",
+    "score": 45,
+    "grade": "C",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0ae688e558e9",
+    "domain": "cimos.eu",
+    "podjetje": "Cimos",
+    "score": 45,
+    "grade": "C",
+    "sector": "Avtomobilska in mobilnost",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "478524881620",
+    "domain": "reporter.si",
+    "podjetje": "Reporter",
+    "score": 45,
+    "grade": "C",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "e99c63e45f12",
+    "domain": "intera.si",
+    "podjetje": "Intera",
+    "score": 45,
+    "grade": "C",
+    "sector": "Gradnja in nepremičnine",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "99ac9f711ee6",
+    "domain": "triglavskladi.si",
+    "podjetje": "Triglav Skladi",
+    "score": 45,
+    "grade": "C",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c975d8980042",
+    "domain": "atlanticgrupa.com",
+    "podjetje": "Droga Kolinska",
+    "score": 45,
+    "grade": "C",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c975d8980042",
+    "domain": "atlanticgrupa.com",
+    "podjetje": "Atlantic Brda",
+    "score": 45,
+    "grade": "C",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c8bba66109ae",
+    "domain": "www.union-experience.si",
+    "podjetje": "Pivovarna Union",
+    "score": 45,
+    "grade": "C",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "3fd91ebe6cf3",
+    "domain": "xlab.si",
+    "podjetje": "Xlab",
+    "score": 40,
+    "grade": "C",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "6e8667b5c863",
+    "domain": "www.otpbanka.si",
+    "podjetje": "OTP banka",
+    "score": 40,
+    "grade": "C",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "0c09fd5ebfa8",
+    "domain": "nlb.si",
+    "podjetje": "NLB",
+    "score": 35,
+    "grade": "C",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "1e1b027eb998",
+    "domain": "lon.si",
+    "podjetje": "Hranilnica LON",
+    "score": 35,
+    "grade": "C",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c192f740316d",
+    "domain": "vzajemna.si",
+    "podjetje": "Vzajemna",
+    "score": 35,
+    "grade": "C",
+    "sector": "Banke in zavarovalnice",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "bb023bffa98c",
+    "domain": "lidl.si",
+    "podjetje": "Lidl Slovenija",
+    "score": 35,
+    "grade": "C",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "571d14c98f7c",
+    "domain": "lek.si",
+    "podjetje": "Lek",
+    "score": 35,
+    "grade": "C",
+    "sector": "Farmacija in kemija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "645a9277b02a",
+    "domain": "radenska.si",
+    "podjetje": "Radenska",
+    "score": 35,
+    "grade": "C",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "eae398720fe3",
+    "domain": "unior.si",
+    "podjetje": "Unior Tools",
+    "score": 35,
+    "grade": "C",
+    "sector": "Avtomobilska in mobilnost",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "6a76cf08c43d",
+    "domain": "dnevnik.si",
+    "podjetje": "Dnevnik",
+    "score": 35,
+    "grade": "C",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "3b5ee081ee1a",
+    "domain": "rtvslo.si",
+    "podjetje": "RTV Slovenija",
+    "score": 35,
+    "grade": "C",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "609af4943f60",
+    "domain": "delo.si",
+    "podjetje": "Delo",
+    "score": 35,
+    "grade": "C",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "cee0c1194ac9",
+    "domain": "terme-olimia.com",
+    "podjetje": "Terme Olimia",
+    "score": 35,
+    "grade": "C",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "7b7aae17fcbd",
+    "domain": "lifeclass.net",
+    "podjetje": "LifeClass Portorož",
+    "score": 35,
+    "grade": "C",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": true
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "c262eee1b8db",
+    "domain": "sportina.si",
+    "podjetje": "Sportina",
+    "score": 30,
+    "grade": "C",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": true
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "cd9c395ec436",
+    "domain": "www.intereuropa.si",
+    "podjetje": "Intereuropa",
+    "score": 30,
+    "grade": "D",
+    "sector": "Promet in logistika",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "baed58d0fb22",
+    "domain": "sta.si",
+    "podjetje": "STA",
+    "score": 25,
+    "grade": "D",
+    "sector": "Mediji",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "f9c1a8f3b844",
+    "domain": "www.plinovodi.si",
+    "podjetje": "Plinovodi",
+    "score": 25,
+    "grade": "D",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "7050f3f3c9af",
+    "domain": "hofer.si",
+    "podjetje": "Hofer",
+    "score": 20,
+    "grade": "D",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "4d5ab9e8487b",
+    "domain": "tus.si",
+    "podjetje": "Tuš",
+    "score": 20,
+    "grade": "D",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "d3053a7e6198",
+    "domain": "bigbang.si",
+    "podjetje": "Big Bang",
+    "score": 20,
+    "grade": "D",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "3280f4e8b40d",
+    "domain": "kea.si",
+    "podjetje": "Kea",
+    "score": 20,
+    "grade": "D",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": true
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "9addd51b14b9",
+    "domain": "adriaplin.si",
+    "podjetje": "Adriaplin",
+    "score": 20,
+    "grade": "D",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "4e98ee538c70",
+    "domain": "talum.si",
+    "podjetje": "Talum",
+    "score": 20,
+    "grade": "D",
+    "sector": "Energetika in industrija",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "6fd75f72b63c",
+    "domain": "jata-emona.si",
+    "podjetje": "Jata",
+    "score": 20,
+    "grade": "D",
+    "sector": "FMCG in prehrana",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "3d30b9074c70",
+    "domain": "spar.si",
+    "podjetje": "Spar",
+    "score": 15,
+    "grade": "D",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": false
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": true
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "8871b789c08e",
+    "domain": "mueller.si",
+    "podjetje": "Müller",
+    "score": 10,
+    "grade": "D",
+    "sector": "Trgovina",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "e05c3333e0d9",
+    "domain": "telekom.si",
+    "podjetje": "Telekom Slovenije",
+    "score": 10,
+    "grade": "D",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "84c6c0aa6e0c",
+    "domain": "siol.net",
+    "podjetje": "SiOL",
+    "score": 10,
+    "grade": "D",
+    "sector": "Telekom in IT",
+    "checks": {
+      "main": {
+        "pass": true
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": true
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  },
+  {
+    "id": "688f38a54eca",
+    "domain": "terme-maribor.si",
+    "podjetje": "Terme Maribor",
+    "score": 0,
+    "grade": "F",
+    "sector": "Turizem in gostinstvo",
+    "checks": {
+      "main": {
+        "pass": false
+      },
+      "llms": {
+        "pass": false
+      },
+      "schema": {
+        "pass": false
+      },
+      "meta": {
+        "pass": false
+      },
+      "og": {
+        "pass": false
+      },
+      "sitemap": {
+        "pass": false
+      },
+      "robots": {
+        "pass": false
+      }
+    },
+    "visible": true,
+    "created_at": "2026-07-21T00:00:00",
+    "updated_at": "2026-07-21T00:00:00"
+  }
+]

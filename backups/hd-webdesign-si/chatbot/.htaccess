@@ -1,0 +1,9 @@
+# Protect config file
+<Files "config.php">
+    Require all denied
+</Files>
+
+# Protect knowledge base
+<Files "knowledge.txt">
+    Require all denied
+</Files>

@@ -1,0 +1,126 @@
+{
+  "name": "mcp-plc-vscode",
+  "displayName": "MCP PLC Core",
+  "description": "Connect any PLC to AI agents (Copilot, Claude) via MCP — directly from VS Code",
+  "version": "0.1.0",
+  "publisher": "hdwebdesign",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "mcp",
+    "plc",
+    "industrial",
+    "automation",
+    "siemens",
+    "modbus",
+    "copilot"
+  ],
+  "icon": "media/icon.png",
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mcp-plc.connect",
+        "title": "MCP PLC: Connect to PLC"
+      },
+      {
+        "command": "mcp-plc.disconnect",
+        "title": "MCP PLC: Disconnect"
+      },
+      {
+        "command": "mcp-plc.readSensor",
+        "title": "MCP PLC: Read Sensor"
+      },
+      {
+        "command": "mcp-plc.getAlarms",
+        "title": "MCP PLC: Get Alarms"
+      },
+      {
+        "command": "mcp-plc.getAll",
+        "title": "MCP PLC: Get All Data"
+      },
+      {
+        "command": "mcp-plc.refreshStatus",
+        "title": "MCP PLC: Refresh Status"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mcp-plc",
+          "title": "MCP PLC",
+          "icon": "$(zap)"
+        }
+      ]
+    },
+    "views": {
+      "mcp-plc": [
+        {
+          "id": "mcp-plc.status",
+          "name": "PLC Status"
+        },
+        {
+          "id": "mcp-plc.alarms",
+          "name": "Alarms"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "MCP PLC Core",
+      "properties": {
+        "mcp-plc.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "PLC IP address"
+        },
+        "mcp-plc.port": {
+          "type": "number",
+          "default": 502,
+          "description": "PLC port (502 for Modbus, 102 for S7)"
+        },
+        "mcp-plc.adapter": {
+          "type": "string",
+          "default": "modbus",
+          "enum": ["modbus", "s7"],
+          "description": "PLC adapter to use"
+        },
+        "mcp-plc.rack": {
+          "type": "number",
+          "default": 0,
+          "description": "S7 rack number"
+        },
+        "mcp-plc.slot": {
+          "type": "number",
+          "default": 1,
+          "description": "S7 slot number"
+        },
+        "mcp-plc.pollInterval": {
+          "type": "number",
+          "default": 2000,
+          "description": "Status poll interval in ms"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "watch": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --watch"
+  },
+  "dependencies": {
+    "mcp-plc-core": "file:../mcp-plc-core"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/node": "^24.0.10",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.3"
+  }
+}

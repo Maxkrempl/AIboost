@@ -1,0 +1,57 @@
+{
+  "title": "BoostSuite Ad Copy Generator",
+  "description": "Generate Google Ads and Meta (Facebook/Instagram) ad copy for your product or service.",
+  "type": "object",
+  "schemaVersion": 1,
+  "editorSchemaVersion": 1,
+  "fields": [
+    {
+      "key": "product",
+      "type": "string",
+      "title": "Product/Service Name",
+      "description": "Name of your product or service",
+      "editor": { "type": "textfield" },
+      "prefill": "My Product"
+    },
+    {
+      "key": "audience",
+      "type": "string",
+      "title": "Target Audience",
+      "description": "Who is your target audience? (e.g., restaurants, agencies, freelancers)",
+      "editor": { "type": "textfield" }
+    },
+    {
+      "key": "platform",
+      "type": "string",
+      "title": "Platform",
+      "description": "Which ad platform?",
+      "editor": {
+        "type": "select",
+        "options": [
+          { "label": "Google Ads", "value": "google" },
+          { "label": "Meta (Facebook/Instagram)", "value": "meta" },
+          { "label": "Both", "value": "both" }
+        ]
+      },
+      "prefill": "both"
+    },
+    {
+      "key": "cta",
+      "type": "string",
+      "title": "Call to Action",
+      "description": "What action should users take?",
+      "editor": {
+        "type": "select",
+        "options": [
+          { "label": "Free Trial", "value": "trial" },
+          { "label": "Learn More", "value": "learn" },
+          { "label": "Sign Up", "value": "signup" },
+          { "label": "Buy Now", "value": "buy" },
+          { "label": "Contact Us", "value": "contact" }
+        ]
+      },
+      "prefill": "trial"
+    }
+  ],
+  "groups": []
+}

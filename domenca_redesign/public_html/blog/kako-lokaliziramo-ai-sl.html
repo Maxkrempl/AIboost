@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kako lokaliziramo AI za slovenski trg | HD Web Design</title>
+    <meta name="description" content="Razlika med generičnim in prilagojenim AI-jem. Zakaj MenuBoost ne dela napak, ki jih delajo poceni prevajalniki.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/images/hdwebdesign-favicon.svg">
+    <meta property="og:title" content="Kako lokaliziramo AI za slovenski trg">
+    <meta property="og:description" content="Razlika med generičnim in prilagojenim AI-jem — zakaj kontekst šteje.">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://hd-webdesign.si/blog/kako-lokaliziramo-ai-sl.html">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Tehnični vpogled: Kako lokaliziramo AI za potrebe slovenskega trga",
+        "description": "Razlika med generičnim in prilagojenim AI-jem. Zakaj kontekst šteje.",
+        "author": {"@type": "Organization", "name": "HD Web Design"},
+        "publisher": {"@type": "Organization", "name": "HD Web Design", "url": "https://hd-webdesign.si"},
+        "datePublished": "2026-06-15",
+        "mainEntityOfPage": "https://hd-webdesign.si/blog/kako-lokaliziramo-ai.html"
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #0a0a0a; line-height: 1.7; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(100,116,139,0.15); padding: 0 clamp(1.5rem,4vw,4rem); display: flex; justify-content: space-between; align-items: center; height: 60px; }
+        .logo { font-size: 1.1rem; font-weight: 700; color: #0a0a0a; text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: inherit; text-decoration: none; font-weight: 500; font-size: 0.85rem; }
+        article { max-width: 720px; margin: 0 auto; padding: clamp(6rem,12vh,10rem) clamp(1.5rem,4vw,4rem) clamp(4rem,8vh,6rem); }
+        .tag { display: inline-block; background: #0a0a0a; color: #fff; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+        h1 { font-size: clamp(2rem,5vw,3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.85rem; margin-bottom: 3rem; }
+        h2 { font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; letter-spacing: -0.02em; }
+        h3 { font-size: 1.15rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #333; }
+        ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+        li { margin-bottom: 0.5rem; }
+        strong { font-weight: 600; color: #0a0a0a; }
+        code { background: #f5f5f5; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; }
+        pre { background: #1a1a2e; color: #e0e0e0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; font-size: 0.85rem; line-height: 1.5; }
+        pre code { background: none; padding: 0; color: inherit; }
+        blockquote { border-left: 3px solid #0a0a0a; padding-left: 1.25rem; margin: 1.5rem 0; color: #555; font-style: italic; }
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .comparison-box { background: #f8f8f8; border-radius: 8px; padding: 1.25rem; }
+        .comparison-box.bad { border-left: 3px solid #dc3545; }
+        .comparison-box.good { border-left: 3px solid #28a745; }
+        .comparison-box h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #888; }
+        .cta-box { background: #f8f8f8; border-radius: 12px; padding: 2rem; margin: 2.5rem 0; text-align: center; }
+        .cta-button { display: inline-block; background: #0a0a0a; color: #fff; padding: 0.75rem 1.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 1rem; }
+        footer { padding: 3rem clamp(1.5rem,4vw,4rem); border-top: 1px solid #eee; text-align: center; font-size: 0.8rem; color: #888; }
+        footer a { color: inherit; text-decoration: none; }
+        @media (max-width: 600px) { .comparison { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">HD Web Design</a>
+        <ul class="nav-links">
+            <li><a href="/web-design/">Storitve</a></li>
+            <li><a href="/projekti/">Projekti</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/boost-suite/">BoostSuite</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <span class="tag">Tehnični vpogled</span>
+        <h1>Tehnični vpogled: Kako "lokaliziramo" AI za potrebe slovenskega trga</h1>
+        <div class="meta">15. junij 2026 · HD Web Design</div>
+    <div style="margin: 0 auto 2rem; max-width: 720px;"><img src="/images/screenshot-menuboost.png" alt="kako-lokaliziramo-ai" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"></div>
+
+
+        <p>Vsi imate dostop do istih AI modelov. ChatGPT, Gemini, Claude — vsi so javno dostopni. Zakaj potem nekateri AI izdelki delujejo odlično, drugi pa delajo napake, ki jih takoj opazite?</p>
+
+        <p>Odgovor ni v modelu. Odgovor je v <strong>kontekstu</strong>.</p>
+
+        <h2>Generični AI vs. Lokalizirani AI</h2>
+
+        <div class="comparison">
+            <div class="comparison-box bad">
+                <h4>❌ Generični AI</h4>
+                <p style="margin:0;font-size:0.9rem;">Vpišete "opis jedi" in dobite: "Okusna hrana z bogatim okusom in svežimi sestavinami."</p>
+            </div>
+            <div class="comparison-box good">
+                <h4>✅ Lokalizirani AI</h4>
+                <p style="margin:0;font-size:0.9rem;">Vpišete "opis jedi" in dobite: "Jagenjčkova rebra z domačo prilogo iz pelinovke, postrežena z grozdno omako in svežim kruhom iz krušne peči."</p>
+            </div>
+        </div>
+
+        <p>Generični AI ne pozna vaše kulture, vaših sestavin, vaših navad. Lokalizirani AI razume, da je <strong>"jota"</strong> tradicionalna istrska jed, da je <strong>"štruklje"</strong> slovenska specialiteta, da je <strong>"pašticada"</strong> dalmatinska klasika.</p>
+
+        <h2>Kako to delamo tehnično</h2>
+
+        <h3>1. Sistemska navodila (System Prompt)</h3>
+        <p>Naš AI ne dobi samo "napiši opis jedi." Dobi podrobna navodila:</p>
+
+        <pre><code>Si strokovnjak za slovensko, hrvaško in italijansko kulinariko.
+Pišeš v stilu, ki ustreza restavraciji:
+- Uporabljaj lokalna imena jedi (briški tartuf, istrski fuži)
+- Ne prevajaj imen jedi v angleščino
+- Upoštevaj sezonske sestavine
+- Opiši vonj, teksturo, temperaturo
+- Dopolni z vinsko priporočilo (slovenska vina)</code></pre>
+
+        <h3>2. Referenčna baza (Knowledge Base)</h3>
+        <p>Preden AI generira karkoli, dobi kontekst:</p>
+        <ul>
+            <li><strong>Slovenske jedi</strong> — 200+ tradicionalnih jedi z opisi</li>
+            <li><strong>Hrvaške jedi</strong> — istrska, dalmatinska, kontinentalna kuhinja</li>
+            <li><strong>Italijanske jedi</strong> — furlanska, venetska, tripska kuhinja</li>
+            <li><strong>Vinska karta</strong> — slovenska vina za vsako jed</li>
+        </ul>
+
+        <h3>3. Validacija (Quality Check)</h3>
+        <p>Po generiranji AI še enkrat preveri:</p>
+        <pre><code>✅ Ali je jed resnična? (ne izmišljena)
+✅ Ali je opis v pravem jeziku?
+✅ Ali so sestavine realne?
+✅ Ali je ton primeren za restavracijo?</code></pre>
+
+        <h2>Primer: Kje poceni prevajalci delajo napake</h2>
+
+        <div class="comparison">
+            <div class="comparison-box bad">
+                <h4>❌ Google Translate</h4>
+                <p style="margin:0;font-size:0.9rem;">"Štruklji z skuto" → "Struklji with cottage cheese" 😬</p>
+            </div>
+            <div class="comparison-box good">
+                <h4>✅ MenuBoost</h4>
+                <p style="margin:0;font-size:0.9rem;">"Štruklji z domačo skuto, ročno valjani, postreženi z maslom in smetano"</p>
+            </div>
+        </div>
+
+        <p>Google Translate ne ve, da se "štruklji" ne prevajajo. To je kulturni kontekst, ki ga generični AI nima.</p>
+
+        <h2>Zakaj to šteje za SEO</h2>
+
+        <p>Google in AI iskalniki (ChatGPT, Perplexity, Gemini) zdaj razumejo <strong>kulturni kontekst</strong>. Stran, ki ima:</p>
+        <ul>
+            <li><strong>Pravilna imena jedi</strong> v lokalnem jeziku</li>
+            <li><strong>Strukturirane podatke</strong> (Schema.org) z pravilnimi tipi</li>
+            <li><strong>llm.txt</strong> datoteko z informacijami za AI</li>
+        </ul>
+        <p>...bo rangirala bolje kot stran z generičnimi opisi.</p>
+
+        <h2>Kako to uporabite za vaše podjetje</h2>
+
+        <p>Ne potrebujete našega orodja. Potrebujete:</p>
+        <ol>
+            <li><strong>Zberite kontekst</strong> — kaj je posebnega vašega podjetja/panoge?</li>
+            <li><strong>Napišite sistemska navodila</strong> — AI-ju povejte, kdo je, kako piše</li>
+            <li><strong>Dodajte referenčno bazo</strong> — primere dobrih opisov</li>
+            <li><strong>Validirajte</strong> — preverite rezultat pred objavo</li>
+        </ol>
+
+        <p>Ali pa to prepustite nam — to je točno to, kar počnemo z MenuBoost in BoostSuite.</p>
+
+        <div class="cta-box">
+            <h3>Želite lokaliziran AI za vaše podjetje?</h3>
+            <p>Zgradimo AI, ki razume vašo panogo, vašo kulturo in vaše stranke.</p>
+            <a href="/ai-authority/" class="cta-button">Več o AI Authority →</a>
+        </div>
+
+        <h3>Sorodni članki</h3>
+        <ul>
+            <li><a href="/blog/menuviel-vs-menuboost.html">Menuviel vs MenuBoost — Primerjava</a></li>
+            <li><a href="/blog/seo-vs-geo-optimizacija.html">SEO vs GEO optimizacija</a></li>
+            <li><a href="/blog/structured-data-llms-txt-ai-visibility.html">Strukturirani podatki in llm.txt</a></li>
+        </ul>
+    </article>
+
+    <footer>
+        <span>© 2026 HD Web Design · <a href="/">Domov</a> · <a href="/blog.html">Blog</a></span>
+    </footer>
+</body>
+</html>

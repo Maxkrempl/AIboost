@@ -1,0 +1,13 @@
+{
+  "actorSpecification": 1,
+  "name": "boostsuite-mcp-server",
+  "title": "BoostSuite MCP Server — Website Audit Tools",
+  "description": "6 website audit tools for AI agents: SEO audit, GEO check, ad copy, listing optimizer, combined audit, menu translation.",
+  "version": "1.0",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "views": {}
+    }
+  }
+}

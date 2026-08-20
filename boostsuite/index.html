@@ -240,7 +240,7 @@
                         <li><i class="fas fa-check"></i> PDF export reports</li>
                         <li><i class="fas fa-check"></i> Email support</li>
                     </ul>
-                    <a href="https://herceg23.gumroad.com/l/uvoetm" target="_blank" class="btn-primary pricing-btn">
+                    <a href="#" onclick="checkout('boostsuite_freelancer'); return false;" class="btn-primary pricing-btn">
                         Get Freelancer
                     </a>
                 </div>
@@ -256,7 +256,7 @@
                         <li><i class="fas fa-check"></i> Priority AI processing</li>
                         <li><i class="fas fa-check"></i> Team seats (up to 5)</li>
                     </ul>
-                    <a href="https://herceg23.gumroad.com/l/uvoetm" target="_blank" class="btn-primary pricing-btn">
+                    <a href="#" onclick="checkout('boostsuite_agency'); return false;" class="btn-primary pricing-btn">
                         <i class="fas fa-rocket"></i> Get Agency
                     </a>
                 </div>
@@ -322,14 +322,33 @@
             <p><span data-i18n="limitReached">You've used all 3 free uses.</span> <span data-i18n="upgradeMsg">Upgrade for unlimited access, priority support, and advanced analytics.</span></p>
             <div class="modal-actions">
                 <button class="btn-secondary" id="closeModal" data-i18n="maybeLater">Maybe Later</button>
-                <a href="https://herceg23.gumroad.com/l/uvoetm" target="_blank" class="btn-primary">
-                    <i class="fas fa-rocket"></i> <span data-i18n="upgradeNow">Upgrade Now (€29/month)</span>
+                <a href="#" onclick="checkout('boostsuite_freelancer'); return false;" class="btn-primary">
+                    <i class="fas fa-rocket"></i> <span data-i18n="upgradeNow">Upgrade Now (€19/month)</span>
                 </a>
             </div>
         </div>
     </div>
 
     <script src="i18n.js"></script>
+    <script>
+    async function checkout(plan) {
+        try {
+            const resp = await fetch('/api/create-checkout.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ price_id: plan })
+            });
+            const data = await resp.json();
+            if (data.checkout_url) {
+                window.location.href = data.checkout_url;
+            } else {
+                alert('Error: ' + (data.error || 'Could not create checkout session'));
+            }
+        } catch (e) {
+            alert('Error: ' + e.message);
+        }
+    }
+    </script>
     <script src="app.js"></script>
 </body>
 </html>

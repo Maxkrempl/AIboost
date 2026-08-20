@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rožca Golež — Vrtni center Šentjur | Sadike, cvetje, grmovnice</title>
+    <meta name="description" content="Vrtni center Rožca Golež v Šentjurju — bogata izbira sadik, cvetlic, grmovnic in začimb. Prijazno osebje, nasveti za nego rastlin. Odprito vsak dan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Rožca Golež — Vrtni center Šentjur">
+    <meta property="og:description" content="Bogata izbira sadik, cvetlic, grmovnic in začimb. Prijazno osebje in nasveti za nego rastlin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rozca-golez.si">
+    <link rel="canonical" href="https://rozca-golez.si">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "GardenStore",
+        "name": "Rožca Golež",
+        "description": "Vrtni center z bogato izbiro sadik, cvetlic, grmovnic in začimb.",
+        "url": "https://rozca-golez.si",
+        "telephone": "+38651413953",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Dole 7",
+            "addressLocality": "Šentjur",
+            "postalCode": "3230",
+            "addressCountry": "SI"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 46.2167,
+            "longitude": 15.4000
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                "opens": "08:00",
+                "closes": "18:00"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "132"
+        },
+        "priceRange": "$"
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fafaf7; color: #1a1a1a; line-height: 1.6; }
+
+        /* Colors */
+        :root {
+            --green: #2d5a27;
+            --green-light: #4a8c3f;
+            --green-pale: #e8f5e3;
+            --cream: #fafaf7;
+            --brown: #8b6914;
+            --text: #1a1a1a;
+            --text-light: #666;
+        }
+
+        /* Nav */
+        nav { background: var(--green); color: #fff; padding: 1rem clamp(1.5rem,4vw,4rem); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.3rem; font-weight: 700; }
+        .logo span { color: #a8d98a; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.9; transition: opacity 0.2s; }
+        .nav-links a:hover { opacity: 1; }
+        .nav-cta { background: #fff; color: var(--green); padding: 0.5rem 1.2rem; border-radius: 100px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.2s; }
+        .nav-cta:hover { background: var(--green-pale); }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, var(--green) 0%, #1a3d15 100%); color: #fff; padding: clamp(4rem,10vh,8rem) clamp(1.5rem,4vw,4rem); text-align: center; }
+        .hero h1 { font-size: clamp(2.5rem,6vw,4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        .hero h1 em { font-style: italic; color: #a8d98a; }
+        .hero p { font-size: 1.15rem; color: #c8e6c0; max-width: 600px; margin: 0 auto 2rem; }
+        .hero-rating { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 1.1rem; }
+        .hero-rating .stars { color: #f4c430; font-size: 1.3rem; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: #fff; color: var(--green); padding: 0.85rem 2rem; border-radius: 100px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; }
+        .btn-primary:hover { background: var(--green-pale); transform: translateY(-1px); }
+        .btn-secondary { border: 2px solid rgba(255,255,255,0.4); color: #fff; padding: 0.85rem 2rem; border-radius: 100px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; }
+        .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+        /* Features */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; padding: clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,4rem); max-width: 1000px; margin: 0 auto; }
+        .feature { text-align: center; padding: 2rem; }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .feature h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .feature p { color: var(--text-light); font-size: 0.9rem; }
+
+        /* About */
+        .about { background: #fff; padding: clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,4rem); }
+        .about-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .about h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+        .about p { color: var(--text-light); margin-bottom: 1rem; }
+        .about-visual { background: var(--green-pale); border-radius: 16px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+
+        /* Reviews */
+        .reviews { padding: clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,4rem); max-width: 1000px; margin: 0 auto; }
+        .reviews h2 { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .reviews-subtitle { text-align: center; color: var(--text-light); margin-bottom: 2.5rem; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .review { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .review-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem; }
+        .review-author { font-weight: 600; font-size: 0.95rem; }
+        .review-date { color: var(--text-light); font-size: 0.8rem; }
+        .review-stars { color: #f4c430; margin-bottom: 0.5rem; }
+        .review p { color: var(--text-light); font-size: 0.9rem; line-height: 1.6; }
+
+        /* Contact */
+        .contact { background: var(--green); color: #fff; padding: clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,4rem); }
+        .contact-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .contact h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+        .contact p { color: #c8e6c0; margin-bottom: 1.5rem; }
+        .contact-item { display: flex; gap: 1rem; align-items: start; margin-bottom: 1.25rem; }
+        .contact-icon { font-size: 1.3rem; margin-top: 0.15rem; }
+        .contact-item strong { display: block; margin-bottom: 0.15rem; }
+        .contact-item span { color: #c8e6c0; font-size: 0.9rem; }
+        .contact-map { background: rgba(255,255,255,0.1); border-radius: 12px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+
+        /* Hours */
+        .hours-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .hours-table td { padding: 0.4rem 0; font-size: 0.9rem; }
+        .hours-table td:first-child { font-weight: 600; }
+        .hours-table td:last-child { text-align: right; color: #c8e6c0; }
+
+        /* Footer */
+        footer { background: #1a3d15; color: #88b880; padding: 2rem clamp(1.5rem,4vw,4rem); text-align: center; font-size: 0.8rem; }
+        footer a { color: inherit; text-decoration: none; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-inner { grid-template-columns: 1fr; }
+            .about-visual { display: none; }
+            .contact-inner { grid-template-columns: 1fr; }
+            .contact-map { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">🌱 Rožca <span>Golež</span></div>
+        <ul class="nav-links">
+            <li><a href="#storitve">Storitve</a></li>
+            <li><a href="#o-nas">O nas</a></li>
+            <li><a href="#mnenja">Mnenja</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+        <a href="tel:+38651413953" class="nav-cta">📞 Pokliči</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Vrtni center<br><em>Rožca Golež</em></h1>
+        <p>Bogata izbira sadik, cvetlic, grmovnic in začimb. Prijazno osebje in nasveti za nego rastlin.</p>
+        <div class="hero-rating">
+            <span class="stars">⭐⭐⭐⭐⭐</span>
+            <strong>4.8</strong>
+            <span>(132 mnenja)</span>
+        </div>
+        <div class="hero-buttons">
+            <a href="tel:+38651413953" class="btn-primary">📞 051 413 953</a>
+            <a href="https://maps.google.com/?q=Rožca+Golež+Šentjur" class="btn-secondary" target="_blank">📍 Navodila za pot</a>
+        </div>
+    </section>
+
+    <section class="features" id="storitve">
+        <div class="feature">
+            <div class="feature-icon">🌿</div>
+            <h3>Sadike</h3>
+            <p>Široka izbira sadik za vrt, balkon in teraso. Zelenjava, sadje, zelišča.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🌸</div>
+            <h3>Cvetje</h3>
+            <p>Sezonske in trajne cvetlice za vsak vrt. Od pomladi do jeseni.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🌳</div>
+            <h3>Grmovnice</h3>
+            <p>Okrasne grmovnice, žive meje in drevesa za vaš vrt.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🌱</div>
+            <h3>Začimbe</h3>
+            <p>Domače začimbe in zelišča za kuhinjo in vrt.</p>
+        </div>
+    </section>
+
+    <section class="about" id="o-nas">
+        <div class="about-inner">
+            <div>
+                <h2>O našem vrtu</h2>
+                <p>Rožca Golež je vrtni center v Šentjurju z dolgoletno tradicijo. Ponujamo bogato izbiro sadik, cvetlic, grmovnic in začimb — vse za vaš vrt na enem mestu.</p>
+                <p>Naše osebje vam z veseljem pomaga pri izbiri in vam svetuje o negi rastlin. Ker verjamemo, da ima vsak vrt svojo zgodbo.</p>
+                <div style="margin-top:1.5rem;">
+                    <a href="tel:+38651413953" class="btn-primary" style="background:var(--green);color:#fff;">Pokličite nas za nasvet</a>
+                </div>
+            </div>
+            <div class="about-visual">🌺</div>
+        </div>
+    </section>
+
+    <section class="reviews" id="mnenja">
+        <h2>Mnenja naših obiskovalcev</h2>
+        <p class="reviews-subtitle">⭐ 4.8 od 5 — 132 mnenj na Google Maps</p>
+        <div class="reviews-grid">
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">Marjeta Kristan</span>
+                    <span class="review-date">pred enim mesecem</span>
+                </div>
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p>Bila sem prvič in ne zadnjič. Dobra izbira rastlin, cvetlic, grmovnic in začimb. Prijetno in pozitivno osebje. Pozdravijo te takoj ob vstopu, da se počutiš zaželjen in si že na vrsti.</p>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">Lada Ščurek</span>
+                    <span class="review-date">pred 3 meseci</span>
+                </div>
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p>Joooj, morate jih obiskati. Neskončna izbira, super prijazno osebje je in kopica nasvetov.</p>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">Nataša Gorjanc Zima</span>
+                    <span class="review-date">pred enim letom</span>
+                </div>
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p>Bogata izbira izvrstnih sadik, ki ob primerni negi tudi lepo uspevajo in bogato obrodijo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="kontakt">
+        <div class="contact-inner">
+            <div>
+                <h2>Obiščite nas</h2>
+                <p>Vljudno vabljeni v naš vrtni center. Z veseljem vam pomagamo pri izbiri rastlin.</p>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <strong>Naslov</strong>
+                        <span>Dole 7, 3230 Šentjur</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <strong>Telefon</strong>
+                        <span>051 413 953</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🕐</span>
+                    <div>
+                        <strong>Odpiralni čas</strong>
+                        <table class="hours-table">
+                            <tr><td>Ponedeljek — Petek</td><td>8:00 — 18:00</td></tr>
+                            <tr><td>Sobota</td><td>8:00 — 14:00</td></tr>
+                            <tr><td>Nedelja</td><td>Zaprto</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div style="margin-top:1.5rem;">
+                    <a href="https://maps.google.com/?q=Rožca+Golež+Šentjur" class="btn-primary" target="_blank" style="display:inline-block;">📍 Odpri v Zemljevidih</a>
+                </div>
+            </div>
+            <div class="contact-map">🗺️</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Rožca Golež — Vrtni center Šentjur · <a href="tel:+38651413953">051 413 953</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "title": "BoostSuite NAP Consistency Checker",
+  "description": "Check your business NAP (Name, Address, Phone) consistency across online directories. Get verification URLs and recommendations.",
+  "type": "object",
+  "schemaVersion": 1,
+  "editorSchemaVersion": 1,
+  "fields": [
+    {
+      "key": "businessName",
+      "type": "string",
+      "title": "Business Name",
+      "description": "Your exact business name as it should appear everywhere",
+      "editor": { "type": "textfield" },
+      "prefill": "My Business LLC"
+    },
+    {
+      "key": "phone",
+      "type": "string",
+      "title": "Phone Number",
+      "description": "Your business phone number with country code",
+      "editor": { "type": "textfield" },
+      "prefill": "+386 40 123 456"
+    },
+    {
+      "key": "address",
+      "type": "string",
+      "title": "Street Address",
+      "description": "Full street address including city and postal code",
+      "editor": { "type": "textfield" },
+      "prefill": "Main Street 123, 1000 Ljubljana, Slovenia"
+    },
+    {
+      "key": "website",
+      "type": "string",
+      "title": "Website URL",
+      "description": "Your website URL",
+      "editor": { "type": "textfield" },
+      "prefill": "https://example.com"
+    },
+    {
+      "key": "email",
+      "type": "string",
+      "title": "Email (Optional)",
+      "description": "Business email address",
+      "editor": { "type": "textfield" }
+    }
+  ],
+  "groups": []
+}

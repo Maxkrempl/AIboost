@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DJER0DNGTF');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kako dodati AI chatbot na web stranicu (korak po korak) — Herceg Darko</title>
+    <meta name="description" content="Vodič za dodavanje AI chatbota na vašu web stranicu. Od odabira platforme do implementacije.">
+    <meta property="og:title" content="Kako dodati AI chatbot na web stranicu (korak po korak)">
+    <meta property="og:description" content="Vodič za dodavanje AI chatbota na vašu web stranicu. Od odabira platforme do implementacije.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hd-webdesign.si/blog/kako-dodati-ai-chatbot.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://hd-webdesign.si/blog/kako-dodati-ai-chatbot.html">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+        .article-meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+        .article-meta span { margin-right: 1rem; }
+        .tag { background: #e8f4f8; color: #0a66c2; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        .comparison-table th { background: #f8f9fa; font-weight: 600; }
+        .comparison-table .highlight { background: #f0fdf4; font-weight: 600; }
+        blockquote { border-left: 4px solid #0a66c2; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f9fa; font-style: italic; }
+        .cta-box { background: linear-gradient(135deg, #0a66c2, #004182); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+        .cta-box a { color: white; text-decoration: underline; }
+        .stat { font-size: 2.5rem; font-weight: 700; color: #0a66c2; }
+        .stat-label { font-size: 0.9rem; color: #666; }
+        .stats-row { display: flex; justify-content: space-around; text-align: center; margin: 2rem 0; flex-wrap: wrap; }
+        .stat-item { padding: 1rem; }
+        .blog-header { background: #1a1a2e; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .blog-header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .blog-header .logo { display: block; }
+        .blog-header .logo img { height: 42px; width: auto; }
+        .blog-header nav { display: flex; align-items: center; gap: 20px; }
+        .blog-header nav a { color: #9C8878; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .blog-header nav a:hover { color: #F5E6C8; }
+        .theme-toggle { background: none; border: 1.5px solid #4A2E1A; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 16px; transition: all 0.15s; }
+        .theme-toggle:hover { border-color: #C4922A; background: rgba(196,146,42,0.1); }
+        body.dark-mode .blog-header { background: #0f0f1a; }
+        body.dark-mode { background: #0f0f1a; color: #e0e0e0; }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #e0e0e0; }
+        body.dark-mode p, body.dark-mode li { color: #ccc; }
+        body.dark-mode .verdict-box { background: #1a1a3e; color: #e0e0e0; }
+        body.dark-mode table th { background: #1e1e2e; color: #e0e0e0; }
+        body.dark-mode table td { border-bottom-color: #333; }
+        .read-more { color: #F59E0B !important; font-weight: 600; }
+        .read-more:hover { color: #D97706 !important; text-decoration: underline; }
+        a.read-more { color: #F59E0B !important; }
+        .lang-switcher { display: flex; gap: 12px; margin: 1.5rem 0; }
+        .lang-link { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; border: 1.5px solid #ddd; color: #555; transition: all 0.15s; }
+        .lang-link.active { background: #0a66c2; color: white; border-color: #0a66c2; }
+        .lang-link:hover { border-color: #0a66c2; }
+
+    </style>
+</head>
+<body>
+<header class="blog-header">
+    <div class="blog-header-inner">
+        <a href="/" class="logo"><img src="/images/hdwebdesign-logo-dark.svg" alt="Darko Herceg — HD WebDesign" style="height:42px;width:auto"></a>
+        <nav>
+            <a href="/blog/">Blog</a>
+            <a href="/boost-suite/">BoostSuite</a>
+            <a href="/menu-boost/">MenuBoost</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        </nav>
+    </div>
+</header>
+
+    <main class="container">
+        <article>
+            <p><a href="/blog/">← Natrag na blog</a></p>
+
+<div class="lang-switcher">
+    <a href="/blog/ki-chatbot-auf-der-webseite-einrichten.html" class="lang-link" title="DE">🇩🇪 DE</a>
+    <a href="/blog/add-ai-chatbot-website.html" class="lang-link" title="EN">🇬🇧 EN</a>
+    <a href="/blog/kako-dodati-ai-chatbot.html" class="lang-link active" title="HR">🇭🇷 HR</a>
+    <a href="/blog/come-aggiungere-un-chatbot-ai.html" class="lang-link" title="IT">🇮🇹 IT</a>
+    <a href="/blog/kako-dodati-ai-chatbot.html" class="lang-link" title="SL">🇸🇮 SL</a>
+</div>
+
+<h1>Kako Dodati AI Chatbot na Web Stranicu — Vodič za Početnike</h1>
+
+  <p>Dakle čuli ste da svi pričaju o AI chatbotovima. Vaš konkurent je upravo dodao jednog. Prijateljev rođak kaže da je to "promijenilo sve" za njihovo poslovanje. A vi sjedite tamo i pitate se: <em>što uopće jest AI chatbot, i trebam li ga zapravo?</em></p>
+
+  <p>Kratki odgovor: da, vjerojatno trebate. Ali nemojmo se zanositi. U ovom vodiču ću vas provesti kroz sve — što su AI chatbotovi, zašto su važni u 2026. i tri glavna načina na koje možete dodati jednog na svoju web stranicu danas. Nije potrebna diploma iz računalnih znanosti.</p>
+
+  <h2>Što Je AI Chatbot (I Zašto Nije Ono što Mislite)</h2>
+
+  <p>Hajde da nešto razjasnimo. Kad većina ljudi čuje "chatbot", misle na one frustrirajuće, robotske skočne prozorce koji vas natjeraju da odaberete s popisa opcija i onda vas ionako prebace na čovjeka. To su <strong>chatbotovi na temelju pravila</strong> — u biti stabla odluka odjevena kao razgovori.</p>
+
+  <p><strong>AI chatbot</strong> je potpuno nešto drugo. Koristi velike jezične modele (isti tehnologija koja stoji iza ChatGPT-a) da zapravo <em>razumije</em> što netko pita i odgovara prirodnim jezikom. Ne samo da uspoređuje ključne riječi — čita kontekst, pamti razgovor i može rukovoditi pitanjima koja slijede.</p>
+
+  <p>Evo kratke usporedbe:</p>
+
+  <ul>
+    <li><strong>Chatbot na temelju pravila:</strong> "Utipkajte 1 za radno vrijeme, 2 za upute..." — krut, ograničen, frustrirajući.</li>
+    <li><strong>AI chatbot:</strong> "Radimo od ponedjeljka do petka, 8 do 16 sati, i subotom do 14 sati. Želite li upute?" — prirodan, koristan, pametan.</li>
+  </ul>
+
+  <p>Prema Gartnerovom izvješću iz 2025., tvrtke koje koriste AI chatbotove zabilježile su <strong>35% smanjenje troškova korisničke podrške</strong> i <strong>25% povećanje konverzije potencijalnih kupaca</strong>. To nije mali pomak — to je broj koji mijenja poslovanje.</p>
+
+  <blockquote>Do 2026., očekuje se da će više od 70% interakcija s kupcima uključivati AI chatbotove, bilo kao primarni kanal ili kao alat za podršku. — Juniper Research</blockquote>
+
+  <h2>Zašto Svaka Tvrtka Treba Chatbot u 2026.</h2>
+
+  <p>Evo stvarnosti: vaši kupci ne žele vas zvati. Ne žele čekati email odgovor. Žele odgovore <em>odmah</em>, bilo da je 14:00 ili 2:00 ujutro. Ako vaša web stranica ne može dati te odgovore, pronaći će jednu koja može.</p>
+
+  <p>Razmislite o svom ponašanju. Kada ste zadnji puta ispunili kontakt obrazac na web stranici i čekali dva dana na odgovor? Frustrirajuće, zar ne? Sad zamislite da ste na drugoj strani — tvrtka koja gubi tog kupca jer nitko nije bio dostupan za odgovor.</p>
+
+  <p>AI chatbot rješava tri ogromna problema odjednom:</p>
+
+  <ol>
+    <li><strong>Dostupnost 24/7</strong> — Nikad ne spava, nikad ne uzima pauzu, nikad ne ide na godišnji.</li>
+    <li><strong>Trenutni odgovori</strong> — Bez čekanja, bez "javit ćemo vam se unutar 48 sati."</li>
+    <li><strong>Skalabilnost</strong> — Može obraditi 10 razgovora ili 1.000 bez zapošljavanja jedne jedine osobe.</li>
+  </ol>
+
+  <p>Za tvrtke u Sloveniji i široj jadranskoj regiji, postoji dodatna prednost: AI chatbotovi mogu voditi višejezične razgovore. Turist iz Njemačke može pitati o vašem jelovniku na njemačkom, dok lokalni kupac dobiva odgovor na slovenskom — sve iz istog chatbota.</p>
+
+  <h2>3 Načina za Dodavanje Chatbota na Web Stranicu</h2>
+
+  <p>Sada hajde da budemo praktični. Postoje tri glavna pristupa, a pravi ovisi o vašem budžetu, tehničkim vještinama i koliko ozbiljno želite investirati u ovo.</p>
+
+  <h3>Opcija 1: No-Code Alati (Tidio, Chatbase, Voiceflow)</h3>
+
+  <p>Ako želite brzo početi bez ikakvog programiranja, no-code chatbot platforme su vaš najbolji prijatelj. Alati poput <strong>Tidioa</strong>, <strong>Chatbasea</strong> i <strong>Voiceflowa</strong> vam omogućuju da izgradite i pokrenete chatbot u jednom poslijepodnevu.</p>
+
+  <p><strong>Kako radi:</strong> Prijavite se, uploadajte FAQ ili bazu znanja vaše web stranice, prilagodite izgled i zalijepite isječak koda na stranicu. Gotovo.</p>
+
+  <p><strong>Najbolje za:</strong> Male tvrtke, solo poduzetnike, bilo koga tko želi isprobati prije nego što uloži velik novac.</p>
+
+  <p><strong>Trošak:</strong> Besplatni paketi su velikodušni (Tidio nudi besplatni plan s osnovnim AI). Plaćeni planovi kreću se od <strong>€20–50/mjesečno</strong> za naprednije značajke poput GPT-4 integracije, prilagođenog treninga i analitike.</p>
+
+  <p><strong>Prednosti:</strong> Brza postava, nije potreban programer, većina uključuje vizualni graditelj.</p>
+
+  <p><strong>Nedostaci:</strong> Ograničena prilagodba, ovisni ste o njihovoj platformi, podaci za trening su osnovni.</p>
+
+  <h3>Opcija 2: WordPress Pluginovi (WP Chatbot, AI Engine)</h3>
+
+  <p>Vodite WordPress web stranicu? Postoje solidni pluginovi koji dodaju AI chatbot funkcionalnost izravno na vašu stranicu. <strong>WP Chatbot</strong> i <strong>AI Engine</strong> su dvije popularne opcije koje se integriraju s OpenAI API-jem.</p>
+
+  <p><strong>Kako radi:</strong> Instalirajte plugin, spojite svoj API ključ, natrenirajte ga svojim sadržajem i online ste. Neki pluginovi vam čak omogućuju fino podešavanje odgovora da odgovaraju tonu vašeg brenda.</p>
+
+  <p><strong>Najbolje za:</strong> WordPress korisnike koji žele više kontrole nego no-code alati, ali nisu spremni za potpuno prilagođenu izgradnju.</p>
+
+  <p><strong>Trošak:</strong> Licence pluginova kreću se od <strong>€30–100/godišnje</strong>, plus vaš vlastiti OpenAI API promet (obično €5–20/mjesečno ovisno o prometu).</p>
+
+  <p><strong>Prednosti:</strong> Integriran u postojeću stranicu, prilagodljiviji od no-code alata, vi posjedujete podatke.</p>
+
+  <p><strong>Nedostaci:</strong> Zahtijeva osnovno WordPress znanje, API troškovi mogu rasti, vi ste odgovorni za nadogradnje i održavanje.</p>
+
+  <h3>Opcija 3: Prilagođena Integracija (HD WebDesign Pristup)</h3>
+
+  <p>Za tvrtke koje žele chatbot prilagođen njihovim točnim potrebama — natreniran na njihovim specifičnim podacima, integriran s njihovim sustavom rezervacija, CRM-om ili bazom podataka — prilagođena izgradnja je pravi put.</p>
+
+  <p><strong>Kako radi:</strong> Radimo s vama da razumijemo vaše interakcije s kupcima, gradimo chatbot natreniran na vašem poslovnom znanju i besprijekorno ga integriramo u vašu web stranicu. Može vući podatke uživo, rukovoditi rezervacijama, obrađivati upite i eskalirati na ljude kad je potrebno.</p>
+
+  <p><strong>Najbolje za:</strong> Hotele, restorane s kompleksnim jelovnicima, uslužne tvrtke s kalkulatorima cijena, bilo koju tvrtku koja želi da chatbot <em>nešto radi</em>, ne samo odgovara na pitanja.</p>
+
+  <p><strong>Trošak:</strong> Početna postava: <strong>€500–2.000</strong> ovisno o kompleksnosti. Mjesečno održavanje i hosting: <strong>€50–150/mjesečno</strong>.</p>
+
+  <p><strong>Prednosti:</strong> Potpuno prilagođen, integriran s vašim sustavima, obrađuje kompleksne procese, natreniran na VAŠIM podacima.</p>
+
+  <p><strong>Nedostaci:</strong> Viši početni trošak, zahtijeva profesionalnu postavu.</p>
+
+  <h2>Stvarni Slučajevi Korištenja: Što AI Chatbotovi Zaista Rade za Tvrtke</h2>
+
+  <p>Hajde da razgovaramo o tome kako to izgleda u stvarnom svijetu — posebno za tvrtke poput vaše.</p>
+
+  <h3>Restoran & Kafić: Pitanja o Jelovniku</h3>
+
+  <p>Kupac posjećuje vašu stranicu u 22:00 i pita se: <em>"Imate li bezglutenske opcije?" "Što je u specijalitetu od ribe?" "Mogu li vidjeti vašu vinsku kartu?"</em></p>
+
+  <p>AI chatbot odgovara trenutno. Zna vaš cijeli jelovnik, uključujući alergene, sastojke i dnevne specijalitete. Može čak preporučiti jela: "Ako volite ljutu hranu, predlažem našu tjesteninu s kozicama i čilijem — to je naše najpopularnije jelo."</p>
+
+  <h3>Hotel & Smještaj: Dostupnost</h3>
+
+  <p>"Imate li sobu za dvoje 15. srpnja?" — umjesto da ih pošaljete na booking engine, chatbot može provjeriti dostupnost, dati cijenu i voditi ih kroz rezervaciju. Za hotele u Piranu, Bledu ili Ljubljani koji se bave međunarodnim turistima, ovo je zlato.</p>
+
+  <h3>Uslužna Tvrtka: Cijene i Ponude</h3>
+
+  <p>Bilo da ste agencija za web dizajn (poput nas), tvrtka za čišćenje ili vodoinstalater, chatbot može odgovarati na pitanja o cijenama, objašnjavati pakete i čak davati okvirne procjene. "Koliko košta web stranica?" postaje razgovor, ne izgubljeni potencijalni kupac.</p>
+
+  <h2>Što DOBAR Chatbot Treba Rukovoditi vs. Što NE Bi Trebao</h2>
+
+  <p>Ovdje većina tvrtki radi pogreške. Pokušavaju napraviti da njihov chatbot radi sve, i on onda podbaci. Evo iskrene analize:</p>
+
+  <h3>Što DOBAR chatbot treba rukovoditi:</h3>
+
+  <ul>
+    <li>Često postavljana pitanja (radno vrijeme, lokacija, cijene, usluge)</li>
+    <li>Podaci o jelovniku i proizvodima</li>
+    <li>Upiti o rezervacijama i bookingu</li>
+    <li>Jednostavna korisnička podrška (status narudžbe, promjene termina)</li>
+    <li>Hvatanje potencijalnih kupaca (prikupljanje imena, emailova, telefonskih brojeva)</li>
+    <li>Višejezični razgovori (posebno korisno za turistička područja)</li>
+  </ul>
+
+  <h3>Što NE BI TREBAO pokušavati raditi:</h3>
+
+  <ul>
+    <li>Obrađivati kompleksne pritužbe ili emocionalne situacije — eskalirajte to na ljude</li>
+    <li>Obradivati plaćanja (osim ako nije duboko integriran s vašim sustavom plaćanja)</li>
+    <li>Donositi pravne ili medicinske odluke</li>
+    <li>Zamijeniti cijeli vaš tim korisničke podrške — to je alat, ne zamjena</li>
+    <li>Davati financijske savjete ili bilo što s implikacijama odgovornosti</li>
+  </ul>
+
+  <p>Najbolji chatbotovi poznaju svoja ograničenja. Dovoljno su pametni da kažu "Dopustite da vas spojim s članom tima koji vam može pomoći s time" kad pitanje postane previše kompleksno. To je znak dobro dizajniranog bota.</p>
+
+  <h2>Ključno Pitanje: Isplati Li Se?</h2>
+
+  <p>Hajde da napravimo matematiku. Ako vaša web stranica ima 500 posjetitelja mjesečno, a chatbot pretvori samo 5% njih u potencijalne kupce (naspram 1-2% koje možete dobiti samo od kontaktnog obrasca), to je 25 dodatnih potencijalnih kupaca mjesečno. Čak i ako samo 10% od njih postane plaćajući kupac, to su 2-3 nova kupca svaki mjesec.</p>
+
+  <p>Za tvrtku gdje je svaki kupac vrijedan €200+, chatbot se isplati u prvom mjesecu.</p>
+
+  <p>A najbolji dio? Postaje pametniji s vremenom. Kako više ljudi komunicira s njim, možete poboljšavati njegove odgovore, dodavati nove informacije i činiti ga sve moćnijim sredstvom za vaše poslovanje.</p>
+
+  <h2>Želite Li Probati? Razgovarajmo.</h2>
+
+  <p>Nudimo <strong>besplatnu konzultaciju za chatbot</strong> za svaku tvrtku koju zanima dodavanje AI-a na web stranicu. Pogledat ćemo vaše specifične potrebe, preporučiti pravi pristup (bio to jednostavan no-code setup ili prilagođena izgradnja) i dati vam iskrenu procjenu što očekivati.</p>
+
+  <p>Bez pritiska, bez prodajnog govora — samo razgovor o tome ima li AI chatbot smisla za vaše poslovanje.</p>
+
+  <p><strong><a href="https://hd-webdesign.si/contact">Rezervirajte besplatnu konzultaciju →</a></strong></p>
+
+  <section>
+    <h2>Često Postavljana Pitanja</h2>
+
+    <h3>Trebam li tehničke vještine za dodavanje AI chatbota na web stranicu?</h3>
+    <p>Ne nužno. No-code alati poput Tidioa i Chatbasea ne zahtijevaju nikakvo programiranje — samo se prijavite, konfigurirajte i ugradite. WordPress pluginovi trebaju osnovni admin pristup, ali ne vještine programera. Za prilagođene integracije, radili biste s timom poput HD WebDesign-a koji rješava svu tehničku postavu.</p>
+
+    <h3>Koliko košta AI chatbot za malu tvrtku?</h3>
+    <p>Kreće se od besplatnog do nekoliko stotina eura mjesečno. No-code alati počinju s besplatnim paketima (odlično za testiranje), zatim €20–50/mjesečno za premium značajke. WordPress pluginovi koštaju €30–100/godišnje plus mala mjesečna API naknada. Prilagođene izgradnje kreću se od €500–2.000 unaprijed s €50–150/mjesečno održavanja.</p>
+
+    <h3>Može li chatbot razumjeti slovenski?</h3>
+    <p>Da. Moderne AI chatbotovi izgrađeni na GPT-4 i sličnim modelima rukuju slovenskim, hrvatskim, njemačkim, engleskim i desecima drugih jezika odmah. Ovo je posebno vrijedno za tvrtke u turističkim područjima Slovenije.</p>
+
+    <h3>Hoće li chatbot zamijeniti moj tim korisničke podrške?</h3>
+    <p>Ne, i ne bi trebao. Najbolja upotreba chatbota je obrada ponavljajućih, visoko-volumenskih pitanja (radno vrijeme, cijene, FAQ) kako bi se vaš tim mogao fokusirati na kompleksne probleme koji zahtijevaju ljudski dodir. Razmišljajte o tome kao o prvoj liniji obrane, ne zamjeni.</p>
+
+    <h3>Kako natreniram chatbot svojim poslovnim podacima?</h3>
+    <p>Za no-code alate, obično uploadate dokumente, zalijepite tekst FAQ-a ili spojite web stranicu. WordPress pluginovi mogu indeksirati sadržaj vaše stranice. Prilagođene izgradnje mogu se integrirati s vašom bazom podataka, bazom znanja ili čak vašim sustavom rezervacija za pristup podacima uživo.</p>
+
+    <h3>Što se događa ako chatbot da pogrešan odgovor?</h3>
+    <p>Dobro konfigurirani chatbot uključuje mehanizam za fallback — ako nije siguran, to kaže i nudi spajanje kupca s čovjekom. Možete redovito pregledavati zapise razgovora da uhvatite i ispravite netočne odgovore. Ključ je postaviti jasne granice za što chatbot treba i ne treba odgovarati.</p>
+
+    <h3>Mogu li isprobati chatbot prije nego što se odlučim na plaćeni plan?</h3>
+    <p>Apsolutno. Tidio, Chatbase i većina drugih platformi nude besplatne pakete ili probe. Preporučujemo testiranje 2-4 tjedna s pravim prometom posjetitelja prije nego što donesete odluku. Zato nudimo besplatnu konzultaciju — da vam pomognemo pronaći polaznu točku.</p>
+  </section>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 Herceg Darko. Sva prava pridržana.</p>
+    </footer>
+
+    <!-- Article Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Kako dodati AI chatbot na web stranicu (korak po korak)",
+        "description": "Vodič za dodavanje AI chatbota na vašu web stranicu. Od odabira platforme do implementacije.",
+        "datePublished": "2026-06-08",
+        "dateModified": "2026-06-08",
+        "author": {
+            "@type": "Person",
+            "name": "Darko Herceg"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "HD Web Design",
+            "url": "https://hd-webdesign.si"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://hd-webdesign.si/blog/kako-dodati-ai-chatbot.html"
+        }
+    }
+    </script>
+<script src="/js/main.js"></script>
+<script src="/chatbot/widget.js" defer></script>
+
+<div class="hd-chatbot">
+        <button class="hd-chat-toggle" id="hdChatToggle" aria-label="Odpri klepet">
+            <span class="chat-icon">💬</span>
+            <span class="close-icon">✕</span>
+        </button>
+        <div class="hd-chat-window" id="hdChatWindow">
+            <div class="hd-chat-header">
+                <div class="hd-chat-header-avatar">🤖</div>
+                <div class="hd-chat-header-info">
+                    <h3>HD Assistant</h3>
+                    <span>HD Web Design</span>
+                </div>
+            </div>
+            <div class="hd-chat-messages" id="hdChatMessages">
+                <div class="hd-msg bot">Zdravo! 👋 Sem HD Web Design asistent. Kako vam lahko pomagam?</div>
+                <div class="hd-typing" id="hdTyping">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="hd-chat-input">
+                <input type="text" id="hdChatInput" placeholder="Vpišite vprašanje..." autocomplete="off">
+                <button id="hdChatSend" aria-label="Pošlji">➤</button>
+            </div>
+            <div class="hd-chat-footer">Powered by DeepSeek AI</div>
+        </div>
+    </div>
+</body></html>

@@ -1,0 +1,39 @@
+# MenuBoost — AI Menu Description Generator
+
+## What is MenuBoost?
+MenuBoost is an AI-powered tool that generates professional menu descriptions for restaurants in 10 languages. Users photograph their menu or enter dishes manually, choose a writing style, and get appetizing descriptions instantly.
+
+## Key Features
+- Photograph menu → AI extracts dish names → generates descriptions
+- 10 languages: Slovenian, English, German, Italian, Croatian, Serbian, French, Spanish, Turkish, Greek
+- 6 writing styles: Poetic, Classic, Simple, Delivery, Social, Michelin
+- Mobile-first PWA (installable on phones)
+- €19/month unlimited plan, 3 free dishes trial
+
+## Who is it for?
+Restaurants, cafes, tourist farms, pizzerias, bars, hotels — any food service business that needs professional menu descriptions in multiple languages.
+
+## How it works
+1. User photographs their paper menu or uploads a photo
+2. AI (Gemma 4) extracts dish names from the image
+3. User selects writing style and target languages
+4. AI (DeepSeek) generates appetizing descriptions
+5. User copies descriptions to their menu
+
+## Pricing
+- Free: 3 dishes with descriptions
+- Pro: €19/month for unlimited dishes, all languages, all styles
+
+## URL
+- App: https://hd-webdesign.si/menu-boost/app.html
+- Landing: https://hd-webdesign.si/menu-boost/
+
+## Contact
+- Email: hercegdarko@hd-webdesign.si
+- Phone: +386 40 270 696
+
+## Technical
+- Built with: HTML/CSS/JS (frontend), PHP (backend)
+- AI models: Google Gemma 4 (vision), DeepSeek (text generation)
+- Payment: Stripe subscriptions
+- Hosting: hd-webdesign.si (Domenca)

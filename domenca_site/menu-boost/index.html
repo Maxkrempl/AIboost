@@ -1,6 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sl">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MenuBoost — AI Opisi Menijev za Restavracije | Brezplačno</title>
+<meta name="description" content="Slikaj svoj meni in dobi AI opise v 10 jezikih. Poetični, klasični ali moderni opisi v 10 sekundah. Brezplačno za 3 jedi.">
+<meta name="keywords" content="menuBoost, AI meni, opis jedi, restavracija, prevajanje menija, menu description generator">
+<meta property="og:title" content="MenuBoost — AI Opisi Menijev za Restavracije">
+<meta property="og:description" content="Slikaj svoj meni in dobi AI opise v 10 jezikih. Brezplačno za 3 jedi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hd-webdesign.si/menu-boost/index.html">
+<meta property="og:image" content="https://hd-webdesign.si/menu-boost/images/menuboost-icon-512.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://hd-webdesign.si/menu-boost/index.html">
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MenuBoost",
+  "description": "AI-powered menu description generator for restaurants. Photograph menus and get professional descriptions in 10 languages.",
+  "url": "https://hd-webdesign.si/menu-boost/index.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "19",
+    "priceCurrency": "EUR",
+    "description": "Unlimited menu descriptions in 10 languages"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "150"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "HD Web Design",
+    "url": "https://hd-webdesign.si"
+  },
+  "featureList": "Menu translation, AI descriptions, 10 languages, 6 writing styles, photo scanning"
+}
+</script>
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJER0DNGTF"></script>
 <script>
@@ -9,593 +52,1482 @@
   gtag('js', new Date());
   gtag('config', 'G-DJER0DNGTF');
 </script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MenuBoost — AI Menu Description Generator for Restaurants</title>
-<meta name="description" content="Generate appetizing menu descriptions for restaurants in 10 languages using AI. Free to try. Perfect for gostilne, restaurants, cafes and tourist farms.">
+<meta name="theme-color" content="#2C1810">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="images/menuboost-favicon.svg">
-<link rel="icon" type="image/svg+xml" href="images/menuboost-favicon-12.svg" sizes="12x12">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MenuBoost","description":"AI menu description generator for restaurants in 10 languages.","url":"https://menuboostai.netlify.app","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"19","priceCurrency":"EUR"}}</script>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-<script src="i18n.js?v=5"></script>
+<link rel="apple-touch-icon" href="images/menuboost-icon-180.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#FAF7F2;--warm:#F3EDE3;--brown:#2C1810;--brown-mid:#5C3D2E;--gold:#C4922A;--gold-light:#F5E6C8;--mute:#9C8878;--border:#E8DDD0;--white:#FFFFFF;--success:#2D6A4F;--success-bg:#D8F3DC}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--brown);min-height:100vh;font-size:15px;line-height:1.6}
-header{background:var(--brown);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold-light)}
-.logo span{color:var(--gold);font-style:italic}
-.header-badge{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid #4A2E1A;padding:4px 12px;border-radius:2px}
-.hero{text-align:center;padding:4rem 1.5rem 2.5rem;max-width:680px;margin:0 auto}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--brown);line-height:1.1;margin-bottom:1rem}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero p{font-size:16px;color:var(--mute);font-weight:300;max-width:420px;margin:0 auto}
-.container{max-width:960px;margin:0 auto;padding:0 1.5rem 4rem}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
-@media(max-width:680px){.grid{grid-template-columns:1fr}.hero h1{font-size:36px}}
-.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem}
-.card-label{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--mute);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
-.card-label::after{content:'';flex:1;height:1px;background:var(--border)}
-label{display:block;font-size:12px;font-weight:500;color:var(--brown-mid);margin-bottom:5px;margin-top:16px}
-label:first-of-type{margin-top:0}
-input[type="text"],textarea,select{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--brown);background:var(--cream);outline:none;transition:border-color .15s}
-input:focus,textarea:focus,select:focus{border-color:var(--gold);background:var(--white)}
-textarea{height:60px;resize:none;line-height:1.5}
-.lang-group,.style-group{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.lang-pill,.style-pill{font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);background:var(--cream);color:var(--mute);cursor:pointer;transition:all .15s;user-select:none}
-.style-pill{font-size:11px;padding:4px 10px;border-radius:6px;border-width:1px}
-.lang-pill.active{border-color:var(--gold);background:var(--gold-light);color:var(--brown)}
-.style-pill.active{border-color:var(--brown);background:var(--brown);color:var(--gold-light)}
+:root{--cream:#FAF7F2;--warm:#F3EDE3;--brown:#2C1810;--brown-mid:#5C3D2E;--gold:#C4922A;--gold-light:#F5E6C8;--mute:#9C8878;--border:#E8DDD0;--white:#FFFFFF;--success:#2D6A4F;--success-bg:#D8F3DC;--danger:#c0392b}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--brown);font-size:16px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.app{height:100dvh;display:flex;flex-direction:column;position:relative;overflow:hidden}
 
-/* Dish list */
-.dish-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
-.dish-row{background:var(--cream);border:1.5px solid var(--border);border-radius:10px;padding:12px;position:relative;animation:fadeIn .2s ease}
+/* === SCREENS === */
+.screen{display:none;flex-direction:column;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom)}
+.screen.active{display:flex}
+
+/* === HEADER === */
+.header{background:var(--brown);padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;height:56px;flex-shrink:0}
+.header-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold-light)}
+.header-title span{color:var(--gold);font-style:italic}
+.header-btn{background:none;border:none;color:var(--gold);font-size:20px;padding:8px}
+
+/* === WELCOME === */
+.welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:2rem;text-align:center;gap:1.5rem}
+.welcome-icon{width:120px;height:120px;border-radius:50%;background:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:56px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.welcome h1{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--brown);line-height:1.2}
+.welcome p{color:var(--mute);font-size:15px;max-width:300px}
+.btn-primary{background:var(--brown);color:var(--gold-light);border:none;border-radius:14px;padding:16px 40px;font-size:17px;font-weight:600;font-family:'Cormorant Garamond',serif;letter-spacing:0.5px;transition:transform .15s,background .15s;-webkit-tap-highlight-color:transparent}
+.btn-primary:active{transform:scale(0.97);background:var(--brown-mid)}
+.btn-secondary{background:var(--white);color:var(--brown);border:2px solid var(--border);border-radius:14px;padding:14px 32px;font-size:15px;font-weight:500;transition:all .15s}
+.btn-secondary:active{border-color:var(--gold);background:var(--gold-light)}
+.welcome-demo{margin-top:0.5rem}
+.welcome-terms{font-size:11px;color:var(--mute);margin-top:auto;padding-bottom:1rem}
+.welcome-terms a{color:var(--gold);text-decoration:none}
+
+/* === CAMERA === */
+.camera-screen{background:#000;position:relative}
+.camera-video{width:100%;height:100%;object-fit:cover}
+.camera-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:1.5rem}
+.camera-guide{flex:1;display:flex;align-items:center;justify-content:center;width:100%;max-width:340px;aspect-ratio:3/4;border:2px solid rgba(196,146,42,0.6);border-radius:16px;margin:auto 0;position:relative}
+.camera-guide-text{position:absolute;bottom:-36px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:13px;color:rgba(255,255,255,0.8);text-shadow:0 1px 4px rgba(0,0,0,0.5)}
+.camera-top{display:flex;justify-content:space-between;width:100%;align-items:center}
+.camera-close{background:rgba(0,0,0,0.5);border:none;color:#fff;font-size:24px;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.camera-bottom{display:flex;align-items:center;justify-content:center;gap:2rem;padding-bottom:1rem;width:100%}
+.shutter{width:72px;height:72px;border-radius:50%;background:var(--gold);border:4px solid rgba(255,255,255,0.9);transition:transform .1s;-webkit-tap-highlight-color:transparent}
+.shutter:active{transform:scale(0.9)}
+.gallery-btn{width:52px;height:52px;border-radius:12px;border:2px solid rgba(255,255,255,0.5);background:rgba(0,0,0,0.4);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff}
+.camera-err{position:absolute;inset:0;background:var(--brown);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold-light);padding:2rem;text-align:center;gap:1rem}
+.camera-err p{color:var(--mute);font-size:14px}
+
+/* === PROCESSING === */
+.processing{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:2rem;text-align:center;gap:1.5rem}
+.processing-preview{width:100%;max-width:320px;border-radius:16px;overflow:hidden;border:2px solid var(--border);background:var(--warm)}
+.processing-preview img{width:100%;display:block}
+.spinner-lg{width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.processing h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600}
+.processing p{color:var(--mute);font-size:14px}
+.progress-bar{width:100%;max-width:280px;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gold);border-radius:3px;transition:width 0.5s ease;width:0%}
+
+/* === PREFERENCES SCREEN === */
+.prefs{padding:1.5rem;display:flex;flex-direction:column;gap:0;flex:1;overflow-y:auto}
+.prefs-header{text-align:center;margin-bottom:1.5rem}
+.prefs-header h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin-bottom:4px}
+.prefs-header p{color:var(--mute);font-size:13px}
+.prefs-preview{width:100%;max-width:280px;border-radius:12px;overflow:hidden;border:1.5px solid var(--border);margin:0 auto 1.5rem}
+.prefs-preview img{width:100%;display:block}
+
+.pref-section{margin-bottom:1.5rem}
+.pref-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mute);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.pref-label .saved-badge{font-size:10px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--success);background:var(--success-bg);padding:3px 8px;border-radius:6px;display:none}
+.pref-label .saved-badge.show{display:inline}
+
+/* Style pills */
+.style-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.style-option{
+  padding:14px 8px;border-radius:14px;border:1.5px solid var(--border);
+  background:var(--white);text-align:center;transition:all .15s;cursor:pointer;
+}
+.style-option:active{transform:scale(0.97)}
+.style-option.active{border-color:var(--gold);background:var(--gold-light)}
+.style-option .style-icon{font-size:24px;margin-bottom:4px}
+.style-option .style-name{font-size:12px;font-weight:600;color:var(--brown)}
+.style-option .style-desc{font-size:10px;color:var(--mute);margin-top:2px;font-weight:300}
+
+/* Language pills */
+.lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.lang-option{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 14px;border-radius:12px;border:1.5px solid var(--border);
+  background:var(--white);transition:all .15s;cursor:pointer;
+}
+.lang-option:active{transform:scale(0.97)}
+.lang-option.active{border-color:var(--gold);background:var(--gold-light)}
+.lang-flag{font-size:20px}
+.lang-info{flex:1;min-width:0}
+.lang-name{font-size:13px;font-weight:500;color:var(--brown)}
+.lang-native{font-size:10px;color:var(--mute);font-weight:300}
+.lang-check{
+  width:20px;height:20px;border-radius:50%;border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:transparent;transition:all .15s;flex-shrink:0;
+}
+.lang-option.active .lang-check{border-color:var(--gold);background:var(--gold);color:var(--white)}
+
+/* Save toggle */
+.save-toggle{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);
+  background:var(--white);margin-top:4px;
+}
+.save-toggle-left{display:flex;flex-direction:column;gap:2px}
+.save-toggle-text{font-size:13px;font-weight:500;color:var(--brown)}
+.save-toggle-hint{font-size:10px;color:var(--mute);font-weight:300}
+.toggle-switch{
+  width:48px;height:28px;border-radius:14px;background:var(--border);
+  position:relative;transition:background .2s;cursor:pointer;flex-shrink:0;
+}
+.toggle-switch.active{background:var(--gold)}
+.toggle-switch::after{
+  content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;
+  border-radius:50%;background:var(--white);transition:transform .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,0.15);
+}
+.toggle-switch.active::after{transform:translateX(20px)}
+
+/* Generate button */
+.prefs-actions{padding:1rem 0;margin-top:auto}
+.btn-generate{
+  width:100%;padding:16px;background:var(--brown);color:var(--gold-light);
+  border:none;border-radius:14px;font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:600;letter-spacing:0.5px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all .15s;
+}
+.btn-generate:active{transform:scale(0.97);background:var(--brown-mid)}
+.btn-generate:disabled{opacity:.5;cursor:not-allowed}
+.gen-count{font-size:12px;color:var(--mute);text-align:center;margin-top:8px;font-weight:300}
+
+/* === RESULTS === */
+.results-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--white)}
+.results-count{font-size:13px;color:var(--mute);margin-bottom:0.5rem}
+.lang-tabs{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.lang-tabs::-webkit-scrollbar{display:none}
+.lang-tab{font-size:13px;font-weight:500;padding:8px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--cream);color:var(--mute);white-space:nowrap;transition:all .15s;flex-shrink:0}
+.lang-tab.active{border-color:var(--gold);background:var(--gold-light);color:var(--brown)}
+.results-list{flex:1;overflow-y:auto;padding:1rem 1.25rem;display:flex;flex-direction:column;gap:12px}
+.dish-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1rem;position:relative}
+.dish-card.locked{opacity:0.5}
+.dish-card.locked::after{content:'🔒';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:32px}
+.dish-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--brown);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.dish-name .dish-num{font-size:11px;font-weight:600;color:var(--gold);background:var(--gold-light);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dish-desc{font-size:14px;color:var(--brown-mid);line-height:1.6}
+.dish-actions{display:flex;gap:8px;margin-top:10px}
+.btn-copy{flex:1;padding:10px;background:var(--cream);border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:500;color:var(--brown);display:flex;align-items:center;justify-content:center;gap:6px;transition:all .15s}
+.btn-copy:active{border-color:var(--gold);background:var(--gold-light)}
+.btn-copy.copied{border-color:var(--success);background:var(--success-bg);color:var(--success)}
+.btn-copy-all{padding:12px;margin:0 1.25rem 1rem;background:var(--brown);color:var(--gold-light);border:none;border-radius:12px;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0}
+.btn-copy-all:active{background:var(--brown-mid)}
+.btn-new-scan{padding:12px;margin:0 1.25rem 1rem;background:var(--white);color:var(--brown);border:1.5px solid var(--border);border-radius:12px;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0}
+
+/* === PAYWALL === */
+.paywall-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:none;align-items:flex-end;justify-content:center}
+.paywall-overlay.active{display:flex}
+.paywall-card{background:var(--white);border-radius:20px 20px 0 0;padding:2rem 1.5rem 2.5rem;width:100%;max-width:500px;text-align:center;animation:slideUp .3s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.paywall-card h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;margin-bottom:0.5rem}
+.paywall-card p{color:var(--mute);font-size:14px;margin-bottom:1.5rem}
+.paywall-price{font-size:42px;font-weight:700;color:var(--brown);font-family:'Cormorant Garamond',serif}
+.paywall-price span{font-size:16px;font-weight:400;color:var(--mute)}
+.paywall-features{text-align:left;margin:1.5rem 0;display:flex;flex-direction:column;gap:10px}
+.paywall-feature{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--brown-mid)}
+.paywall-feature::before{content:'✓';color:var(--success);font-weight:700;font-size:16px}
+.paywall-btn{width:100%;padding:16px;background:var(--gold);color:var(--brown);border:none;border-radius:14px;font-size:17px;font-weight:700;font-family:'Cormorant Garamond',serif;letter-spacing:0.5px;margin-bottom:1rem}
+.paywall-btn:active{background:#b8841f}
+.paywall-skip{background:none;border:none;color:var(--mute);font-size:13px;text-decoration:underline}
+
+/* === INSTALL PROMPT === */
+.install-banner{position:fixed;bottom:0;left:0;right:0;background:var(--brown);color:var(--gold-light);padding:1rem 1.25rem;display:none;align-items:center;gap:12px;z-index:150;animation:slideUp .3s ease}
+.install-banner.active{display:flex}
+.install-banner p{flex:1;font-size:13px;line-height:1.4}
+.install-btn{background:var(--gold);color:var(--brown);border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:600;white-space:nowrap}
+.install-close{background:none;border:none;color:var(--mute);font-size:18px;padding:4px}
+
+/* iOS install modal */
+.ios-install-modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:none;align-items:flex-end;justify-content:center}
+.ios-install-modal.active{display:flex}
+.ios-install-content{background:var(--white);border-radius:20px 20px 0 0;padding:2rem 1.5rem 2.5rem;width:100%;max-width:500px;animation:slideUp .3s ease}
+.ios-install-content h3{font-family:'Cormorant Garamond',serif;font-size:24px;text-align:center;margin-bottom:1rem}
+.ios-install-content ol{padding-left:1.2rem;display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.ios-install-content li{font-size:14px;color:var(--brown-mid);line-height:1.5}
+.ios-install-content li strong{color:var(--brown)}
+.ios-install-ok{width:100%;padding:14px;background:var(--brown);color:var(--gold-light);border:none;border-radius:12px;font-size:15px;font-weight:600}
+
+/* === TOAST === */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--brown);color:var(--gold-light);padding:12px 24px;border-radius:12px;font-size:14px;font-weight:500;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+
+/* Dish input list */
+.dish-input-list{display:flex;flex-direction:column;gap:8px;margin-bottom:8px}
+.dish-input-row{display:flex;gap:8px;align-items:center;animation:fadeIn .2s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-.dish-row-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.dish-number{font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
-.btn-remove-dish{background:none;border:none;color:var(--mute);font-size:18px;cursor:pointer;padding:0 4px;line-height:1;transition:color .15s}
-.btn-remove-dish:hover{color:#c0392b}
-.dish-row input[type="text"]{font-weight:500}
-.dish-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:500px){.dish-fields{grid-template-columns:1fr}}
-.btn-add-dish{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;margin-top:8px;background:var(--white);border:1.5px dashed var(--border);border-radius:10px;font-size:13px;font-weight:500;color:var(--mute);cursor:pointer;transition:all .15s}
+.dish-input-num{font-size:11px;font-weight:600;color:var(--gold);background:var(--gold-light);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dish-input-row input{flex:1;padding:12px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--brown);background:var(--white);outline:none;transition:border-color .15s}
+.dish-input-row input:focus{border-color:var(--gold)}
+.dish-input-row input::placeholder{color:var(--mute);font-weight:300}
+.btn-remove-dish{background:none;border:none;color:var(--mute);font-size:20px;padding:4px;transition:color .15s}
+.btn-remove-dish:hover{color:var(--danger)}
+.btn-add-dish{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;background:var(--white);border:1.5px dashed var(--border);border-radius:12px;font-size:13px;font-weight:500;color:var(--mute);transition:all .15s}
 .btn-add-dish:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-light)}
 
-.btn-generate{width:100%;margin-top:1.5rem;padding:14px;background:var(--brown);color:var(--gold-light);border:none;border-radius:10px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:10px}
-.btn-generate:hover{background:var(--brown-mid)}
-.btn-generate:disabled{opacity:.5;cursor:not-allowed}
-.spinner{width:16px;height:16px;border:2px solid rgba(196,146,42,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;display:none}
-@keyframes spin{to{transform:rotate(360deg)}}
-.credits-row{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:12px;color:var(--mute)}
-.credit-dots{display:flex;gap:4px}
-.cdot{width:8px;height:8px;border-radius:50%;background:var(--gold);transition:background .3s}
-.cdot.used{background:var(--border)}
-.no-credits-banner{display:none;margin-top:1rem;padding:12px 16px;background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;font-size:13px;color:var(--brown);text-align:center}
-.no-credits-banner a{color:var(--gold);font-weight:500;text-decoration:underline;cursor:pointer}
-.output-area{display:flex;flex-direction:column;gap:1.5rem}
-.empty-state{background:var(--white);border:1.5px dashed var(--border);border-radius:16px;padding:3.5rem 2rem;text-align:center;color:var(--mute)}
-.empty-state p{font-size:13px}
-.dish-result{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;animation:fadeIn .3s ease}
-.dish-result-name{padding:14px 16px 10px;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--brown);border-bottom:1px solid var(--border)}
-.dish-result-langs{display:flex;flex-direction:column;gap:0}
-.result-card{border-bottom:1px solid var(--border)}
-.result-card:last-child{border-bottom:none}
-.result-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--warm)}
-.result-lang{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--brown-mid)}
-.result-style-badge{font-size:10px;padding:2px 8px;border-radius:4px;background:var(--gold-light);color:var(--gold);font-weight:500;text-transform:uppercase}
-.btn-copy{font-size:11px;font-weight:500;color:var(--gold);background:none;border:1px solid var(--gold-light);border-radius:5px;padding:3px 10px;cursor:pointer;transition:all .15s}
-.btn-copy:hover{background:var(--gold-light)}
-.btn-copy.copied{color:var(--success);border-color:var(--success-bg);background:var(--success-bg)}
-.result-body{padding:14px 16px;font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.75;color:var(--brown);font-style:italic;min-height:40px}
-.result-body.plain{font-family:'DM Sans',sans-serif;font-style:normal;font-size:14px}
-.cursor{display:inline-block;width:2px;height:16px;background:var(--gold);margin-left:2px;animation:blink .8s step-end infinite;vertical-align:middle}
-@keyframes blink{50%{opacity:0}}
-.upgrade-card{background:var(--brown);border-radius:16px;padding:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.upgrade-text h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold-light);margin-bottom:3px}
-.upgrade-text p{font-size:13px;color:var(--mute)}
-.btn-upgrade{padding:11px 22px;background:var(--gold);color:var(--brown);border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap}
-.btn-upgrade:hover{opacity:.9}
-.seo-content{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:2rem}
-.seo-content h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--brown);margin-bottom:1rem}
-.seo-content h3{font-size:15px;font-weight:500;color:var(--brown);margin:1.2rem 0 .4rem}
-.seo-content p{font-size:14px;color:var(--mute);line-height:1.7;margin-bottom:.8rem}
-.faq-item{border-top:1px solid var(--border);padding:1rem 0}
-.faq-item:last-child{border-bottom:1px solid var(--border)}
-.faq-q{font-size:14px;font-weight:500;color:var(--brown);margin-bottom:.4rem}
-.faq-a{font-size:13px;color:var(--mute);line-height:1.6}
-.lang-switch{position:relative;display:inline-block}
-.lang-switch-btn{padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500;letter-spacing:1px;transition:all .15s;border:1.5px solid var(--border);background:var(--cream);color:var(--brown);display:flex;align-items:center;gap:5px;font-family:'DM Sans',sans-serif}
-.lang-switch-btn:hover{border-color:var(--gold)}
-.lang-switch-btn.active{border-color:var(--gold);background:var(--gold-light)}
-.lang-dropdown{position:absolute;top:100%;right:0;margin-top:4px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:4px;z-index:200;display:none;min-width:120px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-.lang-dropdown.show{display:block}
-.lang-option{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:12px;font-weight:500;color:var(--brown);transition:background .1s}
-.lang-option:hover{background:var(--warm)}
-.lang-option.active{background:var(--gold-light);color:var(--brown-mid)}
-.qr-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:1.5rem;display:none;text-align:center}
-.qr-section.show{display:block;animation:fadeIn .3s ease}
-.qr-section h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--brown);margin-bottom:0.5rem}
-.qr-section .qr-subtitle{font-size:13px;color:var(--mute);margin-bottom:1.5rem}
-#qrcode{display:inline-block;padding:16px;background:var(--white);border:2px solid var(--border);border-radius:12px}
-.qr-actions{display:flex;gap:10px;justify-content:center;margin-top:1.5rem;flex-wrap:wrap}
-.btn-qr{font-size:12px;font-weight:500;padding:8px 18px;border-radius:8px;border:1.5px solid var(--brown);background:var(--cream);color:var(--brown);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px}
-.btn-qr:hover{background:var(--brown);color:var(--gold-light)}
-.btn-qr.primary{background:var(--brown);color:var(--gold-light);border-color:var(--brown)}
-.btn-qr.primary:hover{background:var(--brown-mid)}
+/* Hidden */
+#fileInput{display:none}
+
+/* === UI LANGUAGE SELECTOR === */
+.ui-lang-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 0;margin-top:1rem}
+.ui-lang-bar>span{font-size:10px;color:var(--mute);font-weight:500;letter-spacing:1px;text-transform:uppercase}
+.ui-lang-flags{display:flex;gap:4px;flex-wrap:wrap;justify-content:center}
+.ui-lang-flag{width:32px;height:32px;border-radius:50%;border:2px solid transparent;background:none;font-size:18px;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;padding:0}
+.ui-lang-flag:active{transform:scale(0.9)}
+.ui-lang-flag.active{border-color:var(--gold);background:var(--gold-light)}
+
+/* === LANDING SCREEN === */
+.landing{padding:0;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:100%}
+.landing-hero{text-align:center;padding:48px 1.5rem 32px;position:relative}
+.landing-hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(196,146,42,0.08) 0%,transparent 70%);pointer-events:none}
+.landing-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.landing-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.landing-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,10vw,48px);font-weight:600;color:var(--brown);line-height:1.1;margin-bottom:16px}
+.landing-hero h1 em{font-style:italic;color:var(--gold)}
+.landing-hero>p{font-size:16px;color:var(--mute);max-width:320px;margin:0 auto 32px;line-height:1.5;font-weight:300}
+.landing-illustration{width:100%;max-width:280px;height:180px;margin:0 auto 32px;position:relative;display:flex;align-items:center;justify-content:center}
+.landing-plate{width:140px;height:140px;border-radius:50%;border:2px solid var(--border);background:var(--white);position:relative;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.landing-plate::before{content:'';position:absolute;inset:8px;border-radius:50%;border:1px solid var(--border)}
+.landing-plate-icon{font-size:48px;opacity:0.6}
+.landing-menu{position:absolute;right:10px;top:5px;width:80px;height:100px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px;box-shadow:0 2px 8px rgba(0,0,0,0.04);transform:rotate(3deg)}
+.landing-menu-line{height:2px;background:var(--border);border-radius:1px;margin-bottom:6px}
+.landing-menu-line:nth-child(1){width:60%;opacity:0.3}
+.landing-menu-line:nth-child(2){width:80%;opacity:0.2}
+.landing-menu-line:nth-child(3){width:50%;opacity:0.15}
+.landing-menu-line:nth-child(4){width:70%;opacity:0.2}
+.landing-branch{position:absolute;left:10px;bottom:15px;font-size:28px;opacity:0.4;transform:rotate(-15deg)}
+.landing-note{font-size:13px;color:var(--mute);margin-top:8px}
+.landing-cta{padding:0 1.5rem;margin-bottom:48px}
+.landing-cta-card{background:var(--brown);border-radius:20px;padding:32px 24px;text-align:center;position:relative;overflow:hidden}
+.landing-cta-card::before{content:'';position:absolute;top:-40%;right:-20%;width:180px;height:180px;border-radius:50%;background:rgba(196,146,42,0.1)}
+.landing-cta-card::after{content:'';position:absolute;bottom:-30%;left:-10%;width:140px;height:140px;border-radius:50%;background:rgba(196,146,42,0.06)}
+.landing-cta-card h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--gold-light);margin-bottom:8px;position:relative;z-index:1}
+.landing-cta-card p{color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:24px;position:relative;z-index:1;font-weight:300}
+.landing-cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--brown);padding:16px 32px;border-radius:100px;font-size:16px;font-weight:600;font-family:'Cormorant Garamond',serif;transition:all .2s;position:relative;z-index:1;box-shadow:0 4px 20px rgba(196,146,42,0.3)}
+.landing-cta-btn:active{transform:scale(0.97)}
+.landing-cta-note{font-size:11px;color:rgba(255,255,255,0.4);margin-top:16px;position:relative;z-index:1}
+.landing-features{padding:0 1.5rem;margin-bottom:48px}
+.landing-section-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute);margin-bottom:16px}
+.landing-features h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--brown);margin-bottom:20px}
+.landing-feature-list{display:flex;flex-direction:column;gap:12px}
+.landing-feature{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 2px 8px rgba(0,0,0,0.03)}
+.landing-feature-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.landing-feature-icon.green{background:rgba(109,134,84,0.12)}
+.landing-feature-icon.gold{background:var(--gold-light)}
+.landing-feature-icon.warm{background:var(--warm)}
+.landing-feature-text{flex:1;min-width:0}
+.landing-feature-name{font-size:15px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.landing-feature-desc{font-size:13px;color:var(--mute);line-height:1.5;font-weight:300}
+.landing-feature-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.landing-tag{font-size:11px;font-weight:500;padding:4px 10px;border-radius:100px;background:var(--cream);color:var(--mute);border:1px solid var(--border)}
+.landing-how{padding:0 1.5rem;margin-bottom:48px}
+.landing-how h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--brown);margin-bottom:24px}
+.landing-steps{position:relative;padding-left:24px}
+.landing-steps::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--border)}
+.landing-step{position:relative;margin-bottom:24px}
+.landing-step:last-child{margin-bottom:0}
+.landing-step-dot{position:absolute;left:-24px;top:4px;width:13px;height:13px;border-radius:50%;border:2px solid var(--border);background:var(--cream)}
+.landing-step.active .landing-step-dot{border-color:var(--gold);background:var(--gold)}
+.landing-step.active .landing-step-dot::after{content:'✓';color:white;font-size:7px;font-weight:700;display:flex;align-items:center;justify-content:center;height:100%}
+.landing-step-num{font-size:10px;font-weight:600;color:var(--mute);letter-spacing:0.1em;margin-bottom:2px}
+.landing-step-title{font-size:15px;font-weight:600;color:var(--brown);margin-bottom:2px}
+.landing-step-desc{font-size:13px;color:var(--mute);font-weight:300;line-height:1.4}
+.landing-benefits{padding:0 1.5rem;margin-bottom:48px}
+.landing-benefits h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--brown);margin-bottom:20px}
+.landing-benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.landing-benefit{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.03)}
+.landing-benefit-icon{font-size:28px;margin-bottom:8px}
+.landing-benefit-name{font-size:14px;font-weight:600;color:var(--brown);margin-bottom:2px}
+.landing-benefit-desc{font-size:12px;color:var(--mute);font-weight:300;line-height:1.4}
+.landing-final{padding:0 1.5rem;margin-bottom:48px}
+.landing-final-card{background:var(--brown);border-radius:20px;padding:40px 24px;text-align:center;position:relative;overflow:hidden}
+.landing-final-card::before{content:'';position:absolute;top:0;right:0;width:100px;height:100px;border-radius:50%;background:rgba(196,146,42,0.12)}
+.landing-final-card h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,7vw,32px);font-weight:600;color:var(--gold-light);margin-bottom:8px;position:relative}
+.landing-final-card p{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:24px;position:relative;font-weight:300}
+.landing-footer{padding:24px 1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.landing-footer-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--brown)}
+.landing-footer-logo span{color:var(--gold)}
+.landing-footer-links{display:flex;gap:16px}
+.landing-footer-link{font-size:12px;color:var(--mute);text-decoration:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.landing-hero{animation:fadeUp .6s ease}
+.landing-cta-card{animation:fadeUp .6s ease .1s both}
+.landing-feature{animation:fadeUp .4s ease both}
+.landing-feature:nth-child(1){animation-delay:.15s}
+.landing-feature:nth-child(2){animation-delay:.25s}
+.landing-feature:nth-child(3){animation-delay:.35s}
+.landing-step{animation:fadeUp .4s ease both}
+.landing-step:nth-child(1){animation-delay:.1s}
+.landing-step:nth-child(2){animation-delay:.15s}
+.landing-step:nth-child(3){animation-delay:.2s}
+.landing-step:nth-child(4){animation-delay:.25s}
+.landing-step:nth-child(5){animation-delay:.3s}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo"><img src="images/menuboost-logo-light.svg" alt="MenuBoost" height="32" style="vertical-align:middle;margin-right:6px">Menu<span>Boost</span></div>
-  <div style="display:flex;align-items:center;gap:12px">
-  <div class="lang-switch" id="lang-switch">
-  <div class="lang-switch-btn" id="lang-toggle">🇸🇮 SL ▾</div>
-  <div class="lang-dropdown" id="lang-dropdown">
-    <div class="lang-option active" data-lang="sl">🇸🇮 Slovenščina</div>
-    <div class="lang-option" data-lang="hr">🇭🇷 Hrvatski</div>
-    <div class="lang-option" data-lang="en">🇬🇧 English</div>
-    <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
-    <div class="lang-option" data-lang="it">🇮🇹 Italiano</div>
-    <div class="lang-option" data-lang="sr">🇷🇸 Srpski</div>
-    <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
-    <div class="lang-option" data-lang="es">🇪🇸 Español</div>
-    <div class="lang-option" data-lang="tr">🇹🇷 Türkçe</div>
-    <div class="lang-option" data-lang="el">🇬🇷 Ελληνικά</div>
-  </div>
-</div>
-  <div class="header-badge">AI opisi jedi</div>
-</div>
-</header>
-<div style="text-align:center;padding:2rem 0 0">
-  <img src="images/menuboost-logo-light.svg" alt="MenuBoost" height="80" style="opacity:0.85">
-</div>
-<div class="hero">
-  <div class="hero-eyebrow">AI opisi jedi za restavracije</div>
-  <h1>Jedilnik ki <em>prodaja</em><br>sam od sebe</h1>
-  <p>Vpišite jedi in dobite apetitne opise v vašem jeziku. Cel jedilnik naenkrat.</p>
-</div>
-<div class="container">
-  <div class="grid">
-    <div>
-      <div class="card">
-        <div class="card-label">Vaše jedi</div>
-        <div class="dish-list" id="dish-list">
-          <!-- Dynamic dish rows go here -->
+<div class="app">
+
+  <!-- SCREEN 0: LANDING -->
+  <div class="screen active" id="landingScreen">
+    <div class="landing">
+      <div class="landing-hero">
+        <div class="landing-badge">AI for restaurants</div>
+        <h1>Your menu,<br><em>beautifully</em> told.</h1>
+        <p>Slikaj svoj meni, dobi AI opise v 10 jezikih. Takoj, brez pisanja.</p>
+        <div class="landing-illustration">
+          <div class="landing-plate"><div class="landing-plate-icon">🍽️</div></div>
+          <div class="landing-menu">
+            <div class="landing-menu-line"></div><div class="landing-menu-line"></div>
+            <div class="landing-menu-line"></div><div class="landing-menu-line"></div>
+          </div>
+          <div class="landing-branch">🫒</div>
         </div>
-        <button class="btn-add-dish" id="btn-add-dish" onclick="addDish()">+ Dodaj jed</button>
-        <label style="margin-top:20px">Vrsta restavracije</label>
-        <select id="rest-type">
-          <option value="gostilna">Gostilna / domača kuhinja</option>
-          <option value="restavracija">Restavracija / fine dining</option>
-          <option value="pizzeria">Pizzeria / italijanska</option>
-          <option value="fast food">Hitra prehrana</option>
-          <option value="cafe">Kavarna / slaščičarna</option>
-          <option value="morska">Morska hrana</option>
-          <option value="azijska">Azijska kuhinja</option>
-          <option value="veganska">Veganska / vegetarijanska</option>
-        </select>
-        <label>Slog opisa</label>
-        <div class="style-group">
-          <span class="style-pill active" data-style="poetic">Poetičen</span>
-          <span class="style-pill" data-style="classic">Klasičen</span>
-          <span class="style-pill" data-style="simple">Preprost</span>
-          <span class="style-pill" data-style="delivery">Za dostavo</span>
-          <span class="style-pill" data-style="social">Social media</span>
-        </div>
-        <label>Jeziki</label>
-        <div class="lang-group">
-          <span class="lang-pill active" data-lang="slovenian">SLO</span>
-          <span class="lang-pill active" data-lang="croatian">HR</span>
-          <span class="lang-pill" data-lang="english">EN</span>
-          <span class="lang-pill" data-lang="german">DE</span>
-          <span class="lang-pill" data-lang="italian">IT</span>
-          <span class="lang-pill" data-lang="serbian">SR</span>
-          <span class="lang-pill" data-lang="french">FR</span>
-          <span class="lang-pill" data-lang="spanish">ES</span>
-          <span class="lang-pill" data-lang="turkish">TR</span>
-          <span class="lang-pill" data-lang="greek">EL</span>
-        </div>
-        <button class="btn-generate" id="gen-btn" onclick="generate()">
-          <div class="spinner" id="spinner"></div>
-          <span id="btn-text"></span>
-        </button>
-        <div class="credits-row">
-          <span>Brezplačni opisi: <strong id="credits-num">3</strong></span>
-          <div class="credit-dots">
-            <div class="cdot" id="d1"></div>
-            <div class="cdot" id="d2"></div>
-            <div class="cdot" id="d3"></div>
+        <div class="landing-note">3 jedi brezplačno · Brez kartice</div>
+        <div class="ui-lang-bar" style="margin-top:1.5rem">
+          <span>Jezik / Language</span>
+          <div class="ui-lang-flags" id="uiLangFlags">
+            <button class="ui-lang-flag active" data-ui-lang="sl">🇸🇮</button>
+            <button class="ui-lang-flag" data-ui-lang="en">🇬🇧</button>
+            <button class="ui-lang-flag" data-ui-lang="hr">🇭🇷</button>
+            <button class="ui-lang-flag" data-ui-lang="de">🇩🇪</button>
+            <button class="ui-lang-flag" data-ui-lang="it">🇮🇹</button>
+            <button class="ui-lang-flag" data-ui-lang="sr">🇷🇸</button>
+            <button class="ui-lang-flag" data-ui-lang="fr">🇫🇷</button>
+            <button class="ui-lang-flag" data-ui-lang="es">🇪🇸</button>
+            <button class="ui-lang-flag" data-ui-lang="tr">🇹🇷</button>
+            <button class="ui-lang-flag" data-ui-lang="el">🇬🇷</button>
           </div>
         </div>
-        <div class="no-credits-banner" id="no-credits-banner">
-          Porabili ste brezplačne opise.
-          <a onclick="checkout()">Nadgradite na Pro (19 EUR/mes)</a>
+      </div>
+
+      <div class="landing-cta">
+        <div class="landing-cta-card">
+          <h2>Skeniraj meni</h2>
+          <p>Fotografiraj ali naloži sliko svojega menija</p>
+          <button class="landing-cta-btn" id="btnLandingStart">
+            📷 Odpri kamero
+          </button>
+          <div class="landing-cta-note">Takoj brez registracije</div>
+        </div>
+      </div>
+
+      <div class="landing-features">
+        <div class="landing-section-label">Funkcije</div>
+        <h2>Vse kar vaš meni potrebuje.</h2>
+        <div class="landing-feature-list">
+          <div class="landing-feature">
+            <div class="landing-feature-icon green">🌐</div>
+            <div class="landing-feature-text">
+              <div class="landing-feature-name">Prevajanje menijev</div>
+              <div class="landing-feature-desc">Takojšnje prevajanje v 10 jezikov. Idealno za turistične restavracije.</div>
+              <div class="landing-feature-tags">
+                <span class="landing-tag">🇸🇮 Slovenščina</span>
+                <span class="landing-tag">🇬🇧 Angleščina</span>
+                <span class="landing-tag">🇩🇪 Nemščina</span>
+                <span class="landing-tag">+7</span>
+              </div>
+            </div>
+          </div>
+          <div class="landing-feature">
+            <div class="landing-feature-icon gold">✨</div>
+            <div class="landing-feature-text">
+              <div class="landing-feature-name">AI opisi jedi</div>
+              <div class="landing-feature-desc">Profesionalni opisi prilagojeni vašemu slogu — od fine dining do Instagrama.</div>
+              <div class="landing-feature-tags">
+                <span class="landing-tag">Fine Dining</span>
+                <span class="landing-tag">Casual</span>
+                <span class="landing-tag">Michelin</span>
+                <span class="landing-tag">Instagram</span>
+              </div>
+            </div>
+          </div>
+          <div class="landing-feature">
+            <div class="landing-feature-icon warm">📋</div>
+            <div class="landing-feature-text">
+              <div class="landing-feature-name">Moji meniji</div>
+              <div class="landing-feature-desc">Shranjujte, urejajte in izvažajte svoje menije. Vedno pri roki.</div>
+              <div class="landing-feature-tags">
+                <span class="landing-tag">Shrani</span>
+                <span class="landing-tag">Uredi</span>
+                <span class="landing-tag">Izvozi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="landing-how">
+        <div class="landing-section-label">Kako deluje</div>
+        <h2>Pet preprostih korakov.</h2>
+        <div class="landing-steps">
+          <div class="landing-step"><div class="landing-step-dot"></div><div class="landing-step-num">01</div><div class="landing-step-title">Slikajte meni</div><div class="landing-step-desc">Odprite kamero in fotografirajte svoj papirnat meni.</div></div>
+          <div class="landing-step"><div class="landing-step-dot"></div><div class="landing-step-num">02</div><div class="landing-step-title">AI prepozna jedi</div><div class="landing-step-desc">Naša umetna inteligenca samodejno prepozna vse jedi na sliki.</div></div>
+          <div class="landing-step"><div class="landing-step-dot"></div><div class="landing-step-num">03</div><div class="landing-step-title">Izberite slog</div><div class="landing-step-desc">Izberite slog opisov: poetski, klasičen, enostaven, za dostavo ali social.</div></div>
+          <div class="landing-step"><div class="landing-step-dot"></div><div class="landing-step-num">04</div><div class="landing-step-title">Prevajanje</div><div class="landing-step-desc">Opisi se samodejno prevedejo v 10 jezikov.</div></div>
+          <div class="landing-step active"><div class="landing-step-dot"></div><div class="landing-step-num">05</div><div class="landing-step-title">Kopirajte in uporabite</div><div class="landing-step-desc">Kopirajte opise z enim klikom in jih dodajte v svoj meni.</div></div>
+        </div>
+      </div>
+
+      <div class="landing-benefits">
+        <div class="landing-section-label">Prednosti</div>
+        <h2>Zakaj restavracije izberejo MenuBoost.</h2>
+        <div class="landing-benefits-grid">
+          <div class="landing-benefit"><div class="landing-benefit-icon">⚡</div><div class="landing-benefit-name">10 sekund</div><div class="landing-benefit-desc">Namesto ur pisanja.</div></div>
+          <div class="landing-benefit"><div class="landing-benefit-icon">🌍</div><div class="landing-benefit-name">10 jezikov</div><div class="landing-benefit-desc">En klik za prevod.</div></div>
+          <div class="landing-benefit"><div class="landing-benefit-icon">🎨</div><div class="landing-benefit-name">6 slogov</div><div class="landing-benefit-desc">Od fine dining do Instagrama.</div></div>
+          <div class="landing-benefit"><div class="landing-benefit-icon">💰</div><div class="landing-benefit-name">€19/mesec</div><div class="landing-benefit-desc">Manj kot en gost.</div></div>
+        </div>
+      </div>
+
+      <div class="landing-final">
+        <div class="landing-final-card">
+          <h2>Pripravljeni začeti?</h2>
+          <p>Brezplačno začnite z 3 jedmi. Brez kartice.</p>
+          <button class="landing-cta-btn" id="btnLandingFinal">Začni brezplačno →</button>
+        </div>
+      </div>
+
+      <div class="landing-footer">
+        <div class="landing-footer-logo">Menu<span>Boost</span></div>
+        <div class="landing-footer-links">
+          <a href="privacy.html" class="landing-footer-link">Zasebnost</a>
         </div>
       </div>
     </div>
-    <div class="output-area" id="output-area">
-      <div class="empty-state" id="empty-state">
-        <p id="empty-text">Vpišite jedi in kliknite<br>Ustvari opise</p>
+  </div>
+
+  <!-- SCREEN 1: WELCOME -->
+  <div class="screen" id="welcomeScreen">
+    <div class="welcome">
+      <div class="welcome-icon">📸</div>
+      <h1>Slikaj svoj meni<br>mi poskrbimo za opise</h1>
+      <p>AI prepozna jedi iz tvojega menija in generira profesionalne opise v 10 jezikih</p>
+      <button class="btn-primary" id="btnCamera">📷 Slikaj meni</button>
+      <div class="welcome-demo">
+        <button class="btn-secondary" id="btnDemo">🎮 Poskusi z demo-jem</button>
+      </div>
+      <p style="font-size:13px;color:var(--gold);font-weight:500;margin-top:0.5rem">3 jedi brezplačno, potem €19/mesec</p>
+      <div class="welcome-terms">Z nadaljevanjem se strinjate z <a href="privacy.html">politiko zasebnosti</a></div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: CAMERA -->
+  <div class="screen camera-screen" id="cameraScreen">
+    <video class="camera-video" id="cameraVideo" autoplay playsinline muted></video>
+    <div class="camera-overlay">
+      <div class="camera-top">
+        <button class="camera-close" id="btnCameraClose">✕</button>
+        <span style="color:#fff;font-size:14px;font-weight:500">MenuBoost</span>
+        <button class="camera-close" id="btnSwitchCamera">🔄</button>
+      </div>
+      <div class="camera-guide">
+        <div class="camera-guide-text">Postavite meni v okvir</div>
+      </div>
+      <div class="camera-bottom">
+        <button class="gallery-btn" id="btnGallery">🖼️</button>
+        <button class="shutter" id="btnShutter"></button>
+        <div style="width:52px"></div>
+      </div>
+    </div>
+    <div class="camera-err" id="cameraErr" style="display:none">
+      <p>⚠️ Dostop do kamere ni mogoč</p>
+      <p>Dovoli dostop do kamere v nastavitvah brskalnika</p>
+      <button class="btn-primary" id="btnRetryCamera">Poskusi znova</button>
+      <button class="btn-secondary" id="btnUploadInstead">📁 Naloži fotografijo</button>
+    </div>
+    <canvas id="captureCanvas" style="display:none"></canvas>
+    <input type="file" accept="image/*" id="fileInput" capture="environment">
+  </div>
+
+  <!-- SCREEN 3: PROCESSING (analyzing photo) -->
+  <div class="screen" id="processingScreen">
+    <div class="processing">
+      <div class="processing-preview">
+        <img id="processingImg" src="" alt="Tvoj meni">
+      </div>
+      <div class="spinner-lg"></div>
+      <h2>AI prepozna jedi...</h2>
+      <p>Analiziram fotografijo menija</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
       </div>
     </div>
   </div>
 
-  <!-- QR Code Section -->
-  <div class="qr-section" id="qr-section">
-    <h3>📱 QR koda za vaš jedilnik</h3>
-    <p class="qr-subtitle">Natisnite to kodo na papirni jedilnik. Gostje jo skenirajo in vidijo prevod v svojem jeziku.</p>
-    <div id="qrcode"></div>
-    <p style="font-size:12px;color:var(--mute);margin-top:0.75rem">Deluje s kamero kateregakoli pametnega telefona</p>
-    <div class="qr-actions">
-      <button class="btn-qr primary" onclick="downloadQR()">📥 Prenesi QR kodo</button>
-      <button class="btn-qr" onclick="downloadPDF()">📄 Prenesi PDF</button>
-      <button class="btn-qr" onclick="copyMenuLink()">🔗 Kopiraj povezavo</button>
+  <!-- SCREEN 4: PREFERENCES (enter dishes + choose style + languages) -->
+  <div class="screen" id="prefsScreen">
+    <div class="header">
+      <button class="header-btn" id="btnPrefsBack">← Nazaj</button>
+      <span class="header-title">Tvoj meni</span>
+      <span style="width:36px"></span>
     </div>
-  </div>
-
-  <div style="margin-top:1.5rem">
-    <div class="upgrade-card">
-      <div class="upgrade-text">
-        <h3>Neomejeni opisi za vaš jedilnik</h3>
-        <p>19 EUR / mesec · Vsi jeziki · Neomejene jedi · Vsi slogi</p>
+    <div class="prefs">
+      <div class="prefs-preview" id="prefsPreviewWrap" style="display:none">
+        <img id="prefsPreviewImg" src="" alt="Tvoj meni">
       </div>
-      <button class="btn-upgrade" onclick="checkout()">Začni Pro</button>
+
+      <!-- DISH INPUT -->
+      <div class="pref-section">
+        <div class="pref-label">Vpišite jedi iz menija</div>
+        <div id="dishInputList" class="dish-input-list"></div>
+        <button class="btn-add-dish" id="btnAddDish">+ Dodaj jed</button>
+      </div>
+
+      <!-- STYLE -->
+      <div class="pref-section">
+        <div class="pref-label">
+          Slog opisa
+          <span class="saved-badge" id="savedStyleBadge">Shranjeno ✓</span>
+        </div>
+        <div class="style-grid" id="styleGrid">
+          <div class="style-option active" data-style="poetic">
+            <div class="style-icon">✨</div>
+            <div class="style-name">Poetično</div>
+            <div class="style-desc">Senzualno, doživeto</div>
+          </div>
+          <div class="style-option" data-style="classic">
+            <div class="style-icon">🎩</div>
+            <div class="style-name">Klasično</div>
+            <div class="style-desc">Elegantno, tradicionalno</div>
+          </div>
+          <div class="style-option" data-style="simple">
+            <div class="style-icon">📝</div>
+            <div class="style-name">Enostavno</div>
+            <div class="style-desc">Jasno, prijazno</div>
+          </div>
+          <div class="style-option" data-style="delivery">
+            <div class="style-icon">🛵</div>
+            <div class="style-name">Dostava</div>
+            <div class="style-desc">Za Wolt, Bolt</div>
+          </div>
+          <div class="style-option" data-style="social">
+            <div class="style-icon">🔥</div>
+            <div class="style-name">Social</div>
+            <div class="style-desc">Za Instagram</div>
+          </div>
+          <div class="style-option" data-style="michelin">
+            <div class="style-icon">⭐</div>
+            <div class="style-name">Michelin</div>
+            <div class="style-desc">Fine dining</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="pref-section">
+        <div class="pref-label">
+          Jeziki prevoda
+          <span class="saved-badge" id="savedLangBadge">Shranjeno ✓</span>
+        </div>
+        <div class="lang-grid" id="langGrid">
+          <div class="lang-option active" data-lang="sl">
+            <span class="lang-flag">🇸🇮</span>
+            <div class="lang-info"><div class="lang-name">Slovenščina</div><div class="lang-native">Slovenian</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option active" data-lang="en">
+            <span class="lang-flag">🇬🇧</span>
+            <div class="lang-info"><div class="lang-name">Angleščina</div><div class="lang-native">English</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option" data-lang="de">
+            <span class="lang-flag">🇩🇪</span>
+            <div class="lang-info"><div class="lang-name">Nemščina</div><div class="lang-native">Deutsch</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option" data-lang="it">
+            <span class="lang-flag">🇮🇹</span>
+            <div class="lang-info"><div class="lang-name">Italijanščina</div><div class="lang-native">Italiano</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option" data-lang="hr">
+            <span class="lang-flag">🇭🇷</span>
+            <div class="lang-info"><div class="lang-name">Hrvaščina</div><div class="lang-native">Hrvatski</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option" data-lang="sr">
+            <span class="lang-flag">🇷🇸</span>
+            <div class="lang-info"><div class="lang-name">Srbščina</div><div class="lang-native">Srpski</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option" data-lang="fr">
+            <span class="lang-flag">🇫🇷</span>
+            <div class="lang-info"><div class="lang-name">Francoščina</div><div class="lang-native">Français</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option" data-lang="es">
+            <span class="lang-flag">🇪🇸</span>
+            <div class="lang-info"><div class="lang-name">Španščina</div><div class="lang-native">Español</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option" data-lang="tr">
+            <span class="lang-flag">🇹🇷</span>
+            <div class="lang-info"><div class="lang-name">Turščina</div><div class="lang-native">Türkçe</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+          <div class="lang-option" data-lang="el">
+            <span class="lang-flag">🇬🇷</span>
+            <div class="lang-info"><div class="lang-name">Grščina</div><div class="lang-native">Ελληνικά</div></div>
+            <span class="lang-check">✓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAVE TOGGLE -->
+      <div class="pref-section">
+        <div class="save-toggle">
+          <div class="save-toggle-left">
+            <div class="save-toggle-text">Shrani za naslednjič</div>
+            <div class="save-toggle-hint">Izbire bodo samodejno izbrane pri naslednji sliki</div>
+          </div>
+          <div class="toggle-switch active" id="toggleSave"></div>
+        </div>
+      </div>
+
+      <!-- ACTION -->
+      <div class="prefs-actions">
+        <button class="btn-generate" id="btnGenerate">
+          <span>✨</span> Generiraj opise
+        </button>
+        <div class="gen-count" id="genCount">6 jedi · 2 jezika · ~15 sekund</div>
+      </div>
     </div>
   </div>
 
-  <div class="seo-content">
-    <h2>AI generator opisov jedi za restavracije</h2>
-    <p>MenuBoost je AI orodje ki v 10 sekundah ustvari poetske opise jedi za vaš jedilnik v slovenščini, hrvaščini, angleščini, nemščini, italijanščini, srščini, francoščini, španščini, turščini in grščini. Brez pisanja, brez agencij.</p>
-    <p>Idealno za gostilne, restavracije, kavarne, turistične kmetije in hotele ki želijo privabiti domače in tuje goste z apetitnimi opisi svojih jedi.</p>
-    <h3>Pogosta vprašanja</h3>
-    <div class="faq-item">
-      <div class="faq-q">Je MenuBoost brezplačen?</div>
-      <div class="faq-a">Da — dobite 3 brezplačne generacije brez registracije. Za neomejeno uporabo nadgradite na Pro za 19 EUR na mesec.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">V katerih jezikih deluje MenuBoost?</div>
-      <div class="faq-a">MenuBoost ustvarja opise v slovenščini, hrvaščini, angleščini, nemščini, italijanščini, srščini, francoščini, španščini, turščini in grščini.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Kateri slogi pisanja so na voljo?</div>
-      <div class="faq-a">Na voljo je pet slogov: poetski, klasičen, preprost, za dostavo (Wolt/Bolt Food) in za social media.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Ali deluje za turistične kmetije?</div>
-      <div class="faq-a">Da — MenuBoost je idealen za turistične kmetije ki želijo opisati domače jedi tujim gostom v nemščini ali angleščini.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Kako hitro dobim opis?</div>
-      <div class="faq-a">Opis je pripravljen v manj kot 10 sekundah. Vpišite jedi in kliknite Ustvari opise.</div>
+  <!-- SCREEN 5: GENERATING (with selected prefs) -->
+  <div class="screen" id="generatingScreen">
+    <div class="processing">
+      <div class="spinner-lg"></div>
+      <h2>Generiram opise...</h2>
+      <p id="generatingStatus">Pišem opise za 6 jedi</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="genProgressFill"></div>
+      </div>
     </div>
   </div>
+
+  <!-- SCREEN 6: RESULTS -->
+  <div class="screen" id="resultsScreen">
+    <div class="results-header">
+      <div class="results-count" id="resultsCount">Najdenih 0 jedi</div>
+      <div class="lang-tabs" id="langTabs"></div>
+    </div>
+    <div class="results-list" id="resultsList"></div>
+    <button class="btn-copy-all" id="btnCopyAll">📋 Kopiraj vse opise</button>
+    <button class="btn-new-scan" id="btnNewScan">📸 Nova slika</button>
+  </div>
+
+  <!-- PAYWALL -->
+  <div class="paywall-overlay" id="paywall">
+    <div class="paywall-card">
+      <h2>Odkleni neomejeno</h2>
+      <p>Za 3 brezplačnimi jedmi nadaljuj z plačljivo verzijo</p>
+      <div class="paywall-price">€19<span>/mesec</span></div>
+      <div class="paywall-features">
+        <div class="paywall-feature">Neomejeno število jedi</div>
+        <div class="paywall-feature">10 jezikov</div>
+        <div class="paywall-feature">6 slogov opisov</div>
+        <div class="paywall-feature">SEO optimizirano</div>
+        <div class="paywall-feature">Kopiraj v 1 kliku</div>
+      </div>
+      <div style="margin-bottom:1rem">
+        <input type="email" id="paywallEmail" placeholder="tvoj@email.si" style="width:100%;padding:14px;border:1.5px solid var(--border);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--brown);background:var(--cream);outline:none;text-align:center">
+      </div>
+      <button class="paywall-btn" id="btnPaywall">Plačaj €19/mesec</button>
+      <button class="paywall-skip" id="btnPaywallClose">Nazaj na rezultate</button>
+    </div>
+  </div>
+
+  <!-- INSTALL BANNER -->
+  <div class="install-banner" id="installBanner">
+    <p id="installText">Dodaj MenuBoost na začetni zaslon za hiter dostop</p>
+    <button class="install-btn" id="btnInstall">Namesti</button>
+    <button class="install-close" id="btnInstallClose">✕</button>
+  </div>
+
+  <!-- iOS INSTALL MODAL -->
+  <div class="ios-install-modal" id="iosInstallModal">
+    <div class="ios-install-content">
+      <h3>📱 Namesti MenuBoost</h3>
+      <ol>
+        <li>Odpri to stran v <strong>Safari</strong></li>
+        <li>Tapni ikono <strong>⬆️ Share</strong> (spodaj na sredini)</li>
+        <li>Izberi <strong>»Add to Home Screen«</strong></li>
+        <li>Tapni <strong>»Add«</strong> v zgornjem desnem kotu</li>
+      </ol>
+      <p style="font-size:13px;color:var(--mute);margin-bottom:1rem">MenuBoost bo potem na tvojem začetnem zaslonu kot prava app! 🎉</p>
+      <button class="ios-install-ok" onclick="document.getElementById('iosInstallModal').classList.remove('active')">Razumem</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
 </div>
 
+<script src="i18n-app.js"></script>
 <script>
-var LANG_LABELS={sl:'🇸🇮 SL',hr:'🇭🇷 HR',en:'🇬🇧 EN',de:'🇩🇪 DE',it:'🇮🇹 IT',sr:'🇷🇸 SR',fr:'🇫🇷 FR',es:'🇪🇸 ES',tr:'🇹🇷 TR',el:'🇬🇷 EL'};
+(function() {
+  'use strict';
 
-document.addEventListener('DOMContentLoaded',function(){
-  applyTranslations();
-  document.getElementById('lang-toggle').addEventListener('click',function(e){
-    e.stopPropagation();
-    document.getElementById('lang-dropdown').classList.toggle('show');
-  });
-  document.addEventListener('click',function(){
-    document.getElementById('lang-dropdown').classList.remove('show');
-  });
-  document.querySelectorAll('.lang-option').forEach(function(opt){
-    opt.addEventListener('click',function(e){
-      e.stopPropagation();
-      document.querySelectorAll('.lang-option').forEach(function(o){o.classList.remove('active');});
-      opt.classList.add('active');
-      setLang(opt.dataset.lang);
-      document.getElementById('lang-toggle').innerHTML = LANG_LABELS[opt.dataset.lang] + ' ▾';
-      document.getElementById('lang-dropdown').classList.remove('show');
-      // Sync form language pills with header language
-      var langMap={sl:'slovenian',hr:'croatian',en:'english',de:'german',it:'italian',sr:'serbian',fr:'french',es:'spanish',tr:'turkish',el:'greek'};
-      var formLang=langMap[opt.dataset.lang];
-      if(formLang){
-        document.querySelectorAll('.lang-pill').forEach(function(p){p.classList.remove('active');});
-        var pill=document.querySelector('.lang-pill[data-lang="'+formLang+'"]');
-        if(pill){pill.classList.add('active');selectedLangs=[formLang];}
-      }
-    });
-  });
-  // Start with 3 empty dish rows
-  addDish(); addDish(); addDish();
-});
+  // === UI LANGUAGE (i18n) ===
+  const UI_LANG_KEY = 'menuboost_ui_lang';
+  let currentLang = localStorage.getItem(UI_LANG_KEY) || 'sl';
+  if (!window.APP_I18N || !window.APP_I18N[currentLang]) currentLang = 'sl';
 
-var CREDITS_KEY='menuboost_credits_v1';
-function getCredits(){var s=localStorage.getItem(CREDITS_KEY);if(s===null){localStorage.setItem(CREDITS_KEY,3);return 3;}return parseInt(s,10);}
-function saveCredits(n){localStorage.setItem(CREDITS_KEY,Math.max(0,n));}
-var credits=getCredits();
-var selectedStyle='poetic';
-var selectedLangs=['slovenian','croatian'];
-var langLabels={slovenian:'Slovenian',croatian:'Croatian',english:'English',german:'German',italian:'Italian',serbian:'Serbian',french:'French',spanish:'Spanish',turkish:'Turkish',greek:'Greek'};
-var langFlags={slovenian:'SLO',croatian:'HR',english:'EN',german:'DE',italian:'IT',serbian:'SR',french:'FR',spanish:'ES',turkish:'TR',greek:'EL'};
-var styleGuides={poetic:'Evocative and sensory. Use aromas, textures, emotions.',classic:'Professional, elegant, traditional.',simple:'Clear, direct, friendly.',delivery:'Practical and appetizing for Wolt/Bolt Food.',social:'Energetic, modern, with emojis.'};
-
-function checkout(){
-  fetch('api/create-checkout.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({price_id:'price_1TXqOQEd81hrOq3ej1uLy0mn'})})
-  .then(function(r){return r.json();})
-  .then(function(d){if(d.checkout_url)window.location.href=d.checkout_url;else alert(t('errorPrefix')+' '+d.error);})
-  .catch(function(e){alert(t('errorConn')+' '+e.message);});
-}
-
-var qrInstance=null;
-var lastMenuData=null;
-var dishCounter=0;
-
-function updateCreditsUI(){
-  document.getElementById('credits-num').textContent=credits;
-  ['d1','d2','d3'].forEach(function(id,i){document.getElementById(id).classList.toggle('used',i>=credits);});
-  var banner=document.getElementById('no-credits-banner'),btn=document.getElementById('gen-btn');
-  if(credits<=0){banner.style.display='block';btn.disabled=true;}else{banner.style.display='none';btn.disabled=false;}
-}
-updateCreditsUI();
-
-document.querySelectorAll('.style-pill').forEach(function(pill){
-  pill.addEventListener('click',function(){
-    document.querySelectorAll('.style-pill').forEach(function(p){p.classList.remove('active');});
-    pill.classList.add('active');selectedStyle=pill.dataset.style;
-  });
-});
-document.querySelectorAll('.lang-pill').forEach(function(pill){
-  pill.addEventListener('click',function(){
-    pill.classList.toggle('active');
-    selectedLangs=Array.from(document.querySelectorAll('.lang-pill.active')).map(function(p){return p.dataset.lang;});
-  });
-});
-
-/* DISH MANAGEMENT */
-function addDish(){
-  if(dishCounter>=10)return;
-  dishCounter++;
-  var list=document.getElementById('dish-list');
-  var row=document.createElement('div');
-  row.className='dish-row';
-  row.id='dish-'+dishCounter;
-  row.innerHTML='<div class="dish-row-header"><span class="dish-number">#'+dishCounter+'</span><button class="btn-remove-dish" onclick="removeDish('+dishCounter+')">&times;</button></div><div class="dish-fields"><div><label>'+t('dishName')+'</label><input type="text" class="dish-name" placeholder="'+t('dishPlaceholder')+'"></div><div><label>'+t('ingredients')+'</label><input type="text" class="dish-ingredients" placeholder="'+t('ingredientsPlaceholder')+'"></div></div>';
-  list.appendChild(row);
-  if(dishCounter>=10)document.getElementById('btn-add-dish').style.display='none';
-}
-
-function removeDish(id){
-  var row=document.getElementById('dish-'+id);
-  if(row){row.remove();dishCounter--;}
-  if(dishCounter<10)document.getElementById('btn-add-dish').style.display='flex';
-  // Renumber remaining dishes
-  var rows=document.querySelectorAll('.dish-row');
-  rows.forEach(function(r,i){
-    r.querySelector('.dish-number').textContent=t('dishNum')+(i+1);
-  });
-}
-
-function getDishes(){
-  var dishes=[];
-  document.querySelectorAll('.dish-row').forEach(function(row){
-    var name=row.querySelector('.dish-name').value.trim();
-    var ingredients=row.querySelector('.dish-ingredients').value.trim();
-    if(name)dishes.push({name:name,ingredients:ingredients});
-  });
-  return dishes;
-}
-
-/* GENERATE */
-async function generate(){
-  var dishes=getDishes();
-  if(dishes.length===0){alert(t('errorNoDish'));return;}
-  if(credits<=0)return;
-  if(selectedLangs.length===0){alert(t('errorNoLang'));return;}
-  var restType=document.getElementById('rest-type').value;
-  var btn=document.getElementById('gen-btn'),spinner=document.getElementById('spinner');
-  btn.disabled=true;spinner.style.display='block';
-  document.getElementById('btn-text').textContent=t('btnGenerating');
-  document.getElementById('empty-state').style.display='none';
-  var area=document.getElementById('output-area');
-  area.querySelectorAll('.dish-result').forEach(function(c){c.remove();});
-  document.getElementById('qr-section').classList.remove('show');
-
-  // Build prompt for all dishes at once
-  var dishesDesc=dishes.map(function(d,i){
-    return (i+1)+'. '+d.name+(d.ingredients?' — '+d.ingredients:'');
-  }).join('\n');
-  var langList=selectedLangs.map(function(l){return l+' (write in '+langLabels[l]+')';}).join(', ');
-
-  var prompt='Write appetizing menu descriptions for these dishes:\n'+dishesDesc;
-  prompt+='\n\nRestaurant type: '+restType+'. Style: '+(styleGuides[selectedStyle]||'Professional.');
-  prompt+=' Languages: '+langList+'.';
-  prompt+='\n\nRules: 2-4 sentences per dish per language, max 80 words, do not start with dish name.';
-  prompt+='\nReturn ONLY this JSON: {"dishes":[{"name":"dish name","translations":{"slovenian":"...","croatian":"...",etc}}]}';
-
-  try{
-    var r=await fetch('api/generate-menu.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:prompt})});
-    var rawText=await r.text();
-    console.log('API raw response:',rawText.substring(0,200));
-    var data=JSON.parse(rawText);
-    var text=(data.content||[]).map(function(b){return b.text||'';}).join('');
-    var result={dishes:[]};
-    try{
-      text=text.replace(/```json/gi,'').replace(/```/g,'').trim();
-      var start=text.indexOf('{'),end=text.lastIndexOf('}');
-      if(start!==-1&&end!==-1)result=JSON.parse(text.substring(start,end+1));
-    }catch(e){
-      console.log('JSON parse failed:',e.message,'text:',text.substring(0,200));
-    }
-
-    // Display results
-    var menuData={dishes:[],restType:restType,style:selectedStyle,langs:selectedLangs};
-    (result.dishes||[]).forEach(function(dish){
-      var dishEl=createDishResult(dish.name,dish.translations||{});
-      area.appendChild(dishEl);
-      menuData.dishes.push(dish);
-    });
-
-    // If API didn't return structured dishes, create placeholder
-    if(!result.dishes||result.dishes.length===0){
-      dishes.forEach(function(d){
-        var trans={};
-        selectedLangs.forEach(function(l){trans[l]='Opis ni na voljo.';});
-        area.appendChild(createDishResult(d.name,trans));
-        menuData.dishes.push({name:d.name,translations:trans});
-      });
-    }
-
-    lastMenuData=menuData;
-    generateQR(menuData);
-    credits--;saveCredits(credits);updateCreditsUI();
-  }catch(e){
-    area.innerHTML='<div class="empty-state"><p>'+t('error')+'</p></div>';
-    console.error(e);
+  function t(key) {
+    if (!window.APP_I18N) return key;
+    return (APP_I18N[currentLang] && APP_I18N[currentLang][key]) || (APP_I18N['en'] && APP_I18N['en'][key]) || key;
   }
-  spinner.style.display='none';
-  document.getElementById('btn-text').textContent=t('btnRegenerate');
-  if(credits>0)btn.disabled=false;
-}
 
-function createDishResult(name,translations){
-  var div=document.createElement('div');
-  div.className='dish-result';
-  var html='<div class="dish-result-name">'+name+'</div><div class="dish-result-langs">';
-  selectedLangs.forEach(function(lang){
-    var isPlain=selectedStyle==='simple'||selectedStyle==='delivery';
-    html+='<div class="result-card"><div class="result-header"><div class="result-lang">'+(langFlags[lang]||lang)+'</div><div style="display:flex;align-items:center;gap:8px"><span class="result-style-badge">'+selectedStyle+'</span><button class="btn-copy" onclick="copyResult(this)">'+t('copy')+'</button></div></div>' + '<div class="result-body'+(isPlain?' plain':'')+'" data-text="'+(translations[lang]||'').replace(/"/g,'&quot;')+'">'+(translations[lang]||'...')+'</div></div>';
-  });
-  html+='</div>';
-  div.innerHTML=html;
-  return div;
-}
+  function applyTranslations() {
+    // Landing screen
+    var landBadge = document.querySelector('.landing-badge');
+    if (landBadge) landBadge.textContent = t('land_badge');
+    var landH1 = document.querySelector('.landing-hero h1');
+    if (landH1) landH1.innerHTML = t('land_title');
+    var landDesc = document.querySelector('.landing-hero > p');
+    if (landDesc) landDesc.textContent = t('land_desc');
+    var landNote = document.querySelector('.landing-note');
+    if (landNote) landNote.textContent = t('land_note');
+    var landCtaH2 = document.querySelector('.landing-cta-card h2');
+    if (landCtaH2) landCtaH2.textContent = t('land_cta_title');
+    var landCtaP = document.querySelector('.landing-cta-card > p');
+    if (landCtaP) landCtaP.textContent = t('land_cta_desc');
+    var landCtaBtn = $('btnLandingStart');
+    if (landCtaBtn) landCtaBtn.innerHTML = t('land_cta_btn');
+    var landCtaNote = document.querySelector('.landing-cta-note');
+    if (landCtaNote) landCtaNote.textContent = t('land_cta_note');
+    // Features
+    var landFeatLabel = document.querySelector('.landing-features .landing-section-label');
+    if (landFeatLabel) landFeatLabel.textContent = t('land_feat_label');
+    var landFeatH2 = document.querySelector('.landing-features h2');
+    if (landFeatH2) landFeatH2.textContent = t('land_feat_title');
+    var featNames = document.querySelectorAll('.landing-feature-name');
+    var featDescs = document.querySelectorAll('.landing-feature-desc');
+    if (featNames[0]) featNames[0].textContent = t('land_feat1_name');
+    if (featDescs[0]) featDescs[0].textContent = t('land_feat1_desc');
+    if (featNames[1]) featNames[1].textContent = t('land_feat2_name');
+    if (featDescs[1]) featDescs[1].textContent = t('land_feat2_desc');
+    if (featNames[2]) featNames[2].textContent = t('land_feat3_name');
+    if (featDescs[2]) featDescs[2].textContent = t('land_feat3_desc');
+    // How it works
+    var landHowLabel = document.querySelector('.landing-how .landing-section-label');
+    if (landHowLabel) landHowLabel.textContent = t('land_how_label');
+    var landHowH2 = document.querySelector('.landing-how h2');
+    if (landHowH2) landHowH2.textContent = t('land_how_title');
+    var stepTitles = document.querySelectorAll('.landing-step-title');
+    var stepDescs = document.querySelectorAll('.landing-step-desc');
+    var stepKeys = [1,2,3,4,5];
+    stepKeys.forEach(function(i) {
+      if (stepTitles[i-1]) stepTitles[i-1].textContent = t('land_step'+i+'_title');
+      if (stepDescs[i-1]) stepDescs[i-1].textContent = t('land_step'+i+'_desc');
+    });
+    // Benefits
+    var landBenLabel = document.querySelector('.landing-benefits .landing-section-label');
+    if (landBenLabel) landBenLabel.textContent = t('land_benefits_label');
+    var landBenH2 = document.querySelector('.landing-benefits h2');
+    if (landBenH2) landBenH2.textContent = t('land_benefits_title');
+    var benNames = document.querySelectorAll('.landing-benefit-name');
+    var benDescs = document.querySelectorAll('.landing-benefit-desc');
+    if (benNames[0]) benNames[0].textContent = t('land_ben1_name');
+    if (benDescs[0]) benDescs[0].textContent = t('land_ben1_desc');
+    if (benNames[1]) benNames[1].textContent = t('land_ben2_name');
+    if (benDescs[1]) benDescs[1].textContent = t('land_ben2_desc');
+    if (benNames[2]) benNames[2].textContent = t('land_ben3_name');
+    if (benDescs[2]) benDescs[2].textContent = t('land_ben3_desc');
+    if (benNames[3]) benNames[3].textContent = t('land_ben4_name');
+    if (benDescs[3]) benDescs[3].textContent = t('land_ben4_desc');
+    // Final CTA
+    var landFinalH2 = document.querySelector('.landing-final-card h2');
+    if (landFinalH2) landFinalH2.textContent = t('land_final_title');
+    var landFinalP = document.querySelector('.landing-final-card > p');
+    if (landFinalP) landFinalP.textContent = t('land_final_desc');
+    var landFinalBtn = $('btnLandingFinal');
+    if (landFinalBtn) landFinalBtn.textContent = t('land_final_btn');
+    // Footer
+    var landFooterPrivacy = document.querySelector('.landing-footer-link');
+    if (landFooterPrivacy) landFooterPrivacy.textContent = t('land_footer_privacy');
 
-function copyResult(btn){
-  var text=btn.closest('.result-card').querySelector('.result-body').getAttribute('data-text')||btn.closest('.result-card').querySelector('.result-body').textContent;
-  navigator.clipboard.writeText(text).then(function(){
-    btn.textContent=t('copied');btn.classList.add('copied');
-    setTimeout(function(){btn.textContent=t('copy');btn.classList.remove('copied');},2000);
-  });
-}
+    // Welcome screen
+    var h1 = document.querySelector('#welcomeScreen h1');
+    if (h1) h1.innerHTML = t('welcome_title');
+    var welcomeP = document.querySelector('#welcomeScreen .welcome > p:first-of-type');
+    if (welcomeP) welcomeP.textContent = t('welcome_desc');
+    $('btnCamera').innerHTML = t('btn_camera');
+    $('btnDemo').innerHTML = t('btn_demo');
+    var pricingP = document.querySelector('#welcomeScreen .welcome p[style]');
+    if (pricingP) pricingP.textContent = t('pricing');
+    var termsDiv = document.querySelector('#welcomeScreen .welcome-terms');
+    if (termsDiv) termsDiv.innerHTML = t('terms');
 
-/* QR CODE */
-function generateQR(menuData){
-  try {
-    var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(menuData))));
-    var url=window.location.origin+'/menu.html?data='+encoded;
-    document.getElementById('qrcode').innerHTML='';
-    // Use QR Server API (more reliable than JS library)
-    var qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(url);
-    var img=document.createElement('img');
-    img.src=qrUrl;
-    img.alt='QR Code';
-    img.style='border-radius:12px';
-    img.onerror=function(){
-      // Fallback: try QRCode.js library
-      try {
-        qrInstance=new QRCode(document.getElementById('qrcode'),{
-          text:url,width:200,height:200,colorDark:'#2C1810',colorLight:'#FFFFFF',
-          correctLevel:QRCode.CorrectLevel.M
-        });
-      } catch(e2) {
-        console.error('QR fallback failed:',e2);
-        document.getElementById('qrcode').innerHTML='<p style=\'color:var(--mute);font-size:13px\'>QR code unavailable</p>';
-      }
+    // Camera screen
+    var guideText = document.querySelector('.camera-guide-text');
+    if (guideText) guideText.textContent = t('camera_guide');
+    var camErr = $('cameraErr');
+    if (camErr) {
+      var ps = camErr.querySelectorAll('p');
+      if (ps[0]) ps[0].innerHTML = t('camera_err');
+      if (ps[1]) ps[1].textContent = t('camera_err_hint');
+    }
+    $('btnRetryCamera').textContent = t('btn_retry');
+    $('btnUploadInstead').textContent = t('btn_upload');
+
+    // Processing screen
+    var procH2 = document.querySelector('#processingScreen h2');
+    if (procH2) procH2.textContent = t('processing_title');
+    var procP = document.querySelector('#processingScreen p');
+    if (procP) procP.textContent = t('processing_desc');
+
+    // Prefs screen
+    $('btnPrefsBack').textContent = t('btn_back');
+    var headerTitle = document.querySelector('#prefsScreen .header-title');
+    if (headerTitle) headerTitle.textContent = t('header_menu');
+    var prefLabels = document.querySelectorAll('#prefsScreen .pref-label');
+    if (prefLabels[0]) prefLabels[0].textContent = t('dishes_label');
+    $('btnAddDish').textContent = t('btn_add_dish');
+    if (prefLabels[1]) prefLabels[1].childNodes[0].textContent = t('style_label') + '\n          ';
+    if (prefLabels[2]) prefLabels[2].childNodes[0].textContent = t('lang_label') + '\n          ';
+    document.querySelectorAll('.saved-badge').forEach(function(b) { b.textContent = t('saved'); });
+
+    // Style names
+    var styleMap = {
+      poetic: ['style_poetic', 'style_poetic_desc'],
+      classic: ['style_classic', 'style_classic_desc'],
+      simple: ['style_simple', 'style_simple_desc'],
+      delivery: ['style_delivery', 'style_delivery_desc'],
+      social: ['style_social', 'style_social_desc'],
+      michelin: ['style_michelin', 'style_michelin_desc']
     };
-    document.getElementById('qrcode').appendChild(img);
-    document.getElementById('qr-section').classList.add('show');
-  } catch(e) {
-    console.error('QR generation failed:', e);
-    document.getElementById('qr-section').classList.remove('show');
-  }
-}
-
-function downloadQR(){
-  var img=document.querySelector('#qrcode img');
-  if(!img)return;
-  var link=document.createElement('a');
-  link.download='jedilnik-qr.png';
-  link.href=img.src;
-  link.target='_blank';
-  link.click();
-}
-
-function copyMenuLink(){
-  if(!lastMenuData)return;
-  var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(lastMenuData))));
-  var url=window.location.origin+'/menu.html?data='+encoded;
-  navigator.clipboard.writeText(url).then(function(){
-    alert('Povezava kopirana!');
-  });
-}
-
-function downloadPDF(){
-  var tmp=document.createElement('div');
-  tmp.style.cssText='padding:20px;font-family:DM Sans,sans-serif;max-width:700px';
-  tmp.innerHTML='<h1 style="font-family:Cormorant Garamond,serif;color:#2C1810;margin-bottom:20px">Meni</h1>';
-  var hasContent=false;
-
-  // Strategy 1: Use lastMenuData if available
-  if(lastMenuData && lastMenuData.dishes && lastMenuData.dishes.length > 0){
-    lastMenuData.dishes.forEach(function(dish){
-      tmp.innerHTML+='<div style="margin-bottom:20px;padding:12px;border:1px solid #E8DDD0;border-radius:8px"><div style="font-family:Cormorant Garamond,serif;font-size:18px;font-weight:600;color:#2C1810;margin-bottom:8px">'+dish.name+'</div>';
-      selectedLangs.forEach(function(lang){
-        var text=(dish.translations||{})[lang]||'';
-        if(text)tmp.innerHTML+='<div style="margin-bottom:6px"><span style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#9C8878">'+(langFlags[lang]||lang)+'</span><div style="font-family:Cormorant Garamond,serif;font-style:italic;line-height:1.6;font-size:14px;color:#5C3D2E">'+text+'</div></div>';
-      });
-      tmp.innerHTML+='</div>';
+    Object.keys(styleMap).forEach(function(style) {
+      var opt = document.querySelector('.style-option[data-style="' + style + '"]');
+      if (opt) {
+        var nameEl = opt.querySelector('.style-name');
+        var descEl = opt.querySelector('.style-desc');
+        if (nameEl) nameEl.textContent = t(styleMap[style][0]);
+        if (descEl) descEl.textContent = t(styleMap[style][1]);
+      }
     });
-    hasContent=true;
+
+    // Language names in output selector
+    document.querySelectorAll('.lang-option').forEach(function(opt) {
+      var lang = opt.dataset.lang;
+      var nameEl = opt.querySelector('.lang-name');
+      if (nameEl) nameEl.textContent = t('lang_name_' + lang);
+    });
+
+    // Save toggle
+    var saveText = document.querySelector('.save-toggle-text');
+    if (saveText) saveText.textContent = t('save_text');
+    var saveHint = document.querySelector('.save-toggle-hint');
+    if (saveHint) saveHint.textContent = t('save_hint');
+
+    // Generate button
+    $('btnGenerate').innerHTML = '<span>✨</span> ' + t('btn_generate').replace(/^✨\s*/, '');
+
+    // Generating screen
+    var genH2 = document.querySelector('#generatingScreen h2');
+    if (genH2) genH2.textContent = t('gen_title');
+
+    // Results screen
+    $('btnCopyAll').textContent = t('btn_copy_all');
+    $('btnNewScan').textContent = t('btn_new_scan');
+
+    // Paywall
+    var pwCard = $('paywall');
+    if (pwCard) {
+      var pwH2 = pwCard.querySelector('h2');
+      if (pwH2) pwH2.textContent = t('paywall_title');
+      var pwP = pwCard.querySelector('.paywall-card > p');
+      if (pwP) pwP.textContent = t('paywall_desc');
+      var features = pwCard.querySelectorAll('.paywall-feature');
+      var featureKeys = ['paywall_feature1','paywall_feature2','paywall_feature3','paywall_feature4','paywall_feature5'];
+      featureKeys.forEach(function(key, i) {
+        if (features[i]) features[i].textContent = t(key);
+      });
+      $('paywallEmail').placeholder = t('paywall_email');
+      $('btnPaywall').textContent = t('paywall_btn');
+      $('btnPaywallClose').textContent = t('paywall_close');
+    }
+
+    // Install banner
+    $('installText').textContent = t('install_text');
+    $('btnInstall').textContent = t('install_btn');
+
+    // iOS modal
+    var iosModal = $('iosInstallModal');
+    if (iosModal) {
+      var iosH3 = iosModal.querySelector('h3');
+      if (iosH3) iosH3.innerHTML = t('ios_title');
+      var lis = iosModal.querySelectorAll('li');
+      ['ios_step1','ios_step2','ios_step3','ios_step4'].forEach(function(key, i) {
+        if (lis[i]) lis[i].innerHTML = t(key);
+      });
+      var iosP = iosModal.querySelector('.ios-install-content p');
+      if (iosP) iosP.textContent = t('ios_desc');
+      var iosOk = iosModal.querySelector('.ios-install-ok');
+      if (iosOk) iosOk.textContent = t('ios_ok');
+    }
+
+    // Update HTML lang attribute
+    document.documentElement.lang = currentLang;
+
+    // Update lang flag active state
+    document.querySelectorAll('.ui-lang-flag').forEach(function(f) {
+      f.classList.toggle('active', f.dataset.uiLang === currentLang);
+    });
+
+    // Update dynamic counts
+    updateGenCount();
   }
 
-  // Strategy 2: Fallback — read from DOM
-  if(!hasContent){
-    var area=document.getElementById('output-area');
-    var dishResults=area.querySelectorAll('.dish-result');
-    if(dishResults.length > 0){
-      dishResults.forEach(function(dishEl){
-        var name=dishEl.querySelector('.dish-result-name');
-        if(!name)return;
-        tmp.innerHTML+='<div style="margin-bottom:20px;padding:12px;border:1px solid #E8DDD0;border-radius:8px"><div style="font-family:Cormorant Garamond,serif;font-size:18px;font-weight:600;color:#2C1810;margin-bottom:8px">'+name.textContent+'</div>';
-        var cards=dishEl.querySelectorAll('.result-card');
-        cards.forEach(function(card){
-          var lang=card.querySelector('.result-lang');
-          var body=card.querySelector('.result-body');
-          if(lang && body && body.textContent.trim()){
-            tmp.innerHTML+='<div style="margin-bottom:6px"><span style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#9C8878">'+lang.textContent+'</span><div style="font-family:Cormorant Garamond,serif;font-style:italic;line-height:1.6;font-size:14px;color:#5C3D2E">'+body.textContent+'</div></div>';
-          }
-        });
-        tmp.innerHTML+='</div>';
+  function setUILang(lang) {
+    currentLang = lang;
+    localStorage.setItem(UI_LANG_KEY, lang);
+    applyTranslations();
+  }
+
+  // === STATE ===
+  const state = {
+    currentScreen: 'welcome',
+    selectedLangs: ['sl', 'en'],
+    selectedStyle: 'poetic',
+    savePrefs: true,
+    dishes: [],
+    imageData: null,
+    freeDishes: 3,
+    paid: localStorage.getItem('menuboost_paid') === 'true',
+    stream: null,
+    facingMode: 'environment'
+  };
+
+  // === STORAGE KEYS ===
+  const STORAGE_KEY = 'menuboost_prefs';
+
+  // === ELEMENTS ===
+  const $ = id => document.getElementById(id);
+  const screens = {
+    landing: $('landingScreen'),
+    welcome: $('welcomeScreen'),
+    camera: $('cameraScreen'),
+    processing: $('processingScreen'),
+    prefs: $('prefsScreen'),
+    generating: $('generatingScreen'),
+    results: $('resultsScreen')
+  };
+
+  // === SAVE / LOAD PREFS ===
+  function savePrefs() {
+    if (!state.savePrefs) {
+      localStorage.removeItem(STORAGE_KEY);
+      return;
+    }
+    const prefs = {
+      style: state.selectedStyle,
+      langs: state.selectedLangs,
+      save: state.savePrefs
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+  }
+
+  function loadPrefs() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const prefs = JSON.parse(raw);
+      if (prefs.save === false) return;
+
+      state.selectedStyle = prefs.style || 'poetic';
+      state.selectedLangs = prefs.langs || ['sl', 'en'];
+      state.savePrefs = prefs.save !== false;
+
+      // Update UI
+      $('styleGrid').querySelectorAll('.style-option').forEach(el => {
+        el.classList.toggle('active', el.dataset.style === state.selectedStyle);
       });
-      hasContent=true;
+      $('langGrid').querySelectorAll('.lang-option').forEach(el => {
+        el.classList.toggle('active', state.selectedLangs.includes(el.dataset.lang));
+      });
+      $('toggleSave').classList.toggle('active', state.savePrefs);
+
+      // Show saved badges
+      $('savedStyleBadge').classList.add('show');
+      $('savedLangBadge').classList.add('show');
+    } catch(e) {}
+  }
+
+  // === NAVIGATION ===
+  function showScreen(name) {
+    Object.values(screens).forEach(s => s.classList.remove('active'));
+    screens[name].classList.add('active');
+    state.currentScreen = name;
+  }
+
+  // === TOAST ===
+  function toast(msg) {
+    const t = $('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // === CAMERA ===
+  async function startCamera() {
+    try {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      let constraints = isIOS
+        ? { video: { facingMode: 'environment' } }
+        : { video: { facingMode: state.facingMode, width: { ideal: 1920 }, height: { ideal: 1080 } } };
+
+      state.stream = await navigator.mediaDevices.getUserMedia(constraints);
+      $('cameraVideo').srcObject = state.stream;
+      $('cameraErr').style.display = 'none';
+      $('cameraVideo').style.display = 'block';
+      showScreen('camera');
+    } catch (err) {
+      console.error('Camera error:', err);
+      $('cameraErr').style.display = 'flex';
+      $('cameraVideo').style.display = 'none';
     }
   }
 
-  if(!hasContent){
-    alert('Najprej ustvarite opise, nato prenesite PDF.');
-    return;
+  function stopCamera() {
+    if (state.stream) { state.stream.getTracks().forEach(t => t.stop()); state.stream = null; }
   }
 
-  // Add QR code if available
-  var qrImg=document.querySelector('#qrcode img');
-  if(qrImg){
-    tmp.innerHTML+='<div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid #E8DDD0"><p style="font-size:12px;color:#9C8878;margin-bottom:8px">Skenirajte za digitalni jedilnik</p><img src="'+qrImg.src+'" width="120"></div>';
+  function capturePhoto() {
+    const video = $('cameraVideo');
+    const canvas = $('captureCanvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    return canvas.toDataURL('image/jpeg', 0.85);
   }
 
-  document.body.appendChild(tmp);
-  try{
-    html2pdf().set({margin:10,filename:'meni.pdf',image:{type:'jpeg',quality:0.98},html2canvas:{scale:2},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(tmp).save().then(function(){tmp.remove();}).catch(function(e){
-      console.error('PDF generation failed:',e);
-      tmp.remove();
-      alert('Napaka pri generiranju PDF. Poskusite znova.');
+  // === FILE UPLOAD ===
+  function handleFile(file) {
+    if (!file || !file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = e => processImage(e.target.result);
+    reader.readAsDataURL(file);
+  }
+
+  // === DEMO MODE ===
+  function runDemo() {
+    state.dishes = [
+      { name: 'Jota', descriptions: {} },
+      { name: 'Štruklji', descriptions: {} },
+      { name: 'Potica', descriptions: {} }
+    ];
+    // Show prefs screen directly
+    $('prefsPreviewWrap').style.display = 'none';
+    updateGenCount();
+    showScreen('prefs');
+  }
+
+  // === ANALYTICS ===
+  function track(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params || {});
+  }
+
+  // === STEP 1: FROM PHOTO — extract dish names, then show prefs ===
+  async function analyzeFromPhoto(dataUrl) {
+    track('scan_start', { method: 'photo' });
+    state.imageData = dataUrl;
+    showScreen('processing');
+    $('processingImg').src = dataUrl;
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress = Math.min(progress + Math.random() * 10, 90);
+      $('progressFill').style.width = progress + '%';
+    }, 800);
+
+    try {
+      const base64 = dataUrl.split(',')[1];
+      // Only extract dish names — don't generate yet
+      const res = await fetch('api/analyze-photo.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: base64, analyze_only: true })
+      });
+      const data = await res.json();
+      clearInterval(interval);
+      $('progressFill').style.width = '100%';
+
+      if (data.error) throw new Error(data.error);
+
+      // Store dish names, show prefs for style + language selection
+      state.dishes = (data.dishes || []).map(d => ({
+        name: typeof d === 'string' ? d : d.name,
+        descriptions: {}
+      }));
+
+      // Show prefs screen
+      $('prefsPreviewWrap').style.display = 'block';
+      $('prefsPreviewImg').src = dataUrl;
+      updateGenCount();
+      showScreen('prefs');
+    } catch (err) {
+      clearInterval(interval);
+      console.error('Photo analysis error:', err);
+      toast(t('err_analysis'));
+      showDishInput(dataUrl);
+    }
+  }
+
+  // === STEP 1b: MANUAL DISH INPUT ===
+  function showDishInput(dataUrl) {
+    state.imageData = dataUrl;
+    state.dishes = [];
+
+    $('prefsPreviewWrap').style.display = 'block';
+    $('prefsPreviewImg').src = dataUrl;
+
+    const savedDishes = loadSavedDishes();
+    const list = $('dishInputList');
+    list.innerHTML = '';
+    if (savedDishes.length > 0) {
+      savedDishes.forEach((name, i) => addDishRow(list, i + 1, name));
+    } else {
+      addDishRow(list, 1, '');
+      addDishRow(list, 2, '');
+      addDishRow(list, 3, '');
+    }
+
+    updateGenCount();
+    showScreen('prefs');
+  }
+
+  function addDishRow(list, num, value = '') {
+    const row = document.createElement('div');
+    row.className = 'dish-input-row';
+    row.innerHTML = `
+      <span class="dish-input-num">${num}</span>
+      <input type="text" placeholder="Ime jedi" value="${value}" inputmode="text">
+      <button class="btn-remove-dish">✕</button>
+    `;
+    row.querySelector('.btn-remove-dish').onclick = () => {
+      row.remove();
+      renumberDishes();
+      updateGenCount();
+    };
+    row.querySelector('input').addEventListener('input', () => updateGenCount());
+    list.appendChild(row);
+  }
+
+  function renumberDishes() {
+    $('dishInputList').querySelectorAll('.dish-input-row').forEach((row, i) => {
+      row.querySelector('.dish-input-num').textContent = i + 1;
     });
-  }catch(e){
-    console.error('html2pdf error:',e);
-    tmp.remove();
-    alert('PDF orodje ni na voljo. Poskusite v drugem brskalniku.');
   }
-}
+
+  function getDishNames() {
+    const names = [];
+    $('dishInputList').querySelectorAll('.dish-input-row input').forEach(input => {
+      const val = input.value.trim();
+      if (val) names.push(val);
+    });
+    return names;
+  }
+
+  function saveSavedDishes(names) {
+    localStorage.setItem('menuboost_dishes', JSON.stringify(names));
+  }
+  function loadSavedDishes() {
+    try { return JSON.parse(localStorage.getItem('menuboost_dishes') || '[]'); } catch { return []; }
+  }
+
+  // === STEP 2: GENERATE FROM DISH NAMES ===
+  async function generateDescriptions() {
+    track('generate_start', { dishes: state.dishes.length, langs: state.selectedLangs.length, style: state.selectedStyle });
+    showScreen('generating');
+    $('generatingStatus').textContent = t('gen_status').replace('%n', state.dishes.length).replace('%l', state.selectedLangs.length);
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress = Math.min(progress + Math.random() * 12, 90);
+      $('genProgressFill').style.width = progress + '%';
+    }, 800);
+
+    try {
+      const res = await fetch('api/analyze-photo.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          dishes: state.dishes.map(d => d.name),
+          style: state.selectedStyle,
+          langs: state.selectedLangs
+        })
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+
+      clearInterval(interval);
+      $('genProgressFill').style.width = '100%';
+
+      if (data.dishes) state.dishes = data.dishes;
+      saveSavedDishes(state.dishes.map(d => d.name));
+      track('generate_complete', { dishes: state.dishes.length });
+      setTimeout(() => showResults(), 500);
+    } catch (err) {
+      clearInterval(interval);
+      console.error('Generate error:', err);
+      toast(t('err_generate'));
+      showScreen('prefs');
+    }
+  }
+
+  // === SHOW RESULTS ===
+  function showResults() {
+    const list = $('resultsList');
+    list.innerHTML = '';
+
+    const langs = state.selectedLangs;
+    const primaryLang = langs[0] || 'sl';
+
+    $('resultsCount').textContent = t('results_found').replace('%n', state.dishes.length);
+
+    // Build lang tabs for selected languages only
+    const langTabs = {
+      sl: t('lang_tab_sl'), en: t('lang_tab_en'), de: t('lang_tab_de'), it: t('lang_tab_it'),
+      hr: t('lang_tab_hr'), sr: t('lang_tab_sr'), fr: t('lang_tab_fr'), es: t('lang_tab_es'),
+      tr: t('lang_tab_tr'), el: t('lang_tab_el')
+    };
+    $('langTabs').innerHTML = langs.map((l, i) =>
+      `<button class="lang-tab ${i === 0 ? 'active' : ''}" data-lang="${l}">${langTabs[l] || l}</button>`
+    ).join('');
+
+    // Render dishes
+    renderDishes(primaryLang, list);
+
+    // Copy all button
+    $('btnCopyAll').onclick = () => {
+      const all = state.dishes.map((d, i) => {
+        const desc = d.descriptions?.[primaryLang] || '';
+        return `${d.name}\n${desc}`;
+      }).join('\n\n');
+      navigator.clipboard.writeText(all).then(() => toast(t('copied_all')));
+    };
+
+    // Tab switching
+    $('langTabs').onclick = e => {
+      const tab = e.target.closest('.lang-tab');
+      if (!tab) return;
+      $('langTabs').querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderDishes(tab.dataset.lang, list);
+    };
+
+    showScreen('results');
+  }
+
+  function renderDishes(lang, list) {
+    list.innerHTML = '';
+    state.dishes.forEach((dish, i) => {
+      const isLocked = !state.paid && i >= state.freeDishes;
+      const desc = dish.descriptions?.[lang] || t('desc_unavailable');
+
+      const card = document.createElement('div');
+      card.className = `dish-card ${isLocked ? 'locked' : ''}`;
+      card.innerHTML = `
+        <div class="dish-name">
+          <span class="dish-num">${i + 1}</span>
+          ${dish.name}
+        </div>
+        <div class="dish-desc">${desc}</div>
+        ${!isLocked ? `<div class="dish-actions">
+          <button class="btn-copy" data-idx="${i}">${t('btn_copy')}</button>
+        </div>` : ''}
+      `;
+      list.appendChild(card);
+    });
+
+    // Paywall for locked
+    if (!state.paid && state.dishes.length > state.freeDishes) {
+      const btn = document.createElement('button');
+      btn.className = 'btn-copy-all';
+      btn.style.cssText = 'margin:1rem 1.25rem;background:var(--gold);color:var(--brown)';
+      btn.innerHTML = t('unlock_btn').replace('%n', state.dishes.length - state.freeDishes);
+      btn.onclick = () => $('paywall').classList.add('active');
+      list.appendChild(btn);
+    }
+
+    // Copy handlers
+    list.querySelectorAll('.btn-copy').forEach(btn => {
+      btn.onclick = () => {
+        const desc = state.dishes[parseInt(btn.dataset.idx)].descriptions?.[lang] || '';
+        navigator.clipboard.writeText(desc).then(() => {
+          btn.classList.add('copied');
+          btn.innerHTML = t('btn_copied');
+          setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = t('btn_copy'); }, 2000);
+        });
+      };
+    });
+  }
+
+  // === UPDATE GEN COUNT ===
+  function updateGenCount() {
+    const inputs = $('dishInputList').querySelectorAll('.dish-input-row input');
+    let n = 0;
+    inputs.forEach(inp => { if (inp.value.trim()) n++; });
+    const l = state.selectedLangs.length;
+    const est = Math.max(Math.round(n * l * 2.5), 5);
+    if (n > 0) {
+      $('genCount').textContent = t('count_template').replace('%n', n).replace('%l', l).replace('%t', est);
+    } else {
+      $('genCount').textContent = t('count_empty');
+    }
+  }
+
+  // === EVENT LISTENERS ===
+  // Landing screen buttons
+  $('btnLandingStart').onclick = () => showScreen('welcome');
+  $('btnLandingFinal').onclick = () => showScreen('welcome');
+
+  $('btnCamera').onclick = startCamera;
+  $('btnDemo').onclick = runDemo;
+  $('btnCameraClose').onclick = () => { stopCamera(); showScreen('welcome'); };
+  $('btnSwitchCamera').onclick = () => {
+    state.facingMode = state.facingMode === 'camera' ? 'environment' : 'camera';
+    stopCamera(); startCamera();
+  };
+  $('btnShutter').onclick = () => { const p = capturePhoto(); stopCamera(); analyzeFromPhoto(p); };
+  $('btnGallery').onclick = () => $('fileInput').click();
+  $('btnUploadInstead').onclick = () => $('fileInput').click();
+  $('btnRetryCamera').onclick = startCamera;
+  $('fileInput').onchange = e => { if (e.target.files[0]) { const reader = new FileReader(); reader.onload = ev => analyzeFromPhoto(ev.target.result); reader.readAsDataURL(e.target.files[0]); } };
+
+  // Prefs back
+  $('btnPrefsBack').onclick = () => showScreen('welcome');
+
+  // Style selection
+  $('styleGrid').onclick = e => {
+    const opt = e.target.closest('.style-option');
+    if (!opt) return;
+    $('styleGrid').querySelectorAll('.style-option').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    state.selectedStyle = opt.dataset.style;
+    $('savedStyleBadge').classList.remove('show');
+  };
+
+  // Language selection
+  $('langGrid').onclick = e => {
+    const opt = e.target.closest('.lang-option');
+    if (!opt) return;
+    const lang = opt.dataset.lang;
+    opt.classList.toggle('active');
+
+    // Update state
+    state.selectedLangs = [];
+    $('langGrid').querySelectorAll('.lang-option.active').forEach(o => {
+      state.selectedLangs.push(o.dataset.lang);
+    });
+
+    // Ensure at least 1 language
+    if (state.selectedLangs.length === 0) {
+      opt.classList.add('active');
+      state.selectedLangs = [lang];
+      toast(t('err_no_lang'));
+    }
+    $('savedLangBadge').classList.remove('show');
+    updateGenCount();
+  };
+
+  // Save toggle
+  $('toggleSave').onclick = () => {
+    state.savePrefs = !state.savePrefs;
+    $('toggleSave').classList.toggle('active', state.savePrefs);
+  };
+
+  // Generate button
+  $('btnGenerate').onclick = () => {
+    if (state.selectedLangs.length === 0) { toast(t('err_no_lang')); return; }
+    // Check if we have dishes from photo or manual input
+    if (state.dishes.length === 0) {
+      // Manual input mode
+      const names = getDishNames();
+      if (names.length === 0) { toast(t('err_no_dish')); return; }
+      state.dishes = names.map(n => ({ name: n, descriptions: {} }));
+    }
+    savePrefs();
+    generateDescriptions();
+  };
+
+  // New scan
+  $('btnNewScan').onclick = () => showScreen('welcome');
+
+  // Check payment on load
+  if (state.paid) {
+    console.log('MenuBoost Pro active');
+  }
+
+  // Paywall
+  $('btnPaywallClose').onclick = () => $('paywall').classList.remove('active');
+  $('btnPaywall').onclick = async () => {
+    track('pay_click', { price: 19, currency: 'EUR' });
+    const email = $('paywallEmail').value.trim();
+    if (email) localStorage.setItem('menuboost_email', email);
+    try {
+      const res = await fetch('api/create-checkout.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ price_id: 'menuboost', email: email || undefined })
+      });
+      const data = await res.json();
+      if (data.checkout_url) {
+        window.location.href = data.checkout_url;
+      } else {
+        toast(t('err_stripe'));
+      }
+    } catch (e) {
+      toast(t('err_stripe'));
+    }
+  };
+
+  // PWA Install
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+
+  if (isIOS && !isStandalone) {
+    setTimeout(() => {
+      $('installBanner').classList.add('active');
+      $('installText').textContent = 'Namesti MenuBoost v začetni zaslon (Safari → Share → Add to Home)';
+    }, 5000);
+  }
+
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    $('installBanner').classList.add('active');
+  });
+
+  $('btnInstall').onclick = () => {
+    if (isIOS) { $('iosInstallModal').classList.add('active'); }
+    else if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(() => { deferredPrompt = null; }); }
+    $('installBanner').classList.remove('active');
+  };
+  $('btnInstallClose').onclick = () => $('installBanner').classList.remove('active');
+
+  // Register SW
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+
+  // UI Language selector
+  $('uiLangFlags').onclick = (e) => {
+    const flag = e.target.closest('.ui-lang-flag');
+    if (!flag) return;
+    setUILang(flag.dataset.uiLang);
+  };
+
+  // Load saved prefs on start
+  loadPrefs();
+
+  // Apply translations on load
+  applyTranslations();
+})();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="/chatbot/widget.js" defer></script>
-    </body>
+</body>
 </html>
