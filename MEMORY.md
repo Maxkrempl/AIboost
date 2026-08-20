@@ -59,7 +59,7 @@
 - **Key:** ~/.ssh/domenca_server_key (pw: ***REMOVED***)
 - **Deploy:** paramiko SFTP → /home/hdwebd88/public_html/
 - **Email:** max@hd-webdesign.si (Resend API + IMAP)
-- **Stripe:** sk_live_51QvOm... (create-checkout.php)
+- **Stripe:** LIVE key (stored in stripe-config.php on server)
 - **GitHub:** github.com/Maxkrempl/AIboost.git (domenca_site committed)
 - **Google Analytics:** G-DJER0DNGTF on all pages
 - **Chatbot:** /chatbot/widget.js + chat.php (DeepSeek API)
