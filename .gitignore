@@ -54,3 +54,4 @@ geo-tools/
 1{e=
 *.csv
 *.example.json
+secret-patterns.txt
